@@ -196,16 +196,6 @@ public class DemoScene : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (shotTime == 0 || shotTime > 0.4f)
-            {
-                _animator.Play(Animator.StringToHash("TienRanged"));
-                shotTime = 0;
-                shotTime += Time.deltaTime;
-                spawnProjectile();
-            }
-        }
         else if (Input.GetKey(KeyCode.D))
         {
             normalizedHorizontalSpeed = 1;
@@ -213,9 +203,6 @@ public class DemoScene : MonoBehaviour
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             right = true;
             left = false;
-
-            if (!_controller.isGrounded)
-                normalizedHorizontalSpeed = .9f;
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -224,12 +211,21 @@ public class DemoScene : MonoBehaviour
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             right = false;
             left = true;
-            if (!_controller.isGrounded)
-                normalizedHorizontalSpeed = -.9f;
         }
         else
         {
             normalizedHorizontalSpeed = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (shotTime == 0 || shotTime > 0.4f)
+            {
+                _animator.Play(Animator.StringToHash("TienRanged"));
+                shotTime = 0;
+                shotTime += Time.deltaTime;
+                spawnProjectile();
+            }
         }
 
         if (((comboCountdown != 0 && comboCountdown < 0.5f) || (shotTime != 0 && shotTime < 0.4f)) && _controller.isGrounded)
@@ -248,7 +244,7 @@ public class DemoScene : MonoBehaviour
         }
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.E) && !_controller.isGrounded)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (dashCount < dashMax)
             {
@@ -299,9 +295,9 @@ public class DemoScene : MonoBehaviour
             _velocity.y += gravity * Time.deltaTime;
 
 
-        if (pm.mode.Equals("speed"))
+        if (normalizedHorizontalSpeed != 0  && pm.mode.Equals("speed"))
         {
-            normalizedHorizontalSpeed *= 2;
+            normalizedHorizontalSpeed *= pm.speed;
         }
 
         if (!isDashing)
