@@ -7,6 +7,7 @@ public class PlayerMode : MonoBehaviour {
 
     public float buffTime = 5f;
     public float timer = 0f;
+    public float speed = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class PlayerMode : MonoBehaviour {
         }
         if (timer > buffTime)
         {
+            speed = 1f;
             mode = "normal";
             timer = 0f;
         }
@@ -28,6 +30,7 @@ public class PlayerMode : MonoBehaviour {
 
     public void resetTimer()
     {
+        speed *= 2;
         timer = 0f;
         mode = "speed";
     }
