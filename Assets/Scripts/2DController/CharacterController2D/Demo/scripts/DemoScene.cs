@@ -28,6 +28,7 @@ public class DemoScene : MonoBehaviour
 	private Vector3 _velocity;
 
     private bool left = false;
+    private bool useAirDash = false;
 
     public float ButtonDelay;
     float lastJump = 0;
@@ -36,6 +37,7 @@ public class DemoScene : MonoBehaviour
     BoxCollider2D myBoxCollider;
 
     public int jumpCount= 0;
+    public int airDashCount = 0;
 
     public GameObject attackBox;
     public GameObject projectile;
@@ -99,23 +101,9 @@ public class DemoScene : MonoBehaviour
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
-
+        #region movement
         if (isDashing)
         {
-            if (Input.GetKey(KeyCode.D))
-            {
-                normalizedHorizontalSpeed = 1;
-                if (transform.localScale.x < 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                left = false;
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                normalizedHorizontalSpeed = -1;
-                if (transform.localScale.x > 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                left = true;
-            }
             if (airDashTime > 0.1f)
             {
                 if (Input.GetKeyDown(KeyCode.E))
@@ -125,14 +113,6 @@ public class DemoScene : MonoBehaviour
                     normalizedHorizontalSpeed = 0;
                 }
             }
-                /**
-            if (airDashTime > 0.5f)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    normalizedHorizontalSpeed = 0;
-                }
-            }**/
         }
         else
         {
@@ -156,6 +136,11 @@ public class DemoScene : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (!_controller.isGrounded)
+                {
+                    useAirDash = true;
+                    airDashCount++;
+                }
                 if (left)
                     normalizedHorizontalSpeed = -1;
                 else
@@ -164,13 +149,14 @@ public class DemoScene : MonoBehaviour
                 _animator.Play(Animator.StringToHash("Airdash"));
             }
         }
-        /**
+        #endregion
         if (_controller.isGrounded)
         {
             jumpCount = 0;
-            _velocity.y = 0;
+            useAirDash = false;
+            airDashCount = 0;
         }
-        **/
+
         updateTimers();
 
         #region combat
@@ -251,36 +237,17 @@ public class DemoScene : MonoBehaviour
         }
         #endregion
 
-        // we can only jump whilst grounded
-        if ((_controller.isGrounded || jumpCount < 2) && Input.GetKeyDown(KeyCode.W))
-        {
-            if (!_controller.isGrounded)
-            {
-                jumpCount = 2;
-            }
-            else
-            {
-                jumpCount++;
-            }
-            _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
-            _animator.StopPlayback();
-            _animator.Play(Animator.StringToHash("Jump"));
-        }
-        /**
+
+        
         if (jumpCount != 0 && !_controller.isGrounded && _velocity.y < 0 && !isDashing)
         {
             _animator.Play(Animator.StringToHash("TienFall"));
         }
-        **/
-
+        
 
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
-        if (!isDashing)
-            _velocity.y = 0;
-        else
-            _velocity.y += gravity * Time.deltaTime;
 
 
         if (normalizedHorizontalSpeed != 0  && pm.mode.Equals("speed"))
@@ -289,11 +256,40 @@ public class DemoScene : MonoBehaviour
         }
 
         if (!isDashing)
+        {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
-        else{
+            // we can only jump whilst grounded
+            if ((_controller.isGrounded || jumpCount < 2) && Input.GetKeyDown(KeyCode.W))
+            {
+                if (!_controller.isGrounded)
+                {
+                    jumpCount = 2;
+                }
+                else
+                {
+                    jumpCount++;
+                }
+                _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
+                _animator.StopPlayback();
+                if (!isDashing)
+                {
+                    _animator.Play(Animator.StringToHash("Jump"));
+                }
+            }
+            _velocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
-            _velocity.y = -gravity * Time.deltaTime;
-            myBoxCollider.size = new Vector3(10f, 1.75f);
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if ((_controller.isGrounded || jumpCount < 2))
+                {
+                    jumpCount++;
+                    _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
+                    //  myBoxCollider.size = new Vector3(10f, 1.75f);
+                }
+            }
         }
         _controller.move(_velocity * Time.deltaTime);
 
@@ -327,7 +323,7 @@ public class DemoScene : MonoBehaviour
         }
         if (airDashTime > .5f)
         {
-            myBoxCollider.size = new Vector3(1.75f, 10);
+           // myBoxCollider.size = new Vector3(1.75f, 10);
             isDashing = false;
             airDashTime = 0;
         }
