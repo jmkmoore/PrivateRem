@@ -283,11 +283,22 @@ public class DemoScene : MonoBehaviour
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if ((_controller.isGrounded || jumpCount < 2))
+                if (_controller.isGrounded)
                 {
                     jumpCount++;
                     _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
                     //  myBoxCollider.size = new Vector3(10f, 1.75f);
+                }
+                else
+                {
+                    if (_velocity.y > 0)
+                    {
+                        _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
+                    }
+                    else
+                    {
+                        _velocity.y = -gravity * Time.deltaTime;
+                    }
                 }
             }
         }
