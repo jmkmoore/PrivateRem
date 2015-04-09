@@ -138,15 +138,30 @@ public class DemoScene : MonoBehaviour
             {
                 if (!_controller.isGrounded)
                 {
-                    useAirDash = true;
-                    airDashCount++;
+                    if (airDashCount < 1)
+                    {
+                        useAirDash = true;
+                        airDashCount++;
+                        isDashing = true;
+                        _animator.Play(Animator.StringToHash("Airdash"));
+                    }
+                    else
+                    {
+                        isDashing = false;
+                    }
                 }
-                if (left)
-                    normalizedHorizontalSpeed = -1;
                 else
-                    normalizedHorizontalSpeed = 1;
-                isDashing = true;
-                _animator.Play(Animator.StringToHash("Airdash"));
+                {
+                    isDashing = true;
+                    _animator.Play(Animator.StringToHash("Airdash"));
+                }
+                if (isDashing)
+                {
+                    if (left)
+                        normalizedHorizontalSpeed = -1;
+                    else
+                        normalizedHorizontalSpeed = 1;
+                }
             }
         }
         #endregion
@@ -294,6 +309,7 @@ public class DemoScene : MonoBehaviour
                     if (_velocity.y > 0)
                     {
                         _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
+                        _animator.Play(Animator.StringToHash("Jump"));
                     }
                     else
                     {
