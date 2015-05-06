@@ -15,6 +15,8 @@ public class DemoScene : MonoBehaviour
     private int dashMax = 1;
 
     public float airDashTime = 0f;
+    public float airDashDuration = .5f;
+
     public float comboTime = 2f;
     public float comboCountdown = 0f;
     public int attackCount = 0;
@@ -274,16 +276,8 @@ public class DemoScene : MonoBehaviour
         {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
             // we can only jump whilst grounded
-            if ((_controller.isGrounded || jumpCount < 2) && Input.GetKeyDown(KeyCode.W))
+            if ((_controller.isGrounded) && Input.GetKeyDown(KeyCode.W))
             {
-                if (!_controller.isGrounded)
-                {
-                    jumpCount = 2;
-                }
-                else
-                {
-                    jumpCount++;
-                }
                 _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
                 _animator.StopPlayback();
                 if (!isDashing)
@@ -324,9 +318,10 @@ public class DemoScene : MonoBehaviour
 
     public void attack(int attackDamage)
     {
-        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
-        attack.setAttackDamage(attackDamage);
-        PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
+        gameObject.GetComponent<AttackController>().turnOnBox();
+//        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
+  //      attack.setAttackDamage(attackDamage);
+    //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
     }
 
     public void shoutOut()
@@ -348,7 +343,7 @@ public class DemoScene : MonoBehaviour
         {
             airDashTime += Time.deltaTime;
         }
-        if (airDashTime > .5f)
+        if (airDashTime > airDashDuration)
         {
            // myBoxCollider.size = new Vector3(1.75f, 10);
             isDashing = false;
