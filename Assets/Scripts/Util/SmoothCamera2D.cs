@@ -16,12 +16,13 @@ public class SmoothCamera2D : MonoBehaviour {
 	
 
 	// Update is called once per frame
+
 	void Update () 
 	{
 		if (target)
 		{
 			point = GetComponent<Camera>().WorldToViewportPoint(target.position);
-			delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.4f, point.z)); //(new Vector3(0.5, 0.5, point.z));
+			delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 62f)); //(new Vector3(0.5, 0.5, point.z));
 			destination = transform.position + delta;
 			CheckBounds();
 			transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
@@ -30,7 +31,7 @@ public class SmoothCamera2D : MonoBehaviour {
 			if (target)
 			{
 				point = GetComponent<Camera>().WorldToViewportPoint(target.position);
-				delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); //(new Vector3(0.5, 0.5, point.z));
+				delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 62f)); //(new Vector3(0.5, 0.5, point.z));
 				destination = transform.position + delta;
 				CheckBounds();
 				transform.position = destination;
