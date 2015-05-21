@@ -20,6 +20,7 @@ public class DemoScene : MonoBehaviour
     public float comboTime = 2f;
     public float comboCountdown = 0f;
     public int attackCount = 0;
+    public bool grounded;
 
 	[HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -103,6 +104,7 @@ public class DemoScene : MonoBehaviour
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
+        grounded = _controller.isGrounded;
         #region movement
         if (isDashing)
         {
