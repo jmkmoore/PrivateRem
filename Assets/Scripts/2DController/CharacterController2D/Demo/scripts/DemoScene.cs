@@ -32,6 +32,7 @@ public class DemoScene : MonoBehaviour
 
     private bool left = false;
     private bool useAirDash = false;
+    private bool isDiving = false;
 
     public float ButtonDelay;
     float lastJump = 0;
@@ -104,7 +105,7 @@ public class DemoScene : MonoBehaviour
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
-        grounded = _controller.isGrounded;
+
         #region movement
         if (isDashing)
         {
@@ -174,6 +175,7 @@ public class DemoScene : MonoBehaviour
             jumpCount = 0;
             useAirDash = false;
             airDashCount = 0;
+            isDiving = false;
         }
 
         updateTimers();
@@ -182,58 +184,63 @@ public class DemoScene : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (attackCount == 0 || attackCount == 3)
+            if (attackCount >= 3)
             {
-                _animator.Play(Animator.StringToHash("Jab"));
-                attackCount++;
-                comboCountdown = 0;
-                comboCountdown += Time.deltaTime;
-                if (attackCount >= 3)
-                {
-                    attackCount = 1;
-                }
-                if (pm.mode.Equals("melee"))
-                {
-                    attack(20);
-                }
-                else
-                {
-                    attack(10);
-                }
+                attackCount = 1;
             }
-            else if (attackCount == 1 && comboCountdown < comboTime)
-            {
-                _animator.Play(Animator.StringToHash("Cross"));
-                attackCount++;
-                comboCountdown = 0;
-                comboCountdown += Time.deltaTime;
-                if (pm.mode.Equals("melee"))
-                {
-                    attack(30);
-                }
-                else
-                {
-                    attack(15);
-                }
-            }
-            else if (attackCount == 2 && comboCountdown < comboTime)
-            {
-                _animator.Play(Animator.StringToHash("Kick"));
-                attackCount++;
-                comboCountdown = 0;
-                comboCountdown += Time.deltaTime;
 
-                if (pm.mode.Equals("melee"))
+            if (_controller.isGrounded)
+            {
+                if (attackCount == 0 || attackCount == 3)
                 {
-                    attack(40);
+                    _animator.Play(Animator.StringToHash("Jab"));
+                    attackCount++;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    
+                    if (pm.mode.Equals("melee"))
+                    {
+                        attack(20);
+                    }
+                    else
+                    {
+                        attack(10);
+                    }
                 }
-                else
+                else if (attackCount == 1 && comboCountdown < comboTime)
                 {
-                    attack(20);
+                    _animator.Play(Animator.StringToHash("Cross"));
+                    attackCount++;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    if (pm.mode.Equals("melee"))
+                    {
+                        attack(30);
+                    }
+                    else
+                    {
+                        attack(15);
+                    }
+                }
+                else if (attackCount == 2 && comboCountdown < comboTime)
+                {
+                    _animator.Play(Animator.StringToHash("Kick"));
+                    attackCount++;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+
+                    if (pm.mode.Equals("melee"))
+                    {
+                        attack(40);
+                    }
+                    else
+                    {
+                        attack(20);
+                    }
                 }
             }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             if (shotTime == 0 || shotTime > 0.4f)
             {
@@ -242,6 +249,14 @@ public class DemoScene : MonoBehaviour
                 shotTime += Time.deltaTime;
                 spawnProjectile();
             }
+        }
+        if (Input.GetKey(KeyCode.S) && !_controller.isGrounded)
+        {
+            //attackCount++;
+            //comboCountdown = 0;
+            //comboCountdown += Time.deltaTime;
+            isDiving = true;
+            isDashing = false;
         }
         #endregion
         
@@ -274,7 +289,7 @@ public class DemoScene : MonoBehaviour
             normalizedHorizontalSpeed *= pm.speed;
         }
 
-        if (!isDashing)
+        if (!isDashing && !isDiving)
         {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
             // we can only jump whilst grounded
@@ -289,7 +304,7 @@ public class DemoScene : MonoBehaviour
             }
             _velocity.y += gravity * Time.deltaTime;
         }
-        else
+        else if(isDashing)
         {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
             if (Input.GetKeyDown(KeyCode.W))
@@ -313,6 +328,15 @@ public class DemoScene : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (isDiving)
+        {
+            if (left)
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
+            else
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
+
+            _velocity.y = gravity * 75f * Time.deltaTime;
         }
         _controller.move(_velocity * Time.deltaTime);
 
