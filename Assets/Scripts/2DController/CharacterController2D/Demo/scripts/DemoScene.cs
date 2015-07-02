@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class DemoScene : MonoBehaviour
 {
-	// movement config
-	public float gravity = -25f;
-	public float runSpeed = 8f;
-	public float groundDamping = 20f; // how fast do we change direction? higher means faster
-	public float inAirDamping = 5f;
-	public float jumpHeight = 3f;
+    // movement config
+    public float gravity = -25f;
+    public float runSpeed = 8f;
+    public float groundDamping = 20f; // how fast do we change direction? higher means faster
+    public float inAirDamping = 5f;
+    public float jumpHeight = 3f;
     public float dashBoost = 15f;
     private int dashCount = 0;
     private int dashMax = 1;
@@ -22,13 +21,13 @@ public class DemoScene : MonoBehaviour
     public int attackCount = 0;
     public bool grounded;
 
-	[HideInInspector]
-	private float normalizedHorizontalSpeed = 0;
+    [HideInInspector]
+    private float normalizedHorizontalSpeed = 0;
 
     private CharacterController2D _controller;
     private Animator _animator;
-	private RaycastHit2D _lastControllerColliderHit;
-	private Vector3 _velocity;
+    private RaycastHit2D _lastControllerColliderHit;
+    private Vector3 _velocity;
 
     private bool left = false;
     private bool useAirDash = false;
@@ -40,7 +39,7 @@ public class DemoScene : MonoBehaviour
     public bool isDashing = false;
     BoxCollider2D myBoxCollider;
 
-    public int jumpCount= 0;
+    public int jumpCount = 0;
     public int airDashCount = 0;
 
     public GameObject attackBox;
@@ -52,11 +51,11 @@ public class DemoScene : MonoBehaviour
     public PlayerMode pm;
 
     void Awake()
-	{
-		_animator = GetComponent<Animator>();
-		_controller = GetComponent<CharacterController2D>();
+    {
+        _animator = GetComponent<Animator>();
+        _controller = GetComponent<CharacterController2D>();
 
-		// listen to some events for illustration purposes
+        // listen to some events for illustration purposes
         _controller.onControllerCollidedEvent += onControllerCollider;
         _controller.onTriggerEnterEvent += onTriggerEnterEvent;
         _controller.onTriggerExitEvent += onTriggerExitEvent;
@@ -65,22 +64,22 @@ public class DemoScene : MonoBehaviour
     }
 
 
-	#region Event Listeners
+    #region Event Listeners
 
-	void onControllerCollider( RaycastHit2D hit )
-	{
-		// bail out on plain old ground hits cause they arent very interesting
-		if( hit.normal.y == 1f )
-			return;
+    void onControllerCollider(RaycastHit2D hit)
+    {
+        // bail out on plain old ground hits cause they arent very interesting
+        if (hit.normal.y == 1f)
+            return;
 
-		// logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
-		//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
-	}
+        // logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
+        //Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
+    }
 
 
-	void onTriggerEnterEvent( Collider2D col )
-	{
-		Debug.Log( "onTriggerEnterEvent: " + col.tag + " "  + col.name + " ");
+    void onTriggerEnterEvent(Collider2D col)
+    {
+        Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
         if (col.tag.Equals("DestructPlat"))
         {
             FallApart obj = (FallApart)col.gameObject.GetComponent<FallApart>();
@@ -91,16 +90,16 @@ public class DemoScene : MonoBehaviour
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
 
-	}
+    }
 
 
-	void onTriggerExitEvent( Collider2D col )
-	{
-		Debug.Log( "onTriggerExitEvent: " + col.gameObject.name );
-	}
+    void onTriggerExitEvent(Collider2D col)
+    {
+        Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+    }
 
-	#endregion
-	// the Update loop contains a very simple example of moving the character around and controlling the animation
+    #endregion
+    // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
         // grab our current _velocity to use as a base for all calculations
@@ -197,7 +196,7 @@ public class DemoScene : MonoBehaviour
                     attackCount++;
                     comboCountdown = 0;
                     comboCountdown += Time.deltaTime;
-                    
+
                     if (pm.mode.Equals("melee"))
                     {
                         attack(20);
@@ -259,7 +258,7 @@ public class DemoScene : MonoBehaviour
             isDashing = false;
         }
         #endregion
-        
+
         #region Movement Animation
         if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !isDashing)
         {
@@ -272,19 +271,19 @@ public class DemoScene : MonoBehaviour
         #endregion
 
 
-        
+
         if (jumpCount != 0 && !_controller.isGrounded && _velocity.y < 0 && !isDashing)
         {
             _animator.Play(Animator.StringToHash("TienFall"));
         }
-        
+
 
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
 
 
-        if (normalizedHorizontalSpeed != 0  && pm.mode.Equals("speed"))
+        if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
         {
             normalizedHorizontalSpeed *= pm.speed;
         }
@@ -304,7 +303,7 @@ public class DemoScene : MonoBehaviour
             }
             _velocity.y += gravity * Time.deltaTime;
         }
-        else if(isDashing)
+        else if (isDashing)
         {
             _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
             if (Input.GetKeyDown(KeyCode.W))
@@ -345,9 +344,9 @@ public class DemoScene : MonoBehaviour
     public void attack(int attackDamage)
     {
         gameObject.GetComponent<AttackController>().turnOnBox();
-//        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
-  //      attack.setAttackDamage(attackDamage);
-    //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
+        //        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
+        //      attack.setAttackDamage(attackDamage);
+        //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
     }
 
     public void shoutOut()
@@ -371,7 +370,7 @@ public class DemoScene : MonoBehaviour
         }
         if (airDashTime > airDashDuration)
         {
-           // myBoxCollider.size = new Vector3(1.75f, 10);
+            // myBoxCollider.size = new Vector3(1.75f, 10);
             isDashing = false;
             airDashTime = 0;
         }
@@ -385,8 +384,8 @@ public class DemoScene : MonoBehaviour
         {
             shotTime = 0;
         }
-        
-        
+
+
         if (comboCountdown > comboTime)
         {
             attackCount = 0;

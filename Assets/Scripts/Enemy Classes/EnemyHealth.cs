@@ -7,13 +7,11 @@ public class EnemyHealth : MonoBehaviour {
 	private Transform myTransform;
     private GameObject[] player;
     private PlayerMode pm;
-    private EnemyMode em;
     // Use this for initialization
 	void Start () {
 		myTransform = transform;
         player = GameObject.FindGameObjectsWithTag("Player");
         pm = findPlayerMode(player);
-        em = gameObject.GetComponent<EnemyMode>();
 	}
 	
 	// Update is called once per frame
@@ -33,38 +31,15 @@ public class EnemyHealth : MonoBehaviour {
     }
 	
 	public void adjustCurrentHealth(int adj){
-        if (adj < 0)
-        {
-            if (!em.isInvuln)
-            {
-                currentHealth += adj;
-                if (currentHealth > maxHealth)
-                    currentHealth = maxHealth;
-                if (currentHealth < 1)
-                    currentHealth = 0;
-                if (currentHealth == 0)
-                {
-                    pm.resetTimer();
-                    if (!transform.gameObject.tag.Equals("Boss"))
-                        Destroy(gameObject);
-                }
-            }
-            em.makeInvuln();
-        }
-        else
-        {
-            currentHealth += adj;
-            if (currentHealth > maxHealth)
-                currentHealth = maxHealth;
-            if (currentHealth < 1)
-                currentHealth = 0;
-            if (currentHealth == 0)
-            {
-                pm.resetTimer();
-                if (!transform.gameObject.tag.Equals("Boss"))
-                    Destroy(gameObject);
-            }
-        }
-        
+		currentHealth += adj;
+		if (currentHealth > maxHealth)
+			currentHealth = maxHealth;
+		if(currentHealth < 1)
+			currentHealth = 0;
+		if (currentHealth == 0) {
+            pm.resetTimer();
+            if (!transform.gameObject.tag.Equals("Boss"))
+    			Destroy(gameObject);
+		}
 	}
 }

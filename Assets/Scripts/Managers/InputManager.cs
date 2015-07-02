@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
 		// Update is called once per frame
 	void FixedUpdate ()
 	{
-/**
+
 		if (player.IsAlive) {
 			if (LeftButton) {
 				Vector2 movementDirection = Vector2.right * -1 * runSpeed;
@@ -104,7 +104,7 @@ public class InputManager : MonoBehaviour
 			}else{
 				GunButton = false;
 			}
-**/
+
 		}
 
 		void Update(){

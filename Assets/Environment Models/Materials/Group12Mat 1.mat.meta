@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 919842f2b6a76f74b955a87dc1481521
 timeCreated: 1435865813
+=======
+guid: c6d7f7b53d5355e45ab94473aa4a1efe
+timeCreated: 1435863244
+>>>>>>> feature/CombatImprovement
 licenseType: Free
 NativeFormatImporter:
   userData: 
