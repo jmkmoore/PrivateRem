@@ -22,6 +22,8 @@ public class BabySpiderMovement : MonoBehaviour {
     private bool left = true;
     private bool right = false;
 
+    private EnemyMode em;
+
     private int turn;
 	// Use this for initialization
 	void Start () {
@@ -37,6 +39,8 @@ public class BabySpiderMovement : MonoBehaviour {
         _controller.onControllerCollidedEvent += onControllerCollider;
         _controller.onTriggerEnterEvent += onTriggerEnterEvent;
         _controller.onTriggerExitEvent += onTriggerExitEvent;
+
+        em = gameObject.GetComponent<EnemyMode>();
 
     }
 
@@ -104,17 +108,24 @@ public class BabySpiderMovement : MonoBehaviour {
                     jumpTimer = 0;
                 }
             }
-        if (left)
+        if (!em.isInvuln)
         {
-            normalizedHorizontalSpeed = -1;
-            if (transform.localScale.x > 0f)
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            if (left)
+            {
+                normalizedHorizontalSpeed = -1;
+                if (transform.localScale.x > 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                if (transform.localScale.x < 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                normalizedHorizontalSpeed = 1;
+            }
         }
         else
         {
-            if (transform.localScale.x < 0f)
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            normalizedHorizontalSpeed = 1;
+            normalizedHorizontalSpeed = 0;
         }
         
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping;
