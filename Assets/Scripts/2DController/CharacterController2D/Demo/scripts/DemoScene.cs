@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Prime31;
 
 public class DemoScene : MonoBehaviour
 {
