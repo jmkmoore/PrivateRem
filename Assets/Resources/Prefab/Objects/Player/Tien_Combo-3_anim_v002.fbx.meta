@@ -194,11 +194,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: <Root Transform>
-    animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+    motionNodeName: Tien
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
