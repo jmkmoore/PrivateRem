@@ -1,54 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AttackController : MonoBehaviour {
 
-    public BoxCollider2D HighKick;
+    public GameObject punchBox;
+    public GameObject crosspunchBox;
+    public GameObject kickBox;
 
     private BoxCollider2D myActiveBox;
-    public float boxTimer = 0f;
-    private float boxLifetime = 1f;
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (myActiveBox != null)
-        {
-            boxTimer += Time.deltaTime;
-        }
-
-        if (boxTimer > boxLifetime)
-        {
-            myActiveBox = null;
-            boxTimer = 0;
-            turnOffBox();
-        }
 	
 	}
 
-    public void turnOnBox()
+    public void turnOnBox(int boxNum)
     {
-        if (boxTimer == 0)
+        switch (boxNum)
         {
-            if (HighKick.enabled)
-            {
-                HighKick.enabled = false;
-            }
-            else
-            {
-                HighKick.enabled = true;
-                myActiveBox = HighKick;
-            }
+            case 0:
+                punchBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 1:
+                crosspunchBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 2:
+                kickBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            default:
+                break;
         }
+
     }
 
     private void turnOffBox()
     {
-        HighKick.enabled = false;
+    }
+
+    public void attack(int attackNum)
+    {
+        turnOnBox(attackNum);
     }
 }
