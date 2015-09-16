@@ -1,50 +1,35 @@
 using UnityEngine;
 using System.Collections;
-using Prime31;
 
 public class PlayerAttack : MonoBehaviour {
 	public int attackValue = 10;
 	private int superAttackValue = 2;
 	public GameObject target;
-    private CharacterController2D enemyController;
-    private BoxCollider2D myBox;
 
-
-    public float attackKnockbackX = 1000f;
-    public float attackKnockbackY = 1000f;
-    public float lifetime, maxDur;
-
-    private bool on;
-
-    private Vector3 attackKnockback;
+	public float attackTimer;
+    public float aliveTimer;
+    public float maxTime = .5f;
 	// Use this for initialization
 	void Start () {
-        attackKnockback.x = attackKnockbackX;
-        attackKnockback.y = attackKnockbackY * Time.deltaTime;
-        myBox = gameObject.GetComponent<BoxCollider2D>();
+		attackTimer = 0;
 	}
 	
 	// Update is called once per frame
-    void Update()
-    {
-        if (myBox.enabled == true)
+	void Update () {
+        if (aliveTimer > maxTime)
         {
-            lifetime += Time.deltaTime;
-        }        
-        if (lifetime > maxDur)
-        {
-            lifetime = 0;
-            myBox.enabled = false;
+            DestroyObject(gameObject);
         }
-    }
+        aliveTimer += Time.deltaTime;
+		
+		}
 
 	void Attack(GameObject target){
         EnemyHealth eh = findEnemyHealth(target);
         if (eh != null)
         {
             eh.adjustCurrentHealth(-attackValue);
-            enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-            enemyController.move(attackKnockback);
+            DestroyObject(gameObject);
         }
     }
 
@@ -85,16 +70,5 @@ public class PlayerAttack : MonoBehaviour {
             eh = obj.transform.parent.parent.GetComponent<EnemyHealth>();
         }
         return eh;
-    }
-
-    public void resetTimers()
-    {
-        lifetime = 0f;
-    }
-
-    public void turnOnAttack()
-    {
-        lifetime = 0f;
-        myBox.enabled = true;
     }
 }

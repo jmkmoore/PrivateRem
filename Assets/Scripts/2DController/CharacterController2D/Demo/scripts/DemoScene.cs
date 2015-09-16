@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Prime31;
+
 
 public class DemoScene : MonoBehaviour
 {
-    // movement config
-    public float gravity = -25f;
-    public float runSpeed = 8f;
-    public float groundDamping = 20f; // how fast do we change direction? higher means faster
-    public float inAirDamping = 5f;
-    public float jumpHeight = 3f;
+	// movement config
+	public float gravity = -25f;
+	public float runSpeed = 8f;
+	public float groundDamping = 20f; // how fast do we change direction? higher means faster
+	public float inAirDamping = 5f;
+	public float jumpHeight = 3f;
     public float dashBoost = 15f;
     private int dashCount = 0;
     private int dashMax = 1;
@@ -20,19 +20,18 @@ public class DemoScene : MonoBehaviour
     public float comboTime = 2f;
     public float comboCountdown = 0f;
     public int attackCount = 0;
+    public bool grounded;
 
-    [HideInInspector]
-    private float normalizedHorizontalSpeed = 0;
+	[HideInInspector]
+	private float normalizedHorizontalSpeed = 0;
 
     private CharacterController2D _controller;
     private Animator _animator;
-    private RaycastHit2D _lastControllerColliderHit;
-    private Vector3 _velocity;
-    
+	private RaycastHit2D _lastControllerColliderHit;
+	private Vector3 _velocity;
 
     private bool left = false;
     private bool useAirDash = false;
-    private bool isDiving = false;
 
     public float ButtonDelay;
     float lastJump = 0;
@@ -40,53 +39,47 @@ public class DemoScene : MonoBehaviour
     public bool isDashing = false;
     BoxCollider2D myBoxCollider;
 
-    private bool isBlocking = false;
-
-    public int jumpCount = 0;
+    public int jumpCount= 0;
     public int airDashCount = 0;
 
     public GameObject attackBox;
+    public GameObject projectile;
 
     private float shotCountdown = .5f;
     public float shotTime = 0;
 
-    private AttackController atkController;
-    private PlayerHealth ph;
-
     public PlayerMode pm;
 
     void Awake()
-    {
-        _animator = GetComponent<Animator>();
-        _controller = GetComponent<CharacterController2D>();
+	{
+		_animator = GetComponent<Animator>();
+		_controller = GetComponent<CharacterController2D>();
 
-        // listen to some events for illustration purposes
+		// listen to some events for illustration purposes
         _controller.onControllerCollidedEvent += onControllerCollider;
         _controller.onTriggerEnterEvent += onTriggerEnterEvent;
         _controller.onTriggerExitEvent += onTriggerExitEvent;
         myBoxCollider = gameObject.GetComponent<BoxCollider2D>();
         pm = gameObject.GetComponent<PlayerMode>();
-        atkController = gameObject.GetComponent<AttackController>();
-        ph = gameObject.GetComponent<PlayerHealth>();
     }
 
 
-    #region Event Listeners
+	#region Event Listeners
 
-    void onControllerCollider(RaycastHit2D hit)
-    {
-        // bail out on plain old ground hits cause they arent very interesting
-        if (hit.normal.y == 1f)
-            return;
+	void onControllerCollider( RaycastHit2D hit )
+	{
+		// bail out on plain old ground hits cause they arent very interesting
+		if( hit.normal.y == 1f )
+			return;
 
-        // logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
-        //Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
-    }
+		// logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
+		//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
+	}
 
 
-    void onTriggerEnterEvent(Collider2D col)
-    {
-        Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
+	void onTriggerEnterEvent( Collider2D col )
+	{
+		Debug.Log( "onTriggerEnterEvent: " + col.tag + " "  + col.name + " ");
         if (col.tag.Equals("DestructPlat"))
         {
             FallApart obj = (FallApart)col.gameObject.GetComponent<FallApart>();
@@ -97,23 +90,21 @@ public class DemoScene : MonoBehaviour
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
 
-    }
+	}
 
 
-    void onTriggerExitEvent(Collider2D col)
-    {
-        Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
-    }
+	void onTriggerExitEvent( Collider2D col )
+	{
+		Debug.Log( "onTriggerExitEvent: " + col.gameObject.name );
+	}
 
-    #endregion
-    // the Update loop contains a very simple example of moving the character around and controlling the animation
+	#endregion
+	// the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
-
-        updateTimers();
-
+        grounded = _controller.isGrounded;
         #region movement
         if (isDashing)
         {
@@ -129,28 +120,23 @@ public class DemoScene : MonoBehaviour
         }
         else
         {
-            if (comboCountdown > ButtonDelay || comboCountdown == 0)
+            if (Input.GetKey(KeyCode.D))
             {
-                if (Input.GetKey(KeyCode.D))
-                {
-                    normalizedHorizontalSpeed = 1;
-                    if (transform.localScale.x < 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    left = false;
-                    isBlocking = false;
-                }
-                else if (Input.GetKey(KeyCode.A))
-                {
-                    normalizedHorizontalSpeed = -1;
-                    if (transform.localScale.x > 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    left = true;
-                    isBlocking = false;
-                }
-                else
-                {
-                    normalizedHorizontalSpeed = 0;
-                }
+                normalizedHorizontalSpeed = 1;
+                if (transform.localScale.x < 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                left = false;
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                normalizedHorizontalSpeed = -1;
+                if (transform.localScale.x > 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                left = true;
+            }
+            else
+            {
+                normalizedHorizontalSpeed = 0;
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -180,7 +166,6 @@ public class DemoScene : MonoBehaviour
                     else
                         normalizedHorizontalSpeed = 1;
                 }
-                isBlocking = false;
             }
         }
         #endregion
@@ -189,175 +174,168 @@ public class DemoScene : MonoBehaviour
             jumpCount = 0;
             useAirDash = false;
             airDashCount = 0;
-            isDiving = false;
         }
 
+        updateTimers();
 
         #region combat
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (_controller.isGrounded)
+            if (attackCount == 0 || attackCount == 3)
             {
-                if (comboCountdown == 0 || comboCountdown > ButtonDelay)
+                _animator.Play(Animator.StringToHash("Jab"));
+                attackCount++;
+                comboCountdown = 0;
+                comboCountdown += Time.deltaTime;
+                if (attackCount >= 3)
                 {
-                    ph.isBlocking = false;
-                    if (normalizedHorizontalSpeed != 0)
-                    {
-                        _animator.Play(Animator.StringToHash("Kick"));
-                        comboCountdown = 0;
-                        comboCountdown += Time.deltaTime;
-                       // attack(1);
-                    }
-                    else
-                    {
-                        if (attackCount == 0 || attackCount == 3)
-                        {
-                            _animator.Play(Animator.StringToHash("Jab"));
-                            attackCount = 1;
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            attack(0);
-                            normalizedHorizontalSpeed = 0;
-                        }
-                        else if (attackCount == 1)
-                        {
-                            _animator.Play(Animator.StringToHash("Cross"));
-                            attackCount = 2;
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            attack(1);
-                            normalizedHorizontalSpeed = 0;
+                    attackCount = 1;
+                }
+                if (pm.mode.Equals("melee"))
+                {
+                    attack(20);
+                }
+                else
+                {
+                    attack(10);
+                }
+            }
+            else if (attackCount == 1 && comboCountdown < comboTime)
+            {
+                _animator.Play(Animator.StringToHash("Cross"));
+                attackCount++;
+                comboCountdown = 0;
+                comboCountdown += Time.deltaTime;
+                if (pm.mode.Equals("melee"))
+                {
+                    attack(30);
+                }
+                else
+                {
+                    attack(15);
+                }
+            }
+            else if (attackCount == 2 && comboCountdown < comboTime)
+            {
+                _animator.Play(Animator.StringToHash("Kick"));
+                attackCount++;
+                comboCountdown = 0;
+                comboCountdown += Time.deltaTime;
 
-                        }
-                        else if (attackCount == 2)
-                        {
-                            _animator.Play(Animator.StringToHash("Kick"));
-                            attackCount = 0;
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            attack(2);
-                            normalizedHorizontalSpeed = 1 * transform.localScale.x;
-                        }
-                    }
+                if (pm.mode.Equals("melee"))
+                {
+                    attack(40);
+                }
+                else
+                {
+                    attack(20);
                 }
             }
         }
-
-
-        if (Input.GetKey(KeyCode.S)) {
-            if(!_controller.isGrounded){
-            //attackCount++;
-            //comboCountdown = 0;
-            //comboCountdown += Time.deltaTime;
-            isDiving = true;
-            isDashing = false;
-            }
-            else{
-                if (!ph.isBlocking && comboCountdown < 0.25f)
-                {
-                    _animator.Play(Animator.StringToHash("Block"));
-                    ph.isBlocking = true;
-                    
-                }
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.S) && _controller.isGrounded)
+        else if (Input.GetKeyDown(KeyCode.S))
         {
-            ph.isBlocking = false;
+            if (shotTime == 0 || shotTime > 0.4f)
+            {
+                _animator.Play(Animator.StringToHash("TienRanged"));
+                shotTime = 0;
+                shotTime += Time.deltaTime;
+                spawnProjectile();
+            }
         }
         #endregion
-
+        
         #region Movement Animation
-        if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay))
+        if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !isDashing)
         {
             _animator.Play(Animator.StringToHash("Run"));
         }
-        if (_controller.isGrounded && normalizedHorizontalSpeed == 0 && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay) && !ph.isBlocking)
+        if (_controller.isGrounded && normalizedHorizontalSpeed == 0 && !isDashing && comboCountdown == 0 && shotTime == 0)
         {
             _animator.Play(Animator.StringToHash("Idle"));
         }
         #endregion
 
 
-
+        
         if (jumpCount != 0 && !_controller.isGrounded && _velocity.y < 0 && !isDashing)
         {
             _animator.Play(Animator.StringToHash("TienFall"));
         }
-
+        
 
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
 
 
-        if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
+        if (normalizedHorizontalSpeed != 0  && pm.mode.Equals("speed"))
         {
-            normalizedHorizontalSpeed *= 2;
+            normalizedHorizontalSpeed *= pm.speed;
         }
-        if (!isBlocking)
+
+        if (!isDashing)
         {
-            if (!isDashing && !isDiving)
+            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
+            // we can only jump whilst grounded
+            if ((_controller.isGrounded) && Input.GetKeyDown(KeyCode.W))
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
-                // we can only jump whilst grounded
-                if ((_controller.isGrounded) && Input.GetKeyDown(KeyCode.W))
+                _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
+                _animator.StopPlayback();
+                if (!isDashing)
                 {
-                    _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
-                    _animator.StopPlayback();
-                    if (!isDashing)
-                    {
-                        _animator.Play(Animator.StringToHash("Jump"));
-                    }
+                    _animator.Play(Animator.StringToHash("Jump"));
                 }
-                _velocity.y += gravity * Time.deltaTime;
             }
-            else if (isDashing)
+            _velocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
-                if (Input.GetKeyDown(KeyCode.W))
+                if (_controller.isGrounded)
                 {
-                    if (_controller.isGrounded)
+                    jumpCount++;
+                    _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
+                    //  myBoxCollider.size = new Vector3(10f, 1.75f);
+                }
+                else
+                {
+                    if (_velocity.y > 0)
                     {
-                        jumpCount++;
                         _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
-                        //  myBoxCollider.size = new Vector3(10f, 1.75f);
+                        _animator.Play(Animator.StringToHash("Jump"));
                     }
                     else
                     {
-                        if (_velocity.y > 0)
-                        {
-                            _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
-                            _animator.Play(Animator.StringToHash("Jump"));
-                        }
-                        else
-                        {
-                            _velocity.y = -gravity * Time.deltaTime;
-                        }
+                        _velocity.y = -gravity * Time.deltaTime;
                     }
                 }
             }
-            else if (isDiving)
-            {
-                if (left)
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
-                else
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
-
-                _velocity.y = gravity * 75f * Time.deltaTime;
-            }
-            _controller.move(_velocity * Time.deltaTime);
         }
+        _controller.move(_velocity * Time.deltaTime);
+
     }
 
-    public void attack(int attackName)
+    public void attack(int attackDamage)
     {
-        atkController.attack(attackName);
-        //        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
-        //      attack.setAttackDamage(attackDamage);
-        //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
+        gameObject.GetComponent<AttackController>().turnOnBox();
+//        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
+  //      attack.setAttackDamage(attackDamage);
+    //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
+    }
+
+    public void shoutOut()
+    {
+
+    }
+
+    public void spawnProjectile()
+    {
+        Projectile ball = (Projectile)projectile.GetComponent("Projectile");
+        ball.setDirection(transform.localScale.x);
+        Projectile ballClone = (Projectile)Instantiate(ball, new Vector3(transform.position.x + (3.5f * transform.localScale.x), transform.position.y + 7f, transform.position.z), transform.rotation);
     }
 
     public void updateTimers()
@@ -369,7 +347,7 @@ public class DemoScene : MonoBehaviour
         }
         if (airDashTime > airDashDuration)
         {
-            // myBoxCollider.size = new Vector3(1.75f, 10);
+           // myBoxCollider.size = new Vector3(1.75f, 10);
             isDashing = false;
             airDashTime = 0;
         }
@@ -383,15 +361,15 @@ public class DemoScene : MonoBehaviour
         {
             shotTime = 0;
         }
-
-
+        
+        
         if (comboCountdown > comboTime)
         {
             attackCount = 0;
             comboCountdown = 0;
         }
 
-        if (comboCountdown != 0)
+        if (comboCountdown != 0 && attackCount != 0)
         {
             comboCountdown += Time.deltaTime;
         }
