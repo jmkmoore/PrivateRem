@@ -94,6 +94,7 @@ public class DemoScene : MonoBehaviour
         }
         if (col.tag.Equals("DeathWall"))
         {
+            Debug.Log("Should Die");
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
 
@@ -241,6 +242,11 @@ public class DemoScene : MonoBehaviour
                         }
                     }
                 }
+            }
+            else
+            {
+                _animator.Play(Animator.StringToHash("TienAirKick"));
+                attack(3);
             }
         }
 

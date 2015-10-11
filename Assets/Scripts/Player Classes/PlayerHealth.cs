@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour {
             {
                 if (!invuln)
                 {
-                    currentHealth -= adj;
+                    currentHealth += adj;
                     invuln = true;
                     invulnTimer += Time.deltaTime;
                 }
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour {
             currentHealth = 0;
 
 
-		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
+		//TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
 		}
 
     public void updateBlocking(bool onOff)
