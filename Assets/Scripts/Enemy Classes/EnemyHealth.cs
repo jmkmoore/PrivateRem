@@ -16,7 +16,10 @@ public class EnemyHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (currentHealth < 0)
+        {
+            Destroy(gameObject);
+        }
 	}
 
     PlayerMode findPlayerMode(GameObject[] playerParts)
@@ -31,6 +34,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 	
 	public void adjustCurrentHealth(int adj){
+        Debug.Log("Taking " + adj + " damage");
 		currentHealth += adj;
 		if (currentHealth > maxHealth)
 			currentHealth = maxHealth;

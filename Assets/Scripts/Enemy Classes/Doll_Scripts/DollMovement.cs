@@ -163,18 +163,7 @@ public class DollMovement : MonoBehaviour {
 
     void updateAttackColliders(bool attacking)
     {
-        if (attacking)
-        {
-            gameObject.layer = LayerMask.NameToLayer("Empty");
-            transform.Find("DiveActiveBox").gameObject.SetActive(attacking);
-            transform.Find("HeadDiveHurtBox").gameObject.SetActive(attacking);
-        }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("EnemyHurtBox");
-            transform.Find("DiveActiveBox").gameObject.SetActive(attacking);
-            transform.Find("HeadDiveHurtBox").gameObject.SetActive(attacking);
-        }
+       
     }
 
 }

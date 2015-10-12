@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 47dfdc879ae047f49aa8cbc77a3bae4c
-timeCreated: 1443672245
+guid: fe34b26444000df41b1129cab26d881d
+timeCreated: 1444590521
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -175,7 +175,7 @@ ModelImporter:
     4300006: L_Strap
     4300008: Neckerchief
     4300010: Bag
-    7400000: Tien_Air_Kick_VerticallV4
+    7400000: Tien_Air_Kick_VerticallV5
     9500000: //RootNode
     13700000: TienBody
   materials:

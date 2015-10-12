@@ -40,11 +40,27 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Attack(GameObject target){
         EnemyHealth eh = findEnemyHealth(target);
+        float enemyGravity = target.transform.parent.GetComponent<Gravity>().gravityValue;
+        Vector3 thisKnockback = attackKnockback;
+        if (gameObject.GetComponentInParent<DemoScene>().isLeft())
+        {
+            thisKnockback.x = attackKnockback.x * -1f;
+        }
+        else
+        {
+            thisKnockback.x = Mathf.Abs(attackKnockback.x);
+        }
         if (eh != null)
         {
             eh.adjustCurrentHealth(-attackValue);
+            
             enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-            enemyController.move(attackKnockback);
+            if (enemyGravity == 0f)
+            {
+                thisKnockback.x = 0;
+                thisKnockback.y = 0;
+            }
+            enemyController.move(thisKnockback);
         }
     }
 

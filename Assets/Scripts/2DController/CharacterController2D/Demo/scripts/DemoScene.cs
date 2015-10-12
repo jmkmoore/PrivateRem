@@ -200,14 +200,37 @@ public class DemoScene : MonoBehaviour
         {
             if (_controller.isGrounded)
             {
-                if (comboCountdown == 0 || comboCountdown > ButtonDelay)
+                if (Input.GetKey(KeyCode.Z))
+                {
+                    _animator.Play(Animator.StringToHash("Uppercut"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(5);
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (Input.GetKey(KeyCode.X))
+                {
+                    _animator.Play(Animator.StringToHash("Sweep"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(4);
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
                 {
                     ph.isBlocking = false;
                     if (normalizedHorizontalSpeed != 0)
                     {
-                        _animator.Play(Animator.StringToHash("Kick"));
+                        _animator.Play(Animator.StringToHash("ShoulderCharge"));
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
+                        attackCount = 0;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        attack(6);
+                        normalizedHorizontalSpeed = .8f * transform.localScale.x;
                        // attack(1);
                     }
                     else
@@ -227,7 +250,7 @@ public class DemoScene : MonoBehaviour
                             attackCount = 2;
                             comboCountdown = 0;
                             comboCountdown += Time.deltaTime;
-                            attack(1);
+                            attack(0);
                             normalizedHorizontalSpeed = 0;
 
                         }
@@ -301,7 +324,14 @@ public class DemoScene : MonoBehaviour
 
         if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
         {
-            normalizedHorizontalSpeed *= 2;
+            if (left)
+            {
+                normalizedHorizontalSpeed = -1 * (1.1f * pm.getResetCount());
+            }
+            else
+            {
+                normalizedHorizontalSpeed = 1.1f * pm.getResetCount();
+            }
         }
         if (!isBlocking)
         {
@@ -402,6 +432,11 @@ public class DemoScene : MonoBehaviour
             comboCountdown += Time.deltaTime;
         }
 
+    }
+
+    public bool isLeft()
+    {
+        return left;
     }
 
 }
