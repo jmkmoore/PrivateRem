@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour {
 	private Transform myTransform;
     private GameObject[] player;
     private PlayerMode pm;
+    public float invulnTime;
+    public float damageTimer;
+
     // Use this for initialization
 	void Start () {
 		myTransform = transform;
@@ -15,10 +18,18 @@ public class EnemyHealth : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (currentHealth < 0)
         {
             Destroy(gameObject);
+        }
+        if (damageTimer != 0)
+        {
+            damageTimer += Time.deltaTime;
+            if (damageTimer > invulnTime)
+            {
+                damageTimer = 0;
+            }
         }
 	}
 
@@ -35,8 +46,12 @@ public class EnemyHealth : MonoBehaviour {
 	
 	public void adjustCurrentHealth(int adj){
         Debug.Log("Taking " + adj + " damage");
-		currentHealth += adj;
-		if (currentHealth > maxHealth)
+        if (damageTimer == 0)
+        {
+            currentHealth += adj;
+            damageTimer += Time.deltaTime;
+        }
+        if (currentHealth > maxHealth)
 			currentHealth = maxHealth;
 		if(currentHealth < 1)
 			currentHealth = 0;

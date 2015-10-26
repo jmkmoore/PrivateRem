@@ -164,7 +164,7 @@ ModelImporter:
     400154: Right_Pincer2_1
     400156: Right_Pincer2_2
     4300000: Nat_Spider1:polySurface1
-    7400000: Take 001
+    7400000: Bite
     9500000: //RootNode
     13700000: Nat_Spider1:polySurface1
   materials:
@@ -186,7 +186,191 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bite
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Head
+        weight: 1
+      - path: COG/Left_Arm_Joint1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer1_1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer1_1/Left_Pincer1_2
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer2_1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer2_1/Left_Pincer2_2
+        weight: 1
+      - path: COG/Left_Leg1_Joint1
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3/Left_Leg1_Joint4
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3/Left_Leg1_Joint4/Left_Leg1_Joint5
+        weight: 1
+      - path: COG/Left_Leg2_Joint1
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3/Left_Leg2_Joint4
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3/Left_Leg2_Joint4/Left_Leg2_Joint5
+        weight: 1
+      - path: COG/Left_Leg3_Joint1
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3/Left_Leg3_Joint4
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3/Left_Leg3_Joint4/Left_Leg3_Joint5
+        weight: 1
+      - path: COG/Left_Mand1
+        weight: 1
+      - path: COG/Left_Mand1/Left_Mand2
+        weight: 1
+      - path: COG/Left_Mand1/Left_Mand2/Left_Mand3
+        weight: 1
+      - path: COG/Right_Arm_Joint1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer1_1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer1_1/Right_Pincer1_2
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer2_1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer2_1/Right_Pincer2_2
+        weight: 1
+      - path: COG/Right_Leg1_Joint1
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3/Right_Leg1_Joint4
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3/Right_Leg1_Joint4/Right_Leg1_Joint5
+        weight: 1
+      - path: COG/Right_Leg2_Joint1
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3/Right_Leg2_Joint4
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3/Right_Leg2_Joint4/Right_Leg2_Joint5
+        weight: 1
+      - path: COG/Right_Leg3_Joint1
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3/Right_Leg3_Joint4
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3/Right_Leg3_Joint4/Right_Leg3_Joint5
+        weight: 1
+      - path: COG/Right_Mand1
+        weight: 1
+      - path: COG/Right_Mand1/Right_Mand2
+        weight: 1
+      - path: COG/Right_Mand1/Right_Mand2/Right_Mand3
+        weight: 1
+      - path: Controller_Leg1
+        weight: 1
+      - path: Controller_Leg4
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__group
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/pasted__nurbsCircle1
+        weight: 1
+      - path: group3
+        weight: 1
+      - path: group3/Controller_Leg2
+        weight: 1
+      - path: group4
+        weight: 1
+      - path: group4/Controller_Leg3
+        weight: 1
+      - path: group5
+        weight: 1
+      - path: group5/Controller_Leg6
+        weight: 1
+      - path: group6
+        weight: 1
+      - path: group6/Controller_Leg5
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: ikHandle5
+        weight: 1
+      - path: ikHandle6
+        weight: 1
+      - path: ikHandle7
+        weight: 1
+      - path: ikHandle8
+        weight: 1
+      - path: Nat_Spider1:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

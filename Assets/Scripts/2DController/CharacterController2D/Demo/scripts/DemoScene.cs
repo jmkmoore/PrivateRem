@@ -352,7 +352,7 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDashing)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime);
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     if (_controller.isGrounded)

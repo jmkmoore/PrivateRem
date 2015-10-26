@@ -4,10 +4,33 @@ using Prime31;
 
 public class DaddySpiderController : MonoBehaviour {
 
+    public float gravity = -25f;
+    public float runSpeed = 8f;
+    public float groundDamping = 20f; // how fast do we change direction? higher means faster
+    public float inAirDamping = 5f;
+
+    [HideInInspector]
+    private float normalizedHorizontalSpeed = 0;
+
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
     private Vector3 _velocity;
+
+    public bool left;
+
+    public bool inRange = false;
+    private int direction = 1;
+
+    public float attackCooldown = 4f;
+    private float attackTimer = 0f;
+
+    private Transform previousTransform;
+
+    private GameObject attackChild;
+
+    private float turnTime;
+    private int turnChance;
 
 
     void Awake()
@@ -36,34 +59,64 @@ public class DaddySpiderController : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
-//        if (col.name.Equals("TienHitBox"))
-//            updateAttack(true);
-//        if (col.name.Equals("Wall"))
-//        {
-//            updateDirection();
-//        }
+        if (col.name.Equals("TienHitBox"))
+            updateAttack(true);
+        if (col.name.Equals("Wall"))
+        {
+            updateDirection();
+        }
     }
 
 
     void onTriggerExitEvent(Collider2D col)
     {
-/**        if (col.name.Equals("TienHitBox"))
+        if (col.name.Equals("TienHitBox"))
         {
             updateAttack(false);
         }
         Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
-**/
     }
 
     #endregion
+	
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
-	
+        if (_controller.isGrounded)
+        {
+            if (left)
+            {
+                normalizedHorizontalSpeed = -1;
+                if (transform.localScale.x > 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                if (transform.localScale.x < 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                normalizedHorizontalSpeed = 1;
+            }
+            _animator.Play(Animator.StringToHash("Walk"));
+            var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping;
+            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+        }
+        else
+        {
+            _velocity.x = 0;
+        }
+        _velocity.y += gravity * Time.deltaTime;
+        _controller.move(_velocity * Time.deltaTime);
+
 	}
+
+    void updateDirection()
+    {
+        left = !left;
+    }
+
+    public void updateAttack(bool doAttack)
+    {
+        inRange = doAttack;
+    }
+
 }
