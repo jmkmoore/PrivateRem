@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerAttack1 : MonoBehaviour {
 	private int attackValue = 10;
-	private int superAttackValue = 2;
 	public GameObject target;
 
 	public float attackTimer;

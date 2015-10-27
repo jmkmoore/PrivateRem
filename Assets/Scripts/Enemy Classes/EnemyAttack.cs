@@ -1,57 +1,98 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Prime31;
 
 public class EnemyAttack : MonoBehaviour {
-	public int attackValue = 10;
-	public int superAttackValue = 20;
-	public GameObject target;
-	public float attackTimer;
-	public float cooldown;
-	// Use this for initialization
+    public GameObject target;
+    private CharacterController2D enemyController;
+    private BoxCollider2D myBox;
+    public int attackValue = 10;
+    public float attackKnockbackX = 1000f;
+    public float attackKnockbackY = 1000f;
+    private Vector3 attackKnockback;
+    public float lifetime, maxDur;
+    public float cooldown;
+
+    private bool on;
+
+    
+    // Use this for initialization
 	void Start () {
-		attackTimer = 0;
-		cooldown = 3.0f;
+        attackKnockback.x = attackKnockbackX;
+        attackKnockback.y = attackKnockbackY * Time.deltaTime;
+        myBox = gameObject.GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (target == null)
+        if (lifetime != 0)
         {
-            attackTimer = 0;
+            lifetime += Time.deltaTime;
         }
-	if (attackTimer > 0)
-		attackTimer -= Time.deltaTime;
-	if (attackTimer < 0)
-		attackTimer = 0;
+        if (lifetime > maxDur)
+        {
+            lifetime = 0;
+            myBox.enabled = false;
+        }
+        if (lifetime > cooldown)
+        {
+            myBox.enabled = true;
+        }
+        if (lifetime == 0)
+        {
+            myBox.enabled = true;
+        }
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(gameObject.name);
-        if (other.name.Equals("TienHitBox"))
+        if (other.tag.Equals("Player"))
         {
-            target = other.gameObject.transform.parent.gameObject;
-            if(attackTimer == 0)
-                Attack();
+            Debug.Log("a;slkdjfasdf");
+            target = other.gameObject;
         }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        target = null;
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (attackTimer == 0)
+        if (lifetime == 0)
         {
             Attack();
         }
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        Debug.Log(other.name + other.tag);
+        if (other.tag.Equals("Player"))
+        {
+            if (lifetime == 0 || lifetime > cooldown)
+            {
+                Attack();
+            }
+        }
+    }
+
 		
 	void Attack(){
-		PlayerHealth ph = (PlayerHealth)target.GetComponent("PlayerHealth");
+
+		PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
 		ph.adjustCurrentHealth(-attackValue);
-        attackTimer = cooldown;
-	}
+        lifetime += Time.deltaTime;
+        myBox.enabled = true;
+
+        Vector3 thisKnockback = attackKnockback;
+        if (gameObject.GetComponentInParent<DollMovement>().left)
+        {
+            thisKnockback.x = attackKnockback.x * -1f;
+        }
+        else
+        {
+            thisKnockback.x = Mathf.Abs(attackKnockback.x);
+        }
+            enemyController = target.transform.parent.GetComponent<CharacterController2D>();
+            enemyController.move(thisKnockback);
+
+    }
+
+    public void inRange(bool inRange)
+    {
+        on = inRange;
+    }
 }

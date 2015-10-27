@@ -13,6 +13,8 @@ public class DemoScene : MonoBehaviour
     public float dashBoost = 15f;
     private int dashCount = 0;
     private int dashMax = 1;
+    public float doubleJumpHeight = 1.1f;
+
 
     public float airDashTime = 0f;
     public float airDashDuration = .5f;
@@ -106,15 +108,22 @@ public class DemoScene : MonoBehaviour
         Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
     }
 
+    void FixedUpdate()
+    {
+        updateTimers();
+
+        if (_controller.collisionState.becameGroundedThisFrame)
+        {
+            jumpCount = 0;
+        }
+    }
+
     #endregion
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
-
-        updateTimers();
-
         #region movement
         if (isDashing)
         {
@@ -172,7 +181,13 @@ public class DemoScene : MonoBehaviour
                 else
                 {
                     isDashing = true;
-                    _animator.Play(Animator.StringToHash("Airdash"));
+                    _animator.Play(Animator.StringToHash("ShoulderCharge"));
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attackCount = 0;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(6);
                 }
                 if (isDashing)
                 {
@@ -221,7 +236,7 @@ public class DemoScene : MonoBehaviour
                 else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
                 {
                     ph.isBlocking = false;
-                    if (normalizedHorizontalSpeed != 0)
+                   /** if (normalizedHorizontalSpeed != 0)
                     {
                         _animator.Play(Animator.StringToHash("ShoulderCharge"));
                         comboCountdown = 0;
@@ -235,7 +250,8 @@ public class DemoScene : MonoBehaviour
                     }
                     else
                     {
-                        if (attackCount == 0 || attackCount == 3)
+                    **/
+                    if (attackCount == 0 || attackCount == 3)
                         {
                             _animator.Play(Animator.StringToHash("Jab"));
                             attackCount = 1;
@@ -264,12 +280,7 @@ public class DemoScene : MonoBehaviour
                             normalizedHorizontalSpeed = 1 * transform.localScale.x;
                         }
                     }
-                }
-            }
-            else
-            {
-                _animator.Play(Animator.StringToHash("TienAirKick"));
-                attack(3);
+                //}
             }
         }
 
@@ -311,7 +322,7 @@ public class DemoScene : MonoBehaviour
 
 
 
-        if (jumpCount != 0 && !_controller.isGrounded && _velocity.y < 0 && !isDashing)
+        if (!_controller.isGrounded && _velocity.y < 0 && !isDashing)
         {
             _animator.Play(Animator.StringToHash("TienFall"));
         }
@@ -347,6 +358,12 @@ public class DemoScene : MonoBehaviour
                     {
                         _animator.Play(Animator.StringToHash("Jump"));
                     }
+                }
+                else if (!_controller.isGrounded && Input.GetKeyDown(KeyCode.W) && jumpCount < 1)
+                {
+                    _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
+                    jumpCount++;
+                    _animator.Play(Animator.StringToHash("TienAirKick"));
                 }
                 _velocity.y += gravity * Time.deltaTime;
             }

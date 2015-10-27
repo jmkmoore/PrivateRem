@@ -4,7 +4,6 @@ using Prime31;
 
 public class PlayerAttack : MonoBehaviour {
 	public int attackValue = 10;
-	private int superAttackValue = 2;
 	public GameObject target;
     private CharacterController2D enemyController;
     private BoxCollider2D myBox;

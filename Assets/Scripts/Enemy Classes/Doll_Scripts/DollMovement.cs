@@ -58,7 +58,10 @@ public class DollMovement : MonoBehaviour {
     void onTriggerEnterEvent(Collider2D col)
     {
         if (col.name.Equals("TienHitBox"))
+        {
+            Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
             updateAttack(true);
+        }
         if (col.name.Equals("Wall"))
         {
             updateDirection();
@@ -93,8 +96,6 @@ public class DollMovement : MonoBehaviour {
 
         if (!inRange && attackTimer < 3f)
         {
-
-            updateAttackColliders(false);
             //previousTransform = transform;
             _velocity = _controller.velocity;
             if (turnTime > 4f)
@@ -128,17 +129,11 @@ public class DollMovement : MonoBehaviour {
             {
                 _velocity.x = 0;
             }
-            //if (previousTransform.Equals(transform))
-            //{
-            //    left = !left;
-            //    right = !right;
-            //}
         }
         else
         {
             if (attackTimer == 0)
             {
-                updateAttackColliders(true);
                 attackTimer = attackCooldown;
                 _animator.StopPlayback();
                 _animator.Play(Animator.StringToHash("Trip"));
@@ -148,7 +143,6 @@ public class DollMovement : MonoBehaviour {
         }
         _velocity.y += gravity * Time.deltaTime;
         _controller.move(_velocity * Time.deltaTime);
-
     }
 
     public void updateAttack(bool doAttack)
@@ -159,11 +153,6 @@ public class DollMovement : MonoBehaviour {
     void updateDirection()
     {
         left = !left;
-    }
-
-    void updateAttackColliders(bool attacking)
-    {
-       
     }
 
 }
