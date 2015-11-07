@@ -11,6 +11,7 @@ public class DemoScene : MonoBehaviour
     public float inAirDamping = 5f;
     public float jumpHeight = 3f;
     public float dashBoost = 15f;
+    public float airDashBoost = 15f;
     private int dashCount = 0;
     private int dashMax = 1;
     public float doubleJumpHeight = 1.1f;
@@ -35,27 +36,24 @@ public class DemoScene : MonoBehaviour
     private bool left = false;
     private bool useAirDash = false;
     private bool isDiving = false;
+    private AttackController atkController;
+    private PlayerHealth ph;
+    private float shotCountdown = .5f;
+    private bool isBlocking = false;
 
     public float ButtonDelay;
     float lastJump = 0;
     float lastUse = 0;
     public bool isDashing = false;
     BoxCollider2D myBoxCollider;
-
-    private bool isBlocking = false;
-
+    
     public int jumpCount = 0;
     public int airDashCount = 0;
-
     public GameObject attackBox;
-
-    private float shotCountdown = .5f;
     public float shotTime = 0;
 
-    private AttackController atkController;
-    private PlayerHealth ph;
-
     public PlayerMode pm;
+    
 
     void Awake()
     {
@@ -88,7 +86,7 @@ public class DemoScene : MonoBehaviour
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
+     //   Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
         if (col.tag.Equals("DestructPlat"))
         {
             FallApart obj = (FallApart)col.gameObject.GetComponent<FallApart>();
@@ -96,7 +94,7 @@ public class DemoScene : MonoBehaviour
         }
         if (col.tag.Equals("DeathWall"))
         {
-            Debug.Log("Should Die");
+      //      Debug.Log("Should Die");
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
 
@@ -105,7 +103,7 @@ public class DemoScene : MonoBehaviour
 
     void onTriggerExitEvent(Collider2D col)
     {
-        Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+        //Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
     }
 
     void FixedUpdate()
@@ -266,7 +264,7 @@ public class DemoScene : MonoBehaviour
                             attackCount = 2;
                             comboCountdown = 0;
                             comboCountdown += Time.deltaTime;
-                            attack(0);
+                            attack(1);
                             normalizedHorizontalSpeed = 0;
 
                         }
@@ -322,12 +320,6 @@ public class DemoScene : MonoBehaviour
 
 
 
-        if (!_controller.isGrounded && _velocity.y < 0 && !isDashing)
-        {
-            _animator.Play(Animator.StringToHash("TienFall"));
-        }
-
-
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
@@ -369,7 +361,15 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDashing)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime);
+                if (_controller.isGrounded)
+                {
+                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime);
+                }
+                else
+                {
+                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * airDashBoost, Time.deltaTime);
+
+                }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     if (_controller.isGrounded)

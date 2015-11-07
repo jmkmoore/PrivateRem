@@ -31,16 +31,11 @@ public class EnemyAttack : MonoBehaviour {
         }
         if (lifetime > maxDur)
         {
-            lifetime = 0;
             myBox.enabled = false;
         }
         if (lifetime > cooldown)
         {
-            myBox.enabled = true;
-        }
-        if (lifetime == 0)
-        {
-            myBox.enabled = true;
+            lifetime = 0;
         }
 	}
 
@@ -48,7 +43,6 @@ public class EnemyAttack : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("a;slkdjfasdf");
             target = other.gameObject;
         }
         if (lifetime == 0)
@@ -59,7 +53,7 @@ public class EnemyAttack : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log(other.name + other.tag);
+ //       Debug.Log(other.name + other.tag);
         if (other.tag.Equals("Player"))
         {
             if (lifetime == 0 || lifetime > cooldown)
@@ -69,26 +63,39 @@ public class EnemyAttack : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag.Equals("Player"))
+        {
+            target = null;
+        }
+    }
+
 		
 	void Attack(){
-
-		PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
-		ph.adjustCurrentHealth(-attackValue);
-        lifetime += Time.deltaTime;
-        myBox.enabled = true;
-
-        Vector3 thisKnockback = attackKnockback;
-        if (gameObject.GetComponentInParent<DollMovement>().left)
+        if (target != null)
         {
-            thisKnockback.x = attackKnockback.x * -1f;
+            PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
+            ph.adjustCurrentHealth(-attackValue);
+            lifetime += Time.deltaTime;
         }
-        else
-        {
-            thisKnockback.x = Mathf.Abs(attackKnockback.x);
-        }
-            enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-            enemyController.move(thisKnockback);
+    //    Vector3 thisKnockback = attackKnockback;
+  //      if (gameObject.GetComponentInParent<EnemyMovement>().left)
+    //    {
+     //       thisKnockback.x = attackKnockback.x * -1f;
+      //  }
+       // else
+       // {
+       //     thisKnockback.x = Mathf.Abs(attackKnockback.x);
+        //}
+        //    enemyController = target.transform.parent.GetComponent<CharacterController2D>();
+          //  enemyController.move(thisKnockback);
 
+    }
+
+    public void myBoxSwitch(bool onOrOff)
+    {
+        myBox.enabled = onOrOff;
     }
 
     public void inRange(bool inRange)

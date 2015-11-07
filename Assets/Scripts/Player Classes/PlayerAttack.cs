@@ -5,7 +5,7 @@ using Prime31;
 public class PlayerAttack : MonoBehaviour {
 	public int attackValue = 10;
 	public GameObject target;
-    private CharacterController2D enemyController;
+    private EnemyMovement enemyController;
     private BoxCollider2D myBox;
 
 
@@ -39,7 +39,6 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Attack(GameObject target){
         EnemyHealth eh = findEnemyHealth(target);
-        float enemyGravity = target.transform.parent.GetComponent<Gravity>().gravityValue;
         Vector3 thisKnockback = attackKnockback;
         if (gameObject.GetComponentInParent<DemoScene>().isLeft())
         {
@@ -53,18 +52,14 @@ public class PlayerAttack : MonoBehaviour {
         {
             eh.adjustCurrentHealth(-attackValue);
             
-            enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-            if (enemyGravity == 0f)
-            {
-                thisKnockback.x = 0;
-                thisKnockback.y = 0;
-            }
-            enemyController.move(thisKnockback);
+            enemyController = target.transform.parent.GetComponent<EnemyMovement>();
+            enemyController.getKnockedBack(thisKnockback);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.transform.name);
         if (other.tag.Equals("Enemy"))
         {
             Attack(other.transform.gameObject);
@@ -73,7 +68,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log(other.name + other.tag);
+      //  Debug.Log(other.name + other.tag);
         if (other.tag.Equals("Enemy"))
         {
             Attack(other.transform.gameObject);

@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour {
     private PlayerMode pm;
     public float invulnTime;
     public float damageTimer;
+    private Animator _animator;
+    private bool isInvuln;
 
     // Use this for initialization
 	void Start () {
@@ -29,6 +31,7 @@ public class EnemyHealth : MonoBehaviour {
             if (damageTimer > invulnTime)
             {
                 damageTimer = 0;
+                isInvuln = false;
             }
         }
 	}
@@ -45,11 +48,12 @@ public class EnemyHealth : MonoBehaviour {
     }
 	
 	public void adjustCurrentHealth(int adj){
-        Debug.Log("Taking " + adj + " damage");
+   //     Debug.Log("Taking " + adj + " damage");
         if (damageTimer == 0)
         {
             currentHealth += adj;
             damageTimer += Time.deltaTime;
+            isInvuln = true;
         }
         if (currentHealth > maxHealth)
 			currentHealth = maxHealth;
@@ -61,4 +65,9 @@ public class EnemyHealth : MonoBehaviour {
     			Destroy(gameObject);
 		}
 	}
+
+    public bool getInvulnState()
+    {
+        return isInvuln;
+    }
 }
