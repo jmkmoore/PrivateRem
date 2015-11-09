@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour {
     public float attackCooldown = 4f;
     private float attackTimer = 0f;
 
+
     private Transform previousTransform;
 
     private GameObject attackChild;
@@ -37,6 +38,7 @@ public class EnemyMovement : MonoBehaviour {
     public float forcedMoveSpeedMultiplier;
 
     public string enemyType;
+    public bool isBoss;
 
     void Awake()
     {
@@ -104,6 +106,8 @@ public class EnemyMovement : MonoBehaviour {
         {
             attackTimer = 0;
         }
+        _velocity = _controller.velocity;
+
         #region Spider
         if (enemyType.Equals("Spider"))
         {
@@ -113,19 +117,6 @@ public class EnemyMovement : MonoBehaviour {
             }
             if (!inRange && attackTimer < 3f)
             {
-                //previousTransform = transform;
-                _velocity = _controller.velocity;
-            /**    if (turnTime > 4f)
-                {
-                    turnChance = Random.Range(0, 100);
-                    if (turnChance < 3)
-                    {
-                        left = !left;
-                        turnTime = 0;
-                    }
-             
-                }
-             * */
                 if (_controller.isGrounded)
                 {
                     if (left)
@@ -140,6 +131,7 @@ public class EnemyMovement : MonoBehaviour {
                         if (transform.localScale.x < 0f)
                             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     }
+                    _animator.Play(Animator.StringToHash("Walk"));
                     _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                 }
                 else
@@ -149,13 +141,12 @@ public class EnemyMovement : MonoBehaviour {
             }
         }
         #endregion
+
         #region Doll
         if (enemyType.Equals("Doll"))
         {
             if (!inRange && attackTimer < 3f)
             {
-                //previousTransform = transform;
-                _velocity = _controller.velocity;
                 if (_controller.isGrounded)
                 {
                     if (left)
@@ -192,17 +183,47 @@ public class EnemyMovement : MonoBehaviour {
             }
         }
         #endregion
+        #region Colossus
+        if (enemyType.Equals("BigGuy"))
+        {
+            if (_controller.isGrounded)
+            {
+                if (left)
+                {
+                    normalizedHorizontalSpeed = -1;
+                    if (transform.localScale.x > 0f)
+                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
+                else
+                {
+                    normalizedHorizontalSpeed = 1;
+                    if (transform.localScale.x < 0f)
+                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+            }
+        }
+
+
+
+        #endregion
+
 
         if (myHealth.getInvulnState())
         {
             _animator.Play("HitReaction");
-            if(_velocity.y <= 0){
-            _velocity.y = forcedMovement.y;
+            if (!isBoss)
+            {
+                if (_velocity.y <= 0)
+                {
+                    _velocity.y = forcedMovement.y;
+                }
+                else
+                {
+                    _velocity.y += forcedMovement.y + (-gravity * Time.deltaTime);
+                }
+                _velocity.x = Mathf.Lerp(forcedMovement.x * forcedMoveSpeedMultiplier, forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
             }
-            else {
-                _velocity.y += forcedMovement.y + (-gravity * Time.deltaTime);
-            }
-            _velocity.x = Mathf.Lerp(forcedMovement.x * forcedMoveSpeedMultiplier, forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
         }
         else
         {
@@ -225,5 +246,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         forcedMovement = receivedMovement;
     }
+
+    
 
 }

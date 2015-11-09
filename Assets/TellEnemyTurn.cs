@@ -15,7 +15,7 @@ public class TellEnemyTurn : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name + " " + other.tag);
+        Debug.Log(other.gameObject.B + " " + other.tag);
         if (other.tag.Equals("Enemy"))
         {
             other.gameObject.GetComponentInParent<EnemyMovement>().updateDirection();

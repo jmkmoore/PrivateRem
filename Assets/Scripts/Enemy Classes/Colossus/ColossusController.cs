@@ -94,10 +94,10 @@ public class ColossusController : MonoBehaviour {
     }
 
     #endregion
-	
-	// Update is called once per frame
-	void Update () {
-        _velocity = _controller.velocity;
+
+
+    void updateColossusTimers()
+    {
 
         if (currentAttackTimer != 0)
         {
@@ -130,11 +130,17 @@ public class ColossusController : MonoBehaviour {
                 pokeTimer = 0;
             }
         }
+    }
 
-       
+	// Update is called once per frame
+	void FixedUpdate () {
+        _velocity = _controller.velocity;
+        updateColossusTimers();
+
         #region attackLogic
-        if (currentAttackTimer > 1.1f || currentAttackTimer == 0) {
-            
+        if (currentAttackTimer > 1.1f || currentAttackTimer == 0)
+        {
+
             if (currentAttackTimer > 1.1f)
             {
                 currentAttackTimer = 0;
@@ -158,47 +164,11 @@ public class ColossusController : MonoBehaviour {
                 {
                     currentAttack = "idle";
                 }
-                normalizedHorizontalSpeed = 0;
             }
-            else
-            {
-                if (turnTimer > turnCooldown)
-                {
-                    left = !left;
-                    turnTimer = 0;
-                }
-                if (left)
-                {
-                    normalizedHorizontalSpeed = -1;
-                    if (transform.localScale.x > 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    _velocity.x = normalizedHorizontalSpeed * runSpeed * Time.deltaTime;
-
-                }
-                else
-                {
-                    if (transform.localScale.x < 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    normalizedHorizontalSpeed = 1;
-                    _velocity.x = normalizedHorizontalSpeed * runSpeed * Time.deltaTime;
-               }
-                turnTimer += Time.deltaTime;
-            }
-        }
-        _velocity.x = normalizedHorizontalSpeed * runSpeed;
-
-        
+        }    
         #endregion
 
         #region Verticle movement
-        if (!_controller.isGrounded)
-        {
-            _velocity.y += gravity * Time.deltaTime;
-        }else
-        { 
-            _velocity.y = 0;
-        }
-
        if (_velocity.x != 0)
         {
             _animator.Play(Animator.StringToHash("Walk"));
