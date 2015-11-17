@@ -20,19 +20,10 @@ public class IrvineController : MonoBehaviour {
     #endregion
 
     #region Movement Values
-    public float gravity = -25f;
-    public float runSpeed = 0;
-    public float groundDamping = 20f; // how fast do we change direction? higher means faster
-    public float inAirDamping = 5f;
-
-    [HideInInspector]
-    private float normalizedHorizontalSpeed = 0;
-
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
     private Vector3 _velocity;
-    private bool left = true;
     #endregion
 
     private EnemyHealth myHealth;
@@ -65,11 +56,11 @@ public class IrvineController : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        Debug.Log(col.name);
-        if (col.gameObject.layer == 19)
-        {
-            left = !left;
-        }
+        //Debug.Log(col.name);
+        //if (col.gameObject.layer == 19)
+       // {
+       //     left = !left;
+       // }
     }
 
 
@@ -100,6 +91,11 @@ public class IrvineController : MonoBehaviour {
         log = GameObject.FindWithTag("Log");
         mySolidBox = GameObject.FindWithTag("Box");
 	}
+
+    void FixedUpdate()
+    {
+        updateTimers();
+    }
 	
 	// Update is called once per frame
     void Update()
@@ -136,44 +132,7 @@ public class IrvineController : MonoBehaviour {
         }
 
         #endregion
-
-        #region Timers
-        if (slamTimer != 0)
-        {
-            slamTimer += Time.deltaTime;
-        }
-        if (spitTimer != 0)
-        {
-            spitTimer += Time.deltaTime;
-        }
-        if (spitTimer > spitCooldown)
-        {
-            spitTimer = 0;
-        }
-        if (slamTimer > slamCooldown)
-        {
-            slamTimer = 0;
-        }
-        if (seedTimer > seedCooldown)
-        {
-            seedTimer = 0;
-        }
-        if (spitTwoTimer > spitTwoCooldown)
-        {
-            spitTwoTimer = 0;
-        }
-
-        if (spitTwoTimer != 0)
-        {
-            spitTwoTimer += Time.deltaTime;
-        }
-        if (seedTimer != 0)
-        {
-            seedTimer += Time.deltaTime;
-        }
-        #endregion
-
-
+        
         if (currentAttackTimer != 0)
         {
             currentAttackTimer += Time.deltaTime;
@@ -263,8 +222,6 @@ public class IrvineController : MonoBehaviour {
         }
         #endregion
 
-
-
         if (stage == 4)
         {
             _animator.Play(Animator.StringToHash("Pickup4"));
@@ -274,23 +231,11 @@ public class IrvineController : MonoBehaviour {
             _animator.Play(Animator.StringToHash("Death3"));
             mySolidBox.SetActive(false);
         }
-        #region Movement
-            _velocity = _controller.velocity;
-            _velocity.x = 0;
-            if (!_controller.isGrounded)
-            {
-                _velocity.y += gravity * Time.deltaTime;
-            }
-            else
-                _velocity.y = 0;
-
-            _controller.move(_velocity * Time.deltaTime);
-            #endregion
     }
 
     void spitStage1Attack()
     {
-        _animator.Play(Animator.StringToHash("FireSpitStage1"));
+//        _animator.Play(Animator.StringToHash("FireSpitStage1"));
         spitTimer += Time.deltaTime;
         currentAttack = "spit";
         currentAttackTimer = 0;
@@ -298,7 +243,7 @@ public class IrvineController : MonoBehaviour {
 
     void SlamAttack()
     {
-        _animator.Play(Animator.StringToHash("IrvineSlam"));
+//        _animator.Play(Animator.StringToHash("IrvineSlam"));
         slamTimer += Time.deltaTime;
         currentAttack = "slam";
         currentAttackTimer = 0;
@@ -306,7 +251,7 @@ public class IrvineController : MonoBehaviour {
 
     void spitStage2Attack()
     {
-        _animator.Play(Animator.StringToHash("FireSpitStage2"));
+//        _animator.Play(Animator.StringToHash("FireSpitStage2"));
         spitTwoTimer += Time.deltaTime;
         currentAttack = "spit";
         currentAttackTimer = 0;
@@ -314,7 +259,7 @@ public class IrvineController : MonoBehaviour {
 
     void seedAttack()
     {
-        _animator.Play(Animator.StringToHash("SeedThrow"));
+//        _animator.Play(Animator.StringToHash("SeedThrow"));
         seedTimer += Time.deltaTime;
         currentAttack = "seed";
         currentAttackTimer = 0;
@@ -324,11 +269,11 @@ public class IrvineController : MonoBehaviour {
     {
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
         newSeed.setAngle(-.86f, -.5f);
-        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y +25, transform.position.z), transform.rotation);
+        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.7f, -.7f);
-        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.5f, -.86f);
-        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         
     }
 
@@ -336,22 +281,22 @@ public class IrvineController : MonoBehaviour {
     {
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
         newSeed.setAngle(-.3f, -.6f);
-        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.15f, -.9f);
-        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.25f, -.26f);
-        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
     }
      
     void fireSeedsThree()
     {
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
         newSeed.setAngle(-.5f, -.32f);
-        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.9f, -.25f);
-        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
         newSeed.setAngle(-.6f, -.4f);
-        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 25, transform.position.z), transform.rotation);
+        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
     }
 
     void throwSeed()
@@ -360,6 +305,45 @@ public class IrvineController : MonoBehaviour {
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
         newSeed.setAngle(Random.Range(-1f, 0), Random.Range(-1, 1));
         FireSeed floater = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+    }
+
+    void updateTimers()
+    {
+        #region Timers
+        if (slamTimer != 0)
+        {
+            slamTimer += Time.deltaTime;
+        }
+        if (spitTimer != 0)
+        {
+            spitTimer += Time.deltaTime;
+        }
+        if (spitTimer > spitCooldown)
+        {
+            spitTimer = 0;
+        }
+        if (slamTimer > slamCooldown)
+        {
+            slamTimer = 0;
+        }
+        if (seedTimer > seedCooldown)
+        {
+            seedTimer = 0;
+        }
+        if (spitTwoTimer > spitTwoCooldown)
+        {
+            spitTwoTimer = 0;
+        }
+
+        if (spitTwoTimer != 0)
+        {
+            spitTwoTimer += Time.deltaTime;
+        }
+        if (seedTimer != 0)
+        {
+            seedTimer += Time.deltaTime;
+        }
+        #endregion
     }
 
 }

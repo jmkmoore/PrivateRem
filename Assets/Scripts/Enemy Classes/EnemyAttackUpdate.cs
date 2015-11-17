@@ -35,6 +35,14 @@ public class EnemyAttackUpdate : MonoBehaviour {
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.name.Equals("TienHitBox"))
+        {
+            myController.updateCanAttack(attackName, true);
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.name.Equals("TienHitBox"))

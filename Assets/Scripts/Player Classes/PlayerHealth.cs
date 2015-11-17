@@ -30,19 +30,23 @@ public class PlayerHealth : MonoBehaviour {
             invuln = false;
             invulnTimer = 0f;
         }
-		
-						
+        if (isBlocking)
+            blockTimer += Time.deltaTime;
+        else
+            blockTimer = 0f;
 	}
 
 	public void adjustCurrentHealth(int adj){
         if (isBlocking)
         {
-            if (blockTimer < parryTimer)
+            if (blockTimer < parryTimer){
+                currentHealth -= adj;
                 adj = 0;
+            }
             else
             {
-                adj = adj * 3 / 4;
-                currentHealth -= adj;
+                adj = adj * 1 / 2;
+                currentHealth += adj;
             }
         }
         else

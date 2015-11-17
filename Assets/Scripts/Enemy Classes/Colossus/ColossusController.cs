@@ -14,9 +14,11 @@ public class ColossusController : MonoBehaviour {
     public float pokeTimer = 0f;
     public float swingTimer = 0f;
 
-    private bool canOverHand = false;
-    private bool canPoke = false;
-    private bool canSwing = false;
+    public bool canOverHand = false;
+    public bool canPoke = false;
+    public bool canSwing = false;
+
+    public float attackCooldownResetTime = 1.1f;
 #endregion
 
     #region no hoe cooldowns
@@ -30,21 +32,11 @@ public class ColossusController : MonoBehaviour {
     private bool canStomp = false;
     #endregion
 
-    #region Movement Values
-    public float gravity = -25f;
-    public float runSpeed = 8f;
-    public float groundDamping = 20f; // how fast do we change direction? higher means faster
-    public float inAirDamping = 5f;
-
-    [HideInInspector]
-    private float normalizedHorizontalSpeed = 0;
-
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
+    private EnemyMovement _movement;
     private Vector3 _velocity;
-    private bool left = true;
-    #endregion
 
     public float turnTimer = 0f;
     public float turnCooldown = 5f;
@@ -56,6 +48,7 @@ public class ColossusController : MonoBehaviour {
 	void Start () {
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
+        _movement = GetComponent<EnemyMovement>();
 
         // listen to some events for illustration purposes
         _controller.onControllerCollidedEvent += onControllerCollider;
@@ -80,17 +73,11 @@ public class ColossusController : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        Debug.Log(col.name);
-       if (col.gameObject.layer == 19)
-       {
-           left = !left;
-       }
     }
 
 
     void onTriggerExitEvent(Collider2D col)
     {
-        Debug.Log("left " + col.name);
     }
 
     #endregion
@@ -102,6 +89,10 @@ public class ColossusController : MonoBehaviour {
         if (currentAttackTimer != 0)
         {
             currentAttackTimer += Time.deltaTime;
+            if (currentAttackTimer > 1.1f)
+            {
+                _movement.stopToAttack(false);
+            }
         }
 
         if (overhandTimer != 0)
@@ -130,6 +121,11 @@ public class ColossusController : MonoBehaviour {
                 pokeTimer = 0;
             }
         }
+
+        if (pokeTimer != 0 && overhandTimer != 0 && swingTimer != 0)
+        {
+            _movement.stopToAttack(false);
+        }
     }
 
 	// Update is called once per frame
@@ -138,37 +134,41 @@ public class ColossusController : MonoBehaviour {
         updateColossusTimers();
 
         #region attackLogic
-        if (currentAttackTimer > 1.1f || currentAttackTimer == 0)
+        if (currentAttackTimer > attackCooldownResetTime || currentAttackTimer == 0)
         {
 
-            if (currentAttackTimer > 1.1f)
+            if (currentAttackTimer > 5f)
             {
                 currentAttackTimer = 0;
-                currentAttack = "idle";
             }
-            if (isInRange())
+            if (currentAttackTimer == 0f)
             {
-                if (canOverHand && overhandTimer == 0)
+                if (isInRange())
                 {
-                    overheadAttack();
+                    if (canOverHand && overhandTimer == 0)
+                    {
+                        overheadAttack();
+                        _movement.stopToAttack(true);
+                    }
+                    else if (canSwing && swingTimer == 0)
+                    {
+                        swingAttack();
+                        _movement.stopToAttack(true);
+                    }
+                    else if (canPoke && pokeTimer == 0)
+                    {
+                        pokeAttack(); 
+                        _movement.stopToAttack(true);
+                    }
                 }
-                else if (canSwing && swingTimer == 0)
-                {
-                    swingAttack();
-                }
-                else if (canPoke && pokeTimer == 0)
-                {
-                    pokeAttack();
-                }
-                else
-                {
-                    currentAttack = "idle";
-                }
+            }
+            else if (currentAttackTimer > attackCooldownResetTime && currentAttackTimer < 5f){
+                currentAttack = "idle";
             }
         }    
         #endregion
 
-        #region Verticle movement
+        #region movement animations
        if (_velocity.x != 0)
         {
             _animator.Play(Animator.StringToHash("Walk"));
@@ -178,8 +178,6 @@ public class ColossusController : MonoBehaviour {
             _animator.Play(Animator.StringToHash("ColossusIdle"));
         }
         
-        
-        _controller.move(_velocity * Time.deltaTime);
         #endregion
     }
 

@@ -39,6 +39,7 @@ public class EnemyMovement : MonoBehaviour {
 
     public string enemyType;
     public bool isBoss;
+    public bool isAttacking;
 
     void Awake()
     {
@@ -94,6 +95,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
     void FixedUpdate()
     {
+        _velocity = _controller.velocity;
 
         if (_controller.isGrounded)
         {
@@ -102,11 +104,11 @@ public class EnemyMovement : MonoBehaviour {
 
         if (attackTimer > 0) 
             attackTimer -= Time.deltaTime;
+
         if (attackTimer < 0)
         {
             attackTimer = 0;
         }
-        _velocity = _controller.velocity;
 
         #region Spider
         if (enemyType.Equals("Spider"))
@@ -186,22 +188,31 @@ public class EnemyMovement : MonoBehaviour {
         #region Colossus
         if (enemyType.Equals("BigGuy"))
         {
-            if (_controller.isGrounded)
+
+            if (isAttacking)
             {
-                if (left)
-                {
-                    normalizedHorizontalSpeed = -1;
-                    if (transform.localScale.x > 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                }
-                else
-                {
-                    normalizedHorizontalSpeed = 1;
-                    if (transform.localScale.x < 0f)
-                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                }
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                _velocity.x = 0;
             }
+            else if (!inRange)
+            {
+                if (_controller.isGrounded)
+                {
+                    if (left)
+                    {
+                        normalizedHorizontalSpeed = -1;
+                        if (transform.localScale.x > 0f)
+                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    }
+                    else
+                    {
+                        normalizedHorizontalSpeed = 1;
+                        if (transform.localScale.x < 0f)
+                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    }
+                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                }
+            }
+
         }
 
 
@@ -211,9 +222,9 @@ public class EnemyMovement : MonoBehaviour {
 
         if (myHealth.getInvulnState())
         {
-            _animator.Play("HitReaction");
             if (!isBoss)
             {
+                _animator.Play("HitReaction");
                 if (_velocity.y <= 0)
                 {
                     _velocity.y = forcedMovement.y;
@@ -227,7 +238,14 @@ public class EnemyMovement : MonoBehaviour {
         }
         else
         {
-            _velocity.y += gravity * Time.deltaTime;
+            if (_controller.isGrounded)
+            {
+                _velocity.y = 0;
+            }
+            else
+            {
+                _velocity.y += gravity * Time.deltaTime;
+            }
         }
         _controller.move(_velocity * Time.deltaTime);
     }
@@ -247,6 +265,9 @@ public class EnemyMovement : MonoBehaviour {
         forcedMovement = receivedMovement;
     }
 
-    
+    public void stopToAttack(bool attacking)
+    {
+        this.isAttacking = attacking;
+    }
 
 }
