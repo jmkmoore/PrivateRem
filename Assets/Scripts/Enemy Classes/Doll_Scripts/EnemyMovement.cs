@@ -134,7 +134,6 @@ public class EnemyMovement : MonoBehaviour {
                             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     }
                     _animator.Play(Animator.StringToHash("Walk"));
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                 }
                 else
                 {
@@ -164,7 +163,6 @@ public class EnemyMovement : MonoBehaviour {
                             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     }
                     _animator.Play(Animator.StringToHash("Walk"));
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                 }
                 else
                 {
@@ -209,11 +207,12 @@ public class EnemyMovement : MonoBehaviour {
                         if (transform.localScale.x < 0f)
                             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     }
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                 }
             }
 
         }
+
+        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
 
 
 
@@ -233,14 +232,14 @@ public class EnemyMovement : MonoBehaviour {
                 {
                     _velocity.y += forcedMovement.y + (-gravity * Time.deltaTime);
                 }
-                _velocity.x = Mathf.Lerp(forcedMovement.x * forcedMoveSpeedMultiplier, forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
+                _velocity.x = Mathf.Lerp(runSpeed, runSpeed * forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
             }
         }
         else
         {
             if (_controller.isGrounded)
             {
-                _velocity.y = 0;
+                _velocity.y = gravity * Time.deltaTime;
             }
             else
             {
