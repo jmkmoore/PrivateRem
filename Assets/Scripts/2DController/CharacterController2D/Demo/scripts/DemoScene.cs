@@ -16,8 +16,7 @@ public class DemoScene : MonoBehaviour
     private int dashMax = 1;
     public float doubleJumpHeight = 1.1f;
 
-
-    public float airDashTime = 0f;
+    private float airDashTime = 0f;
     public float airDashDuration = .5f;
 
     public float comboTime = 2f;
@@ -51,8 +50,13 @@ public class DemoScene : MonoBehaviour
     public int airDashCount = 0;
     public GameObject attackBox;
     public float shotTime = 0;
+    private Vector3 moveDir = Vector3.zero;
+
+    private float doubleJumpDelayTimer = 0f;
+    private float doubleJumpCooldown = 0.2f;
 
     public PlayerMode pm;
+    private bool doJump = false;
     
 
     void Awake()
@@ -113,7 +117,9 @@ public class DemoScene : MonoBehaviour
         if (_controller.collisionState.becameGroundedThisFrame)
         {
             jumpCount = 0;
+            doubleJumpDelayTimer = 0f;
         }
+
     }
 
     #endregion
@@ -122,12 +128,14 @@ public class DemoScene : MonoBehaviour
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
+        moveDir.x = Input.GetAxis("Horizontal");
+        moveDir.y = Input.GetAxis("Vertical");
         #region movement
         if (isDashing)
         {
-            if (airDashTime > 0.1f)
+            if (airDashTime > 0.3f)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButton("Dash"))
                 {
                     isDashing = false;
                     airDashTime = 0;
@@ -139,17 +147,15 @@ public class DemoScene : MonoBehaviour
         {
             if (comboCountdown > ButtonDelay || comboCountdown == 0)
             {
-                if (Input.GetKey(KeyCode.D))
-                {
-                    normalizedHorizontalSpeed = 1;
+                normalizedHorizontalSpeed = moveDir.x;
+                if(normalizedHorizontalSpeed > 0){
                     if (transform.localScale.x < 0f)
                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     left = false;
                     isBlocking = false;
                 }
-                else if (Input.GetKey(KeyCode.A))
+                else if (normalizedHorizontalSpeed < 0)
                 {
-                    normalizedHorizontalSpeed = -1;
                     if (transform.localScale.x > 0f)
                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                     left = true;
@@ -160,7 +166,7 @@ public class DemoScene : MonoBehaviour
                     normalizedHorizontalSpeed = 0;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButton("Dash"))
             {
                 if (!_controller.isGrounded)
                 {
@@ -209,11 +215,11 @@ public class DemoScene : MonoBehaviour
 
         #region combat
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButton("Attack"))
         {
             if (_controller.isGrounded)
             {
-                if (Input.GetKey(KeyCode.Z))
+                if (moveDir.y > 0)
                 {
                     _animator.Play(Animator.StringToHash("Uppercut"));
                     attackCount = 1;
@@ -222,7 +228,7 @@ public class DemoScene : MonoBehaviour
                     attack(5);
                     normalizedHorizontalSpeed = 0;
                 }
-                else if (Input.GetKey(KeyCode.X))
+                else if (moveDir.y < 0)
                 {
                     _animator.Play(Animator.StringToHash("Sweep"));
                     attackCount = 1;
@@ -283,7 +289,7 @@ public class DemoScene : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetButton("DiveBlock")) {
             if(!_controller.isGrounded){
             //attackCount++;
             //comboCountdown = 0;
@@ -300,8 +306,7 @@ public class DemoScene : MonoBehaviour
                 }
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.S) && _controller.isGrounded)
+        else
         {
             ph.isBlocking = false;
         }
@@ -342,20 +347,21 @@ public class DemoScene : MonoBehaviour
             {
                 _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
                 // we can only jump whilst grounded
-                if ((_controller.isGrounded) && Input.GetKeyDown(KeyCode.W))
-                {
-                    _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
-                    _animator.StopPlayback();
-                    if (!isDashing)
-                    {
-                        _animator.Play(Animator.StringToHash("Jump"));
-                    }
-                }
-                else if (!_controller.isGrounded && Input.GetKeyDown(KeyCode.W) && jumpCount < 1)
+                if (!_controller.isGrounded && Input.GetButton("Jump") && jumpCount < 1 && doubleJumpDelayTimer > doubleJumpCooldown)
                 {
                     _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
                     jumpCount++;
                     _animator.Play(Animator.StringToHash("TienAirKick"));
+                }
+                else if ((_controller.isGrounded) && Input.GetButton("Jump"))
+                {
+                    _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
+                    _animator.StopPlayback();
+                    doubleJumpDelayTimer += Time.deltaTime;
+                    if (!isDashing)
+                    {
+                        _animator.Play(Animator.StringToHash("Jump"));
+                    }
                 }
                 _velocity.y += gravity * Time.deltaTime;
             }
@@ -370,7 +376,7 @@ public class DemoScene : MonoBehaviour
                     _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * airDashBoost, Time.deltaTime);
 
                 }
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetButton("Jump"))
                 {
                     if (_controller.isGrounded)
                     {
@@ -394,11 +400,7 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDiving)
             {
-                if (left)
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
-                else
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
-
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
                 _velocity.y = gravity * 75f * Time.deltaTime;
             }
             _controller.move(_velocity * Time.deltaTime);
@@ -415,6 +417,11 @@ public class DemoScene : MonoBehaviour
 
     public void updateTimers()
     {
+
+        if (doubleJumpDelayTimer > 0)
+        {
+            doubleJumpDelayTimer += Time.deltaTime;
+        }
 
         if (isDashing)
         {
