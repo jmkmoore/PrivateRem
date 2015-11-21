@@ -52,8 +52,8 @@ public class DemoScene : MonoBehaviour
     public float shotTime = 0;
     private Vector3 moveDir = Vector3.zero;
 
-    private float doubleJumpDelayTimer = 0f;
-    private float doubleJumpCooldown = 0.2f;
+    public float doubleJumpDelayTimer = 0f;
+    public float doubleJumpCooldown = 0.1f;
 
     public PlayerMode pm;
     private bool doJump = false;
@@ -204,12 +204,14 @@ public class DemoScene : MonoBehaviour
             }
         }
         #endregion
+        
         if (_controller.isGrounded)
         {
             jumpCount = 0;
             useAirDash = false;
             airDashCount = 0;
             isDiving = false;
+            doubleJumpDelayTimer = 0f;
         }
 
 
@@ -400,7 +402,7 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDiving)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
+        //        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
                 _velocity.y = gravity * 75f * Time.deltaTime;
             }
             _controller.move(_velocity * Time.deltaTime);
