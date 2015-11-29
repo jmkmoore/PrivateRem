@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: cb60906012fa61c4fa27b24af9fa97cc
+timeCreated: 1448767877
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: COG
+    100002: //RootNode
+    100004: Head
+    100006: Left_Arm_Joint1
+    100008: Left_Arm_Joint2
+    100010: Left_Arm_Joint3
+    100012: Left_Arm_Joint4
+    100014: Left_Leg1_Joint1
+    100016: Left_Leg1_Joint2
+    100018: Left_Leg1_Joint3
+    100020: Left_Leg1_Joint4
+    100022: Left_Leg1_Joint5
+    100024: Left_Leg2_Joint1
+    100026: Left_Leg2_Joint2
+    100028: Left_Leg2_Joint3
+    100030: Left_Leg2_Joint4
+    100032: Left_Leg2_Joint5
+    100034: Left_Leg3_Joint1
+    100036: Left_Leg3_Joint2
+    100038: Left_Leg3_Joint3
+    100040: Left_Leg3_Joint4
+    100042: Left_Leg3_Joint5
+    100044: Left_Mand1
+    100046: Left_Mand2
+    100048: Left_Mand3
+    100050: Left_Pincer1_1
+    100052: Left_Pincer1_2
+    100054: Left_Pincer2_1
+    100056: Left_Pincer2_2
+    100058: Nat_Spider1:polySurface1
+    100060: Right_Arm_Joint1
+    100062: Right_Arm_Joint2
+    100064: Right_Arm_Joint3
+    100066: Right_Arm_Joint4
+    100068: Right_Leg1_Joint1
+    100070: Right_Leg1_Joint2
+    100072: Right_Leg1_Joint3
+    100074: Right_Leg1_Joint4
+    100076: Right_Leg1_Joint5
+    100078: Right_Leg2_Joint1
+    100080: Right_Leg2_Joint2
+    100082: Right_Leg2_Joint3
+    100084: Right_Leg2_Joint4
+    100086: Right_Leg2_Joint5
+    100088: Right_Leg3_Joint1
+    100090: Right_Leg3_Joint2
+    100092: Right_Leg3_Joint3
+    100094: Right_Leg3_Joint4
+    100096: Right_Leg3_Joint5
+    100098: Right_Mand1
+    100100: Right_Mand2
+    100102: Right_Mand3
+    100104: Right_Pincer1_1
+    100106: Right_Pincer1_2
+    100108: Right_Pincer2_1
+    100110: Right_Pincer2_2
+    400000: COG
+    400002: //RootNode
+    400004: Head
+    400006: Left_Arm_Joint1
+    400008: Left_Arm_Joint2
+    400010: Left_Arm_Joint3
+    400012: Left_Arm_Joint4
+    400014: Left_Leg1_Joint1
+    400016: Left_Leg1_Joint2
+    400018: Left_Leg1_Joint3
+    400020: Left_Leg1_Joint4
+    400022: Left_Leg1_Joint5
+    400024: Left_Leg2_Joint1
+    400026: Left_Leg2_Joint2
+    400028: Left_Leg2_Joint3
+    400030: Left_Leg2_Joint4
+    400032: Left_Leg2_Joint5
+    400034: Left_Leg3_Joint1
+    400036: Left_Leg3_Joint2
+    400038: Left_Leg3_Joint3
+    400040: Left_Leg3_Joint4
+    400042: Left_Leg3_Joint5
+    400044: Left_Mand1
+    400046: Left_Mand2
+    400048: Left_Mand3
+    400050: Left_Pincer1_1
+    400052: Left_Pincer1_2
+    400054: Left_Pincer2_1
+    400056: Left_Pincer2_2
+    400058: Nat_Spider1:polySurface1
+    400060: Right_Arm_Joint1
+    400062: Right_Arm_Joint2
+    400064: Right_Arm_Joint3
+    400066: Right_Arm_Joint4
+    400068: Right_Leg1_Joint1
+    400070: Right_Leg1_Joint2
+    400072: Right_Leg1_Joint3
+    400074: Right_Leg1_Joint4
+    400076: Right_Leg1_Joint5
+    400078: Right_Leg2_Joint1
+    400080: Right_Leg2_Joint2
+    400082: Right_Leg2_Joint3
+    400084: Right_Leg2_Joint4
+    400086: Right_Leg2_Joint5
+    400088: Right_Leg3_Joint1
+    400090: Right_Leg3_Joint2
+    400092: Right_Leg3_Joint3
+    400094: Right_Leg3_Joint4
+    400096: Right_Leg3_Joint5
+    400098: Right_Mand1
+    400100: Right_Mand2
+    400102: Right_Mand3
+    400104: Right_Pincer1_1
+    400106: Right_Pincer1_2
+    400108: Right_Pincer2_1
+    400110: Right_Pincer2_2
+    4300000: Nat_Spider1:polySurface1
+    7400000: Drop_Spider_WalkV5
+    9500000: //RootNode
+    13700000: Nat_Spider1:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 275
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

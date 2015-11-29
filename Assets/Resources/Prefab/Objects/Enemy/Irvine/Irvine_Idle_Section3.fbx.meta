@@ -317,7 +317,287 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Left_Leg
+        weight: 1
+      - path: COG/Left_Leg/Left_Knee
+        weight: 1
+      - path: COG/Left_Leg/Left_Knee/Left_Foot
+        weight: 1
+      - path: COG/Right_Leg
+        weight: 1
+      - path: COG/Right_Leg/Right_Knee
+        weight: 1
+      - path: COG/Right_Leg/Right_Knee/Right_Foot
+        weight: 1
+      - path: COG/Spine1
+        weight: 1
+      - path: COG/Spine1/Spine2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Head
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Head/Lower_Face
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Head/Upper_Face
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger1_1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger1_1/Finger1_2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger1_1/Finger1_2/Finger1_3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger1_1/Finger1_2/Finger1_3/Finger1_4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger2_1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger2_1/Finger2_2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger2_1/Finger2_2/Finger2_3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger2_1/Finger2_2/Finger2_3/Finger2_4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger3_1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger3_1/Finger3_2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger3_1/Finger3_2/Finger3_3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Finger3_1/Finger3_2/Finger3_3/Finger3_4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Thumb1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Thumb1/Thumb2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Thumb1/Thumb2/Thumb3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Left_Shoulder/Left_Elbow/Left_Wrist/Left_Palm/Thumb1/Thumb2/Thumb3/Thumb4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1/Bottom_Vine2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1/Bottom_Vine2/Bottom_Vine3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1/Bottom_Vine2/Bottom_Vine3/Bottom_Vine4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1/Bottom_Vine2/Bottom_Vine3/Bottom_Vine4/Bottom_Vine5
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Bottom_Vine1/Bottom_Vine2/Bottom_Vine3/Bottom_Vine4/Bottom_Vine5/Bottom_Vine6
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1/Top_Vine2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1/Top_Vine2/Top_Vine3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1/Top_Vine2/Top_Vine3/Top_Vine4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1/Top_Vine2/Top_Vine3/Top_Vine4/Top_Vine5
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Right_Shoulder/Right_Elbow/Right_Wrist/Top_Vine1/Top_Vine2/Top_Vine3/Top_Vine4/Top_Vine5/Top_Vine6
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface1
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface1/transform21
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface2
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface4
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface4/transform20
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface5
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface5/transform19
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface7
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface7/transform18
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface8
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface8/transform17
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface9
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface9/transform16
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface10
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface10/transform15
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface11
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface11/transform14
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface12
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface12/transform13
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface13
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface13/transform12
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface14
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface14/transform11
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface15
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface15/transform10
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface16
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface16/transform9
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface17
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface17/transform8
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface18
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface18/transform7
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface19
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface19/transform6
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface20
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface20/transform5
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface21
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface21/transform4
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface22
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface22/transform3
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface23
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/polySurface23/transform2
+        weight: 1
+      - path: Irvine_ForAnim:polySurface1/transform1
+        weight: 1
+      - path: Left_foot_Control
+        weight: 1
+      - path: polySurface24
+        weight: 1
+      - path: polySurface24/polySurface25
+        weight: 1
+      - path: polySurface24/polySurface25/transform27
+        weight: 1
+      - path: polySurface24/polySurface26
+        weight: 1
+      - path: polySurface24/polySurface27
+        weight: 1
+      - path: polySurface24/polySurface27/transform25
+        weight: 1
+      - path: polySurface24/polySurface28
+        weight: 1
+      - path: polySurface24/polySurface29
+        weight: 1
+      - path: polySurface24/polySurface30
+        weight: 1
+      - path: polySurface24/polySurface31
+        weight: 1
+      - path: polySurface24/polySurface32
+        weight: 1
+      - path: polySurface24/polySurface33
+        weight: 1
+      - path: polySurface24/polySurface34
+        weight: 1
+      - path: polySurface24/polySurface35
+        weight: 1
+      - path: polySurface24/polySurface36
+        weight: 1
+      - path: polySurface24/polySurface37
+        weight: 1
+      - path: polySurface24/polySurface38
+        weight: 1
+      - path: polySurface24/polySurface39
+        weight: 1
+      - path: polySurface24/polySurface40
+        weight: 1
+      - path: polySurface24/polySurface41
+        weight: 1
+      - path: polySurface24/polySurface42
+        weight: 1
+      - path: polySurface24/polySurface43
+        weight: 1
+      - path: polySurface24/polySurface43/transform24
+        weight: 1
+      - path: polySurface24/polySurface44
+        weight: 1
+      - path: polySurface24/polySurface44/transform23
+        weight: 1
+      - path: polySurface24/transform22
+        weight: 1
+      - path: polySurface45
+        weight: 1
+      - path: polySurface45/transform26
+        weight: 1
+      - path: polySurface46
+        weight: 1
+      - path: Right_Foot_Control
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

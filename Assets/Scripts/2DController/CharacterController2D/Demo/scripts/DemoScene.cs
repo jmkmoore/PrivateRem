@@ -56,8 +56,7 @@ public class DemoScene : MonoBehaviour
     public float doubleJumpCooldown = 0.1f;
 
     public PlayerMode pm;
-    private bool doJump = false;
-    
+    private bool doJump = false;    
 
     void Awake()
     {
@@ -130,9 +129,23 @@ public class DemoScene : MonoBehaviour
         _velocity = _controller.velocity;
         moveDir.x = Input.GetAxis("Horizontal");
         moveDir.y = Input.GetAxis("Vertical");
+
+        if (moveDir.x < 0) {
+            left = true;
+        }
+        else if (moveDir.x > 0)
+        {
+            left = false;
+        }
+
         #region movement
         if (isDashing)
         {
+            if (airDashTime > airDashDuration)
+            {
+                isDashing = false; 
+            }
+            /**
             if (airDashTime > 0.3f)
             {
                 if (Input.GetButton("Dash"))
@@ -142,6 +155,7 @@ public class DemoScene : MonoBehaviour
                     normalizedHorizontalSpeed = 0;
                 }
             }
+             **/
         }
         else
         {
@@ -166,7 +180,8 @@ public class DemoScene : MonoBehaviour
                     normalizedHorizontalSpeed = 0;
                 }
             }
-            if (Input.GetButton("Dash"))
+            if (Input.GetButtonDown("Dash"))
+            //if(isDashing)
             {
                 if (!_controller.isGrounded)
                 {
@@ -214,10 +229,11 @@ public class DemoScene : MonoBehaviour
             doubleJumpDelayTimer = 0f;
         }
 
+        
 
         #region combat
 
-        if (Input.GetButton("Attack"))
+        if (Input.GetButtonDown("Attack"))
         {
             if (_controller.isGrounded)
             {
@@ -334,14 +350,7 @@ public class DemoScene : MonoBehaviour
 
         if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
         {
-            if (left)
-            {
-                normalizedHorizontalSpeed = -1 * (1.1f * pm.getResetCount());
-            }
-            else
-            {
-                normalizedHorizontalSpeed = 1.1f * pm.getResetCount();
-            }
+            normalizedHorizontalSpeed = moveDir.x * 2;
         }
         if (!isBlocking)
         {
@@ -349,13 +358,13 @@ public class DemoScene : MonoBehaviour
             {
                 _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
                 // we can only jump whilst grounded
-                if (!_controller.isGrounded && Input.GetButton("Jump") && jumpCount < 1 && doubleJumpDelayTimer > doubleJumpCooldown)
+                if (!_controller.isGrounded && Input.GetButtonDown("Jump") && jumpCount < 1)
                 {
                     _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
                     jumpCount++;
                     _animator.Play(Animator.StringToHash("TienAirKick"));
                 }
-                else if ((_controller.isGrounded) && Input.GetButton("Jump"))
+                else if ((_controller.isGrounded) && Input.GetButtonDown("Jump"))
                 {
                     _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
                     _animator.StopPlayback();
@@ -378,7 +387,7 @@ public class DemoScene : MonoBehaviour
                     _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * airDashBoost, Time.deltaTime);
 
                 }
-                if (Input.GetButton("Jump"))
+                if (Input.GetButtonDown("Jump"))
                 {
                     if (_controller.isGrounded)
                     {

@@ -41,8 +41,12 @@ public class EnemyMovement : MonoBehaviour {
     public bool isBoss;
     public bool isAttacking;
 
+    public bool isVisible;
+    private Renderer renderer;
+
     void Awake()
     {
+        renderer = GetComponentInChildren<Renderer>();
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
 
@@ -95,158 +99,165 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
     void FixedUpdate()
     {
+        isVisible = renderer.isVisible;
         _velocity = _controller.velocity;
 
-        if (_controller.isGrounded)
-        {
-            turnTime += Time.deltaTime;
-        }
-
-        if (attackTimer > 0) 
-            attackTimer -= Time.deltaTime;
-
-        if (attackTimer < 0)
-        {
-            attackTimer = 0;
-        }
-
-        #region Spider
-        if (enemyType.Equals("Spider"))
-        {
-            if (_controller.isGrounded)
-            {
-                turnTime += Time.deltaTime;
-            }
-            if (!inRange && attackTimer < 3f)
+            if (isVisible)
             {
                 if (_controller.isGrounded)
                 {
-                    if (left)
+                    turnTime += Time.deltaTime;
+                }
+
+                if (attackTimer > 0)
+                    attackTimer -= Time.deltaTime;
+
+                if (attackTimer < 0)
+                {
+                    attackTimer = 0;
+                }
+
+                #region Spider
+                if (enemyType.Equals("Spider"))
+                {
+                    if (_controller.isGrounded)
                     {
-                        normalizedHorizontalSpeed = -1;
-                        if (transform.localScale.x > 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        turnTime += Time.deltaTime;
+                    }
+                    if (!inRange && attackTimer < 3f)
+                    {
+                        if (_controller.isGrounded)
+                        {
+                            if (left)
+                            {
+                                normalizedHorizontalSpeed = -1;
+                                if (transform.localScale.x > 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            else
+                            {
+                                normalizedHorizontalSpeed = 1;
+                                if (transform.localScale.x < 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            _animator.Play(Animator.StringToHash("Walk"));
+                        }
+                        else
+                        {
+                            _velocity.x = 0;
+                        }
+                    }
+                }
+                #endregion
+
+                #region Doll
+                if (enemyType.Equals("Doll"))
+                {
+                    if (!inRange && attackTimer < 3f)
+                    {
+                        if (_controller.isGrounded)
+                        {
+                            if (left)
+                            {
+                                normalizedHorizontalSpeed = -1;
+                                if (transform.localScale.x > 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            else
+                            {
+                                normalizedHorizontalSpeed = 1;
+                                if (transform.localScale.x < 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            _animator.Play(Animator.StringToHash("Walk"));
+                        }
+                        else
+                        {
+                            _velocity.x = 0;
+                        }
                     }
                     else
                     {
-                        normalizedHorizontalSpeed = 1;
-                        if (transform.localScale.x < 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        if (attackTimer == 0)
+                        {
+                            attackTimer = attackCooldown;
+                            _animator.StopPlayback();
+                            _animator.Play(Animator.StringToHash("Trip"));
+                            _velocity.x = 0;
+                            myAttack.myBoxSwitch(true);
+                        }
+
                     }
-                    _animator.Play(Animator.StringToHash("Walk"));
+                }
+                #endregion
+                #region Colossus
+                if (enemyType.Equals("BigGuy"))
+                {
+
+                    if (isAttacking)
+                    {
+                        _velocity.x = 0;
+                    }
+                    else if (!inRange)
+                    {
+                        if (_controller.isGrounded)
+                        {
+                            if (left)
+                            {
+                                normalizedHorizontalSpeed = -1;
+                                if (transform.localScale.x > 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            else
+                            {
+                                normalizedHorizontalSpeed = 1;
+                                if (transform.localScale.x < 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                        }
+                    }
+
+                }
+
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+
+
+                #endregion
+
+
+                if (myHealth.getInvulnState())
+                {
+                    if (!isBoss)
+                    {
+                        if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
+                        {
+                            _animator.Play("HitReaction");
+                        }
+                        if (_velocity.y <= 0)
+                        {
+                            _velocity.y = forcedMovement.y;
+                        }
+                        else
+                        {
+                            _velocity.y += forcedMovement.y + (-gravity * Time.deltaTime);
+                        }
+                        _velocity.x = Mathf.Lerp(runSpeed, runSpeed * forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
+                    }
                 }
                 else
                 {
-                    _velocity.x = 0;
-                }
-            }
-        }
-        #endregion
-
-        #region Doll
-        if (enemyType.Equals("Doll"))
-        {
-            if (!inRange && attackTimer < 3f)
-            {
-                if (_controller.isGrounded)
-                {
-                    if (left)
+                    if (_controller.isGrounded)
                     {
-                        normalizedHorizontalSpeed = -1;
-                        if (transform.localScale.x > 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        _velocity.y = gravity * Time.deltaTime;
                     }
                     else
                     {
-                        normalizedHorizontalSpeed = 1;
-                        if (transform.localScale.x < 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    }
-                    _animator.Play(Animator.StringToHash("Walk"));
-                }
-                else
-                {
-                    _velocity.x = 0;
-                }
-            }
-            else
-            {
-                if (attackTimer == 0)
-                {
-                    attackTimer = attackCooldown;
-                    _animator.StopPlayback();
-                    _animator.Play(Animator.StringToHash("Trip"));
-                    _velocity.x = 0;
-                    myAttack.myBoxSwitch(true);
-                }
-
-            }
-        }
-        #endregion
-        #region Colossus
-        if (enemyType.Equals("BigGuy"))
-        {
-
-            if (isAttacking)
-            {
-                _velocity.x = 0;
-            }
-            else if (!inRange)
-            {
-                if (_controller.isGrounded)
-                {
-                    if (left)
-                    {
-                        normalizedHorizontalSpeed = -1;
-                        if (transform.localScale.x > 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                    }
-                    else
-                    {
-                        normalizedHorizontalSpeed = 1;
-                        if (transform.localScale.x < 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        _velocity.y += gravity * Time.deltaTime;
                     }
                 }
+                _controller.move(_velocity * Time.deltaTime);
             }
-
-        }
-
-        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
-
-
-
-        #endregion
-
-
-        if (myHealth.getInvulnState())
-        {
-            if (!isBoss)
-            {
-                _animator.Play("HitReaction");
-                if (_velocity.y <= 0)
-                {
-                    _velocity.y = forcedMovement.y;
-                }
-                else
-                {
-                    _velocity.y += forcedMovement.y + (-gravity * Time.deltaTime);
-                }
-                _velocity.x = Mathf.Lerp(runSpeed, runSpeed * forcedMovement.x * normalizedHorizontalSpeed, Time.deltaTime);
-            }
-        }
-        else
-        {
-            if (_controller.isGrounded)
-            {
-                _velocity.y = gravity * Time.deltaTime;
-            }
-            else
-            {
-                _velocity.y += gravity * Time.deltaTime;
-            }
-        }
-        _controller.move(_velocity * Time.deltaTime);
     }
 
     public void updateAttack(bool doAttack)

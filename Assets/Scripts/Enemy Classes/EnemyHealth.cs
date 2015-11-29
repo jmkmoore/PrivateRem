@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour {
     private Animator _animator;
     private bool isInvuln;
 
+    public bool disappearOnZero = true;
+
     // Use this for initialization
 	void Start () {
 		myTransform = transform;
@@ -21,7 +23,7 @@ public class EnemyHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (currentHealth < 0)
+        if (currentHealth <= 0 && disappearOnZero)
         {
             Destroy(gameObject);
         }
@@ -48,7 +50,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 	
 	public void adjustCurrentHealth(int adj){
-   //     Debug.Log("Taking " + adj + " damage");
+        Debug.Log("Taking " + adj + " damage");
         if (damageTimer == 0)
         {
             currentHealth += adj;
@@ -61,8 +63,6 @@ public class EnemyHealth : MonoBehaviour {
 			currentHealth = 0;
 		if (currentHealth == 0) {
             pm.resetTimer();
-            if (!transform.gameObject.tag.Equals("Boss"))
-    			Destroy(gameObject);
 		}
 	}
 
