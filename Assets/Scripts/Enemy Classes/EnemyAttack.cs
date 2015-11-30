@@ -95,6 +95,7 @@ public class EnemyAttack : MonoBehaviour {
 
     public void myBoxSwitch(bool onOrOff)
     {
+        Debug.Log("Called");
         myBox.enabled = onOrOff;
     }
 

@@ -3,8 +3,8 @@ using System.Collections;
 using Prime31;
 
 public class IrvineController : MonoBehaviour {
-    #region Stage 1 cooldowns
-    public float slamCooldown = 3f;
+    #region Cooldowns
+    public float slamCooldown = 8f;
     public float spitCooldown = 5f;
     public float throwCooldown = 6f;
     public float childCooldown = 10f;
@@ -28,8 +28,6 @@ public class IrvineController : MonoBehaviour {
     public GameObject spawner3;
 
     private EnemyHealth myHealth;
-
-    public float transitionTimer = 0f;
 
     public int stage = 1;
     public float currentAttackTimer = 0;
@@ -104,26 +102,29 @@ public class IrvineController : MonoBehaviour {
     void Update()
     {
         if (em.isVisible)
-        {
+        {      
             #region Stage triggering
-            if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+            if (currentAttackTimer == 0)
             {
-                stage = 2;
-            }
+                if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+                {
+                    stage = 2;
+                }
 
-            if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
-            {
-                stage = 3;
-            }
+                if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
+                {
+                    stage = 3;
+                }
 
-            if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
-            {
-                stage = 4;
-            }
+                if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
+                {
+                    stage = 4;
+                }
 
-            if (myHealth.currentHealth <= 0)
-            {
-                stage = 5;
+                if (myHealth.currentHealth <= 0)
+                {
+                    stage = 5;
+                }
             }
             #endregion
             
@@ -133,49 +134,54 @@ public class IrvineController : MonoBehaviour {
                 currentAttackTimer += Time.deltaTime;
             }
 
-            if (currentAttack.Equals("child") && currentAttackTimer > 3f && !spawnChild)
-            {
-                raiseChild();
-                spawnChild = true;
-            }
-
-
             if (currentAttack.Equals("spit") && currentAttackTimer > 1.2f && !fireOne)
             {
                 fireSeedsOne();
                 fireOne = true;
             }
-            /**
-            if (currentAttack.Equals("seed") && currentAttackTimer > 1.0f && !thrownSeed)
+
+            if (currentAttack.Equals("child") && currentAttackTimer > 1.5f && !spawnChild)
+            {
+                raiseChild();
+            }
+
+            if (currentAttack.Equals("seed") && currentAttackTimer > 2f && !thrownSeed)
             {
                 throwSeed();
                 thrownSeed = true;
             }
-            **/
 
-            if ((currentAttackTimer > 1.5f && currentAttack.Equals("slam")) || (currentAttackTimer > 3.3f && currentAttack.Equals("spit")) || currentAttackTimer == 0)
+            if ((currentAttackTimer > 2.5f && currentAttack.Equals("slam")) || (currentAttackTimer > 3f && currentAttack.Equals("spit")) || (currentAttackTimer > 3f && currentAttack.Equals("seed")) || currentAttackTimer == 0 || (currentAttackTimer > 3f && currentAttack.Equals("child")))
             {
-                if (slamTimer == 0)
+                if (childTimer == 0)
                 {
+                    currentAttackTimer = 0;
+                    currentAttackTimer += Time.deltaTime;
+                    childAttack();
+                }else if (slamTimer == 0)
+                {
+                    currentAttackTimer = 0;
                     SlamAttack();
                     currentAttackTimer += Time.deltaTime;
                 }
                 else if (spitTimer == 0)
                 {
+                    currentAttackTimer = 0;
                     spitStage1Attack();
                     currentAttackTimer += Time.deltaTime;
                     fireOne = false;
                 }
-                else if (childTimer == 0)
+                else if (throwTimer == 0)
                 {
-                    raiseChild();
+                    currentAttackTimer = 0;
+                    seedAttack();
                     currentAttackTimer += Time.deltaTime;
                 }
-
             }
             #endregion
+
             #region Idle
-            if (currentAttackTimer > 3.3f || currentAttackTimer == 0)
+            if (currentAttackTimer > 4f || currentAttackTimer == 0)
             {
                 if (stage == 1)
                 {
@@ -211,7 +217,13 @@ public class IrvineController : MonoBehaviour {
         _animator.Play(Animator.StringToHash("FireSpit1"));
         spitTimer += Time.deltaTime;
         currentAttack = "spit";
-        currentAttackTimer = 0;
+    }
+
+    void childAttack()
+    {
+        _animator.Play(Animator.StringToHash("ChildSpawn"));
+        childTimer += Time.deltaTime;
+        currentAttack = "child";
     }
 
     void SlamAttack()
@@ -219,15 +231,13 @@ public class IrvineController : MonoBehaviour {
         _animator.Play(Animator.StringToHash("IrvineSlam"));
         slamTimer += Time.deltaTime;
         currentAttack = "slam";
-        currentAttackTimer = 0;
     }
 
     void seedAttack()
     {
         _animator.Play(Animator.StringToHash("SeedThrow"));
-    //    seedTimer += Time.deltaTime;
+        throwTimer += Time.deltaTime;
         currentAttack = "seed";
-        currentAttackTimer = 0;
     }
 
     void fireSeedsOne()
@@ -269,11 +279,23 @@ public class IrvineController : MonoBehaviour {
         {
             slamTimer = 0;
         }
+        if (childTimer > childCooldown)
+        {
+            spawnChild = false;
+            childTimer = 0;
+        }
+        if (childTimer != 0)
+        {
+            childTimer += Time.deltaTime;
+        }
     }
 
     void raiseChild()
     {
-
+        spawner1.GetComponent<SpawnEnemy>().spawnEnemy();
+        spawner2.GetComponent<SpawnEnemy>().spawnEnemy();
+        spawner3.GetComponent<SpawnEnemy>().spawnEnemy();
+        spawnChild = true;
     }
 
 }

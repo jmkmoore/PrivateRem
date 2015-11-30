@@ -140,7 +140,145 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Drop_Spider_WalkV5
+      takeName: Drop_Spider_WalkV5
+      firstFrame: 2
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Head
+        weight: 1
+      - path: COG/Left_Arm_Joint1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer1_1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer1_1/Left_Pincer1_2
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer2_1
+        weight: 1
+      - path: COG/Left_Arm_Joint1/Left_Arm_Joint2/Left_Arm_Joint3/Left_Arm_Joint4/Left_Pincer2_1/Left_Pincer2_2
+        weight: 1
+      - path: COG/Left_Leg1_Joint1
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3/Left_Leg1_Joint4
+        weight: 1
+      - path: COG/Left_Leg1_Joint1/Left_Leg1_Joint2/Left_Leg1_Joint3/Left_Leg1_Joint4/Left_Leg1_Joint5
+        weight: 1
+      - path: COG/Left_Leg2_Joint1
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3/Left_Leg2_Joint4
+        weight: 1
+      - path: COG/Left_Leg2_Joint1/Left_Leg2_Joint2/Left_Leg2_Joint3/Left_Leg2_Joint4/Left_Leg2_Joint5
+        weight: 1
+      - path: COG/Left_Leg3_Joint1
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3/Left_Leg3_Joint4
+        weight: 1
+      - path: COG/Left_Leg3_Joint1/Left_Leg3_Joint2/Left_Leg3_Joint3/Left_Leg3_Joint4/Left_Leg3_Joint5
+        weight: 1
+      - path: COG/Left_Mand1
+        weight: 1
+      - path: COG/Left_Mand1/Left_Mand2
+        weight: 1
+      - path: COG/Left_Mand1/Left_Mand2/Left_Mand3
+        weight: 1
+      - path: COG/Right_Arm_Joint1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer1_1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer1_1/Right_Pincer1_2
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer2_1
+        weight: 1
+      - path: COG/Right_Arm_Joint1/Right_Arm_Joint2/Right_Arm_Joint3/Right_Arm_Joint4/Right_Pincer2_1/Right_Pincer2_2
+        weight: 1
+      - path: COG/Right_Leg1_Joint1
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3/Right_Leg1_Joint4
+        weight: 1
+      - path: COG/Right_Leg1_Joint1/Right_Leg1_Joint2/Right_Leg1_Joint3/Right_Leg1_Joint4/Right_Leg1_Joint5
+        weight: 1
+      - path: COG/Right_Leg2_Joint1
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3/Right_Leg2_Joint4
+        weight: 1
+      - path: COG/Right_Leg2_Joint1/Right_Leg2_Joint2/Right_Leg2_Joint3/Right_Leg2_Joint4/Right_Leg2_Joint5
+        weight: 1
+      - path: COG/Right_Leg3_Joint1
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3/Right_Leg3_Joint4
+        weight: 1
+      - path: COG/Right_Leg3_Joint1/Right_Leg3_Joint2/Right_Leg3_Joint3/Right_Leg3_Joint4/Right_Leg3_Joint5
+        weight: 1
+      - path: COG/Right_Mand1
+        weight: 1
+      - path: COG/Right_Mand1/Right_Mand2
+        weight: 1
+      - path: COG/Right_Mand1/Right_Mand2/Right_Mand3
+        weight: 1
+      - path: Nat_Spider1:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

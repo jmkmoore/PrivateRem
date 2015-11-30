@@ -44,6 +44,11 @@ public class EnemyMovement : MonoBehaviour {
     public bool isVisible;
     private Renderer renderer;
 
+    public float fuseLength;
+    public float myTimer;
+    public float myDeathTimer;
+    private bool isSelfDestroying = false;
+
     void Awake()
     {
         renderer = GetComponentInChildren<Renderer>();
@@ -116,6 +121,51 @@ public class EnemyMovement : MonoBehaviour {
                 {
                     attackTimer = 0;
                 }
+                #region Pumpkin
+                if (enemyType.Equals("Pumpkin"))
+                {
+                    if (_controller.isGrounded)
+                    {
+                        myTimer += Time.deltaTime;
+                    }
+                    if (myTimer < fuseLength)
+                    {
+                        if (_controller.isGrounded)
+                        {
+                            if (left)
+                            {
+                                normalizedHorizontalSpeed = -1;
+                                if (transform.localScale.x > 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            else
+                            {
+                                normalizedHorizontalSpeed = 1;
+                                if (transform.localScale.x < 0f)
+                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                            }
+                            _animator.Play(Animator.StringToHash("Walk"));
+                            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                        }
+                        else
+                        {
+                            _velocity.x = 0;
+                        }
+                    }else{
+                        _velocity.x = 0;
+                        if (!isSelfDestroying)
+                        {
+                            _animator.Play(Animator.StringToHash("Explode"));
+                            myAttack.myBoxSwitch(true);
+                            isSelfDestroying = true;
+                        }
+                    }
+                    if (myTimer > myDeathTimer)
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                #endregion
 
                 #region Spider
                 if (enemyType.Equals("Spider"))
@@ -141,6 +191,7 @@ public class EnemyMovement : MonoBehaviour {
                                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                             }
                             _animator.Play(Animator.StringToHash("Walk"));
+                            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                         }
                         else
                         {
@@ -170,6 +221,7 @@ public class EnemyMovement : MonoBehaviour {
                                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                             }
                             _animator.Play(Animator.StringToHash("Walk"));
+                            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                         }
                         else
                         {
@@ -190,10 +242,10 @@ public class EnemyMovement : MonoBehaviour {
                     }
                 }
                 #endregion
+
                 #region Colossus
                 if (enemyType.Equals("BigGuy"))
                 {
-
                     if (isAttacking)
                     {
                         _velocity.x = 0;
@@ -215,15 +267,11 @@ public class EnemyMovement : MonoBehaviour {
                                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                             }
                         }
+                        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                     }
-
                 }
-
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
-
-
-
                 #endregion
+
 
 
                 if (myHealth.getInvulnState())

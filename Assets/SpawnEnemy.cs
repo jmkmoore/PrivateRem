@@ -8,6 +8,9 @@ public class SpawnEnemy : MonoBehaviour {
     public Renderer renderer;
     public bool wasSeen;
 
+    public float spawnCooldown;
+    public float spawnTimer;
+
 	// Use this for initialization
 	void Start () {
         renderer = GetComponentInChildren<Renderer>();
@@ -16,12 +19,22 @@ public class SpawnEnemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (spawnTimer != 0)
+        {
+            spawnTimer += Time.deltaTime;
+        }
+        if (spawnTimer > spawnCooldown)
+        {
+            spawnTimer = 0;
+        }
+
         if (spawnOnView)
         {
-            if (renderer.isVisible && !wasSeen)
+            if (renderer.isVisible && !wasSeen && spawnTimer == 0)
             {
                 wasSeen = true;
                 spawnEnemy();
+                spawnTimer += Time.deltaTime;
             }
             if (!renderer.isVisible && wasSeen)
             {

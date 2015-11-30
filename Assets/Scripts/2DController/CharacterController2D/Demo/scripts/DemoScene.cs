@@ -38,7 +38,7 @@ public class DemoScene : MonoBehaviour
     private AttackController atkController;
     private PlayerHealth ph;
     private float shotCountdown = .5f;
-    private bool isBlocking = false;
+    public bool isBlocking = false;
 
     public float ButtonDelay;
     float lastJump = 0;
@@ -145,17 +145,6 @@ public class DemoScene : MonoBehaviour
             {
                 isDashing = false; 
             }
-            /**
-            if (airDashTime > 0.3f)
-            {
-                if (Input.GetButton("Dash"))
-                {
-                    isDashing = false;
-                    airDashTime = 0;
-                    normalizedHorizontalSpeed = 0;
-                }
-            }
-             **/
         }
         else
         {
@@ -181,7 +170,6 @@ public class DemoScene : MonoBehaviour
                 }
             }
             if (Input.GetButtonDown("Dash"))
-            //if(isDashing)
             {
                 if (!_controller.isGrounded)
                 {
@@ -208,13 +196,13 @@ public class DemoScene : MonoBehaviour
                     comboCountdown += Time.deltaTime;
                     attack(6);
                 }
-                if (isDashing)
+          /**      if (isDashing)
                 {
                     if (left)
                         normalizedHorizontalSpeed = -1;
                     else
                         normalizedHorizontalSpeed = 1;
-                }
+                }**/
                 isBlocking = false;
             }
         }
@@ -306,12 +294,9 @@ public class DemoScene : MonoBehaviour
             }
         }
 
-
+        #region Block
         if (Input.GetButton("DiveBlock")) {
             if(!_controller.isGrounded){
-            //attackCount++;
-            //comboCountdown = 0;
-            //comboCountdown += Time.deltaTime;
             isDiving = true;
             isDashing = false;
             }
@@ -320,7 +305,6 @@ public class DemoScene : MonoBehaviour
                 {
                     _animator.Play(Animator.StringToHash("Block"));
                     ph.isBlocking = true;
-                    
                 }
             }
         }
@@ -329,13 +313,14 @@ public class DemoScene : MonoBehaviour
             ph.isBlocking = false;
         }
         #endregion
+        #endregion
 
         #region Movement Animation
-        if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay))
+        if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !ph.isBlocking &&  !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay))
         {
             _animator.Play(Animator.StringToHash("Run"));
         }
-        if (_controller.isGrounded && normalizedHorizontalSpeed == 0 && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay) && !ph.isBlocking)
+        if (_controller.isGrounded && normalizedHorizontalSpeed == 0 && !ph.isBlocking && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay) && !ph.isBlocking)
         {
             _animator.Play(Animator.StringToHash("Idle"));
         }
@@ -346,13 +331,11 @@ public class DemoScene : MonoBehaviour
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
-
-
         if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
         {
-            normalizedHorizontalSpeed = moveDir.x * 2;
+            normalizedHorizontalSpeed = moveDir.x * pm.speed;
         }
-        if (!isBlocking)
+        if (!ph.isBlocking)
         {
             if (!isDashing && !isDiving)
             {

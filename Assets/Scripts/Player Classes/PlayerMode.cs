@@ -32,7 +32,7 @@ public class PlayerMode : MonoBehaviour {
 
     public void resetTimer()
     {
-        speed += 1;
+        speed += .05f;
         timer = 0f;
         mode = "speed";
         resetCount += 1;
