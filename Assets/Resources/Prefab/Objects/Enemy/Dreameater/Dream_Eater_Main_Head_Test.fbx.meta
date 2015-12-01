@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 9b6f8de4ccc35c942b7fff779d860d45
+timeCreated: 1448902471
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_base01
+    100004: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_head01
+    100006: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_base01
+    100008: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_base01 1
+    100010: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01
+    100012: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01 1
+    100014: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01 2
+    100016: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_end01
+    100018: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_nearend01
+    100020: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three01
+    100022: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three02
+    100024: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three03
+    100026: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three04
+    100028: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two01
+    100030: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two02
+    100032: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two03
+    100034: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two04
+    100036: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_leavesloc01
+    100038: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_lowerjaw_end01
+    100040: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_lowerjaw_start01
+    100042: Dream_eater_WIP_Rig_1_13_15_Bigsnake_bn_midspike01
+    100044: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_neck01
+    100046: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_rib01
+    100048: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine01
+    100050: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine02
+    100052: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine03
+    100054: Dream_eater_WIP_Rig_1_13_15_Bigsnake_bn_socktween01
+    100056: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_upperjaw_end01
+    100058: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_upperjaw_start01
+    100060: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_vinesband01
+    100062: Dream_eater_WIP_Rig_1_13_15_BigSnake_Body
+    100064: Dream_eater_WIP_Rig_1_13_15_BigSnake_body_sgrp01
+    100066: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base01
+    100068: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base02
+    100070: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base03
+    100072: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base04
+    100074: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base05
+    100076: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base06
+    100078: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base07
+    100080: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_head_ctrl01
+    100082: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_tongue_basebox01
+    100084: Dream_eater_WIP_Rig_1_13_15_BigSnake_sgrp_Leaves
+    100086: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_base01
+    100088: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_Center01
+    100090: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_End01
+    100092: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake
+    100094: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake 1
+    100096: Dream_eater_WIP_Rig_1_13_15_grp_bigsnake_leafsRigs01
+    100098: Dream_eater_WIP_Rig_1_13_15_grp_Bigsnake_Rig
+    100100: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake_tongue
+    100102: Dream_eater_WIP_Rig_1_13_15_grp_Snakecontrols01
+    100104: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_base01
+    100106: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_center01
+    100108: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_end01
+    100110: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_base01
+    100112: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_center01
+    100114: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_end01
+    100116: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_center01
+    100118: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_end01
+    100120: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_end01 1
+    100122: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_base01
+    100124: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_center01
+    100126: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_end01
+    100128: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_base01
+    100130: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_center01
+    100132: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_end01
+    400000: //RootNode
+    400002: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_base01
+    400004: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_head01
+    400006: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_base01
+    400008: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_base01 1
+    400010: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01
+    400012: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01 1
+    400014: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_curve01 2
+    400016: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_end01
+    400018: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_nearend01
+    400020: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three01
+    400022: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three02
+    400024: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three03
+    400026: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_three04
+    400028: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two01
+    400030: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two02
+    400032: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two03
+    400034: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_largevine_twist_two04
+    400036: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_leavesloc01
+    400038: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_lowerjaw_end01
+    400040: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_lowerjaw_start01
+    400042: Dream_eater_WIP_Rig_1_13_15_Bigsnake_bn_midspike01
+    400044: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_neck01
+    400046: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_rib01
+    400048: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine01
+    400050: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine02
+    400052: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_smallvine03
+    400054: Dream_eater_WIP_Rig_1_13_15_Bigsnake_bn_socktween01
+    400056: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_upperjaw_end01
+    400058: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_upperjaw_start01
+    400060: Dream_eater_WIP_Rig_1_13_15_BigSnake_bn_vinesband01
+    400062: Dream_eater_WIP_Rig_1_13_15_BigSnake_Body
+    400064: Dream_eater_WIP_Rig_1_13_15_BigSnake_body_sgrp01
+    400066: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base01
+    400068: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base02
+    400070: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base03
+    400072: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base04
+    400074: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base05
+    400076: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base06
+    400078: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_base07
+    400080: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_head_ctrl01
+    400082: Dream_eater_WIP_Rig_1_13_15_BigSnake_cv_tongue_basebox01
+    400084: Dream_eater_WIP_Rig_1_13_15_BigSnake_sgrp_Leaves
+    400086: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_base01
+    400088: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_Center01
+    400090: Dream_eater_WIP_Rig_1_13_15_BigSnake_Tongue_bn_End01
+    400092: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake
+    400094: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake 1
+    400096: Dream_eater_WIP_Rig_1_13_15_grp_bigsnake_leafsRigs01
+    400098: Dream_eater_WIP_Rig_1_13_15_grp_Bigsnake_Rig
+    400100: Dream_eater_WIP_Rig_1_13_15_grp_BigSnake_tongue
+    400102: Dream_eater_WIP_Rig_1_13_15_grp_Snakecontrols01
+    400104: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_base01
+    400106: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_center01
+    400108: Dream_eater_WIP_Rig_1_13_15_Leaf_five_bn_end01
+    400110: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_base01
+    400112: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_center01
+    400114: Dream_eater_WIP_Rig_1_13_15_Leaf_four_bn_end01
+    400116: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_center01
+    400118: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_end01
+    400120: Dream_eater_WIP_Rig_1_13_15_Leaf_one_bn_end01 1
+    400122: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_base01
+    400124: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_center01
+    400126: Dream_eater_WIP_Rig_1_13_15_Leaf_three_bn_end01
+    400128: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_base01
+    400130: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_center01
+    400132: Dream_eater_WIP_Rig_1_13_15_Leaf_two_bn_end01
+    4300000: Dream_eater_WIP_Rig_1_13_15_BigSnake_sgrp_Leaves
+    4300002: Dream_eater_WIP_Rig_1_13_15_BigSnake_Body
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Dream_eater_WIP_Rig_1_13_15_BigSnake_Body
+    13700002: Dream_eater_WIP_Rig_1_13_15_BigSnake_sgrp_Leaves
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -198,6 +198,18 @@ public class EnemyMovement : MonoBehaviour {
                             _velocity.x = 0;
                         }
                     }
+                    else
+                    {
+                        if (attackTimer == 0)
+                        {
+                            attackTimer = attackCooldown;
+                            _animator.StopPlayback();
+                            _animator.Play(Animator.StringToHash("Bite"));
+                            _velocity.x = 0;
+                            myAttack.myBoxSwitch(true);
+                        }
+
+                    }
                 }
                 #endregion
 
