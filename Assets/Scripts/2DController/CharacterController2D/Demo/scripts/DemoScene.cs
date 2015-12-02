@@ -129,13 +129,16 @@ public class DemoScene : MonoBehaviour
         _velocity = _controller.velocity;
         moveDir.x = Input.GetAxis("Horizontal");
         moveDir.y = Input.GetAxis("Vertical");
-
-        if (moveDir.x < 0) {
-            left = true;
-        }
-        else if (moveDir.x > 0)
+        if (!isDashing)
         {
-            left = false;
+            if (moveDir.x < 0)
+            {
+                left = true;
+            }
+            else if (moveDir.x > 0)
+            {
+                left = false;
+            }
         }
 
         #region movement
@@ -363,13 +366,20 @@ public class DemoScene : MonoBehaviour
             {
                 if (_controller.isGrounded)
                 {
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime);
+                    if (left)
+                        _velocity.x = Mathf.Lerp(-runSpeed * dashBoost, -1 * runSpeed * dashBoost, Time.deltaTime);
+                    else
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost, 1 * runSpeed * dashBoost, Time.deltaTime);
                 }
                 else
                 {
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * airDashBoost, Time.deltaTime);
+                    if (left)
+                        _velocity.x = Mathf.Lerp(-runSpeed * airDashBoost, -1 * runSpeed * airDashBoost, Time.deltaTime);
+                    else
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, 1 * runSpeed * airDashBoost, Time.deltaTime);
 
                 }
+                _velocity.y += gravity * Time.deltaTime;
                 if (Input.GetButtonDown("Jump"))
                 {
                     if (_controller.isGrounded)
