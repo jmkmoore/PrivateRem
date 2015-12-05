@@ -14,10 +14,16 @@ public class PlayerAttack : MonoBehaviour {
     public float lifetime, maxDur;
 
     private bool on;
+    public GameObject myParticle;
 
     private Vector3 attackKnockback;
 	// Use this for initialization
 	void Start () {
+        if (myParticle != null)
+        {
+            myParticle.SetActive(false);
+        }
+
         attackKnockback.x = attackKnockbackX;
         attackKnockback.y = attackKnockbackY * Time.deltaTime;
         myBox = gameObject.GetComponent<BoxCollider2D>();
@@ -34,6 +40,9 @@ public class PlayerAttack : MonoBehaviour {
         {
             lifetime = 0;
             myBox.enabled = false;
+
+            if (myParticle != null)
+                myParticle.SetActive(false);
         }
     }
 
@@ -106,5 +115,7 @@ public class PlayerAttack : MonoBehaviour {
     {
         lifetime = 0f;
         myBox.enabled = true;
+        if (myParticle != null)
+            myParticle.SetActive(true);
     }
 }

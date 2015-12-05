@@ -50,6 +50,8 @@ public class EnemyMovement : MonoBehaviour {
     private bool isSelfDestroying = false;
 
     public float knockbackMultiplier;
+    public float knockbackTimer;
+    public float knockbackDuration;
 
     void Awake()
     {
@@ -108,8 +110,8 @@ public class EnemyMovement : MonoBehaviour {
     {
         isVisible = renderer.isVisible;
         _velocity = _controller.velocity;
-
-            if (isVisible)
+        updateTimers();
+        if (isVisible)
             {
                 if (!myHealth.getInvulnState())
                 {
@@ -232,10 +234,6 @@ public class EnemyMovement : MonoBehaviour {
                                 _animator.Play(Animator.StringToHash("Walk"));
                                 _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
                             }
-                            else
-                            {
-                                _velocity.x = 0;
-                            }
                         }
                         else
                         {
@@ -283,35 +281,43 @@ public class EnemyMovement : MonoBehaviour {
                 #endregion
 
 
-
-                if (myHealth.getInvulnState())
+                if (!isBoss)
                 {
-                    if (!isBoss)
+                    if (knockbackTimer != 0)
                     {
-                        if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
-                        {
-                            _animator.Play("HitReaction");
-                        }
                         if (_velocity.y <= 0)
                         {
                             _velocity.y = forcedMovement.y;
                         }
                         else
                         {
-                            _velocity.y += forcedMovement.y;
+                            _velocity.y += forcedMovement.y * knockbackMultiplier * Time.deltaTime;
                         }
                         _velocity.x = forcedMovement.x * knockbackMultiplier;
                     }
                 }
+                if (myHealth.getInvulnState() && knockbackTimer == 0)
+                {
+                    if (!isBoss)
+                    {
+                        if (myHealth.getInvulnState() && knockbackTimer == 0)
+                        {
+                            knockbackTimer += Time.deltaTime;
+                        }
+                    }
+                }
                 else
                 {
-                    if (_controller.isGrounded)
+                    if (knockbackTimer == 0)
                     {
-                        _velocity.y = gravity * Time.deltaTime;
-                    }
-                    else
-                    {
-                        _velocity.y += gravity * Time.deltaTime;
+                        if (_controller.isGrounded)
+                        {
+                            _velocity.y = gravity * Time.deltaTime;
+                        }
+                        else
+                        {
+                            _velocity.y += gravity * Time.deltaTime;
+                        }
                     }
                 }
                 _controller.move(_velocity * Time.deltaTime);
@@ -336,6 +342,17 @@ public class EnemyMovement : MonoBehaviour {
     public void stopToAttack(bool attacking)
     {
         this.isAttacking = attacking;
+    }
+    void updateTimers()
+    {
+        if (knockbackTimer != 0)
+        {
+            knockbackTimer += Time.deltaTime;
+        }
+        if (knockbackTimer > knockbackDuration)
+        {
+            knockbackTimer = 0;
+        }
     }
 
 }
