@@ -11,8 +11,11 @@ public class DemoScene : MonoBehaviour
     public float inAirDamping = 5f;
     public float jumpHeight = 3f;
     public float dashBoost = 15f;
+    public float airDashBoost = 15f;
     private int dashCount = 0;
     private int dashMax = 1;
+    public float doubleJumpHeight = 1.1f;
+
 
     public float airDashTime = 0f;
     public float airDashDuration = .5f;
@@ -33,27 +36,24 @@ public class DemoScene : MonoBehaviour
     private bool left = false;
     private bool useAirDash = false;
     private bool isDiving = false;
+    private AttackController atkController;
+    private PlayerHealth ph;
+    private float shotCountdown = .5f;
+    private bool isBlocking = false;
 
     public float ButtonDelay;
     float lastJump = 0;
     float lastUse = 0;
     public bool isDashing = false;
     BoxCollider2D myBoxCollider;
-
-    private bool isBlocking = false;
-
+    
     public int jumpCount = 0;
     public int airDashCount = 0;
-
     public GameObject attackBox;
-
-    private float shotCountdown = .5f;
     public float shotTime = 0;
 
-    private AttackController atkController;
-    private PlayerHealth ph;
-
     public PlayerMode pm;
+    
 
     void Awake()
     {
@@ -86,7 +86,7 @@ public class DemoScene : MonoBehaviour
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
+     //   Debug.Log("onTriggerEnterEvent: " + col.tag + " " + col.name + " ");
         if (col.tag.Equals("DestructPlat"))
         {
             FallApart obj = (FallApart)col.gameObject.GetComponent<FallApart>();
@@ -94,6 +94,7 @@ public class DemoScene : MonoBehaviour
         }
         if (col.tag.Equals("DeathWall"))
         {
+      //      Debug.Log("Should Die");
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
 
@@ -102,7 +103,17 @@ public class DemoScene : MonoBehaviour
 
     void onTriggerExitEvent(Collider2D col)
     {
-        Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+        //Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+    }
+
+    void FixedUpdate()
+    {
+        updateTimers();
+
+        if (_controller.collisionState.becameGroundedThisFrame)
+        {
+            jumpCount = 0;
+        }
     }
 
     #endregion
@@ -111,9 +122,6 @@ public class DemoScene : MonoBehaviour
     {
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
-
-        updateTimers();
-
         #region movement
         if (isDashing)
         {
@@ -171,7 +179,13 @@ public class DemoScene : MonoBehaviour
                 else
                 {
                     isDashing = true;
-                    _animator.Play(Animator.StringToHash("Airdash"));
+                    _animator.Play(Animator.StringToHash("ShoulderCharge"));
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attackCount = 0;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(6);
                 }
                 if (isDashing)
                 {
@@ -199,19 +213,43 @@ public class DemoScene : MonoBehaviour
         {
             if (_controller.isGrounded)
             {
-                if (comboCountdown == 0 || comboCountdown > ButtonDelay)
+                if (Input.GetKey(KeyCode.Z))
+                {
+                    _animator.Play(Animator.StringToHash("Uppercut"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(5);
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (Input.GetKey(KeyCode.X))
+                {
+                    _animator.Play(Animator.StringToHash("Sweep"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    attack(4);
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
                 {
                     ph.isBlocking = false;
-                    if (normalizedHorizontalSpeed != 0)
+                   /** if (normalizedHorizontalSpeed != 0)
                     {
-                        _animator.Play(Animator.StringToHash("Kick"));
+                        _animator.Play(Animator.StringToHash("ShoulderCharge"));
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
+                        attackCount = 0;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        attack(6);
+                        normalizedHorizontalSpeed = .8f * transform.localScale.x;
                        // attack(1);
                     }
                     else
                     {
-                        if (attackCount == 0 || attackCount == 3)
+                    **/
+                    if (attackCount == 0 || attackCount == 3)
                         {
                             _animator.Play(Animator.StringToHash("Jab"));
                             attackCount = 1;
@@ -240,7 +278,7 @@ public class DemoScene : MonoBehaviour
                             normalizedHorizontalSpeed = 1 * transform.localScale.x;
                         }
                     }
-                }
+                //}
             }
         }
 
@@ -282,12 +320,6 @@ public class DemoScene : MonoBehaviour
 
 
 
-        if (jumpCount != 0 && !_controller.isGrounded && _velocity.y < 0 && !isDashing)
-        {
-            _animator.Play(Animator.StringToHash("TienFall"));
-        }
-
-
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
@@ -295,7 +327,14 @@ public class DemoScene : MonoBehaviour
 
         if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
         {
-            normalizedHorizontalSpeed *= 2;
+            if (left)
+            {
+                normalizedHorizontalSpeed = -1 * (1.1f * pm.getResetCount());
+            }
+            else
+            {
+                normalizedHorizontalSpeed = 1.1f * pm.getResetCount();
+            }
         }
         if (!isBlocking)
         {
@@ -312,11 +351,25 @@ public class DemoScene : MonoBehaviour
                         _animator.Play(Animator.StringToHash("Jump"));
                     }
                 }
+                else if (!_controller.isGrounded && Input.GetKeyDown(KeyCode.W) && jumpCount < 1)
+                {
+                    _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
+                    jumpCount++;
+                    _animator.Play(Animator.StringToHash("TienAirKick"));
+                }
                 _velocity.y += gravity * Time.deltaTime;
             }
             else if (isDashing)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime * groundDamping);
+                if (_controller.isGrounded)
+                {
+                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * dashBoost, Time.deltaTime);
+                }
+                else
+                {
+                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * airDashBoost, Time.deltaTime);
+
+                }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     if (_controller.isGrounded)
@@ -396,6 +449,11 @@ public class DemoScene : MonoBehaviour
             comboCountdown += Time.deltaTime;
         }
 
+    }
+
+    public bool isLeft()
+    {
+        return left;
     }
 
 }

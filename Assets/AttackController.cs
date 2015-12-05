@@ -7,6 +7,10 @@ public class AttackController : MonoBehaviour {
     public GameObject punchBox;
     public GameObject crosspunchBox;
     public GameObject kickBox;
+    public GameObject airKickBox;
+    public GameObject sweepBox;
+    public GameObject UppercutBox;
+    public GameObject ShoulderBox;
 
     private BoxCollider2D myActiveBox;
 
@@ -31,6 +35,18 @@ public class AttackController : MonoBehaviour {
                 break;
             case 2:
                 kickBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 3:
+                airKickBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 4:
+                sweepBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 5:
+                UppercutBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 6:
+                ShoulderBox.GetComponent<PlayerAttack>().turnOnAttack();
                 break;
             default:
                 break;

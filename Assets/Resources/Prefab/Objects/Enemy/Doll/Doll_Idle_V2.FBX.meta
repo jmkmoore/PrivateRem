@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: cab71092c9171fa4dbcfcd5d67a0efc7
+timeCreated: 1443672928
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: COG
+    100002: Doll:polySurface1
+    100004: //RootNode
+    100006: Head
+    100008: Left_Arm1
+    100010: Left_Arm2
+    100012: Left_Arm3
+    100014: Left_Inner_eye
+    100016: Left_Leg1
+    100018: Left_Leg2
+    100020: Left_Leg3
+    100022: Left_Outer_Eye
+    100024: Neck
+    100026: Right_Arm1
+    100028: Right_Arm2
+    100030: Right_Arm3
+    100032: Right_Inner_Eye
+    100034: Right_Leg1
+    100036: Right_Leg2
+    100038: Right_Leg3
+    100040: Right_Outer_Eye
+    100042: Spine1
+    100044: Spine2
+    100046: Spine3
+    100048: Spine4
+    400000: COG
+    400002: Doll:polySurface1
+    400004: //RootNode
+    400006: Head
+    400008: Left_Arm1
+    400010: Left_Arm2
+    400012: Left_Arm3
+    400014: Left_Inner_eye
+    400016: Left_Leg1
+    400018: Left_Leg2
+    400020: Left_Leg3
+    400022: Left_Outer_Eye
+    400024: Neck
+    400026: Right_Arm1
+    400028: Right_Arm2
+    400030: Right_Arm3
+    400032: Right_Inner_Eye
+    400034: Right_Leg1
+    400036: Right_Leg2
+    400038: Right_Leg3
+    400040: Right_Outer_Eye
+    400042: Spine1
+    400044: Spine2
+    400046: Spine3
+    400048: Spine4
+    4300000: Doll:polySurface1
+    7400000: DollIdle
+    9500000: //RootNode
+    13700000: Doll:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DollIdle
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 72
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Left_Leg1
+        weight: 1
+      - path: COG/Left_Leg1/Left_Leg2
+        weight: 1
+      - path: COG/Left_Leg1/Left_Leg2/Left_Leg3
+        weight: 1
+      - path: COG/Right_Leg1
+        weight: 1
+      - path: COG/Right_Leg1/Right_Leg2
+        weight: 1
+      - path: COG/Right_Leg1/Right_Leg2/Right_Leg3
+        weight: 1
+      - path: COG/Spine1
+        weight: 1
+      - path: COG/Spine1/Spine2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Left_Arm1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Left_Arm1/Left_Arm2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Left_Arm1/Left_Arm2/Left_Arm3
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck/Head
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck/Head/Left_Inner_eye
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck/Head/Left_Outer_Eye
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck/Head/Right_Inner_Eye
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Neck/Head/Right_Outer_Eye
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Right_Arm1
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Right_Arm1/Right_Arm2
+        weight: 1
+      - path: COG/Spine1/Spine2/Spine3/Spine4/Right_Arm1/Right_Arm2/Right_Arm3
+        weight: 1
+      - path: Doll:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

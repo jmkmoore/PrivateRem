@@ -4,9 +4,8 @@ using Prime31;
 
 public class PlayerAttack : MonoBehaviour {
 	public int attackValue = 10;
-	private int superAttackValue = 2;
 	public GameObject target;
-    private CharacterController2D enemyController;
+    private EnemyMovement enemyController;
     private BoxCollider2D myBox;
 
 
@@ -40,16 +39,27 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Attack(GameObject target){
         EnemyHealth eh = findEnemyHealth(target);
+        Vector3 thisKnockback = attackKnockback;
+        if (gameObject.GetComponentInParent<DemoScene>().isLeft())
+        {
+            thisKnockback.x = attackKnockback.x * -1f;
+        }
+        else
+        {
+            thisKnockback.x = Mathf.Abs(attackKnockback.x);
+        }
         if (eh != null)
         {
             eh.adjustCurrentHealth(-attackValue);
-            enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-            enemyController.move(attackKnockback);
+            
+            enemyController = target.transform.parent.GetComponent<EnemyMovement>();
+            enemyController.getKnockedBack(thisKnockback);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.transform.name);
         if (other.tag.Equals("Enemy"))
         {
             Attack(other.transform.gameObject);
@@ -58,7 +68,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log(other.name + other.tag);
+      //  Debug.Log(other.name + other.tag);
         if (other.tag.Equals("Enemy"))
         {
             Attack(other.transform.gameObject);
