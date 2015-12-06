@@ -10,8 +10,7 @@ ModelImporter:
     100008: Tim_Grp_Tim_Pants
     100010: Tim_Grp_Tim_RightChop
     100012: Tim_Grp_Tim_Shackle
-    100014: Tim_Grp_Tim_Shackle Tim_Chain
-    100016: Tim_Grp_Tim_Shackle_Tim_Chain
+    100014: Tim_Grp_Tim_Shackle_Tim_Chain
     400000: //RootNode
     400002: Tim_Body_Tim_Grp
     400004: Tim_Grp_Tim_Hair
@@ -19,32 +18,28 @@ ModelImporter:
     400008: Tim_Grp_Tim_Pants
     400010: Tim_Grp_Tim_RightChop
     400012: Tim_Grp_Tim_Shackle
-    400014: Tim_Grp_Tim_Shackle Tim_Chain
-    400016: Tim_Grp_Tim_Shackle_Tim_Chain
+    400014: Tim_Grp_Tim_Shackle_Tim_Chain
     2300000: Tim_Body_Tim_Grp
     2300002: Tim_Grp_Tim_Hair
     2300004: Tim_Grp_Tim_LeftChop
     2300006: Tim_Grp_Tim_Pants
     2300008: Tim_Grp_Tim_RightChop
     2300010: Tim_Grp_Tim_Shackle
-    2300012: Tim_Grp_Tim_Shackle Tim_Chain
-    2300014: Tim_Grp_Tim_Shackle_Tim_Chain
+    2300012: Tim_Grp_Tim_Shackle_Tim_Chain
     3300000: Tim_Body_Tim_Grp
     3300002: Tim_Grp_Tim_Hair
     3300004: Tim_Grp_Tim_LeftChop
     3300006: Tim_Grp_Tim_Pants
     3300008: Tim_Grp_Tim_RightChop
     3300010: Tim_Grp_Tim_Shackle
-    3300012: Tim_Grp_Tim_Shackle Tim_Chain
-    3300014: Tim_Grp_Tim_Shackle_Tim_Chain
+    3300012: Tim_Grp_Tim_Shackle_Tim_Chain
     4300000: Tim_Body_Tim_Grp
     4300002: Tim_Grp_Tim_Hair
     4300004: Tim_Grp_Tim_LeftChop
     4300006: Tim_Grp_Tim_Pants
     4300008: Tim_Grp_Tim_RightChop
     4300010: Tim_Grp_Tim_Shackle
-    4300012: Tim_Grp_Tim_Shackle Tim_Chain
-    4300014: Tim_Grp_Tim_Shackle_Tim_Chain
+    4300012: Tim_Grp_Tim_Shackle_Tim_Chain
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -69,7 +64,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -83,7 +78,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -102,8 +97,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
