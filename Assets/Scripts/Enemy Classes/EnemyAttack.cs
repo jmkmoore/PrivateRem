@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour {
     public float attackKnockbackX = 1000f;
     public float attackKnockbackY = 1000f;
     private Vector3 attackKnockback;
-    public float lifetime, maxDur;
+    public float lifetime, maxDur, activeStart;
     public float cooldown;
 
     private bool on;
@@ -28,6 +28,10 @@ public class EnemyAttack : MonoBehaviour {
         if (lifetime != 0)
         {
             lifetime += Time.deltaTime;
+        }
+        if(lifetime > activeStart && lifetime < maxDur)
+        {
+            myBox.enabled = true;
         }
         if (lifetime > maxDur)
         {
@@ -96,7 +100,7 @@ public class EnemyAttack : MonoBehaviour {
     public void myBoxSwitch(bool onOrOff)
     {
         Debug.Log("Called");
-        myBox.enabled = onOrOff;
+        lifetime += Time.deltaTime;
     }
 
     public void inRange(bool inRange)
