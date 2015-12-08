@@ -1,29 +1,46 @@
 fileFormatVersion: 2
-guid: 76ac08ad3f9900d4293ca52d9b5684c9
-timeCreated: 1449437451
-licenseType: Free
+guid: 3991dac64974eac47b63e89f9e2976e4
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: joint1
-    100002: joint2
-    100004: joint3
-    100006: joint4
-    100008: joint5
-    100010: //RootNode
-    100012: pSphere1
-    400000: joint1
-    400002: joint2
-    400004: joint3
-    400006: joint4
-    400008: joint5
-    400010: //RootNode
-    400012: pSphere1
-    4300000: pSphere1
-    7400000: Take 001
+    100000: //RootNode
+    100002: Tim_Body_Tim_Grp
+    100004: Tim_Grp_Tim_Hair
+    100006: Tim_Grp_Tim_LeftChop
+    100008: Tim_Grp_Tim_Pants
+    100010: Tim_Grp_Tim_RightChop
+    100012: Tim_Grp_Tim_Shackle
+    100014: Tim_Grp_Tim_Shackle_Tim_Chain
+    400000: //RootNode
+    400002: Tim_Body_Tim_Grp
+    400004: Tim_Grp_Tim_Hair
+    400006: Tim_Grp_Tim_LeftChop
+    400008: Tim_Grp_Tim_Pants
+    400010: Tim_Grp_Tim_RightChop
+    400012: Tim_Grp_Tim_Shackle
+    400014: Tim_Grp_Tim_Shackle_Tim_Chain
+    2300000: Tim_Body_Tim_Grp
+    2300002: Tim_Grp_Tim_Hair
+    2300004: Tim_Grp_Tim_LeftChop
+    2300006: Tim_Grp_Tim_Pants
+    2300008: Tim_Grp_Tim_RightChop
+    2300010: Tim_Grp_Tim_Shackle
+    2300012: Tim_Grp_Tim_Shackle_Tim_Chain
+    3300000: Tim_Body_Tim_Grp
+    3300002: Tim_Grp_Tim_Hair
+    3300004: Tim_Grp_Tim_LeftChop
+    3300006: Tim_Grp_Tim_Pants
+    3300008: Tim_Grp_Tim_RightChop
+    3300010: Tim_Grp_Tim_Shackle
+    3300012: Tim_Grp_Tim_Shackle_Tim_Chain
+    4300000: Tim_Body_Tim_Grp
+    4300002: Tim_Grp_Tim_Hair
+    4300004: Tim_Grp_Tim_LeftChop
+    4300006: Tim_Grp_Tim_Pants
+    4300008: Tim_Grp_Tim_RightChop
+    4300010: Tim_Grp_Tim_Shackle
+    4300012: Tim_Grp_Tim_Shackle_Tim_Chain
     9500000: //RootNode
-    11100000: //RootNode
-    13700000: pSphere1
   materials:
     importMaterials: 1
     materialName: 0
@@ -41,7 +58,7 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 2
+    animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
@@ -82,11 +99,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD:Assets/Moth/Moth_Anim.fbx.meta
-  animationType: 1
-=======
   animationType: 2
->>>>>>> MergeTestBranch:Assets/Resources/Prefab/Platform/CliffTest.obj.meta
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

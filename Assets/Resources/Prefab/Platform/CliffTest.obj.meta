@@ -1,29 +1,16 @@
 fileFormatVersion: 2
-guid: 76ac08ad3f9900d4293ca52d9b5684c9
-timeCreated: 1449437451
-licenseType: Free
+guid: d9935e268f9d6e346a4d830b5536dfc9
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: joint1
-    100002: joint2
-    100004: joint3
-    100006: joint4
-    100008: joint5
-    100010: //RootNode
-    100012: pSphere1
-    400000: joint1
-    400002: joint2
-    400004: joint3
-    400006: joint4
-    400008: joint5
-    400010: //RootNode
-    400012: pSphere1
-    4300000: pSphere1
-    7400000: Take 001
+    100000: //RootNode
+    100002: pCube126_group1
+    400000: //RootNode
+    400002: pCube126_group1
+    2300000: pCube126_group1
+    3300000: pCube126_group1
+    4300000: pCube126_group1
     9500000: //RootNode
-    11100000: //RootNode
-    13700000: pSphere1
   materials:
     importMaterials: 1
     materialName: 0
@@ -41,7 +28,7 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 2
+    animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
@@ -82,11 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD:Assets/Moth/Moth_Anim.fbx.meta
-  animationType: 1
-=======
   animationType: 2
->>>>>>> MergeTestBranch:Assets/Resources/Prefab/Platform/CliffTest.obj.meta
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
