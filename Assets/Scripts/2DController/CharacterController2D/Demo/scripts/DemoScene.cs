@@ -364,22 +364,15 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDashing)
             {
-                if (_controller.isGrounded)
-                {
-                    if (left)
+             //   if (_controller.isGrounded)
+             //   {
                         _velocity.x = Mathf.Lerp(runSpeed * dashBoost * moveDir.x, runSpeed * dashBoost * moveDir.x, Time.deltaTime);
-                    else
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * moveDir.x, 1 * runSpeed * dashBoost * moveDir.x, Time.deltaTime);
-                }
-                else
-                {
-                    if (left)
-                        _velocity.x = Mathf.Lerp(moveDir.x * runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime);
-                    else
-                        _velocity.x = Mathf.Lerp(moveDir.x * runSpeed * airDashBoost, moveDir.x *  runSpeed * airDashBoost, Time.deltaTime);
-
-                }
-                _velocity.y = Mathf.Lerp(runSpeed * airDashBoost * moveDir.y, runSpeed * airDashBoost * moveDir.y, Time.deltaTime);
+             //   }
+             //   else
+             //   {
+             //           _velocity.x = Mathf.Lerp(moveDir.x * runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime);
+             //   }
+                _velocity.y = Mathf.Lerp(runSpeed * dashBoost * moveDir.y, runSpeed * dashBoost * moveDir.y, Time.deltaTime);
                 if (Input.GetButtonDown("Jump"))
                 {
                     if (_controller.isGrounded)
