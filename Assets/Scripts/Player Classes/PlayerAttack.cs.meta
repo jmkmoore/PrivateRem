@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 guid: 3927911720b1f7a41b78b3d073705001
+timeCreated: 1449720795
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - target: {instanceID: 0}
+  - StrikeParticle: {fileID: 144422, guid: ab481c319a7638a4986be364c23f21f8, type: 2}
+  - myParticle: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

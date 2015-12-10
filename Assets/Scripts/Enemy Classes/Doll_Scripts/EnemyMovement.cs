@@ -300,10 +300,11 @@ public class EnemyMovement : MonoBehaviour {
                 {
                     if (!isBoss)
                     {
-                        if (myHealth.getInvulnState() && knockbackTimer == 0)
+                        if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
                         {
-                            knockbackTimer += Time.deltaTime;
+                            _animator.Play(Animator.StringToHash("HitReaction"));
                         }
+                        knockbackTimer += Time.deltaTime;
                     }
                 }
                 else

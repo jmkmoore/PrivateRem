@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour {
     public float attackKnockbackX = 1000f;
     public float attackKnockbackY = 1000f;
     public float lifetime, maxDur;
+    
+    public GameObject StrikeParticle;
 
     private bool on;
     public GameObject myParticle;
@@ -59,6 +61,7 @@ public class PlayerAttack : MonoBehaviour {
         }
         if (eh != null)
         {
+            Instantiate(StrikeParticle, new Vector3(target.transform.position.x, target.transform.position.y + 4f + gameObject.transform.position.z), new Quaternion(0, 0, 0, 0));
             eh.adjustCurrentHealth(-attackValue);
             
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
@@ -78,10 +81,10 @@ public class PlayerAttack : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other)
     {
       //  Debug.Log(other.name + other.tag);
-        if (other.tag.Equals("Enemy"))
-        {
-            Attack(other.transform.gameObject);
-        }
+      //  if (other.tag.Equals("Enemy"))
+      //  {
+      //      Attack(other.transform.gameObject);
+      //  }
     }
 
     void OnTriggerExit2D(Collider2D other)
