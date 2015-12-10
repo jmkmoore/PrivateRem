@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour {
     public float attackKnockbackX = 1000f;
     public float attackKnockbackY = 1000f;
     private Vector3 attackKnockback;
-    public float lifetime, maxDur;
+    public float frames, activeStart, maxDur;
     public float cooldown;
 
     private bool on;
@@ -25,17 +25,21 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (lifetime != 0)
+        if (frames != 0)
         {
-            lifetime += Time.deltaTime;
+            frames += Time.deltaTime;
         }
-        if (lifetime > maxDur)
+        if(frames > activeStart && frames < maxDur)
+        {
+            myBox.enabled = true;
+        }
+        if (frames > maxDur)
         {
             myBox.enabled = false;
         }
-        if (lifetime > cooldown)
+        if (frames > cooldown)
         {
-            lifetime = 0;
+            frames = 0;
         }
 	}
 
@@ -45,7 +49,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             target = other.gameObject;
         }
-        if (lifetime == 0)
+        if (frames == 0)
         {
             Attack();
         }
@@ -56,7 +60,7 @@ public class EnemyAttack : MonoBehaviour {
  //       Debug.Log(other.name + other.tag);
         if (other.tag.Equals("Player"))
         {
-            if (lifetime == 0 || lifetime > cooldown)
+            if (frames == 0 || frames > cooldown)
             {
                 Attack();
             }
@@ -77,7 +81,7 @@ public class EnemyAttack : MonoBehaviour {
         {
             PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
             ph.adjustCurrentHealth(-attackValue);
-            lifetime += Time.deltaTime;
+            frames += Time.deltaTime;
         }
     //    Vector3 thisKnockback = attackKnockback;
   //      if (gameObject.GetComponentInParent<EnemyMovement>().left)
@@ -96,7 +100,7 @@ public class EnemyAttack : MonoBehaviour {
     public void myBoxSwitch(bool onOrOff)
     {
         Debug.Log("Called");
-        myBox.enabled = onOrOff;
+        frames += Time.deltaTime;
     }
 
     public void inRange(bool inRange)
