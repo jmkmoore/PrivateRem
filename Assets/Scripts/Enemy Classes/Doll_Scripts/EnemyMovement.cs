@@ -50,7 +50,7 @@ public class EnemyMovement : MonoBehaviour {
     private bool isSelfDestroying = false;
 
     public float knockbackMultiplier;
-    public float knockbackTimer;
+    private float knockbackTimer;
     public float knockbackDuration;
 
     void Awake()

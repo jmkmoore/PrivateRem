@@ -199,19 +199,12 @@ public class DemoScene : MonoBehaviour
                     comboCountdown += Time.deltaTime;
                     attack(6);
                 }
-          /**      if (isDashing)
-                {
-                    if (left)
-                        normalizedHorizontalSpeed = -1;
-                    else
-                        normalizedHorizontalSpeed = 1;
-                }**/
                 isBlocking = false;
             }
         }
         #endregion
         
-        if (_controller.isGrounded)
+        if (_controller.isGrounded && !isDashing)
         {
             jumpCount = 0;
             useAirDash = false;
@@ -364,15 +357,20 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDashing)
             {
-             //   if (_controller.isGrounded)
-             //   {
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * moveDir.x, runSpeed * dashBoost * moveDir.x, Time.deltaTime);
-             //   }
-             //   else
-             //   {
-             //           _velocity.x = Mathf.Lerp(moveDir.x * runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime);
-             //   }
-                _velocity.y = Mathf.Lerp(runSpeed * dashBoost * moveDir.y, runSpeed * dashBoost * moveDir.y, Time.deltaTime);
+                if (_controller.isGrounded)
+                {
+                    if(left)
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, runSpeed * dashBoost * -1, Time.deltaTime);
+                    else
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost , runSpeed * dashBoost, Time.deltaTime);
+                }
+                else
+                {
+                    if(left)
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, runSpeed * airDashBoost * -1, Time.deltaTime);
+                    else
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime);
+                }
                 if (Input.GetButtonDown("Jump"))
                 {
                     if (_controller.isGrounded)
@@ -398,7 +396,7 @@ public class DemoScene : MonoBehaviour
             else if (isDiving)
             {
         //        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
-                _velocity.y = gravity * 75f * Time.deltaTime;
+                _velocity.y = gravity * 50f * Time.deltaTime;
             }
             _controller.move(_velocity * Time.deltaTime);
         }

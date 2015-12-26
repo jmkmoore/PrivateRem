@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour {
     private EnemyMovement enemyController;
     private BoxCollider2D myBox;
 
-
     public float attackKnockbackX = 1000f;
     public float attackKnockbackY = 1000f;
     public float lifetime, maxDur;
