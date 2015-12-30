@@ -288,6 +288,11 @@ public class DemoScene : MonoBehaviour
                     }
                 //}
             }
+            else
+            {
+                _animator.Play(Animator.StringToHash("AirAttack"));
+                attack(7);
+            }
         }
 
         #region Block

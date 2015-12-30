@@ -11,6 +11,7 @@ public class AttackController : MonoBehaviour {
     public GameObject sweepBox;
     public GameObject UppercutBox;
     public GameObject ShoulderBox;
+    public GameObject AirBox;
 
     private BoxCollider2D myActiveBox;
 
@@ -47,6 +48,9 @@ public class AttackController : MonoBehaviour {
                 break;
             case 6:
                 ShoulderBox.GetComponent<PlayerAttack>().turnOnAttack();
+                break;
+            case 7:
+                AirBox.GetComponent<PlayerAttack>().turnOnAttack();
                 break;
             default:
                 break;

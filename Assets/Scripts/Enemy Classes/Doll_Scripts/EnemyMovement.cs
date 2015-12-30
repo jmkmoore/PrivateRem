@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour {
 
     public float attackCooldown = 4f;
     private float attackTimer = 0f;
-
+    private int turn;
 
     private Transform previousTransform;
 
@@ -122,8 +122,51 @@ public class EnemyMovement : MonoBehaviour {
                     {
                         attackTimer = 0;
                     }
-                    #region Pumpkin
-                    if (enemyType.Equals("Pumpkin"))
+
+                #region GooSpider
+                if (enemyType.Equals("Goo"))
+                {
+                    if (_controller.isGrounded && !inRange)
+                    {
+                        if (_controller.collisionState.becameGroundedThisFrame)
+                        {
+                            turn = Random.Range(0, 1000);
+                            if (turn < 75)
+                            {
+                                left = !left;
+                            }
+                        }
+                        if (left)
+                        {
+                            normalizedHorizontalSpeed = -1;
+                            if (transform.localScale.x < 0f)
+                                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                        }
+                        else
+                        {
+                            normalizedHorizontalSpeed = 1;
+                            if (transform.localScale.x > 0f)
+                                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                        }
+                        _velocity.y = Mathf.Sqrt(runSpeed * -gravity);
+                        _animator.StopPlayback();
+                        _animator.Play(Animator.StringToHash("Hop"));
+                    }else if(_controller.isGrounded && inRange && attackTimer == 0)
+                    {
+                        _velocity.x = 0;
+                        _animator.Play(Animator.StringToHash("Attack"));
+                        myAttack.myBoxSwitch(true);
+                    }
+                    else if(!_controller.isGrounded)
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                    }
+                }
+
+                #endregion
+
+                #region Pumpkin
+                if (enemyType.Equals("Pumpkin"))
                     {
                         if (_controller.isGrounded)
                         {
@@ -311,14 +354,7 @@ public class EnemyMovement : MonoBehaviour {
                 {
                     if (knockbackTimer == 0)
                     {
-                        if (_controller.isGrounded)
-                        {
-                            _velocity.y = gravity * Time.deltaTime;
-                        }
-                        else
-                        {
-                            _velocity.y += gravity * Time.deltaTime;
-                        }
+                        _velocity.y += gravity * Time.deltaTime;
                     }
                 }
                 _controller.move(_velocity * Time.deltaTime);

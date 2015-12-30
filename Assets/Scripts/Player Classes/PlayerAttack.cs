@@ -60,9 +60,11 @@ public class PlayerAttack : MonoBehaviour {
         }
         if (eh != null)
         {
-            Instantiate(StrikeParticle, new Vector3(target.transform.position.x, target.transform.position.y + 4f + gameObject.transform.position.z), new Quaternion(0, 0, 0, 0));
+            if (StrikeParticle != null)
+            {
+                Instantiate(StrikeParticle, new Vector3(target.transform.position.x, target.transform.position.y + 4f + gameObject.transform.position.z), new Quaternion(0, 0, 0, 0));
+            }
             eh.adjustCurrentHealth(-attackValue);
-            
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
             enemyController.getKnockedBack(thisKnockback);
         }
