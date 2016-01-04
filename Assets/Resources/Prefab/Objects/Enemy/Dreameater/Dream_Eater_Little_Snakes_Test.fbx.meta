@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 74f3a85cceb79fd4bbb7223bcc03d99d
+timeCreated: 1448902470
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    100002: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      1
+    100004: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      2
+    100006: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth01
+    100008: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth02
+    100010: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth03
+    100012: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+    100014: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+      1
+    100016: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+      2
+    100018: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+    100020: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+      1
+    100022: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+      2
+    100024: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+    100026: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      1
+    100028: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      2
+    100030: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      3
+    100032: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      4
+    100034: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      5
+    100036: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+    100038: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+      1
+    100040: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+      2
+    100042: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+    100044: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+      1
+    100046: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+      2
+    100048: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+    100050: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+      1
+    100052: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+      2
+    100054: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+    100056: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+      1
+    100058: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+      2
+    100060: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+    100062: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+      1
+    100064: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+      2
+    100066: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+    100068: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+      1
+    100070: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+      2
+    100072: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+    100074: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+      1
+    100076: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+      2
+    100078: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+    100080: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+      1
+    100082: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+      2
+    100084: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+    100086: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+      1
+    100088: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+      2
+    100090: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+    100092: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+      1
+    100094: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+      2
+    100096: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+    100098: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+      1
+    100100: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+      2
+    100102: //RootNode
+    400000: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    400002: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      1
+    400004: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      2
+    400006: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth01
+    400008: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth02
+    400010: DeamEater_snakes_export_Dream_Eater_Allsnakes_grp_SmallSnake_Bigmouth03
+    400012: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+    400014: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+      1
+    400016: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base01
+      2
+    400018: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+    400020: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+      1
+    400022: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base02
+      2
+    400024: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+    400026: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      1
+    400028: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      2
+    400030: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      3
+    400032: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      4
+    400034: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base03
+      5
+    400036: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+    400038: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+      1
+    400040: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base04
+      2
+    400042: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+    400044: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+      1
+    400046: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_base05
+      2
+    400048: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+    400050: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+      1
+    400052: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_jaw01
+      2
+    400054: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+    400056: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+      1
+    400058: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw01
+      2
+    400060: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+    400062: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+      1
+    400064: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Lowerjaw02
+      2
+    400066: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+    400068: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+      1
+    400070: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue01
+      2
+    400072: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+    400074: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+      1
+    400076: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_Tongue02
+      2
+    400078: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+    400080: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+      1
+    400082: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw01
+      2
+    400084: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+    400086: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+      1
+    400088: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_Bigmouth_bn_upperjaw02
+      2
+    400090: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+    400092: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+      1
+    400094: DeamEater_snakes_export_Dream_Eater_Allsnakes_Smallsnake_bigmouth_cv_base01
+      2
+    400096: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+    400098: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+      1
+    400100: DeamEater_snakes_export_Dream_Eater_Allsnakes_SmallSnake_bn_tongue_end01
+      2
+    400102: //RootNode
+    4300000: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    4300002: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    4300004: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+    13700002: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      1
+    13700004: DeamEater_snakes_export_Dream_Eater_Allsnakes_DreamEater_smallsnakes_wip__1__SmallSnake3
+      2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

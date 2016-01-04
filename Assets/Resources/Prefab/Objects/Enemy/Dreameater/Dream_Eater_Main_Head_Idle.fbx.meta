@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 4286ac211e0db7a4e9b1a71e8e83ccb0
+timeCreated: 1448902470
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BigSnake_bn_base01
+    100002: BigSnake_bn_head01
+    100004: BigSnake_bn_largevine_base01
+    100006: BigSnake_bn_largevine_base01 1
+    100008: BigSnake_bn_largevine_curve01
+    100010: BigSnake_bn_largevine_curve01 1
+    100012: BigSnake_bn_largevine_curve01 2
+    100014: BigSnake_bn_largevine_end01
+    100016: BigSnake_bn_largevine_nearend01
+    100018: BigSnake_bn_largevine_twist_three01
+    100020: BigSnake_bn_largevine_twist_three02
+    100022: BigSnake_bn_largevine_twist_three03
+    100024: BigSnake_bn_largevine_twist_three04
+    100026: BigSnake_bn_largevine_twist_two01
+    100028: BigSnake_bn_largevine_twist_two02
+    100030: BigSnake_bn_largevine_twist_two03
+    100032: BigSnake_bn_largevine_twist_two04
+    100034: BigSnake_bn_leavesloc01
+    100036: BigSnake_bn_lowerjaw_end01
+    100038: BigSnake_bn_lowerjaw_start01
+    100040: Bigsnake_bn_midspike01
+    100042: BigSnake_bn_neck01
+    100044: BigSnake_bn_rib01
+    100046: BigSnake_bn_smallvine01
+    100048: BigSnake_bn_smallvine02
+    100050: BigSnake_bn_smallvine03
+    100052: Bigsnake_bn_socktween01
+    100054: BigSnake_bn_upperjaw_end01
+    100056: BigSnake_bn_upperjaw_start01
+    100058: BigSnake_bn_vinesband01
+    100060: BigSnake_Body
+    100062: BigSnake_body_sgrp01
+    100064: BigSnake_cv_base01
+    100066: BigSnake_cv_base02
+    100068: BigSnake_cv_base03
+    100070: BigSnake_cv_base04
+    100072: BigSnake_cv_base05
+    100074: BigSnake_cv_base06
+    100076: BigSnake_cv_base07
+    100078: BigSnake_cv_head_ctrl01
+    100080: BigSnake_cv_tongue_basebox01
+    100082: BigSnake_sgrp_Leaves
+    100084: BigSnake_Tongue_bn_base01
+    100086: BigSnake_Tongue_bn_Center01
+    100088: BigSnake_Tongue_bn_End01
+    100090: //RootNode
+    100092: grp_BigSnake
+    100094: grp_BigSnake 1
+    100096: grp_bigsnake_leafsRigs01
+    100098: grp_Bigsnake_Rig
+    100100: grp_BigSnake_tongue
+    100102: grp_Snakecontrols01
+    100104: Leaf_five_bn_base01
+    100106: Leaf_five_bn_center01
+    100108: Leaf_five_bn_end01
+    100110: Leaf_four_bn_base01
+    100112: Leaf_four_bn_center01
+    100114: Leaf_four_bn_end01
+    100116: Leaf_one_bn_center01
+    100118: Leaf_one_bn_end01
+    100120: Leaf_one_bn_end01 1
+    100122: Leaf_three_bn_base01
+    100124: Leaf_three_bn_center01
+    100126: Leaf_three_bn_end01
+    100128: Leaf_two_bn_base01
+    100130: Leaf_two_bn_center01
+    100132: Leaf_two_bn_end01
+    400000: BigSnake_bn_base01
+    400002: BigSnake_bn_head01
+    400004: BigSnake_bn_largevine_base01
+    400006: BigSnake_bn_largevine_base01 1
+    400008: BigSnake_bn_largevine_curve01
+    400010: BigSnake_bn_largevine_curve01 1
+    400012: BigSnake_bn_largevine_curve01 2
+    400014: BigSnake_bn_largevine_end01
+    400016: BigSnake_bn_largevine_nearend01
+    400018: BigSnake_bn_largevine_twist_three01
+    400020: BigSnake_bn_largevine_twist_three02
+    400022: BigSnake_bn_largevine_twist_three03
+    400024: BigSnake_bn_largevine_twist_three04
+    400026: BigSnake_bn_largevine_twist_two01
+    400028: BigSnake_bn_largevine_twist_two02
+    400030: BigSnake_bn_largevine_twist_two03
+    400032: BigSnake_bn_largevine_twist_two04
+    400034: BigSnake_bn_leavesloc01
+    400036: BigSnake_bn_lowerjaw_end01
+    400038: BigSnake_bn_lowerjaw_start01
+    400040: Bigsnake_bn_midspike01
+    400042: BigSnake_bn_neck01
+    400044: BigSnake_bn_rib01
+    400046: BigSnake_bn_smallvine01
+    400048: BigSnake_bn_smallvine02
+    400050: BigSnake_bn_smallvine03
+    400052: Bigsnake_bn_socktween01
+    400054: BigSnake_bn_upperjaw_end01
+    400056: BigSnake_bn_upperjaw_start01
+    400058: BigSnake_bn_vinesband01
+    400060: BigSnake_Body
+    400062: BigSnake_body_sgrp01
+    400064: BigSnake_cv_base01
+    400066: BigSnake_cv_base02
+    400068: BigSnake_cv_base03
+    400070: BigSnake_cv_base04
+    400072: BigSnake_cv_base05
+    400074: BigSnake_cv_base06
+    400076: BigSnake_cv_base07
+    400078: BigSnake_cv_head_ctrl01
+    400080: BigSnake_cv_tongue_basebox01
+    400082: BigSnake_sgrp_Leaves
+    400084: BigSnake_Tongue_bn_base01
+    400086: BigSnake_Tongue_bn_Center01
+    400088: BigSnake_Tongue_bn_End01
+    400090: //RootNode
+    400092: grp_BigSnake
+    400094: grp_BigSnake 1
+    400096: grp_bigsnake_leafsRigs01
+    400098: grp_Bigsnake_Rig
+    400100: grp_BigSnake_tongue
+    400102: grp_Snakecontrols01
+    400104: Leaf_five_bn_base01
+    400106: Leaf_five_bn_center01
+    400108: Leaf_five_bn_end01
+    400110: Leaf_four_bn_base01
+    400112: Leaf_four_bn_center01
+    400114: Leaf_four_bn_end01
+    400116: Leaf_one_bn_center01
+    400118: Leaf_one_bn_end01
+    400120: Leaf_one_bn_end01 1
+    400122: Leaf_three_bn_base01
+    400124: Leaf_three_bn_center01
+    400126: Leaf_three_bn_end01
+    400128: Leaf_two_bn_base01
+    400130: Leaf_two_bn_center01
+    400132: Leaf_two_bn_end01
+    4300000: BigSnake_sgrp_Leaves
+    4300002: BigSnake_Body
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BigSnake_Body
+    13700002: BigSnake_sgrp_Leaves
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

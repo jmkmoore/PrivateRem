@@ -4,19 +4,19 @@ using System.Collections;
 public class DiveTrigger : MonoBehaviour {
 
     private GameObject myParent;
-    private DollMovement myDollMovement;
+    private EnemyMovement myDollMovement;
 
     void awake()
     {
         myParent = transform.parent.gameObject;
-        DollMovement myDollMovement = transform.parent.GetComponent<DollMovement>();
+        EnemyMovement myDollMovement = transform.parent.GetComponent<EnemyMovement>();
     }
 
 	void OnColliderEnter2D(Collider2D other)
     {
         if (other.name.Equals("TienHitBox"))
         {
-            myParent.GetComponent<DollMovement>().updateAttack(true);
+            myParent.GetComponent<EnemyMovement>().updateAttack(true);
         }
     }
 
@@ -24,7 +24,7 @@ public class DiveTrigger : MonoBehaviour {
     {
         if (other.name.Equals("TienHitBox"))
         {
-            myParent.GetComponent<DollMovement>().updateAttack(false);
+            myParent.GetComponent<EnemyMovement>().updateAttack(false);
         }
     }
 

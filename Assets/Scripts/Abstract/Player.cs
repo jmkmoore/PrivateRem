@@ -11,7 +11,7 @@ public abstract class Player : TienEntity {
 		player.properties = props;
 		player.IsAlive = true;
 
-		GameObject bullet = GameObject.Instantiate (Resources.Load ("Prefab/AttackObjects/bullet")) as GameObject;
+
 
 
 		GameManager.getInstance().RegisterEntity(player);

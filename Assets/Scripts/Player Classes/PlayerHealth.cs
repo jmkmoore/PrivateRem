@@ -9,10 +9,14 @@ public class PlayerHealth : MonoBehaviour {
     public float invulnTime = 1f;
     private float invulnTimer = 0f;
     public bool invuln = false;
+
+    public bool isBlocking = false;
+    public float blockTimer = 0f;
+    public float parryTimer = 0.25f;
+    
     // Use this for initialization
 	void Start () {
 		myself = gameObject;
-	    
 	}
 	
 	// Update is called once per frame
@@ -26,34 +30,50 @@ public class PlayerHealth : MonoBehaviour {
             invuln = false;
             invulnTimer = 0f;
         }
-		
-						
+        if (isBlocking)
+            blockTimer += Time.deltaTime;
+        else
+            blockTimer = 0f;
 	}
 
 	public void adjustCurrentHealth(int adj){
-        if (adj < 0)
+        if (isBlocking)
         {
-            if(!invuln){
+            if (blockTimer < parryTimer){
+                currentHealth -= adj;
+                adj = 0;
+            }
+            else
+            {
+                adj = adj * 1 / 2;
                 currentHealth += adj;
-                if (currentHealth > 100)
-                    currentHealth = maxHealth;
-                if (currentHealth < 1)
-                    currentHealth = 0;
-                invuln = true;
-                invulnTimer += Time.deltaTime;
             }
         }
-        if (adj > 0)
+        else
         {
-            Debug.Log("Healing");
-            currentHealth += adj;
-            if (currentHealth > 100)
-                currentHealth = maxHealth;
+            if (adj < 0)
+            {
+                if (!invuln)
+                {
+                    currentHealth += adj;
+                    invuln = true;
+                    invulnTimer += Time.deltaTime;
+                }
+            }
         }
-		
+        if (currentHealth < 1)
+            currentHealth = 0;
 
-		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
+
+		//TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
 		}
-		
 
-	}
+    public void updateBlocking(bool onOff)
+    {
+        isBlocking = onOff;
+        if (!isBlocking)
+        {
+            blockTimer = 0f;
+        }
+    }
+}

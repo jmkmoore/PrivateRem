@@ -1,0 +1,27 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 06.10.2015 03:08:46
+
+mtllib Webbing_05_v1.mtl
+
+#
+# object webbing5_01
+#
+
+v  -90.000000 -90.000000 -0.000015
+v  90.000000 -90.000000 -0.000015
+v  -90.000000 90.000000 0.000014
+v  90.000000 90.000000 0.000014
+# 4 vertices
+
+vt 0.000000 0.000000 0.000000
+vt 1.000000 0.000000 0.000000
+vt 0.000000 1.000000 0.000000
+vt 1.000000 1.000000 0.000000
+# 4 texture coords
+
+g webbing5_01
+usemtl 08___Default
+s 1
+f 3/3 1/1 2/2 4/4 
+# 1 polygons
+

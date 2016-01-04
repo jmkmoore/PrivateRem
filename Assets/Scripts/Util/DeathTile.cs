@@ -3,8 +3,9 @@ using System.Collections;
 
 public class DeathTile : MonoBehaviour {
 
-	void OnTriggerEnter(Collider other)
+	void OnTrigger2DEnter(Collider2D other)
 	{
 		if(other.tag == "Player") other.GetComponent<Player>().KillPlayer();
-	}
+        Debug.Log(other.name);
+    }
 }

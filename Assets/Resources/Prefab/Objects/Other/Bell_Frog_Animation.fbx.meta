@@ -1,0 +1,432 @@
+fileFormatVersion: 2
+guid: 07d10a5b38af9204f8874b3da6c792f0
+timeCreated: 1449182145
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: COG
+    100004: Eye1_Lower1
+    100006: Eye1_Lower2
+    100008: Eye1_Lower3
+    100010: Eye1_Upper1
+    100012: Eye1_Upper2
+    100014: Eye1_Upper3
+    100016: Eye2_Lower1
+    100018: Eye2_Lower2
+    100020: Eye2_Lower3
+    100022: Eye2_Upper1
+    100024: Eye2_Upper2
+    100026: Eye2_Upper3
+    100028: Eye3_Lower1
+    100030: Eye3_Lower2
+    100032: Eye3_Lower3
+    100034: Eye3_Upper1
+    100036: Eye3_Upper2
+    100038: Eye3_Upper3
+    100040: Eyeball1
+    100042: Eyeball2
+    100044: Eyeball3
+    100046: Frogbellv13_ForRigging:Arms
+    100048: Frogbellv13_ForRigging:Brick
+    100050: Frogbellv13_ForRigging:Eyes
+    100052: Frogbellv13_ForRigging:Frog_Body
+    100054: Frogbellv13_ForRigging:L_Arm
+    100056: Frogbellv13_ForRigging:L_Bell
+    100058: Frogbellv13_ForRigging:L_Eye
+    100060: Frogbellv13_ForRigging:M_Arm
+    100062: Frogbellv13_ForRigging:M_Bell
+    100064: Frogbellv13_ForRigging:M_eye
+    100066: Frogbellv13_ForRigging:MainBody
+    100068: Frogbellv13_ForRigging:R_arm
+    100070: Frogbellv13_ForRigging:R_Bell
+    100072: Frogbellv13_ForRigging:R_eye
+    100074: group
+    100076: group1
+    100078: group2
+    100080: group3
+    100082: group4
+    100084: Hand1_Finger1_1
+    100086: Hand1_Finger2_1
+    100088: Hand1_Finger3_1
+    100090: Hand1_Joint1
+    100092: Hand1_Joint2
+    100094: Hand1_Joint3
+    100096: Hand1_Joint4
+    100098: Hand2_Finger1_1
+    100100: Hand2_Finger2_1
+    100102: Hand2_Finger3_1
+    100104: Hand2_Joint1
+    100106: Hand2_Joint2
+    100108: Hand2_Joint3
+    100110: Hand2_Joint4
+    100112: Hand3_Finger1_1
+    100114: Hand3_Finger2_1
+    100116: Hand3_Finger3_1
+    100118: Hand3_Joint1
+    100120: Hand3_Joint2
+    100122: Hand3_Joint3
+    100124: Hand3_Joint4
+    100126: ikHandle1
+    100128: ikHandle2
+    100130: ikHandle3
+    100132: joint1
+    100134: joint11
+    100136: joint13
+    100138: joint15
+    100140: joint17
+    100142: joint3
+    100144: joint5
+    100146: joint7
+    100148: joint9
+    100150: pasted__group
+    400000: //RootNode
+    400002: COG
+    400004: Eye1_Lower1
+    400006: Eye1_Lower2
+    400008: Eye1_Lower3
+    400010: Eye1_Upper1
+    400012: Eye1_Upper2
+    400014: Eye1_Upper3
+    400016: Eye2_Lower1
+    400018: Eye2_Lower2
+    400020: Eye2_Lower3
+    400022: Eye2_Upper1
+    400024: Eye2_Upper2
+    400026: Eye2_Upper3
+    400028: Eye3_Lower1
+    400030: Eye3_Lower2
+    400032: Eye3_Lower3
+    400034: Eye3_Upper1
+    400036: Eye3_Upper2
+    400038: Eye3_Upper3
+    400040: Eyeball1
+    400042: Eyeball2
+    400044: Eyeball3
+    400046: Frogbellv13_ForRigging:Arms
+    400048: Frogbellv13_ForRigging:Brick
+    400050: Frogbellv13_ForRigging:Eyes
+    400052: Frogbellv13_ForRigging:Frog_Body
+    400054: Frogbellv13_ForRigging:L_Arm
+    400056: Frogbellv13_ForRigging:L_Bell
+    400058: Frogbellv13_ForRigging:L_Eye
+    400060: Frogbellv13_ForRigging:M_Arm
+    400062: Frogbellv13_ForRigging:M_Bell
+    400064: Frogbellv13_ForRigging:M_eye
+    400066: Frogbellv13_ForRigging:MainBody
+    400068: Frogbellv13_ForRigging:R_arm
+    400070: Frogbellv13_ForRigging:R_Bell
+    400072: Frogbellv13_ForRigging:R_eye
+    400074: group
+    400076: group1
+    400078: group2
+    400080: group3
+    400082: group4
+    400084: Hand1_Finger1_1
+    400086: Hand1_Finger2_1
+    400088: Hand1_Finger3_1
+    400090: Hand1_Joint1
+    400092: Hand1_Joint2
+    400094: Hand1_Joint3
+    400096: Hand1_Joint4
+    400098: Hand2_Finger1_1
+    400100: Hand2_Finger2_1
+    400102: Hand2_Finger3_1
+    400104: Hand2_Joint1
+    400106: Hand2_Joint2
+    400108: Hand2_Joint3
+    400110: Hand2_Joint4
+    400112: Hand3_Finger1_1
+    400114: Hand3_Finger2_1
+    400116: Hand3_Finger3_1
+    400118: Hand3_Joint1
+    400120: Hand3_Joint2
+    400122: Hand3_Joint3
+    400124: Hand3_Joint4
+    400126: ikHandle1
+    400128: ikHandle2
+    400130: ikHandle3
+    400132: joint1
+    400134: joint11
+    400136: joint13
+    400138: joint15
+    400140: joint17
+    400142: joint3
+    400144: joint5
+    400146: joint7
+    400148: joint9
+    400150: pasted__group
+    2300000: Frogbellv13_ForRigging:Brick
+    2300002: Frogbellv13_ForRigging:L_Bell
+    2300004: Frogbellv13_ForRigging:L_Eye
+    2300006: Frogbellv13_ForRigging:M_Bell
+    2300008: Frogbellv13_ForRigging:M_eye
+    2300010: Frogbellv13_ForRigging:R_Bell
+    2300012: Frogbellv13_ForRigging:R_eye
+    3300000: Frogbellv13_ForRigging:Brick
+    3300002: Frogbellv13_ForRigging:L_Bell
+    3300004: Frogbellv13_ForRigging:L_Eye
+    3300006: Frogbellv13_ForRigging:M_Bell
+    3300008: Frogbellv13_ForRigging:M_eye
+    3300010: Frogbellv13_ForRigging:R_Bell
+    3300012: Frogbellv13_ForRigging:R_eye
+    4300000: Frogbellv13_ForRigging:M_eye
+    4300002: Frogbellv13_ForRigging:Frog_Body
+    4300004: Frogbellv13_ForRigging:R_eye
+    4300006: Frogbellv13_ForRigging:L_Eye
+    4300008: Frogbellv13_ForRigging:Brick
+    4300010: Frogbellv13_ForRigging:R_Bell
+    4300012: Frogbellv13_ForRigging:L_Bell
+    4300014: Frogbellv13_ForRigging:M_Bell
+    4300016: Frogbellv13_ForRigging:L_Arm
+    4300018: Frogbellv13_ForRigging:M_Arm
+    4300020: Frogbellv13_ForRigging:R_arm
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Frogbellv13_ForRigging:Frog_Body
+    13700002: Frogbellv13_ForRigging:L_Arm
+    13700004: Frogbellv13_ForRigging:M_Arm
+    13700006: Frogbellv13_ForRigging:R_arm
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 360
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Eyeball1
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Lower1
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Lower2
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Lower3
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Upper1
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Upper2
+        weight: 1
+      - path: COG/Eyeball1/Eye1_Upper3
+        weight: 1
+      - path: COG/Eyeball2
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Lower1
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Lower2
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Lower3
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Upper1
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Upper2
+        weight: 1
+      - path: COG/Eyeball2/Eye2_Upper3
+        weight: 1
+      - path: COG/Eyeball3
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Lower1
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Lower2
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Lower3
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Upper1
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Upper2
+        weight: 1
+      - path: COG/Eyeball3/Eye3_Upper3
+        weight: 1
+      - path: Frogbellv13_ForRigging:Arms
+        weight: 1
+      - path: Frogbellv13_ForRigging:Arms/Frogbellv13_ForRigging:L_Arm
+        weight: 1
+      - path: Frogbellv13_ForRigging:Arms/Frogbellv13_ForRigging:M_Arm
+        weight: 1
+      - path: Frogbellv13_ForRigging:Arms/Frogbellv13_ForRigging:R_arm
+        weight: 1
+      - path: Frogbellv13_ForRigging:L_Bell
+        weight: 1
+      - path: Frogbellv13_ForRigging:M_Bell
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:Brick
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:Eyes
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:Eyes/Frogbellv13_ForRigging:L_Eye
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:Eyes/Frogbellv13_ForRigging:R_eye
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:Frog_Body
+        weight: 1
+      - path: Frogbellv13_ForRigging:MainBody/Frogbellv13_ForRigging:M_eye
+        weight: 1
+      - path: Frogbellv13_ForRigging:R_Bell
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group/Hand3_Joint1
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger1_1
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger1_1/joint17
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger2_1
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger2_1/joint15
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger3_1
+        weight: 1
+      - path: group/Hand3_Joint1/Hand3_Joint2/Hand3_Joint3/Hand3_Joint4/Hand3_Finger3_1/joint13
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__group
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger1_1
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger1_1/joint5
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger2_1
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger2_1/joint3
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger3_1
+        weight: 1
+      - path: group1/pasted__group/Hand1_Joint1/Hand1_Joint2/Hand1_Joint3/Hand1_Joint4/Hand1_Finger3_1/joint1
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group3
+        weight: 1
+      - path: group4
+        weight: 1
+      - path: Hand2_Joint1
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger1_1
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger1_1/joint11
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger2_1
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger2_1/joint9
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger3_1
+        weight: 1
+      - path: Hand2_Joint1/Hand2_Joint2/Hand2_Joint3/Hand2_Joint4/Hand2_Finger3_1/joint7
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

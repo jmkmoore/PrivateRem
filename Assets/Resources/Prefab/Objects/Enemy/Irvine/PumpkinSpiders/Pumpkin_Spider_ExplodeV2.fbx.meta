@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: e3c903a183ef30841b2ef448b0f94d62
+timeCreated: 1448854569
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: COG
+    100002: Left_Back_Base
+    100004: Left_Back_Handle
+    100006: Left_Back_Leg1
+    100008: Left_Back_Leg2
+    100010: Left_Back_Leg3
+    100012: Left_Back_Leg4
+    100014: Left_Back_Leg5
+    100016: Left_Front_Base
+    100018: Left_Front_Handle
+    100020: Left_Front_Leg1
+    100022: Left_Front_Leg2
+    100024: Left_Front_Leg3
+    100026: Left_Front_Leg4
+    100028: Left_Front_Leg5
+    100030: Left_Middle_Base
+    100032: Left_Middle_Handle
+    100034: Left_Middle_Leg1
+    100036: Left_Middle_Leg2
+    100038: Left_Middle_Leg3
+    100040: Left_Middle_Leg4
+    100042: Left_Middle_Leg5
+    100044: //RootNode
+    100046: PumpkinSpider:polySurface1
+    100048: PumpkinSpider:polySurface1_MeshPart0
+    100050: PumpkinSpider:polySurface1_MeshPart1
+    100052: Right_Back_Base
+    100054: Right_Back_Handle
+    100056: Right_Back_Leg1
+    100058: Right_Back_Leg2
+    100060: Right_Back_Leg3
+    100062: Right_Back_Leg4
+    100064: Right_Back_Leg5
+    100066: Right_Front_Base
+    100068: Right_Front_Handle
+    100070: Right_Front_Leg1
+    100072: Right_Front_Leg2
+    100074: Right_Front_Leg3
+    100076: Right_Front_Leg4
+    100078: Right_Front_Leg5
+    100080: Right_Middle_Base
+    100082: Right_Middle_Handle
+    100084: Right_Middle_Leg1
+    100086: Right_Middle_Leg2
+    100088: Right_Middle_Leg3
+    100090: Right_Middle_Leg4
+    100092: Right_Middle_Leg5
+    400000: COG
+    400002: Left_Back_Base
+    400004: Left_Back_Handle
+    400006: Left_Back_Leg1
+    400008: Left_Back_Leg2
+    400010: Left_Back_Leg3
+    400012: Left_Back_Leg4
+    400014: Left_Back_Leg5
+    400016: Left_Front_Base
+    400018: Left_Front_Handle
+    400020: Left_Front_Leg1
+    400022: Left_Front_Leg2
+    400024: Left_Front_Leg3
+    400026: Left_Front_Leg4
+    400028: Left_Front_Leg5
+    400030: Left_Middle_Base
+    400032: Left_Middle_Handle
+    400034: Left_Middle_Leg1
+    400036: Left_Middle_Leg2
+    400038: Left_Middle_Leg3
+    400040: Left_Middle_Leg4
+    400042: Left_Middle_Leg5
+    400044: //RootNode
+    400046: PumpkinSpider:polySurface1
+    400048: PumpkinSpider:polySurface1_MeshPart0
+    400050: PumpkinSpider:polySurface1_MeshPart1
+    400052: Right_Back_Base
+    400054: Right_Back_Handle
+    400056: Right_Back_Leg1
+    400058: Right_Back_Leg2
+    400060: Right_Back_Leg3
+    400062: Right_Back_Leg4
+    400064: Right_Back_Leg5
+    400066: Right_Front_Base
+    400068: Right_Front_Handle
+    400070: Right_Front_Leg1
+    400072: Right_Front_Leg2
+    400074: Right_Front_Leg3
+    400076: Right_Front_Leg4
+    400078: Right_Front_Leg5
+    400080: Right_Middle_Base
+    400082: Right_Middle_Handle
+    400084: Right_Middle_Leg1
+    400086: Right_Middle_Leg2
+    400088: Right_Middle_Leg3
+    400090: Right_Middle_Leg4
+    400092: Right_Middle_Leg5
+    4300000: PumpkinSpider:polySurface1_MeshPart0
+    4300002: PumpkinSpider:polySurface1_MeshPart1
+    7400000: Pumpkin_Spider_Explode
+    9500000: //RootNode
+    13700000: PumpkinSpider:polySurface1_MeshPart0
+    13700002: PumpkinSpider:polySurface1_MeshPart1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

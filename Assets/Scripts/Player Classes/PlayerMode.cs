@@ -8,6 +8,7 @@ public class PlayerMode : MonoBehaviour {
     public float buffTime = 5f;
     public float timer = 0f;
     public float speed = 1f;
+    public float resetCount = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -25,13 +26,20 @@ public class PlayerMode : MonoBehaviour {
             speed = 1f;
             mode = "normal";
             timer = 0f;
+            resetCount = 0f;
         }
 	}
 
     public void resetTimer()
     {
-        speed *= 2;
+        speed += .05f;
         timer = 0f;
         mode = "speed";
+        resetCount += 1;
+    }
+
+    public float getResetCount()
+    {
+        return resetCount;
     }
 }
