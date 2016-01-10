@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="70">
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="2816674014" DateHigh="30492256"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Attenuations\Default Work Unit.wwu" DateLow="461349044" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Control Surface Sessions\Default Work Unit.wwu" DateLow="461574063" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Conversion Settings\Default Work Unit.wwu" DateLow="461863705" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Conversion Settings\Factory Conversion Settings.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Dynamic Dialogue\Default Work Unit.wwu" DateLow="461304003" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Effects\Default Work Unit.wwu" DateLow="461189480" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Effects\Factory Effects.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Events\Default Work Unit.wwu" DateLow="2936559091" DateHigh="30492255"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Game Parameters\Default Work Unit.wwu" DateLow="461124412" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="3416353449" DateHigh="30492179"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="461059367" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Mixing Sessions\Default Work Unit.wwu" DateLow="461398874" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Modulators\Default Work Unit.wwu" DateLow="461514018" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Presets\Default Work Unit.wwu" DateLow="461818679" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Queries\Default Work Unit.wwu" DateLow="461244560" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Queries\Factory Queries.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\REM.Nyl.wsettings" DateLow="1524015746" DateHigh="30492257"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\REM.wproj" DateLow="4218169526" DateHigh="30492172"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\SoundBanks\Default Work Unit.wwu" DateLow="3123260586" DateHigh="30492255"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Soundcaster Sessions\Default Work Unit.wwu" DateLow="461728573" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\States\Default Work Unit.wwu" DateLow="461448905" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Switches\Default Work Unit.wwu" DateLow="915062856" DateHigh="30492171"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Desktop\PrivateRem-ReleaseMerge\PrivateRem-ReleaseMerge\Assets\REM\Triggers\Default Work Unit.wwu" DateLow="461773614" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="460989328" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Attenuations\Default Work Unit.wwu" DateLow="461349044" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Control Surface Sessions\Default Work Unit.wwu" DateLow="461574063" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Conversion Settings\Default Work Unit.wwu" DateLow="461863705" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Conversion Settings\Factory Conversion Settings.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Dynamic Dialogue\Default Work Unit.wwu" DateLow="461304003" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Effects\Default Work Unit.wwu" DateLow="461189480" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Effects\Factory Effects.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Events\Default Work Unit.wwu" DateLow="460864175" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Game Parameters\Default Work Unit.wwu" DateLow="461124412" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="461673494" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="461059367" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Mixing Sessions\Default Work Unit.wwu" DateLow="461398874" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Modulators\Default Work Unit.wwu" DateLow="461514018" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Presets\Default Work Unit.wwu" DateLow="461818679" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Queries\Default Work Unit.wwu" DateLow="461244560" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Queries\Factory Queries.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\REM.wproj" DateLow="460764016" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\SoundBanks\Default Work Unit.wwu" DateLow="461628453" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Soundcaster Sessions\Default Work Unit.wwu" DateLow="461728573" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\States\Default Work Unit.wwu" DateLow="461448905" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Switches\Default Work Unit.wwu" DateLow="460924298" DateHigh="30492170"/>
+	<ValidationCacheItem File="C:\Users\Nyl\Documents\WwiseProjects\REM\Triggers\Default Work Unit.wwu" DateLow="461773614" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="830901578" DateHigh="30493191"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Attenuations\Default Work Unit.wwu" DateLow="461349044" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Control Surface Sessions\Default Work Unit.wwu" DateLow="461574063" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Conversion Settings\Default Work Unit.wwu" DateLow="461863705" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Conversion Settings\Factory Conversion Settings.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Dynamic Dialogue\Default Work Unit.wwu" DateLow="461304003" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Effects\Default Work Unit.wwu" DateLow="461189480" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Effects\Factory Effects.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Events\Default Work Unit.wwu" DateLow="2559910162" DateHigh="30493251"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Game Parameters\Default Work Unit.wwu" DateLow="461124412" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="987590590" DateHigh="30493251"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="461059367" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Mixing Sessions\Default Work Unit.wwu" DateLow="461398874" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Modulators\Default Work Unit.wwu" DateLow="461514018" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Presets\Default Work Unit.wwu" DateLow="461818679" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Queries\Default Work Unit.wwu" DateLow="461244560" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Queries\Factory Queries.wwu" DateLow="751421696" DateHigh="30449224"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\REM.Nyl.wsettings" DateLow="2455646887" DateHigh="30493252"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\REM.wproj" DateLow="1338511885" DateHigh="30493169"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\SoundBanks\Default Work Unit.wwu" DateLow="2415076694" DateHigh="30493252"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Soundcaster Sessions\Default Work Unit.wwu" DateLow="461728573" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\States\Default Work Unit.wwu" DateLow="461448905" DateHigh="30492170"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Switches\Default Work Unit.wwu" DateLow="915062856" DateHigh="30492171"/>
+	<ValidationCacheItem File="D:\PrivateRem\Assets\REMWwise\Triggers\Default Work Unit.wwu" DateLow="461773614" DateHigh="30492170"/>
+</ValidationCache>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{528F0AB9-57AB-4E77-8F39-92E964FF8722}" SchemaVersion="70">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{528F0AB9-57AB-4E77-8F39-92E964FF8722}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Tien" ID="{BF8B2E76-2AFF-4949-B61A-BD902A7E0A5D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Tien" ID="{6A9B0607-81BF-4AD1-A500-821047A4DA12}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Idle" ID="{9B6E3F98-DCF7-4873-8F22-DA1A7889B098}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playIdle" ID="{40AE26B4-4CEC-45A1-AB42-03DD2F33A0B3}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playCross" ID="{3461E3C8-BE4C-40D2-B0E3-6431B1367802}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playJab" ID="{DD8C8AD3-BFC9-46A7-AA10-347802E0A00C}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playKick" ID="{2851A1D4-DDA1-4E60-BC49-84E61B4C466B}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playDash" ID="{FF0AE2E1-623A-4A6F-ACF9-2B51611594F2}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="fs_run_stone" ID="{B7E24BF7-C034-41F0-9903-B9F0F46B0D0E}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playFootsteps" ID="{31B9B0F9-DAF9-4EAF-93AB-B0CACD2FBD7B}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playJump" ID="{9421EFFA-ECF7-45AD-A3DE-64800C3486C6}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Music" ID="{2F9383AF-4044-47A2-95D3-953FD7C9C477}">
+					<ObjectInclusionList>
+						<ObjectRef Name="playMinibossMusic" ID="{6E88CB1C-C12B-43C2-9188-9560D1E30635}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Tiens mini boss" ID="{3DDDA94C-96DE-461F-96B7-5315B5A808DA}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playIrvineMusic" ID="{399BE14D-5CCD-4131-9E2C-0B024BC80113}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="continueLevelMusic" ID="{8DF44F67-7472-426A-AE59-C4888F65BA9C}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Irvine Music Fight Final" ID="{30706CDD-B10C-449A-ADC5-4E26AD626EB2}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="playOpeningMusic" ID="{2E0617E6-7B0B-4F9C-B92C-3D3C371F32CA}" WorkUnitID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

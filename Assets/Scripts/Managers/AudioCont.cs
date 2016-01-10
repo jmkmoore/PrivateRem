@@ -3,27 +3,41 @@ using System.Collections;
 
 public class AudioCont : MonoBehaviour {
 
-    public AudioSource tienMain;
-    public AudioSource tien2;
-    public AudioSource Irvine;
-
-    public AudioSource myAudioSource;
+ 
 
 	// Use this for initialization
 	void Start () {
-        myAudioSource = gameObject.GetComponent<AudioSource>();
-	
-	}
+        if (transform.localPosition.x < 2690)
+        {
+            AkSoundEngine.PostEvent("playOpeningMusic", gameObject);
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.localPosition.x > 2700 && transform.localPosition.x < 5300)
+
+        if (transform.localPosition.x > 2690 && transform.localPosition.x < 2691)
         {
-            tien2.Play();
+            AkSoundEngine.PostEvent("playMinibossMusic", gameObject);
         }
-        else if (transform.localPosition.x > 5300)
+
+        if (transform.localPosition.x > 3090 && transform.localPosition.x < 3091)
         {
-            Irvine.Play();
+            AkSoundEngine.PostEvent("continueLevelMusic", gameObject);
         }
-	}
+
+
+        if (transform.localPosition.x > 5300 && transform.localPosition.x < 5301)
+        {
+            AkSoundEngine.PostEvent("playIrvineMusic", gameObject);
+        }
+
+
+        //else if (transform.localPosition.x > 5300)
+        //{
+        //    AkSoundEngine.PostEvent("playIrvineMusic", gameObject);
+        //}
+    }
 }
