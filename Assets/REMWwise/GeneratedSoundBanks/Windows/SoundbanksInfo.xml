@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="10" SoundbankVersion="113">
+	<RootPaths>
+		<ProjectRoot>D:\PrivateRem\Assets\REMWwise\</ProjectRoot>
+		<SourceFilesRoot>D:\PrivateRem\Assets\REMWwise\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\PrivateRem\Assets\REMWwise\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\PrivateRem\Assets\REMWwise\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2788587065" Language="SFX">
+			<ShortName>Tien</ShortName>
+			<Path>Tien.bnk</Path>
+			<IncludedEvents>
+				<Event Id="941281393" Name="playCross"/>
+				<Event Id="1030691167" Name="playDash"/>
+				<Event Id="1088348632" Name="playFootsteps"/>
+				<Event Id="532810969" Name="playIdle"/>
+				<Event Id="1769361486" Name="playJab"/>
+				<Event Id="1717476791" Name="playJump"/>
+				<Event Id="3490755565" Name="playKick"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="12172509" Language="SFX">
+					<ShortName>Tien_Cross.wav</ShortName>
+					<Path>SFX\Tien_Cross_9E69E797.wem</Path>
+				</File>
+				<File Id="13539624" Language="SFX">
+					<ShortName>Tien_Run_A_Step09.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step09_9E69E797.wem</Path>
+				</File>
+				<File Id="38322630" Language="SFX">
+					<ShortName>Tien_Run_A_Step08.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step08_9E69E797.wem</Path>
+				</File>
+				<File Id="51144394" Language="SFX">
+					<ShortName>Tien_RunB_Step08.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step08_9E69E797.wem</Path>
+				</File>
+				<File Id="102474165" Language="SFX">
+					<ShortName>Tien_RunB_Step05.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step05_9E69E797.wem</Path>
+				</File>
+				<File Id="110161063" Language="SFX">
+					<ShortName>Tien_Jump_B.wav</ShortName>
+					<Path>SFX\Tien_Jump_B_9E69E797.wem</Path>
+				</File>
+				<File Id="120849241" Language="SFX">
+					<ShortName>Tien_Dash_A.wav</ShortName>
+					<Path>SFX\Tien_Dash_A_9E69E797.wem</Path>
+				</File>
+				<File Id="124069621" Language="SFX">
+					<ShortName>Tien_RunC_Step07.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step07_9E69E797.wem</Path>
+				</File>
+				<File Id="128598398" Language="SFX">
+					<ShortName>Tien_RunB_Step02.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step02_9E69E797.wem</Path>
+				</File>
+				<File Id="158338878" Language="SFX">
+					<ShortName>Tien_RunC_Step08.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step08_9E69E797.wem</Path>
+				</File>
+				<File Id="159441907" Language="SFX">
+					<ShortName>Tien_RunB_Step06.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step06_9E69E797.wem</Path>
+				</File>
+				<File Id="160381071" Language="SFX">
+					<ShortName>Tien_Jab_B.wav</ShortName>
+					<Path>SFX\Tien_Jab_B_9E69E797.wem</Path>
+				</File>
+				<File Id="164136678" Language="SFX">
+					<ShortName>Tien_RunC_Step09.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step09_9E69E797.wem</Path>
+				</File>
+				<File Id="198876471" Language="SFX">
+					<ShortName>Tien_Run_A_Step10.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step10_9E69E797.wem</Path>
+				</File>
+				<File Id="201696141" Language="SFX">
+					<ShortName>Tien_RunC_Step01.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step01_9E69E797.wem</Path>
+				</File>
+				<File Id="206355643" Language="SFX">
+					<ShortName>Tien_RunC_Step06.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step06_9E69E797.wem</Path>
+				</File>
+				<File Id="254045597" Language="SFX">
+					<ShortName>Tien_Run_A_Step06.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step06_9E69E797.wem</Path>
+				</File>
+				<File Id="286965456" Language="SFX">
+					<ShortName>Tien_Run_A_Step05.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step05_9E69E797.wem</Path>
+				</File>
+				<File Id="320234854" Language="SFX">
+					<ShortName>Tien_Jump.wav</ShortName>
+					<Path>SFX\Tien_Jump_9E69E797.wem</Path>
+				</File>
+				<File Id="327271404" Language="SFX">
+					<ShortName>Tien_Run_A_Step07.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step07_9E69E797.wem</Path>
+				</File>
+				<File Id="355634493" Language="SFX">
+					<ShortName>Tien_RunC_Step05.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step05_9E69E797.wem</Path>
+				</File>
+				<File Id="356758495" Language="SFX">
+					<ShortName>Tien_RunC_Step02.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step02_9E69E797.wem</Path>
+				</File>
+				<File Id="481322210" Language="SFX">
+					<ShortName>Tien_RunC_Step03.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step03_9E69E797.wem</Path>
+				</File>
+				<File Id="483638593" Language="SFX">
+					<ShortName>Tien_Kick_C.wav</ShortName>
+					<Path>SFX\Tien_Kick_C_9E69E797.wem</Path>
+				</File>
+				<File Id="501833452" Language="SFX">
+					<ShortName>Tien_Run_A_Step04.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step04_9E69E797.wem</Path>
+				</File>
+				<File Id="512819668" Language="SFX">
+					<ShortName>Tien_RunB_Step04.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step04_9E69E797.wem</Path>
+				</File>
+				<File Id="537513289" Language="SFX">
+					<ShortName>Tien_RunB_Step03.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step03_9E69E797.wem</Path>
+				</File>
+				<File Id="569247765" Language="SFX">
+					<ShortName>Tien_RunB_Step10.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step10_9E69E797.wem</Path>
+				</File>
+				<File Id="660548023" Language="SFX">
+					<ShortName>Tien_RunC_Step04.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step04_9E69E797.wem</Path>
+				</File>
+				<File Id="684213384" Language="SFX">
+					<ShortName>Tien_Idle_C.wav</ShortName>
+					<Path>SFX\Tien_Idle_C_9E69E797.wem</Path>
+				</File>
+				<File Id="723383457" Language="SFX">
+					<ShortName>Tien_Run_A_Step02.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step02_9E69E797.wem</Path>
+				</File>
+				<File Id="732873203" Language="SFX">
+					<ShortName>Tien_Dash_B.wav</ShortName>
+					<Path>SFX\Tien_Dash_B_9E69E797.wem</Path>
+				</File>
+				<File Id="799101757" Language="SFX">
+					<ShortName>Tien_Run_A_Step03.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step03_9E69E797.wem</Path>
+				</File>
+				<File Id="800451901" Language="SFX">
+					<ShortName>Tien_Run_A_Step01.wav</ShortName>
+					<Path>SFX\Tien_Run_A_Step01_9E69E797.wem</Path>
+				</File>
+				<File Id="870100174" Language="SFX">
+					<ShortName>Tien_Idle_B.wav</ShortName>
+					<Path>SFX\Tien_Idle_B_9E69E797.wem</Path>
+				</File>
+				<File Id="894491042" Language="SFX">
+					<ShortName>Tien_Idle_A.wav</ShortName>
+					<Path>SFX\Tien_Idle_A_9E69E797.wem</Path>
+				</File>
+				<File Id="960011770" Language="SFX">
+					<ShortName>Tien_RunB_Step01.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step01_9E69E797.wem</Path>
+				</File>
+				<File Id="974336586" Language="SFX">
+					<ShortName>Tien_Kick_B.wav</ShortName>
+					<Path>SFX\Tien_Kick_B_9E69E797.wem</Path>
+				</File>
+				<File Id="982883151" Language="SFX">
+					<ShortName>Tien_RunC_Step10.wav</ShortName>
+					<Path>SFX\Tien_RunC_Step10_9E69E797.wem</Path>
+				</File>
+				<File Id="1017026980" Language="SFX">
+					<ShortName>Tien_RunB_Step07.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step07_9E69E797.wem</Path>
+				</File>
+				<File Id="1072449695" Language="SFX">
+					<ShortName>Tien_RunB_Step09.wav</ShortName>
+					<Path>SFX\Tien_RunB_Step09_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="3991942870" Language="SFX">
+			<ShortName>Music</ShortName>
+			<Path>Music.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3731766245" Name="continueLevelMusic"/>
+				<Event Id="657088515" Name="playIrvineMusic"/>
+				<Event Id="2637429218" Name="playMinibossMusic"/>
+				<Event Id="17415398" Name="playOpeningMusic"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="178627136" Language="SFX">
+					<ShortName>Tiens mini boss.wav</ShortName>
+					<Path>SFX\Tiens mini boss_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="200559466" Language="SFX">
+					<ShortName>Demo Level Tiens Wav.wav</ShortName>
+					<Path>SFX\Demo Level Tiens Wav_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="944071093" Language="SFX">
+					<ShortName>Irvine Music Fight Final.wav</ShortName>
+					<Path>SFX\Irvine Music Fight Final_4B8CC0C5.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

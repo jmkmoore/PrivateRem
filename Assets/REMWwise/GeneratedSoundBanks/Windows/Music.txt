@@ -1,0 +1,11 @@
+Event	ID	Name			Wwise Object Path	Notes
+	17415398	playOpeningMusic			\Default Work Unit\playOpeningMusic	
+	657088515	playIrvineMusic			\Default Work Unit\playIrvineMusic	
+	2637429218	playMinibossMusic			\Default Work Unit\playMinibossMusic	
+	3731766245	continueLevelMusic			\Default Work Unit\continueLevelMusic	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	178627136	Tiens mini boss	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tiens mini boss_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\LevelMusic\Tiens mini boss\Tiens mini boss		10179136
+	200559466	Demo Level Tiens Wav	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Demo Level Tiens Wav_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\LevelMusic\Demo Level Tiens Wav\Demo Level Tiens Wav		34874344
+	944071093	Irvine Music Fight Final	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Irvine Music Fight Final_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\LevelMusic\Irvine Music Fight Final\Irvine Music Fight Final		14065984
+

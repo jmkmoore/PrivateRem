@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{116912F0-373F-41DB-BF95-EA128DD569F2}" SchemaVersion="70">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{116912F0-373F-41DB-BF95-EA128DD569F2}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="LevelMusic" ID="{84246DC8-1CAA-4A82-BB6E-3C287DE0AA83}" ShortID="82516207">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="Irvine Music Fight Final" ID="{30706CDD-B10C-449A-ADC5-4E26AD626EB2}" ShortID="322233506">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="159477.551020408"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Irvine Music Fight Final" ID="{0687AE16-6F9D-469C-8C5F-1BF043C77DE4}" ShortID="267003871">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Irvine Music Fight Final" ID="{EA097608-4E77-46D5-9AB9-165EBA5C333E}" ShortID="944071093">
+											<Language>SFX</Language>
+											<AudioFile>Irvine Music Fight Final.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{2440CE75-297C-4F3F-96CA-B5BDABFFD9FE}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{B2E61446-5BB3-4FCB-A667-59F88466192A}">
+											<ClipList>
+												<MusicClip Name="Irvine Music Fight Final" ID="{8D20D4A0-F2CF-435A-AB3F-512FC385FFA9}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="159477.551020408"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Irvine Music Fight Final" ID="{EA097608-4E77-46D5-9AB9-165EBA5C333E}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{AB749E41-96E9-4D9F-A3F6-2C98CD6F00A9}"/>
+								<MusicCue Name="Exit Cue" ID="{0F540527-384C-4C09-A458-E6AA7B08F84A}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="159477.551020408"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+						<MusicSegment Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" ShortID="484291899">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="395400"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Demo Level Tiens Wav" ID="{202E978C-FD21-4F2D-B932-3347B5F4779D}" ShortID="45535602">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Demo Level Tiens Wav" ID="{0777999D-97BE-43B6-AA43-3B787C4F759A}" ShortID="200559466">
+											<Language>SFX</Language>
+											<AudioFile>Demo Level Tiens Wav.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{A88918D1-B88F-4A78-917E-1BC5E93F7BF3}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{90CEAE6B-6F61-4E28-8526-3D548A3C391F}">
+											<ClipList>
+												<MusicClip Name="Demo Level Tiens Wav" ID="{70CEB725-10FF-44F9-8165-96F6E16E65FD}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="395400"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Demo Level Tiens Wav" ID="{0777999D-97BE-43B6-AA43-3B787C4F759A}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{35EC1F0A-104E-4097-9023-D0CE02EB9B8A}"/>
+								<MusicCue Name="Exit Cue" ID="{6913B44A-7020-49F2-89F6-88E8F405AEA0}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="309080.816326531"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+						<MusicSegment Name="Tiens mini boss" ID="{3DDDA94C-96DE-461F-96B7-5315B5A808DA}" ShortID="965577114">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="115408.979591837"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Tiens mini boss" ID="{D61D9CFE-555B-40B6-B9BA-C1BE94696674}" ShortID="861940600">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tiens mini boss" ID="{035AE6AE-090F-4D2E-AD13-F01C1E23399E}" ShortID="178627136">
+											<Language>SFX</Language>
+											<AudioFile>Tiens mini boss.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{51AFCEEA-36BE-49F1-935D-2294B573B198}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{68047184-9032-475A-BD25-E27F38EA8B04}">
+											<ClipList>
+												<MusicClip Name="Tiens mini boss" ID="{FEB7DBAF-FB7E-4895-81F9-8FD397F44FD8}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="115408.979591837"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Tiens mini boss" ID="{035AE6AE-090F-4D2E-AD13-F01C1E23399E}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{D4577783-63D9-47B4-B43C-B20FA9F0CA1E}"/>
+								<MusicCue Name="Exit Cue" ID="{D34B8EC2-B386-4890-93F8-8A768EC443F7}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="115408.979591837"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{E6D41B60-CFED-48BD-AB1C-35D0715A0F25}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{5923855E-D865-4F4A-9B32-B0BB20E44AEE}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{1EB26A46-5798-4B6A-A39F-0DAFFFED62B6}" ShortID="449224125"/>
+					</Playlist>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>

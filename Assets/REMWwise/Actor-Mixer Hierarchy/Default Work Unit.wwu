@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}" SchemaVersion="70">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Tien" ID="{6A9B0607-81BF-4AD1-A500-821047A4DA12}" ShortID="947478715">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="Footsteps" ID="{CBB5BDE1-FF82-40C4-AE55-424FF127C7A9}" ShortID="296537594">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="fs_run_grass" ID="{CBA2E975-F032-494C-81DF-EC656577809B}" ShortID="683340302">
+									<PropertyList>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{4F38EA14-F279-4F40-BED6-2A39A7232888}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Tien_RunC_Step01" ID="{78104F74-8328-4CB2-BC31-EF609C2C2410}" ShortID="912165401" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step01" ID="{A76E8640-DB3B-43BD-88A9-58E8CFBF8E09}" ShortID="201696141">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step01.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step01" ID="{A76E8640-DB3B-43BD-88A9-58E8CFBF8E09}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step02" ID="{B4258A7A-4F5D-4EC0-A3F5-EB2580ED34ED}" ShortID="563696486" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step02" ID="{C8308FCC-6220-412D-A801-7D39B1637F43}" ShortID="356758495">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step02.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step02" ID="{C8308FCC-6220-412D-A801-7D39B1637F43}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step03" ID="{06E5BDBE-0492-4AA1-9E48-CBDE9C065258}" ShortID="405893458" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step03" ID="{E4A3EF54-9235-4189-88EA-5FF67B97AE48}" ShortID="481322210">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step03.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step03" ID="{E4A3EF54-9235-4189-88EA-5FF67B97AE48}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step04" ID="{7D10D981-4D13-4C4B-92DC-7526DA29D669}" ShortID="118301615" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step04" ID="{B6CD5AB3-5EAB-47ED-ABD2-558CF88A5D87}" ShortID="660548023">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step04.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step04" ID="{B6CD5AB3-5EAB-47ED-ABD2-558CF88A5D87}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step05" ID="{C181CEC4-D89F-4FF3-A910-D4299C0336A2}" ShortID="732840862" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step05" ID="{964DAB3E-3B63-484E-9FD6-F9100375E7EE}" ShortID="355634493">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step05.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step05" ID="{964DAB3E-3B63-484E-9FD6-F9100375E7EE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step06" ID="{27AB2EFB-94DF-4CBC-8F87-10E8DBA25F5F}" ShortID="871335949" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step06" ID="{780BEB17-FA38-41B8-8D4D-CD2F46CFC710}" ShortID="206355643">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step06.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step06" ID="{780BEB17-FA38-41B8-8D4D-CD2F46CFC710}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step07" ID="{435F2804-C0D5-408B-87AB-23C554F90EB2}" ShortID="583303049" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step07" ID="{24CD48C7-602B-4438-9477-2372AFE410A9}" ShortID="124069621">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step07.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step07" ID="{24CD48C7-602B-4438-9477-2372AFE410A9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step08" ID="{EEA82983-702C-47B5-A999-D7DBCD20D083}" ShortID="1044456063" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step08" ID="{529C127D-2A48-4708-8DB7-FA6356377362}" ShortID="158338878">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step08.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step08" ID="{529C127D-2A48-4708-8DB7-FA6356377362}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step09" ID="{C9DAA75F-9ED9-401F-9607-61A17A9566C7}" ShortID="295559495" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step09" ID="{5ABBDC87-568F-4DAE-83A8-50597EA6FD59}" ShortID="164136678">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step09.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step09" ID="{5ABBDC87-568F-4DAE-83A8-50597EA6FD59}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunC_Step10" ID="{42780339-7E68-4363-822D-193D8522C532}" ShortID="698229249" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunC_Step10" ID="{47E15600-1B57-4B6C-9B23-990B3F6C40AA}" ShortID="982883151">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunC_Step10.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunC_Step10" ID="{47E15600-1B57-4B6C-9B23-990B3F6C40AA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="fs_run_gravel" ID="{1E06E8FB-1998-4EB1-8328-EBBCCBF6FB79}" ShortID="785621285">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Tien_RunB_Step01" ID="{5961AE88-368A-403A-8FB6-107B1DAFB0C5}" ShortID="237289908" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step01" ID="{A9D8D736-23F0-42AC-AEEA-20E16EA16EB4}" ShortID="960011770">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step01.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step01" ID="{A9D8D736-23F0-42AC-AEEA-20E16EA16EB4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step02" ID="{2BA5EB76-2600-401E-83D8-B4DCD1F3980D}" ShortID="607596811" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step02" ID="{21069A05-BCB8-40AB-83E5-AFC737ECE1C1}" ShortID="128598398">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step02.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step02" ID="{21069A05-BCB8-40AB-83E5-AFC737ECE1C1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step03" ID="{E8C7E6AC-FAEC-46F6-A067-9F046001428C}" ShortID="787447018" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step03" ID="{8620E8AA-62E7-4AC5-85F5-2F2BD635831A}" ShortID="537513289">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step03.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step03" ID="{8620E8AA-62E7-4AC5-85F5-2F2BD635831A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step04" ID="{3016C442-C6B1-498F-9AFB-30FDEDAE8A6F}" ShortID="565427869" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step04" ID="{813E2C84-7987-43D8-996B-D712113BA770}" ShortID="512819668">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step04.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step04" ID="{813E2C84-7987-43D8-996B-D712113BA770}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step05" ID="{AFFDD9B6-2050-4019-871B-1B8AAAD7628A}" ShortID="379719800" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step05" ID="{09D2408B-D336-468F-962A-EE3AD1D19BB6}" ShortID="102474165">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step05.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step05" ID="{09D2408B-D336-468F-962A-EE3AD1D19BB6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step06" ID="{27AA30F9-522D-4FE3-A43C-523890419C07}" ShortID="841900729" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step06" ID="{C4FC7D04-7D32-41D0-8F76-2C5F4AF1956C}" ShortID="159441907">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step06.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step06" ID="{C4FC7D04-7D32-41D0-8F76-2C5F4AF1956C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step07" ID="{3C7E6DEB-B0F5-4999-A839-95584682BB2E}" ShortID="994258573" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step07" ID="{CFDE9F12-FFA0-4C8D-BCA2-248F9B916DE1}" ShortID="1017026980">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step07.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step07" ID="{CFDE9F12-FFA0-4C8D-BCA2-248F9B916DE1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step08" ID="{0750BE51-858B-4034-800E-A272FB6B6129}" ShortID="829508177" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step08" ID="{AFCB36A2-E613-4FE3-9F54-2031F76B18F5}" ShortID="51144394">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step08.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step08" ID="{AFCB36A2-E613-4FE3-9F54-2031F76B18F5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step09" ID="{878141F6-FB58-4B02-BB44-A2CB7D77512E}" ShortID="21582658" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step09" ID="{E5FA4008-C5CA-4895-9100-09DBD22F4E6B}" ShortID="1072449695">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step09.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step09" ID="{E5FA4008-C5CA-4895-9100-09DBD22F4E6B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_RunB_Step10" ID="{974BA825-EE2F-4563-8B87-A0BF1A2AC809}" ShortID="769091151" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_RunB_Step10" ID="{E835D4FE-86F2-42FB-9B3D-9EFDD891A7D9}" ShortID="569247765">
+													<Language>SFX</Language>
+													<AudioFile>Tien_RunB_Step10.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_RunB_Step10" ID="{E835D4FE-86F2-42FB-9B3D-9EFDD891A7D9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="fs_run_stone" ID="{B7E24BF7-C034-41F0-9903-B9F0F46B0D0E}" ShortID="86907046">
+									<PropertyList>
+										<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{6664883C-0650-4689-982E-259ECB3C6F28}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Tien_Run_A_Step01" ID="{E38CE227-D898-430B-B723-C16C9506B863}" ShortID="72715874" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step01" ID="{6BC4E187-3600-44A6-BA67-1F94CBB53C71}" ShortID="800451901">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step01.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step01" ID="{6BC4E187-3600-44A6-BA67-1F94CBB53C71}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step02" ID="{3C3803FC-CAD6-4E01-A700-52B7EBD82720}" ShortID="809322441" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step02" ID="{10311E62-72EB-4FF0-8C39-406B3F9DBB30}" ShortID="723383457">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step02.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step02" ID="{10311E62-72EB-4FF0-8C39-406B3F9DBB30}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step03" ID="{58865DC6-4BA7-4175-A9CB-8C204C5D6DA8}" ShortID="762551351" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step03" ID="{B18AE8D5-4ABC-420B-AA7D-9B88A617AE29}" ShortID="799101757">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step03.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step03" ID="{B18AE8D5-4ABC-420B-AA7D-9B88A617AE29}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step04" ID="{B3FBF72F-C3D1-4BEE-BE18-A2AE5350DCEF}" ShortID="23864735" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step04" ID="{4B044626-8549-4E13-8811-8DD1654D921C}" ShortID="501833452">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step04.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step04" ID="{4B044626-8549-4E13-8811-8DD1654D921C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step05" ID="{4EDF2591-318F-4497-B3E5-77256019999C}" ShortID="925207212" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step05" ID="{EEC554BD-12C3-4112-823D-B97AAEAC2B97}" ShortID="286965456">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step05.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step05" ID="{EEC554BD-12C3-4112-823D-B97AAEAC2B97}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step06" ID="{5AB814E3-DD14-426C-8175-1C9CDC9CD174}" ShortID="844257825" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step06" ID="{6E1E65CE-B314-4F80-A3FF-604888E33885}" ShortID="254045597">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step06.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step06" ID="{6E1E65CE-B314-4F80-A3FF-604888E33885}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step07" ID="{916E1C64-C082-4A9A-A6D0-63BCF914EEB1}" ShortID="537790" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step07" ID="{8A13E7CD-1672-4EBB-9896-414A0141728A}" ShortID="327271404">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step07.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step07" ID="{8A13E7CD-1672-4EBB-9896-414A0141728A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step08" ID="{04770E99-1E71-4844-879D-739AFAA86F86}" ShortID="817157586" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step08" ID="{89E9AE3D-9A74-4BF4-9FBF-A4B8B9AD370F}" ShortID="38322630">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step08.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step08" ID="{89E9AE3D-9A74-4BF4-9FBF-A4B8B9AD370F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step09" ID="{D65E498E-5F7A-4C07-9A31-6CABF73CD84C}" ShortID="659843995" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step09" ID="{0134C938-F4BF-4BE2-BF89-F7474FBD0155}" ShortID="13539624">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step09.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step09" ID="{0134C938-F4BF-4BE2-BF89-F7474FBD0155}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Tien_Run_A_Step10" ID="{375AE0FD-08C2-441D-BFAE-33C5FFB21FB5}" ShortID="918992099" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Tien_Run_A_Step10" ID="{ED5847F9-26E1-4A5D-8723-2EE037ACE72A}" ShortID="198876471">
+													<Language>SFX</Language>
+													<AudioFile>Tien_Run_A_Step10.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Tien_Run_A_Step10" ID="{ED5847F9-26E1-4A5D-8723-2EE037ACE72A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupRef Name="Footsteps" ID="{F66BFDC9-D2AF-4D9B-B238-B41E32E2E9CF}"/>
+								<DefaultSwitchRef Name="Stone" ID="{579B3001-6683-42D0-8A33-453AF38D7252}"/>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="fs_run_grass" ID="{CBA2E975-F032-494C-81DF-EC656577809B}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="fs_run_stone" ID="{B7E24BF7-C034-41F0-9903-B9F0F46B0D0E}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="fs_run_gravel" ID="{1E06E8FB-1998-4EB1-8328-EBBCCBF6FB79}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Stone" ID="{579B3001-6683-42D0-8A33-453AF38D7252}"/>
+										<ItemList>
+											<ItemRef Name="fs_run_stone" ID="{B7E24BF7-C034-41F0-9903-B9F0F46B0D0E}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Gravel" ID="{42C14A52-A1C4-4929-A300-2A9FC6855859}"/>
+										<ItemList>
+											<ItemRef Name="fs_run_gravel" ID="{1E06E8FB-1998-4EB1-8328-EBBCCBF6FB79}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Grass" ID="{BD56C0F8-2E2E-4CD7-89D2-A437222211F8}"/>
+										<ItemList>
+											<ItemRef Name="fs_run_grass" ID="{CBA2E975-F032-494C-81DF-EC656577809B}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+						<RandomSequenceContainer Name="Jump" ID="{D7FBE33A-940B-404E-98E4-7C9D965079D0}" ShortID="288794245">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-730</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{9A7E4848-0851-4856-B8CA-59DD79C28577}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tien_Jump" ID="{45B9DD53-B6C0-4363-BA48-76FBD63E48B0}" ShortID="1036039772" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>250</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Jump" ID="{08FE4D92-0968-497D-BD51-DEA52DEC0D5F}" ShortID="320234854">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Jump.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Jump" ID="{08FE4D92-0968-497D-BD51-DEA52DEC0D5F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Jump_B" ID="{B71F4F34-6CDA-41AD-B8BC-6A034FD178DC}" ShortID="129961313" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Jump_B" ID="{0EA8DE69-3093-4C37-A78D-88548CFC45E7}" ShortID="110161063">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Jump_B.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Jump_B" ID="{0EA8DE69-3093-4C37-A78D-88548CFC45E7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Idle" ID="{9B6E3F98-DCF7-4873-8F22-DA1A7889B098}" ShortID="137012004">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tien_Idle_A" ID="{8105D10E-E909-4147-90DA-E15693190AC9}" ShortID="806998399" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Idle_A" ID="{CC1E9465-45E2-48F2-8B54-01D0BCBBCFA9}" ShortID="894491042">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Idle_A.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Idle_A" ID="{CC1E9465-45E2-48F2-8B54-01D0BCBBCFA9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Idle_B" ID="{2707F8CC-7CFA-4B9F-AB8A-214B928D2BDF}" ShortID="625912500" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Idle_B" ID="{3FEB5DB1-60AE-40A8-B934-C26BC4A26DF5}" ShortID="870100174">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Idle_B.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Idle_B" ID="{3FEB5DB1-60AE-40A8-B934-C26BC4A26DF5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Idle_C" ID="{FDAFA1D8-048C-4D30-9F39-A2886B18936D}" ShortID="928279867" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Idle_C" ID="{6B696A41-9875-4267-81B3-B1FFAE518031}" ShortID="684213384">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Idle_C.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Idle_C" ID="{6B696A41-9875-4267-81B3-B1FFAE518031}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Jab" ID="{FFF56273-421A-4287-B572-0DDC81E7E248}" ShortID="1073535570">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tien_Jab_A" ID="{F342F74B-FBA6-4FCB-BC2F-36CC737608C9}" ShortID="448681072" Type="SoundFX">
+									<ExcludedPlatformList>
+										<Platform>Windows</Platform>
+									</ExcludedPlatformList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Jab_A" ID="{28267A6E-5FDC-4B39-8CFE-B279E003DFBC}" ShortID="411833989">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Jab_A.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Jab_A" ID="{28267A6E-5FDC-4B39-8CFE-B279E003DFBC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Jab_B" ID="{C53678D5-B732-47B9-9B6B-FFDC5BDAF86C}" ShortID="650901966" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{57B9F1C7-5699-4E47-BD60-B881B22D16A9}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Jab_B" ID="{96194C60-111B-4952-8C32-EE2DA7418972}" ShortID="160381071">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Jab_B.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Jab_B" ID="{96194C60-111B-4952-8C32-EE2DA7418972}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Dash" ID="{6718D108-3B2F-45BC-BD10-3D58C984F314}" ShortID="174915621">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-510</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tien_Dash_A" ID="{E6554838-3213-4C65-B269-EBDCEE55989D}" ShortID="852223589" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Dash_A" ID="{2BDFD63A-B941-4F2D-B589-10487D3E3EA0}" ShortID="120849241">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Dash_A.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Dash_A" ID="{2BDFD63A-B941-4F2D-B589-10487D3E3EA0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Dash_B" ID="{00DB53A4-76F3-40A1-85C4-CB1A5EB775FE}" ShortID="659170320" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Dash_B" ID="{8E41BF97-7182-4BF4-AB6B-FC55CD981D7F}" ShortID="732873203">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Dash_B.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Dash_B" ID="{8E41BF97-7182-4BF4-AB6B-FC55CD981D7F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Kick" ID="{7D03CDF5-9520-41F9-B6E1-1F735D3DDB01}" ShortID="574342384">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>430</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tien_Kick_A" ID="{9502266B-58CB-427D-A344-9DE5A66D0962}" ShortID="168739210" Type="SoundFX">
+									<ExcludedPlatformList>
+										<Platform>Windows</Platform>
+									</ExcludedPlatformList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Kick_A" ID="{C3C096C2-FC57-487B-968F-6D481D00A3D0}" ShortID="910366538">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Kick_A.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Kick_A" ID="{C3C096C2-FC57-487B-968F-6D481D00A3D0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Kick_B" ID="{90DCAA2A-2AD1-4000-88FE-A78D350B0E47}" ShortID="162332018" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Kick_B" ID="{7E2500FA-A231-46E1-B4B2-F0C105A1C27B}" ShortID="974336586">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Kick_B.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Kick_B" ID="{7E2500FA-A231-46E1-B4B2-F0C105A1C27B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Tien_Kick_C" ID="{F62F1E33-A367-42E1-BD4A-94B731F99CDD}" ShortID="376596339" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tien_Kick_C" ID="{40242A0E-8F26-48AB-8C97-282D30E7A731}" ShortID="483638593">
+											<Language>SFX</Language>
+											<AudioFile>Tien_Kick_C.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tien_Kick_C" ID="{40242A0E-8F26-48AB-8C97-282D30E7A731}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<Sound Name="Tien_Cross" ID="{3AC41731-EB19-474A-A415-4869596DB598}" ShortID="38694305" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{158563F9-B246-4B3D-9666-3C797DAB0A40}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{901C0655-04BA-4264-A148-7B97893E56F8}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Tien_Cross" ID="{1874D9BF-6250-43A5-95D1-E966C43F3505}" ShortID="12172509">
+									<Language>SFX</Language>
+									<AudioFile>Tien_Cross.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Tien_Cross" ID="{1874D9BF-6250-43A5-95D1-E966C43F3505}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

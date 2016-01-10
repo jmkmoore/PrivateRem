@@ -1,0 +1,60 @@
+Event	ID	Name			Wwise Object Path	Notes
+	532810969	playIdle			\Default Work Unit\playIdle	
+	941281393	playCross			\Default Work Unit\playCross	
+	1030691167	playDash			\Default Work Unit\playDash	
+	1088348632	playFootsteps			\Default Work Unit\playFootsteps	
+	1717476791	playJump			\Default Work Unit\playJump	
+	1769361486	playJab			\Default Work Unit\playJab	
+	3490755565	playKick			\Default Work Unit\playKick	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2385628198	Footsteps			\Default Work Unit\Footsteps	
+
+Switch	ID	Name	Switch Group			Notes
+	1216965916	Stone	Footsteps			
+	2185786256	Gravel	Footsteps			
+	4248645337	Grass	Footsteps			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	12172509	Tien_Cross	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Cross_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Tien_Cross		99948
+	13539624	Tien_Run_A_Step09	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step09		45780
+	38322630	Tien_Run_A_Step08	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step08		50212
+	51144394	Tien_RunB_Step08	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step08		50288
+	102474165	Tien_RunB_Step05	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step05		52036
+	110161063	Tien_Jump_B	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Jump_B_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Jump\Tien_Jump_B		95560
+	120849241	Tien_Dash_A	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Dash_A_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Dash\Tien_Dash_A		85164
+	124069621	Tien_RunC_Step07	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step07		51204
+	128598398	Tien_RunB_Step02	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step02		52288
+	158338878	Tien_RunC_Step08	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step08		49860
+	159441907	Tien_RunB_Step06	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step06		50080
+	160381071	Tien_Jab_B	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Jab_B_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Jab\Tien_Jab_B		85144
+	164136678	Tien_RunC_Step09	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step09		50496
+	198876471	Tien_Run_A_Step10	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step10		32744
+	201696141	Tien_RunC_Step01	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step01		51520
+	206355643	Tien_RunC_Step06	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step06		50064
+	254045597	Tien_Run_A_Step06	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step06		50048
+	286965456	Tien_Run_A_Step05	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step05		49060
+	320234854	Tien_Jump	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Jump_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Jump\Tien_Jump		95560
+	327271404	Tien_Run_A_Step07	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step07		43636
+	355634493	Tien_RunC_Step05	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step05		51992
+	356758495	Tien_RunC_Step02	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step02		52288
+	481322210	Tien_RunC_Step03	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step03		51676
+	483638593	Tien_Kick_C	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Kick_C_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Kick\Tien_Kick_C		143436
+	501833452	Tien_Run_A_Step04	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step04		45444
+	512819668	Tien_RunB_Step04	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step04		50752
+	537513289	Tien_RunB_Step03	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step03		51676
+	569247765	Tien_RunB_Step10	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step10		32744
+	660548023	Tien_RunC_Step04	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step04		50684
+	684213384	Tien_Idle_C	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Idle_C_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Idle\Tien_Idle_C		438740
+	723383457	Tien_Run_A_Step02	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step02		48844
+	732873203	Tien_Dash_B	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Dash_B_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Dash\Tien_Dash_B		85164
+	799101757	Tien_Run_A_Step03	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step03		49720
+	800451901	Tien_Run_A_Step01	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Run_A_Step01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_stone\Tien_Run_A_Step01		50484
+	870100174	Tien_Idle_B	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Idle_B_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Idle\Tien_Idle_B		438740
+	894491042	Tien_Idle_A	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Idle_A_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Idle\Tien_Idle_A		438740
+	960011770	Tien_RunB_Step01	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step01		51520
+	974336586	Tien_Kick_B	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_Kick_B_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Kick\Tien_Kick_B		97728
+	982883151	Tien_RunC_Step10	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunC_Step10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_grass\Tien_RunC_Step10		32168
+	1017026980	Tien_RunB_Step07	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step07		51236
+	1072449695	Tien_RunB_Step09	D:\PrivateRem\Assets\REMWwise\.cache\Windows\SFX\Tien_RunB_Step09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Tien\Footsteps\fs_run_gravel\Tien_RunB_Step09		50672
+

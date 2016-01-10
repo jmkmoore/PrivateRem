@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" SchemaVersion="70">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{8237CDE1-97AD-4FB4-97C2-0C09FCBCE05A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="playDash" ID="{FF0AE2E1-623A-4A6F-ACF9-2B51611594F2}">
+					<ChildrenList>
+						<Action Name="Play" ID="{264BA3A4-A834-4B2D-BC08-9E5F93285287}" ShortID="193578828" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{21051467-46AE-4C32-8895-A6EB51BB00FA}" Global="false">
+									<ObjectRef Name="Dash" ID="{6718D108-3B2F-45BC-BD10-3D58C984F314}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playIdle" ID="{40AE26B4-4CEC-45A1-AB42-03DD2F33A0B3}">
+					<ChildrenList>
+						<Action Name="Play" ID="{61893D3E-1DBF-4C6E-9414-36D98E68BDC9}" ShortID="899896375" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{BD8AE8D4-ABBF-40D2-AB47-2AF29F76AACF}" Global="false">
+									<ObjectRef Name="Idle" ID="{9B6E3F98-DCF7-4873-8F22-DA1A7889B098}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playJump" ID="{9421EFFA-ECF7-45AD-A3DE-64800C3486C6}">
+					<ChildrenList>
+						<Action Name="Play" ID="{7E5A9B55-8736-4C04-9978-D6280831057D}" ShortID="598750205" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{E9069B2E-52EC-4DB7-AF65-E936CA740382}" Global="false">
+									<ObjectRef Name="Jump" ID="{D7FBE33A-940B-404E-98E4-7C9D965079D0}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playJab" ID="{DD8C8AD3-BFC9-46A7-AA10-347802E0A00C}">
+					<ChildrenList>
+						<Action Name="Play" ID="{FCD8651C-9D1E-446D-8AFB-F6281AA81A32}" ShortID="977215300" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{8E42BC55-B0C3-4788-B879-2AE3450EF287}" Global="false">
+									<ObjectRef Name="Jab" ID="{FFF56273-421A-4287-B572-0DDC81E7E248}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playFootsteps" ID="{31B9B0F9-DAF9-4EAF-93AB-B0CACD2FBD7B}">
+					<ChildrenList>
+						<Action Name="Play" ID="{ADB41AC6-D8BC-467D-88E1-61C57B4AA3AE}" ShortID="729333409" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3BB6E2E0-4F5B-48BC-B269-B4AAECD933F6}" Global="false">
+									<ObjectRef Name="fs_run_stone" ID="{B7E24BF7-C034-41F0-9903-B9F0F46B0D0E}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playKick" ID="{2851A1D4-DDA1-4E60-BC49-84E61B4C466B}">
+					<ChildrenList>
+						<Action Name="Play" ID="{D7A624B5-8E5F-4917-B129-58B1D6DD8A29}" ShortID="851067065" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{E73C59B8-D274-41AF-93C9-F5363E211546}" Global="false">
+									<ObjectRef Name="Kick" ID="{7D03CDF5-9520-41F9-B6E1-1F735D3DDB01}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playCross" ID="{3461E3C8-BE4C-40D2-B0E3-6431B1367802}">
+					<ChildrenList>
+						<Action Name="Play" ID="{979E91A9-2F3E-4E75-B11F-5D01102FC0F0}" ShortID="420118097" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{5C11D820-2B78-4409-9362-96D36566EE46}" Global="false">
+									<ObjectRef Name="Tien_Cross" ID="{3AC41731-EB19-474A-A415-4869596DB598}" WorkUnitID="{4FB28102-5F20-4716-BB14-EDBE8A8C1E08}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playOpeningMusic" ID="{2E0617E6-7B0B-4F9C-B92C-3D3C371F32CA}">
+					<ChildrenList>
+						<Action Name="Play" ID="{41D8C65B-13E9-4E29-99B4-39AE43EBF0F2}" ShortID="871907414" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{29FA12DC-8DF0-4EC2-9BF9-409DCC907884}" Global="false">
+									<ObjectRef Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playIrvineMusic" ID="{399BE14D-5CCD-4131-9E2C-0B024BC80113}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{B3879E33-1DC1-4E9C-A6E7-07254CAAC642}" ShortID="461929530" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{CF51EC3C-340F-45B3-AC1A-B5A3BA9F4F17}" Global="false">
+									<ObjectRef Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{B6114070-4F42-478E-B79C-79035EE418BA}" ShortID="253455442" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{685D6B45-0D46-44FF-AB0B-3DED43FDA920}" Global="false">
+									<ObjectRef Name="Irvine Music Fight Final" ID="{30706CDD-B10C-449A-ADC5-4E26AD626EB2}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="playMinibossMusic" ID="{6E88CB1C-C12B-43C2-9188-9560D1E30635}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{E79E68BB-128C-486F-841C-75C97310102C}" ShortID="814991570" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{793C4EC3-02B8-4483-A1FB-0C84A9E0C11F}" Global="false">
+									<ObjectRef Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{22711801-BC27-4CC9-B816-378F6C12195C}" ShortID="64410608" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{8365B93A-C357-4E54-86F9-0C7D43699F7B}" Global="false">
+									<ObjectRef Name="Tiens mini boss" ID="{3DDDA94C-96DE-461F-96B7-5315B5A808DA}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="continueLevelMusic" ID="{8DF44F67-7472-426A-AE59-C4888F65BA9C}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{748640D0-1128-4BBF-9807-A9F333FBDAF9}" ShortID="434090662" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{CCE371DD-34FB-45BF-9629-AC92783A0A68}" Global="false">
+									<ObjectRef Name="Tiens mini boss" ID="{3DDDA94C-96DE-461F-96B7-5315B5A808DA}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{C4D41F54-7538-426D-B410-6E8167B35EA3}" ShortID="254297674" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{246008A7-AFF6-46F6-A357-59337AFECE3B}" Global="false">
+									<ObjectRef Name="Demo Level Tiens Wav" ID="{785EC153-B7C0-4951-B33B-008EAD434746}" WorkUnitID="{116912F0-373F-41DB-BF95-EA128DD569F2}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
