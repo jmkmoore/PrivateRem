@@ -22,7 +22,9 @@ public class EnemyMovement : MonoBehaviour {
     private int direction = 1;
 
     public float attackCooldown = 4f;
-    private float attackTimer = 0f;
+    public float attackTimer = 0f;
+    public float attackDuration = 1f;
+
     private int turn;
 
     private Transform previousTransform;
@@ -49,6 +51,9 @@ public class EnemyMovement : MonoBehaviour {
     public float myDeathTimer;
     private bool isSelfDestroying = false;
 
+    private float idleDuration = 0f;
+    public float idleTime = 0.5f;
+
     public float knockbackMultiplier;
     private float knockbackTimer;
     public float knockbackDuration;
@@ -57,6 +62,10 @@ public class EnemyMovement : MonoBehaviour {
     {
         renderer = GetComponentInChildren<Renderer>();
         _animator = GetComponent<Animator>();
+        if (_animator == null)
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
         _controller = GetComponent<CharacterController2D>();
 
         // listen to some events for illustration purposes
@@ -292,7 +301,62 @@ public class EnemyMovement : MonoBehaviour {
                         }
                     }
                     #endregion
+
+                    #region Turtle
+                    if (enemyType.Equals("Turtle"))
+                    {
+                        if (_controller.isGrounded && !inRange && attackTimer == 0)
+                        {
+                            if (left)
+                            {
+                                normalizedHorizontalSpeed = -1;
+                                if (transform.localScale.x < 0f)
+                                    transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                            }
+                            else
+                            {
+                                normalizedHorizontalSpeed = 1;
+                                if (transform.localScale.x > 0f)
+                                    transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                            }
+                            if (_controller.collisionState.becameGroundedThisFrame)
+                            {
+                                _velocity.x = 0;
+                                _animator.Play(Animator.StringToHash("Idle"));
+                                idleDuration += Time.deltaTime;
+                            }
+                            else if(_controller.isGrounded && idleTime < idleDuration)
+                            {
+                                turn = Random.Range(0, 1000);
+                                if (turn < 75)
+                                {
+                                    left = !left;
+                                }
+                                _velocity.y = Mathf.Sqrt(runSpeed * -gravity);
+                                _animator.StopPlayback();
+                                _animator.Play(Animator.StringToHash("Hop"));
+                                idleDuration = 0f;
+                            }
+                        }
+                        else if (_controller.isGrounded && inRange && attackTimer == 0)
+                        {
+                            _velocity.x = 0;
+                            _animator.Play(Animator.StringToHash("Attack"));
+                            myAttack.myBoxSwitch(true);
+                            attackTimer = attackCooldown;
+                        }
+                        else if (!_controller.isGrounded)
+                        {
+                            _velocity.x = Mathf.Lerp(normalizedHorizontalSpeed * runSpeed, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                        }
+                    }
+                    #endregion
+
                 }
+
+                #region Boss Spider
+
+                #endregion
 
                 #region Colossus
                 if (enemyType.Equals("BigGuy"))
@@ -390,6 +454,9 @@ public class EnemyMovement : MonoBehaviour {
         {
             knockbackTimer = 0;
         }
-    }
 
+        if(idleDuration != 0){
+            idleDuration += Time.deltaTime;
+        }
+    }
 }
