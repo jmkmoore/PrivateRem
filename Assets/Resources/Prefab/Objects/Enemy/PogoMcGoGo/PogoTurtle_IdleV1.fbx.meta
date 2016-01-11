@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: b3861ef03dd40fc4c82ed3f88b66d827
+timeCreated: 1452468567
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: polySurface1
+    100004: polySurface10
+    100006: polySurface11
+    100008: polySurface12
+    100010: polySurface13
+    100012: polySurface14
+    100014: polySurface15
+    100016: polySurface16
+    100018: polySurface17
+    100020: polySurface2
+    100022: polySurface3
+    100024: polySurface4
+    100026: polySurface5
+    100028: polySurface6
+    100030: polySurface7
+    100032: polySurface8
+    100034: polySurface9
+    100036: PookaTroopa:polySurface1
+    100038: transform1
+    100040: transform10
+    100042: transform11
+    100044: transform12
+    100046: transform13
+    100048: transform14
+    100050: transform15
+    100052: transform16
+    100054: transform2
+    100056: transform3
+    100058: transform4
+    100060: transform5
+    100062: transform6
+    100064: transform7
+    100066: transform8
+    100068: transform9
+    400000: //RootNode
+    400002: polySurface1
+    400004: polySurface10
+    400006: polySurface11
+    400008: polySurface12
+    400010: polySurface13
+    400012: polySurface14
+    400014: polySurface15
+    400016: polySurface16
+    400018: polySurface17
+    400020: polySurface2
+    400022: polySurface3
+    400024: polySurface4
+    400026: polySurface5
+    400028: polySurface6
+    400030: polySurface7
+    400032: polySurface8
+    400034: polySurface9
+    400036: PookaTroopa:polySurface1
+    400038: transform1
+    400040: transform10
+    400042: transform11
+    400044: transform12
+    400046: transform13
+    400048: transform14
+    400050: transform15
+    400052: transform16
+    400054: transform2
+    400056: transform3
+    400058: transform4
+    400060: transform5
+    400062: transform6
+    400064: transform7
+    400066: transform8
+    400068: transform9
+    2300000: polySurface14
+    2300002: polySurface17
+    3300000: polySurface14
+    3300002: polySurface17
+    4300000: polySurface14
+    4300002: polySurface17
+    7400000: PogoTurtle_IdleV1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

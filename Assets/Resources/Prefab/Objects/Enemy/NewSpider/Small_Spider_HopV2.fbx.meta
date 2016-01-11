@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 8b1c305a82a596b4abe01d719b53b206
+timeCreated: 1452468327
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: COG
+    100002: group
+    100004: group1
+    100006: ikHandle1
+    100008: ikHandle2
+    100010: ikHandle3
+    100012: ikHandle4
+    100014: ikHandle5
+    100016: ikHandle6
+    100018: Left_Back_Leg1
+    100020: Left_Back_Leg2
+    100022: Left_Back_Leg3
+    100024: Left_Front_Leg1
+    100026: Left_Front_Leg2
+    100028: Left_Front_Leg3
+    100030: Left_Middle_Leg1
+    100032: Left_Middle_Leg2
+    100034: Left_Middle_Leg3
+    100036: nurbsCircle1
+    100038: nurbsCircle2
+    100040: nurbsCircle3
+    100042: nurbsCircle4
+    100044: nurbsCircle5
+    100046: nurbsCircle6
+    100048: pasted__group
+    100050: Right_Back_Leg1
+    100052: Right_Back_Leg2
+    100054: Right_Back_Leg3
+    100056: Right_Front_Leg1
+    100058: Right_Front_Leg2
+    100060: Right_Front_Leg3
+    100062: Right_Middle_Leg1
+    100064: Right_Middle_Leg2
+    100066: Right_Middle_Leg3
+    100068: //RootNode
+    100070: SpiderSmall:polySurface1
+    400000: COG
+    400002: group
+    400004: group1
+    400006: ikHandle1
+    400008: ikHandle2
+    400010: ikHandle3
+    400012: ikHandle4
+    400014: ikHandle5
+    400016: ikHandle6
+    400018: Left_Back_Leg1
+    400020: Left_Back_Leg2
+    400022: Left_Back_Leg3
+    400024: Left_Front_Leg1
+    400026: Left_Front_Leg2
+    400028: Left_Front_Leg3
+    400030: Left_Middle_Leg1
+    400032: Left_Middle_Leg2
+    400034: Left_Middle_Leg3
+    400036: nurbsCircle1
+    400038: nurbsCircle2
+    400040: nurbsCircle3
+    400042: nurbsCircle4
+    400044: nurbsCircle5
+    400046: nurbsCircle6
+    400048: pasted__group
+    400050: Right_Back_Leg1
+    400052: Right_Back_Leg2
+    400054: Right_Back_Leg3
+    400056: Right_Front_Leg1
+    400058: Right_Front_Leg2
+    400060: Right_Front_Leg3
+    400062: Right_Middle_Leg1
+    400064: Right_Middle_Leg2
+    400066: Right_Middle_Leg3
+    400068: //RootNode
+    400070: SpiderSmall:polySurface1
+    4300000: SpiderSmall:polySurface1
+    7400000: Small_Spider_HopV2
+    9500000: //RootNode
+    13700000: SpiderSmall:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
