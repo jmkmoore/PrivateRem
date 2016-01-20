@@ -17,7 +17,7 @@ public class BehindTrigger : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
-            transform.parent.GetComponent<ColossusController>().turnTimer = 6f;
+           // transform.parent.GetComponent<EnemyMovement>().turnAround();
         }
     }
 }

@@ -33,6 +33,10 @@ public class EnemyMovement : MonoBehaviour {
 
     private float turnTime;
     private int turnChance;
+
+    private float turnTimer = 0f;
+    public float turnCooldown = 2f;
+
     private Vector3 forcedMovement;
     private EnemyHealth myHealth;
     private EnemyAttack myAttack;
@@ -359,7 +363,7 @@ public class EnemyMovement : MonoBehaviour {
                 #endregion
 
                 #region Colossus
-                if (enemyType.Equals("BigGuy"))
+                if (enemyType.Equals("BigGuy") || enemyType.Equals("BossSpider"))
                 {
                     if (isAttacking)
                     {
@@ -457,6 +461,25 @@ public class EnemyMovement : MonoBehaviour {
 
         if(idleDuration != 0){
             idleDuration += Time.deltaTime;
+        }
+
+        if (turnTimer != 0)
+        {
+            turnTimer += Time.deltaTime;
+        }
+
+        if (turnTimer > turnCooldown)
+        {
+            turnTimer = 0;
+        }
+    }
+
+    public void turnAround()
+    {
+        if (turnTimer == 0)
+        {
+            updateDirection();
+            turnTimer += Time.deltaTime;
         }
     }
 }

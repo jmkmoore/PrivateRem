@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8bbff50dbf849484d8b646e813023d62
-timeCreated: 1452468487
+guid: d3e9debda28c4e14694d93d200d1be4c
+timeCreated: 1453167642
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -92,7 +92,7 @@ ModelImporter:
     400082: Sac_2
     400084: Sac_3
     4300000: LargeSpider:polySurface1
-    7400000: Large_Spider_TurnV1
+    7400000: Large_Spider_TurnV2
     9500000: //RootNode
     13700000: LargeSpider:polySurface1
   materials:
