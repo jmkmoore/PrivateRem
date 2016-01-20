@@ -6,20 +6,20 @@ public class EnemyAttackUpdate : MonoBehaviour {
     public string attackName = "";
 
     private GameObject myParent;
-    private ColossusController myController;
+    private BossSpiderController myController;
 
 
 	// Use this for initialization
 	void Start () {
         myParent = myParent = transform.parent.parent.gameObject;
-        myController = (ColossusController)myParent.GetComponent<ColossusController>();
+        myController = (BossSpiderController)myParent.GetComponent<BossSpiderController>();
 
 	}
 
     void Awake()
     {
         myParent = myParent = transform.parent.parent.gameObject;
-        myController = (ColossusController)myParent.GetComponent<ColossusController>();
+        myController = (BossSpiderController)myParent.GetComponent<BossSpiderController>();
     }
 	
 	// Update is called once per frame

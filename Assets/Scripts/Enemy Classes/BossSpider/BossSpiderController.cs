@@ -17,7 +17,17 @@ public class BossSpiderController : MonoBehaviour {
     private EnemyMovement em;
 
     public float swipeCooldown;
-    private float swipeTimer;
+    public float biteCooldown;
+    public float leapCooldown;
+
+    private float swipeDuration;
+    private float biteDuration;
+    private float leapDuration;
+
+    private bool canSwipe;
+    private bool canBite;
+    private bool canLeap;
+
 
     #region Event Listeners
 
@@ -69,6 +79,48 @@ public class BossSpiderController : MonoBehaviour {
     void FixedUpdate()
     {
         updateTimers();
+
+        if (currentAttackTimer == 0)
+        {
+            if (isInRange())
+            {
+                if (canSwipe && !currentAttack.Equals("swipe"))
+                {
+                    em.stopToAttack(true);
+                }
+                else if (canBite && !currentAttack.Equals("bite"))
+                {
+                    em.stopToAttack(true);
+                }
+                else if (canLeap && !currentAttack.Equals("leap"))
+                {
+                    em.stopToAttack(true);
+                }
+            }
+        }
+        else if (currentAttackTimer < 2f)
+        {
+            if (isInRange())
+            {
+                if (canSwipe && !currentAttack.Equals("swipe"))
+                {
+                    em.stopToAttack(true);
+                }
+                else if (canBite && !currentAttack.Equals("bite"))
+                {
+                    em.stopToAttack(true);
+                }
+                else if (canLeap && !currentAttack.Equals("leap"))
+                {
+                    em.stopToAttack(true);
+                }
+            }
+        }
+        else
+        {
+            em.stopToAttack(false);
+        }
+
     }
 
 	
@@ -79,6 +131,40 @@ public class BossSpiderController : MonoBehaviour {
 
     void updateTimers()
     {
+        if (currentAttackTimer != 0)
+        {
+            currentAttackTimer -= Time.deltaTime;
+        }
+
+        if (_velocity.x != 0 && _controller.isGrounded)
+        {
+            _animator.Play(Animator.StringToHash("Walk"));
+        }
 
     }
+
+    #region Attack
+    public void updateCanAttack(string attackName, bool canUse){
+        switch (attackName){
+        case"swipe":
+            currentAttackTimer = swipeCooldown;
+            break;
+        case "bite":
+            currentAttackTimer = biteCooldown;
+            break;
+        case "leap":
+            currentAttackTimer = leapCooldown;
+            break;
+        default:
+            break;
+              
+        }
+    }
+    #endregion
+
+    bool isInRange()
+    {
+        return canBite || canLeap || canSwipe;
+    }
+
 }
