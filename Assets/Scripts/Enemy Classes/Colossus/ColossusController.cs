@@ -2,7 +2,7 @@
 using System.Collections;
 using Prime31;
 
-public class ColossusController : MonoBehaviour {
+public class ColossusController : EnemyController {
 
     
     #region has hoe timer;
@@ -83,7 +83,7 @@ public class ColossusController : MonoBehaviour {
     #endregion
 
 
-    void updateColossusTimers()
+    public override void updateTimers()
     {
 
         if (currentAttackTimer != 0)
@@ -131,7 +131,7 @@ public class ColossusController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         _velocity = _controller.velocity;
-        updateColossusTimers();
+        updateTimers();
 
         #region attackLogic
         if (currentAttackTimer > attackCooldownResetTime || currentAttackTimer == 0)
@@ -207,7 +207,8 @@ public class ColossusController : MonoBehaviour {
         currentAttackTimer += Time.deltaTime;
     }
 
-    public void updateCanAttack(string attackName, bool canUse){
+    public override void updateCanAttack(string attackName, bool canUse)
+    {
         switch (attackName){
         case"overhand":    
             canOverHand = canUse;
@@ -225,7 +226,7 @@ public class ColossusController : MonoBehaviour {
     }
     #endregion
 
-    bool isInRange()
+    public override bool isInRange()
     {
         return canOverHand || canPoke || canSwing;
     }

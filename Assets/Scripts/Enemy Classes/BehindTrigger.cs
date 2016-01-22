@@ -17,7 +17,7 @@ public class BehindTrigger : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
-           // transform.parent.GetComponent<EnemyMovement>().turnAround();
+            transform.parent.GetComponent<EnemyMovement>().turnAround();
         }
     }
 }

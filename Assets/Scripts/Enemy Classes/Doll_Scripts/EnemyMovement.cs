@@ -358,10 +358,6 @@ public class EnemyMovement : MonoBehaviour {
 
                 }
 
-                #region Boss Spider
-                    //Temporary edit just for pushing
-                #endregion
-
                 #region Colossus
                 if (enemyType.Equals("BigGuy") || enemyType.Equals("BossSpider"))
                 {

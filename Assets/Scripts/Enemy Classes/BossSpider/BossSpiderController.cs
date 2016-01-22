@@ -2,7 +2,7 @@
 using System.Collections;
 using Prime31;
 
-public class BossSpiderController : MonoBehaviour {
+public class BossSpiderController : EnemyController {
 
     #region Movement Values
     private CharacterController2D _controller;
@@ -28,6 +28,13 @@ public class BossSpiderController : MonoBehaviour {
     private bool canBite;
     private bool canLeap;
 
+    private float swipeTimer;
+    private float biteTimer;
+    private float leapTimer;
+
+    public float timer = 0f;
+
+    private float attackDuration = 0;
 
     #region Event Listeners
 
@@ -78,41 +85,45 @@ public class BossSpiderController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        em.stopToAttack(true);
         updateTimers();
 
-        if (currentAttackTimer == 0)
+        if (attackDuration < 0)
         {
-            if (isInRange())
+            if (currentAttackTimer == 0)
             {
-                if (canSwipe && !currentAttack.Equals("swipe"))
+                if (isInRange())
                 {
-                    em.stopToAttack(true);
-                }
-                else if (canBite && !currentAttack.Equals("bite"))
-                {
-                    em.stopToAttack(true);
-                }
-                else if (canLeap && !currentAttack.Equals("leap"))
-                {
-                    em.stopToAttack(true);
+                    if (canSwipe && !currentAttack.Equals("swipe"))
+                    {
+                        em.stopToAttack(true);
+                    }
+                    else if (canBite && !currentAttack.Equals("bite"))
+                    {
+                        em.stopToAttack(true);
+                    }
+                    else if (canLeap && !currentAttack.Equals("leap"))
+                    {
+                        em.stopToAttack(true);
+                    }
                 }
             }
-        }
-        else if (currentAttackTimer < 2f)
-        {
-            if (isInRange())
+            else if (currentAttackTimer < 2f)
             {
-                if (canSwipe && !currentAttack.Equals("swipe"))
+                if (isInRange())
                 {
-                    em.stopToAttack(true);
-                }
-                else if (canBite && !currentAttack.Equals("bite"))
-                {
-                    em.stopToAttack(true);
-                }
-                else if (canLeap && !currentAttack.Equals("leap"))
-                {
-                    em.stopToAttack(true);
+                    if (canSwipe && !currentAttack.Equals("swipe"))
+                    {
+                        em.stopToAttack(true);
+                    }
+                    else if (canBite && !currentAttack.Equals("bite"))
+                    {
+                        em.stopToAttack(true);
+                    }
+                    else if (canLeap && !currentAttack.Equals("leap"))
+                    {
+                        em.stopToAttack(true);
+                    }
                 }
             }
         }
@@ -123,14 +134,24 @@ public class BossSpiderController : MonoBehaviour {
 
     }
 
-	
-	// Update is called once per frame
-	void Update ()  {
-	
-	}
-
-    void updateTimers()
+    public override void updateTimers()
     {
+        if (swipeTimer > 0)
+            swipeTimer -= Time.deltaTime;
+
+        if (biteTimer > 0)
+            biteTimer -= Time.deltaTime;
+
+        if (leapTimer > 0)
+            leapTimer -= Time.deltaTime;
+
+        if (attackDuration < 0)
+        {
+            attackDuration -= Time.deltaTime;
+        }
+
+        timer += Time.deltaTime;
+
         if (currentAttackTimer != 0)
         {
             currentAttackTimer -= Time.deltaTime;
@@ -144,25 +165,40 @@ public class BossSpiderController : MonoBehaviour {
     }
 
     #region Attack
-    public void updateCanAttack(string attackName, bool canUse){
+    public override void updateCanAttack(string attackName, bool canUse)
+    {
         switch (attackName){
         case"swipe":
             currentAttackTimer = swipeCooldown;
+            attackDuration = 1.5f;
+            _animator.Play(Animator.StringToHash("Swipe"));
+            swipeTimer = swipeCooldown;
             break;
         case "bite":
-            currentAttackTimer = biteCooldown;
+            if(Random.Range(0,1) == 1){
+                attackDuration = 2.5f;
+                currentAttackTimer = biteCooldown;
+                _animator.Play(Animator.StringToHash("BigBite"));
+            }else{
+                attackDuration = 1.1f;
+                currentAttackTimer = biteCooldown;
+                _animator.Play(Animator.StringToHash("SmallBite"));
+
+            }
             break;
         case "leap":
             currentAttackTimer = leapCooldown;
+            attackDuration = 1f;
+            currentAttackTimer = leapCooldown;
+            _animator.Play(Animator.StringToHash("Leap"));
             break;
         default:
             break;
-              
         }
     }
     #endregion
 
-    bool isInRange()
+    public override bool isInRange()
     {
         return canBite || canLeap || canSwipe;
     }

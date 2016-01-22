@@ -114,7 +114,119 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Large_Spider_WalkV1
+      takeName: Large_Spider_WalkV1
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: COG
+        weight: 1
+      - path: COG/Head
+        weight: 1
+      - path: COG/Head/Left_Lower_Pincer1
+        weight: 1
+      - path: COG/Head/Left_Lower_Pincer1/Left_Lower_Pincer2
+        weight: 1
+      - path: COG/Head/Left_Lower_Pincer1/Left_Lower_Pincer2/Left_Lower_Pincer3
+        weight: 1
+      - path: COG/Head/Left_Upper_Pincer1
+        weight: 1
+      - path: COG/Head/Left_Upper_Pincer1/Left_Upper_Pincer2
+        weight: 1
+      - path: COG/Head/Left_Upper_Pincer1/Left_Upper_Pincer2/Left_Upper_Pincer3
+        weight: 1
+      - path: COG/Head/Right_Lower_Pincer1
+        weight: 1
+      - path: COG/Head/Right_Lower_Pincer1/Right_Lower_Pincer2
+        weight: 1
+      - path: COG/Head/Right_Lower_Pincer1/Right_Lower_Pincer2/Right_Lower_Pincer3
+        weight: 1
+      - path: COG/Head/Right_Upper_Pincer1
+        weight: 1
+      - path: COG/Head/Right_Upper_Pincer1/Right_Upper_Pincer2
+        weight: 1
+      - path: COG/Head/Right_Upper_Pincer1/Right_Upper_Pincer2/Right_Upper_Pincer3
+        weight: 1
+      - path: COG/Left_First_Leg1
+        weight: 1
+      - path: COG/Left_First_Leg1/Left_First_Leg2
+        weight: 1
+      - path: COG/Left_First_Leg1/Left_First_Leg2/Left_First_Leg3
+        weight: 1
+      - path: COG/Left_Fourth_Leg1
+        weight: 1
+      - path: COG/Left_Fourth_Leg1/Left_Fourth_Leg2
+        weight: 1
+      - path: COG/Left_Fourth_Leg1/Left_Fourth_Leg2/Left_Fourth_Leg3
+        weight: 1
+      - path: COG/Left_Second_Leg1
+        weight: 1
+      - path: COG/Left_Second_Leg1/Left_Second_Leg2
+        weight: 1
+      - path: COG/Left_Second_Leg1/Left_Second_Leg2/Left_Second_Leg3
+        weight: 1
+      - path: COG/Left_Third_Leg1
+        weight: 1
+      - path: COG/Left_Third_Leg1/Left_Third_Leg2
+        weight: 1
+      - path: COG/Left_Third_Leg1/Left_Third_Leg2/Left_Third_Leg3
+        weight: 1
+      - path: COG/Right_First_Leg1
+        weight: 1
+      - path: COG/Right_First_Leg1/Right_First_Leg2
+        weight: 1
+      - path: COG/Right_First_Leg1/Right_First_Leg2/Right_First_Leg3
+        weight: 1
+      - path: COG/Right_Fourth_Leg1
+        weight: 1
+      - path: COG/Right_Fourth_Leg1/Right_Fourth_Leg2
+        weight: 1
+      - path: COG/Right_Fourth_Leg1/Right_Fourth_Leg2/Right_Fourth_Leg3
+        weight: 1
+      - path: COG/Right_Second_Leg1
+        weight: 1
+      - path: COG/Right_Second_Leg1/Right_Second_Leg2
+        weight: 1
+      - path: COG/Right_Second_Leg1/Right_Second_Leg2/Right_Second_Leg3
+        weight: 1
+      - path: COG/Right_Third_Leg1
+        weight: 1
+      - path: COG/Right_Third_Leg1/Right_Third_Leg2
+        weight: 1
+      - path: COG/Right_Third_Leg1/Right_Third_Leg2/Right_Third_Leg3
+        weight: 1
+      - path: COG/Sac_1
+        weight: 1
+      - path: COG/Sac_1/Sac_2
+        weight: 1
+      - path: COG/Sac_1/Sac_2/Sac_3
+        weight: 1
+      - path: LargeSpider:polySurface1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
