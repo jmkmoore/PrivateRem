@@ -11,7 +11,6 @@ public class EnemyAttack : MonoBehaviour {
     public float attackKnockbackY = 1000f;
     private Vector3 attackKnockback;
     public float frames, activeStart, maxDur;
-    public float cooldown;
 
     private bool on;
 
@@ -36,10 +35,8 @@ public class EnemyAttack : MonoBehaviour {
         if (frames > maxDur)
         {
             myBox.enabled = false;
-        }
-        if (frames > cooldown)
-        {
             frames = 0;
+            attackValue = 0;
         }
 	}
 
@@ -60,7 +57,7 @@ public class EnemyAttack : MonoBehaviour {
  //       Debug.Log(other.name + other.tag);
         if (other.tag.Equals("Player"))
         {
-            if (frames == 0 || frames > cooldown)
+            if (frames == 0)
             {
                 Attack();
             }
@@ -106,5 +103,12 @@ public class EnemyAttack : MonoBehaviour {
     public void inRange(bool inRange)
     {
         on = inRange;
+    }
+
+    public void setAttackValue(int damage)
+    {
+        attackValue = damage;
+        frames = 0;
+        frames += Time.deltaTime;
     }
 }

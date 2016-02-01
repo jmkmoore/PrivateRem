@@ -24,9 +24,9 @@ public class BossSpiderController : EnemyController {
     private float biteDuration;
     private float leapDuration;
 
-    private bool canSwipe;
-    private bool canBite;
-    private bool canLeap;
+    public bool canSwipe;
+    public bool canBite;
+    public bool canLeap;
 
     private float swipeTimer;
     private float biteTimer;
@@ -35,7 +35,8 @@ public class BossSpiderController : EnemyController {
     public float timer = 0f;
 
     private float attackDuration = 0;
-
+    public EnemyAttack[] myAttacks;
+    
     #region Event Listeners
 
     void onControllerCollider(RaycastHit2D hit)
@@ -79,6 +80,8 @@ public class BossSpiderController : EnemyController {
         _controller.onTriggerExitEvent += onTriggerExitEvent;
 
         currentAttack = "idle";
+
+        myAttacks = gameObject.GetComponentsInChildren<EnemyAttack>();
 
         myHealth = (EnemyHealth)gameObject.GetComponent<EnemyHealth>();
     }
@@ -145,17 +148,19 @@ public class BossSpiderController : EnemyController {
         if (leapTimer > 0)
             leapTimer -= Time.deltaTime;
 
-        if (attackDuration < 0)
+        if (attackDuration > 0)
         {
             attackDuration -= Time.deltaTime;
         }
 
-        timer += Time.deltaTime;
-
-        if (currentAttackTimer != 0)
-        {
+        if(!currentAttack.Equals("idle") || currentAttackTimer > 0)
             currentAttackTimer -= Time.deltaTime;
-        }
+
+        if(currentAttackTimer < 0)
+            currentAttackTimer = 0;
+
+        if (currentAttackTimer < 3f)
+            currentAttack = "idle";
 
         if (_velocity.x != 0 && _controller.isGrounded)
         {
@@ -167,23 +172,29 @@ public class BossSpiderController : EnemyController {
     #region Attack
     public override void updateCanAttack(string attackName, bool canUse)
     {
+        if (currentAttack.Equals("idle"))
+        {
+            currentAttack = attackName;
+        }
         switch (attackName){
         case"swipe":
             currentAttackTimer = swipeCooldown;
             attackDuration = 1.5f;
             _animator.Play(Animator.StringToHash("Swipe"));
             swipeTimer = swipeCooldown;
+            myAttacks[2].myBoxSwitch(true);
             break;
         case "bite":
             if(Random.Range(0,1) == 1){
                 attackDuration = 2.5f;
                 currentAttackTimer = biteCooldown;
                 _animator.Play(Animator.StringToHash("BigBite"));
+                myAttacks[0].myBoxSwitch(true);
             }else{
                 attackDuration = 1.1f;
                 currentAttackTimer = biteCooldown;
                 _animator.Play(Animator.StringToHash("SmallBite"));
-
+                myAttacks[1].myBoxSwitch(true);
             }
             break;
         case "leap":
@@ -191,6 +202,7 @@ public class BossSpiderController : EnemyController {
             attackDuration = 1f;
             currentAttackTimer = leapCooldown;
             _animator.Play(Animator.StringToHash("Leap"));
+            myAttacks[3].myBoxSwitch(true);
             break;
         default:
             break;

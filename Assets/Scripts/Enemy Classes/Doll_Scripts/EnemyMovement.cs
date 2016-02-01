@@ -383,6 +383,8 @@ public class EnemyMovement : MonoBehaviour {
                             }
                         }
                         _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                        _animator.Play(Animator.StringToHash("Walk"));
+
                     }
                 }
                 #endregion
