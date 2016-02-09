@@ -34,6 +34,11 @@ public class PlayerHealth : MonoBehaviour {
             blockTimer += Time.deltaTime;
         else
             blockTimer = 0f;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth -= 1;
+        }
 	}
 
 	public void adjustCurrentHealth(int adj){

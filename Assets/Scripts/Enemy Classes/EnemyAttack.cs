@@ -36,7 +36,6 @@ public class EnemyAttack : MonoBehaviour {
         {
             myBox.enabled = false;
             frames = 0;
-            attackValue = 0;
         }
 	}
 
@@ -45,9 +44,6 @@ public class EnemyAttack : MonoBehaviour {
         if (other.tag.Equals("Player"))
         {
             target = other.gameObject;
-        }
-        if (frames == 0)
-        {
             Attack();
         }
     }
@@ -55,9 +51,10 @@ public class EnemyAttack : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other)
     {
  //       Debug.Log(other.name + other.tag);
+
         if (other.tag.Equals("Player"))
         {
-            if (frames == 0)
+            if (frames > activeStart && frames < maxDur)
             {
                 Attack();
             }

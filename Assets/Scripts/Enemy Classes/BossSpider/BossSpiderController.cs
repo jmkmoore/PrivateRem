@@ -88,12 +88,10 @@ public class BossSpiderController : EnemyController {
 
     void FixedUpdate()
     {
-        em.stopToAttack(true);
+//        em.stopToAttack(true);
         updateTimers();
 
-        if (attackDuration < 0)
-        {
-            if (currentAttackTimer == 0)
+        if (currentAttackTimer == 0)
             {
                 if (isInRange())
                 {
@@ -107,34 +105,16 @@ public class BossSpiderController : EnemyController {
                     }
                     else if (canLeap && !currentAttack.Equals("leap"))
                     {
-                        em.stopToAttack(true);
+                        _velocity.y = 1000f;
+                        _velocity.x = em.runSpeed * 2;
                     }
                 }
             }
-            else if (currentAttackTimer < 2f)
-            {
-                if (isInRange())
-                {
-                    if (canSwipe && !currentAttack.Equals("swipe"))
-                    {
-                        em.stopToAttack(true);
-                    }
-                    else if (canBite && !currentAttack.Equals("bite"))
-                    {
-                        em.stopToAttack(true);
-                    }
-                    else if (canLeap && !currentAttack.Equals("leap"))
-                    {
-                        em.stopToAttack(true);
-                    }
-                }
-            }
-        }
-        else
+        if (currentAttack.Equals("leap"))
         {
+            _controller.move(_velocity * Time.deltaTime);
             em.stopToAttack(false);
         }
-
     }
 
     public override void updateTimers()
@@ -153,59 +133,69 @@ public class BossSpiderController : EnemyController {
             attackDuration -= Time.deltaTime;
         }
 
+        if (attackDuration <= 0)
+        {
+            currentAttack = "idle";
+            em.stopToAttack(false);
+            attackDuration = 0;
+        }
+
         if(!currentAttack.Equals("idle") || currentAttackTimer > 0)
             currentAttackTimer -= Time.deltaTime;
 
         if(currentAttackTimer < 0)
             currentAttackTimer = 0;
 
-        if (currentAttackTimer < 3f)
-            currentAttack = "idle";
-
         if (_velocity.x != 0 && _controller.isGrounded)
         {
             _animator.Play(Animator.StringToHash("Walk"));
         }
+
+        
 
     }
 
     #region Attack
     public override void updateCanAttack(string attackName, bool canUse)
     {
-        if (currentAttack.Equals("idle"))
+        if (currentAttack.Equals("idle") && attackDuration == 0)
         {
             currentAttack = attackName;
-        }
-        switch (attackName){
-        case"swipe":
-            currentAttackTimer = swipeCooldown;
-            attackDuration = 1.5f;
-            _animator.Play(Animator.StringToHash("Swipe"));
-            swipeTimer = swipeCooldown;
-            myAttacks[2].myBoxSwitch(true);
-            break;
-        case "bite":
-            if(Random.Range(0,1) == 1){
-                attackDuration = 2.5f;
-                currentAttackTimer = biteCooldown;
-                _animator.Play(Animator.StringToHash("BigBite"));
-                myAttacks[0].myBoxSwitch(true);
-            }else{
-                attackDuration = 1.1f;
-                currentAttackTimer = biteCooldown;
-                _animator.Play(Animator.StringToHash("SmallBite"));
-                myAttacks[1].myBoxSwitch(true);
+            switch (attackName)
+            {
+                case "swipe":
+                    currentAttackTimer = swipeCooldown;
+                    attackDuration = 1.5f;
+                    _animator.Play(Animator.StringToHash("Swipe"));
+                    swipeTimer = swipeCooldown;
+                    myAttacks[2].myBoxSwitch(true);
+                    break;
+                case "bite":
+                    if (Random.Range(0, 10) < 5)
+                    {
+                        attackDuration = 3.3f;
+                        currentAttackTimer = biteCooldown;
+                        _animator.Play(Animator.StringToHash("BigBite"));
+                        myAttacks[0].myBoxSwitch(true);
+                    }
+                    else
+                    {
+                        attackDuration = 2f;
+                        currentAttackTimer = biteCooldown;
+                        _animator.Play(Animator.StringToHash("SmallBite"));
+                        myAttacks[1].myBoxSwitch(true);
+                    }
+                    break;
+                case "leap":
+                    currentAttackTimer = leapCooldown;
+                    attackDuration = 3f;
+                    currentAttackTimer = leapCooldown;
+                    _animator.Play(Animator.StringToHash("Leap"));
+                    myAttacks[3].myBoxSwitch(true);
+                    break;
+                default:
+                    break;
             }
-            break;
-        case "leap":
-            currentAttackTimer = leapCooldown;
-            attackDuration = 1f;
-            currentAttackTimer = leapCooldown;
-            _animator.Play(Animator.StringToHash("Leap"));
-            myAttacks[3].myBoxSwitch(true);
-            break;
-        default:
-            break;
         }
     }
     #endregion
