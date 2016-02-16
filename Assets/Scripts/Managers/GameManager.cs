@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        if (Tien.GetComponent<PlayerHealth>().currentHealth <= 0)
+       if (Tien.GetComponent<PlayerHealth>().currentHealth <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel);
+            Tien.transform.position = Tien.GetComponent<RespawnTracker>().myCheckpoint;
+            Tien.GetComponent<PlayerHealth>().resetHP();
         }
-
+        
 	}
 
 

@@ -81,4 +81,9 @@ public class PlayerHealth : MonoBehaviour {
             blockTimer = 0f;
         }
     }
+
+    public void resetHP()
+    {
+        currentHealth = maxHealth;
+    }
 }

@@ -100,7 +100,6 @@ public class DemoScene : MonoBehaviour
       //      Debug.Log("Should Die");
             gameObject.GetComponent<PlayerHealth>().adjustCurrentHealth(-100000);
         }
-
     }
 
 
