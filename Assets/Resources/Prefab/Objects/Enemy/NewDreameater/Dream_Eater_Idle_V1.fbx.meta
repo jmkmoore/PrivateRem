@@ -72,7 +72,71 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DreamEater_Main_Head_IdleV1
+      takeName: DreamEater_Main_Head_IdleV1
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BigSnake_Base
+        weight: 1
+      - path: BigSnake_Base/BigSnake_Base 1
+        weight: 1
+      - path: BigSnake_Leaves
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Root_2
+        weight: 1
+      - path: Root/Root_2/Root_3
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Lower_Jaw1
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Lower_Jaw1/Lower_Jaw2
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Lower_Jaw1/Lower_Jaw2/Lower_Jaw3
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Tongue1
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Tongue1/Tongue2
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Tongue1/Tongue2/Tongue3
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Upper_Jaw1
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Upper_Jaw1/Upper_Jaw2
+        weight: 1
+      - path: Root/Root_2/Root_3/Root_4/Neck/Upper_Jaw1/Upper_Jaw2/Upper_Jaw3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

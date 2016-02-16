@@ -359,32 +359,38 @@ public class EnemyMovement : MonoBehaviour {
                 }
 
                 #region Colossus
-                if (enemyType.Equals("BigGuy") || enemyType.Equals("BossSpider"))
+                if (enemyType.Equals("BigGuy") || enemyType.Equals("BossSpider") || enemyType.Equals("Plant"))
                 {
                     if (isAttacking)
                     {
                         _velocity.x = 0;
                     }
-                    else if (!inRange)
+                    if (myHealth.currentHealth > 0)
+                    {
+                        if (left)
+                        {
+                            normalizedHorizontalSpeed = -1;
+                            if (transform.localScale.x > 0f)
+                                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        }
+                        else
+                        {
+                            normalizedHorizontalSpeed = 1;
+                            if (transform.localScale.x < 0f)
+                                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        }
+                    }
+
+                    if (!inRange)
                     {
                         if (_controller.isGrounded)
                         {
-                            if (left)
+                            if (_animator.HasState(0, Animator.StringToHash("Walk")))
                             {
-                                normalizedHorizontalSpeed = -1;
-                                if (transform.localScale.x > 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                            }
-                            else
-                            {
-                                normalizedHorizontalSpeed = 1;
-                                if (transform.localScale.x < 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                                _animator.Play(Animator.StringToHash("Walk"));
                             }
                         }
-                        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
-                        _animator.Play(Animator.StringToHash("Walk"));
-
                     }
                 }
                 #endregion
