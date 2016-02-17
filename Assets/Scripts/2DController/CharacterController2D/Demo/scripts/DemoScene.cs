@@ -367,19 +367,20 @@ public class DemoScene : MonoBehaviour
             }
             else if (isDashing)
             {
+                isDiving = false;
                 if (_controller.isGrounded)
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, runSpeed * dashBoost * -1, Time.deltaTime);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, runSpeed * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost , runSpeed * dashBoost, Time.deltaTime);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost , runSpeed * dashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 else
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, runSpeed * airDashBoost * -1, Time.deltaTime);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, runSpeed * airDashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 if (Input.GetButtonDown("Jump"))
                 {
@@ -387,26 +388,20 @@ public class DemoScene : MonoBehaviour
                     {
                         jumpCount++;
                         _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
-                        //  myBoxCollider.size = new Vector3(10f, 1.75f);
-                    }
-                    else
-                    {
-                        if (_velocity.y > 0)
-                        {
-                            _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
-                            _animator.Play(Animator.StringToHash("Jump"));
-                        }
-                        else
-                        {
-                            _velocity.y = -gravity * Time.deltaTime;
-                        }
                     }
                 }
+                else
+                {
+                    _velocity.y = gravity * Time.deltaTime;
+                }
+
             }
             else if (isDiving)
             {
-        //        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * 10f, Time.deltaTime);
+                isDashing = false;
+                airDashTime = 0f;
                 _velocity.y = gravity * 50f * Time.deltaTime;
+                _velocity.x = 0;
             }
             _controller.move(_velocity * Time.deltaTime);
         }

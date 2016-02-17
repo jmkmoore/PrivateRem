@@ -18,19 +18,9 @@ public class ColossusController : EnemyController {
     public bool canPoke = false;
     public bool canSwing = false;
 
-    public float attackCooldownResetTime = 1.1f;
+    public float attackCooldown = 0f;
 #endregion
 
-    #region no hoe cooldowns
-    public float shoulderCooldown = 4f;
-    public float stompCooldown = 4f;
-
-    public float shoulderTimer = 0f;
-    public float stompTimer = 0f;
-
-    private bool canShoulder = false;
-    private bool canStomp = false;
-    #endregion
 
     private CharacterController2D _controller;
     private Animator _animator;
@@ -85,6 +75,14 @@ public class ColossusController : EnemyController {
 
     public override void updateTimers()
     {
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+            if (attackCooldown < 0)
+            {
+                attackCooldown = 0;
+            }
+        }
 
         if (currentAttackTimer != 0)
         {
@@ -134,36 +132,32 @@ public class ColossusController : EnemyController {
         updateTimers();
 
         #region attackLogic
-        if (currentAttackTimer > attackCooldownResetTime || currentAttackTimer == 0)
+        if (attackCooldown == 0)
         {
-
-            if (currentAttackTimer > 5f)
+            if (isInRange())
             {
-                currentAttackTimer = 0;
-            }
-            if (currentAttackTimer == 0f)
-            {
-                if (isInRange())
+                if (canOverHand && overhandTimer == 0)
                 {
-                    if (canOverHand && overhandTimer == 0)
-                    {
-                        overheadAttack();
-                        _movement.stopToAttack(true);
-                    }
-                    else if (canSwing && swingTimer == 0)
-                    {
-                        swingAttack();
-                        _movement.stopToAttack(true);
-                    }
-                    else if (canPoke && pokeTimer == 0)
-                    {
-                        pokeAttack(); 
-                        _movement.stopToAttack(true);
-                    }
+                    overheadAttack();
+                    _movement.stopToAttack(true);
+                    attackCooldown = 1.5f;
+                }
+                else if (canSwing && swingTimer == 0)
+                {
+                    swingAttack();
+                    attackCooldown = 2f;
+                    _movement.stopToAttack(true);
+                }
+                else if (canPoke && pokeTimer == 0)
+                {
+                    pokeAttack();
+                    attackCooldown = 1.0f;
+                    _movement.stopToAttack(true);
                 }
             }
-            else if (currentAttackTimer > attackCooldownResetTime && currentAttackTimer < 5f){
-                currentAttack = "idle";
+            else
+            {
+                _movement.stopToAttack(false);
             }
         }    
         #endregion
@@ -187,7 +181,6 @@ public class ColossusController : EnemyController {
         _animator.Play(Animator.StringToHash("Overhand"));
         overhandTimer += Time.deltaTime;
         currentAttack = "overhand";
-        currentAttackTimer += Time.deltaTime;
     }
 
     void swingAttack()
@@ -196,7 +189,6 @@ public class ColossusController : EnemyController {
         _animator.Play(Animator.StringToHash("ColossusSwing"));
         swingTimer += Time.deltaTime;
         currentAttack = "swing";
-        currentAttackTimer += Time.deltaTime;
     }
 
     void pokeAttack()
@@ -204,7 +196,6 @@ public class ColossusController : EnemyController {
         _animator.Play(Animator.StringToHash("Poke"));
         pokeTimer += Time.deltaTime;
         currentAttack = "poke";
-        currentAttackTimer += Time.deltaTime;
     }
 
     public override void updateCanAttack(string attackName, bool canUse)
