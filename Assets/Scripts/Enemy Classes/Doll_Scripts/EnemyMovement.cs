@@ -443,6 +443,11 @@ public class EnemyMovement : MonoBehaviour {
         left = !left;
     }
 
+    public void startDirection(bool spawnLeft)
+    {
+        left = spawnLeft;
+    }
+
     public void getKnockedBack(Vector3 receivedMovement)
     {
         forcedMovement = receivedMovement;

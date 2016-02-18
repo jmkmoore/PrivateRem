@@ -7,6 +7,9 @@ public class SpawnEnemy : MonoBehaviour {
     public bool spawnOnView = false;
     public Renderer renderer;
     public bool wasSeen;
+    public bool spawnFacingLeft = true;
+
+    private EnemyController spawnedEm;
 
     public float spawnCooldown;
     public float spawnTimer;
@@ -46,6 +49,8 @@ public class SpawnEnemy : MonoBehaviour {
 
     public void spawnEnemy()
     {
-        Instantiate(enemyToSpawn, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject enemy = enemyToSpawn;
+        enemy.GetComponent<EnemyMovement>().startDirection(spawnFacingLeft);
+        Instantiate(enemy, gameObject.transform.position, gameObject.transform.rotation);
     }
 }
