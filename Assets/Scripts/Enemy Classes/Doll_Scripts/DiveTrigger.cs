@@ -12,19 +12,19 @@ public class DiveTrigger : MonoBehaviour {
         EnemyMovement myDollMovement = transform.parent.GetComponent<EnemyMovement>();
     }
 
-	void OnColliderEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name.Equals("TienHitBox"))
+        if (other.tag.Equals("Player"))
         {
-            myParent.GetComponent<EnemyMovement>().updateAttack(true);
+            transform.parent.GetComponent<EnemyMovement>().updateAttack(true);
         }
     }
 
-    void OnColliderExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (other.name.Equals("TienHitBox"))
+        if (other.tag.Equals("Player"))
         {
-            myParent.GetComponent<EnemyMovement>().updateAttack(false);
+            transform.parent.GetComponent<EnemyMovement>().updateAttack(false);
         }
     }
 
