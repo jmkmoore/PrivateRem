@@ -62,6 +62,9 @@ public class EnemyMovement : MonoBehaviour {
     private float knockbackTimer;
     public float knockbackDuration;
 
+    public bool canSeeTien;
+    public float increasedSpeedFactor;
+
     void Awake()
     {
         renderer = GetComponentInChildren<Renderer>();
@@ -95,11 +98,6 @@ public class EnemyMovement : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        if (col.name.Equals("TienHitBox"))
-        {
-          //  Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
-            updateAttack(true);
-        }
         if (col.name.Equals("Wall"))
         {
             updateDirection();
@@ -170,9 +168,17 @@ public class EnemyMovement : MonoBehaviour {
                         _animator.Play(Animator.StringToHash("Attack"));
                         myAttack.myBoxSwitch(true);
                     }
-                    else if(!_controller.isGrounded)
+                    else if (!_controller.isGrounded)
                     {
-                        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                        if (canSeeTien)
+                        {
+                            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                        }
+                        else
+                        {
+                            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+                        }
                     }
                 }
 
@@ -202,7 +208,15 @@ public class EnemyMovement : MonoBehaviour {
                                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                                 }
                                 _animator.Play(Animator.StringToHash("Walk"));
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                                if (canSeeTien)
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                                }
+                                else
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+                                }
                             }
                             else
                             {
@@ -246,7 +260,15 @@ public class EnemyMovement : MonoBehaviour {
                                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                                 }
                                 _animator.Play(Animator.StringToHash("Walk"));
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                                if (canSeeTien)
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                                }
+                                else
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+                                }
                             }
                             else
                             {
@@ -288,7 +310,15 @@ public class EnemyMovement : MonoBehaviour {
                                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                                 }
                                 _animator.Play(Animator.StringToHash("Walk"));
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                                if (canSeeTien)
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                                }
+                                else
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+                                }
                             }
                         }
                         else
@@ -351,7 +381,15 @@ public class EnemyMovement : MonoBehaviour {
                         }
                         else if (!_controller.isGrounded)
                         {
-                            _velocity.x = Mathf.Lerp(normalizedHorizontalSpeed * runSpeed, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+                            if (canSeeTien)
+                            {
+                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                            }
+                            else
+                            {
+                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
+
+                            }
                         }
                     }
                     #endregion
@@ -443,6 +481,11 @@ public class EnemyMovement : MonoBehaviour {
         left = !left;
     }
 
+    public void startDirection(bool spawnLeft)
+    {
+        left = spawnLeft;
+    }
+
     public void getKnockedBack(Vector3 receivedMovement)
     {
         forcedMovement = receivedMovement;
@@ -485,5 +528,11 @@ public class EnemyMovement : MonoBehaviour {
             updateDirection();
             turnTimer += Time.deltaTime;
         }
+    }
+
+    public void beAggressive(bool inSight)
+    {
+        Debug.Log("aggression time " + inSight);
+        canSeeTien = inSight;
     }
 }

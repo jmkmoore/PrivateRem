@@ -17,7 +17,8 @@ public class TellEnemyTurn : MonoBehaviour {
     {
         if (other.tag.Equals("Enemy"))
         {
-            other.gameObject.GetComponentInParent<EnemyMovement>().updateDirection();
+            Debug.Log(other.name);
+            other.gameObject.GetComponentInParent<EnemyMovement>().turnAround();
         }
     }
 }
