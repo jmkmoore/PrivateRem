@@ -1,17 +1,21 @@
 fileFormatVersion: 2
-guid: 742227f9ebad0c848b688923da39ee8f
-timeCreated: 1451464321
-licenseType: Free
+guid: d7528437c466b8b4bbce8fc48058a2ec
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: DuoLantern_Low
+    100000: LanternPwrUp
     100002: //RootNode
-    400000: DuoLantern_Low
+    100004: pCylinder1
+    400000: LanternPwrUp
     400002: //RootNode
-    2300000: DuoLantern_Low
-    3300000: DuoLantern_Low
-    4300000: DuoLantern_Low
+    400004: pCylinder1
+    2300000: LanternPwrUp
+    2300002: pCylinder1
+    3300000: LanternPwrUp
+    3300002: pCylinder1
+    4300000: LanternPwrUp
+    4300002: pCylinder1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +39,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -70,7 +74,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

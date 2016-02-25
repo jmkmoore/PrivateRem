@@ -34,7 +34,7 @@ public class BossSpiderController : EnemyController {
 
     public float timer = 0f;
 
-    private float attackDuration = 0;
+    public float attackDuration = 0;
     public EnemyAttack[] myAttacks;
     
     #region Event Listeners
@@ -90,37 +90,67 @@ public class BossSpiderController : EnemyController {
     {
 //        em.stopToAttack(true);
         updateTimers();
-
-        if (currentAttackTimer == 0)
-            {
-                if (isInRange())
-                {
-                    if (canSwipe && !currentAttack.Equals("swipe"))
-                    {
-                        em.stopToAttack(true);
-                    }
-                    else if (canBite && !currentAttack.Equals("bite"))
-                    {
-                        em.stopToAttack(true);
-                    }
-                    else if (canLeap && !currentAttack.Equals("leap"))
-                    {
-                        _velocity.y = 1000f;
-                        _velocity.x = em.runSpeed * 2;
-                    }
-                }
-            }
-        if (currentAttack.Equals("leap"))
+        if (isInRange() && attackDuration == 0)
         {
-            _controller.move(_velocity * Time.deltaTime);
-            em.stopToAttack(false);
+            if (canSwipe)
+            {
+                em.stopToAttack(true);
+                currentAttackTimer = swipeCooldown;
+                attackDuration = 1.5f;
+                _animator.Play(Animator.StringToHash("Swipe"));
+                swipeTimer = swipeCooldown;
+                myAttacks[2].myBoxSwitch(true);
+                _velocity.x = 0;
+            }
+            else if (canBite)
+            {
+                if (Random.Range(0, 10) < 5)
+                {
+                    attackDuration = 3.3f;
+                    currentAttackTimer = biteCooldown;
+                    _animator.Play(Animator.StringToHash("BigBite"));
+                    myAttacks[0].myBoxSwitch(true);
+                    _velocity.x = 0;
+                }
+                else
+                {
+                    attackDuration = 2f;
+                    currentAttackTimer = biteCooldown;
+                    _animator.Play(Animator.StringToHash("SmallBite"));
+                    myAttacks[1].myBoxSwitch(true);
+                    _velocity.x = 0;
+                }
+                em.stopToAttack(true);
+            }
+            else if (canLeap)
+            {
+                currentAttackTimer = leapCooldown;
+                attackDuration = 3f;
+                currentAttackTimer = leapCooldown;
+                _animator.Play(Animator.StringToHash("Leap"));
+                myAttacks[3].myBoxSwitch(true);
+                em.stopToAttack(true);
+                _velocity.x = 0;
+            }
+        }else if(!isInRange() && attackDuration == 0){
+            if (em.left)
+            {
+                _velocity.x = Mathf.Lerp(_velocity.x, -1 * em.runSpeed, Time.deltaTime);
+            }
+            else
+            {
+                _velocity.x = Mathf.Lerp(_velocity.x, em.runSpeed, Time.deltaTime);
+            }
         }
+        _controller.move(_velocity * Time.deltaTime);
     }
 
     public override void updateTimers()
     {
         if (swipeTimer > 0)
+        {
             swipeTimer -= Time.deltaTime;
+        }
 
         if (biteTimer > 0)
             biteTimer -= Time.deltaTime;
@@ -133,7 +163,7 @@ public class BossSpiderController : EnemyController {
             attackDuration -= Time.deltaTime;
         }
 
-        if (attackDuration <= 0)
+        if (attackDuration < 0)
         {
             currentAttack = "idle";
             em.stopToAttack(false);
@@ -144,58 +174,27 @@ public class BossSpiderController : EnemyController {
             currentAttackTimer -= Time.deltaTime;
 
         if(currentAttackTimer < 0)
-            currentAttackTimer = 0;
-
-        if (_velocity.x != 0 && _controller.isGrounded)
-        {
-            _animator.Play(Animator.StringToHash("Walk"));
-        }
-
-        
+            currentAttackTimer = 0;        
 
     }
 
     #region Attack
     public override void updateCanAttack(string attackName, bool canUse)
     {
-        if (currentAttack.Equals("idle") && attackDuration == 0)
+        currentAttack = attackName;
+        switch (attackName)
         {
-            currentAttack = attackName;
-            switch (attackName)
-            {
-                case "swipe":
-                    currentAttackTimer = swipeCooldown;
-                    attackDuration = 1.5f;
-                    _animator.Play(Animator.StringToHash("Swipe"));
-                    swipeTimer = swipeCooldown;
-                    myAttacks[2].myBoxSwitch(true);
-                    break;
-                case "bite":
-                    if (Random.Range(0, 10) < 5)
-                    {
-                        attackDuration = 3.3f;
-                        currentAttackTimer = biteCooldown;
-                        _animator.Play(Animator.StringToHash("BigBite"));
-                        myAttacks[0].myBoxSwitch(true);
-                    }
-                    else
-                    {
-                        attackDuration = 2f;
-                        currentAttackTimer = biteCooldown;
-                        _animator.Play(Animator.StringToHash("SmallBite"));
-                        myAttacks[1].myBoxSwitch(true);
-                    }
-                    break;
-                case "leap":
-                    currentAttackTimer = leapCooldown;
-                    attackDuration = 3f;
-                    currentAttackTimer = leapCooldown;
-                    _animator.Play(Animator.StringToHash("Leap"));
-                    myAttacks[3].myBoxSwitch(true);
-                    break;
-                default:
-                    break;
-            }
+            case "swipe":
+                canSwipe = canUse;
+                break;
+            case "bite":
+                canBite = canUse;
+                break;
+            case "leap":
+                canLeap = canUse;
+                break;
+            default:
+                break;
         }
     }
     #endregion

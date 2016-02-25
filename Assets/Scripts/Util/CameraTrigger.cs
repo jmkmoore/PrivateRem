@@ -35,11 +35,17 @@ public class CameraTrigger : MonoBehaviour {
 		cam.xOffset = targetXOffset;
 		cam.yOffset = targetYOffset;
 		cam.distance = targetDistance;
-		if (lockCamera) {
-			cam.LockCamera(lockCoords);
-		} else {
-			cam.UnlockCamera();
-		}
+        if (other.tag.Equals("Player"))
+        {
+            if (lockCamera)
+            {
+                cam.LockCamera(lockCoords);
+            }
+            else
+            {
+                cam.UnlockCamera();
+            }
+        }
 
 		if (ShakeCamera) {
 			cam.Shake (shakeMagnitude, shakeDuration);

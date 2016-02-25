@@ -62,7 +62,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             if (StrikeParticle != null)
             {
-                Instantiate(StrikeParticle, new Vector3(target.transform.position.x, target.transform.position.y + 4f + gameObject.transform.position.z), new Quaternion(0, 0, 0, 0));
+                Instantiate(StrikeParticle, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), new Quaternion(0, 0, 0, 0));
             }
             eh.adjustCurrentHealth(-attackValue);
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();

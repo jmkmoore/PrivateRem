@@ -93,7 +93,6 @@ public class EnemyAttack : MonoBehaviour {
 
     public void myBoxSwitch(bool onOrOff)
     {
-        Debug.Log("Called");
         frames += Time.deltaTime;
     }
 

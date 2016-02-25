@@ -1,17 +1,46 @@
 fileFormatVersion: 2
-guid: 6674ed001fdb4c04387b71e1c926ee30
-timeCreated: 1451464770
-licenseType: Free
+guid: 3991dac64974eac47b63e89f9e2976e4
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: StalksGroup2
+    100002: Tim_Body_Tim_Grp
+    100004: Tim_Grp_Tim_Hair
+    100006: Tim_Grp_Tim_LeftChop
+    100008: Tim_Grp_Tim_Pants
+    100010: Tim_Grp_Tim_RightChop
+    100012: Tim_Grp_Tim_Shackle
+    100014: Tim_Grp_Tim_Shackle_Tim_Chain
     400000: //RootNode
-    400002: StalksGroup2
-    2300000: StalksGroup2
-    3300000: StalksGroup2
-    4300000: StalksGroup2
+    400002: Tim_Body_Tim_Grp
+    400004: Tim_Grp_Tim_Hair
+    400006: Tim_Grp_Tim_LeftChop
+    400008: Tim_Grp_Tim_Pants
+    400010: Tim_Grp_Tim_RightChop
+    400012: Tim_Grp_Tim_Shackle
+    400014: Tim_Grp_Tim_Shackle_Tim_Chain
+    2300000: Tim_Body_Tim_Grp
+    2300002: Tim_Grp_Tim_Hair
+    2300004: Tim_Grp_Tim_LeftChop
+    2300006: Tim_Grp_Tim_Pants
+    2300008: Tim_Grp_Tim_RightChop
+    2300010: Tim_Grp_Tim_Shackle
+    2300012: Tim_Grp_Tim_Shackle_Tim_Chain
+    3300000: Tim_Body_Tim_Grp
+    3300002: Tim_Grp_Tim_Hair
+    3300004: Tim_Grp_Tim_LeftChop
+    3300006: Tim_Grp_Tim_Pants
+    3300008: Tim_Grp_Tim_RightChop
+    3300010: Tim_Grp_Tim_Shackle
+    3300012: Tim_Grp_Tim_Shackle_Tim_Chain
+    4300000: Tim_Body_Tim_Grp
+    4300002: Tim_Grp_Tim_Hair
+    4300004: Tim_Grp_Tim_LeftChop
+    4300006: Tim_Grp_Tim_Pants
+    4300008: Tim_Grp_Tim_RightChop
+    4300010: Tim_Grp_Tim_Shackle
+    4300012: Tim_Grp_Tim_Shackle_Tim_Chain
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +64,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -70,7 +99,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

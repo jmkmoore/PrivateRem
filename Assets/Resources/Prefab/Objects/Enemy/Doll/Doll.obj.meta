@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 45acb49a2492487479ec8109861fc203
-timeCreated: 1451375909
-licenseType: Free
+guid: 81040f2a5f032394b91a78f91060d91a
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Group12480
+    100000: Doll
     100002: //RootNode
-    400000: Group12480
+    400000: Doll
     400002: //RootNode
-    2300000: Group12480
-    3300000: Group12480
-    4300000: Group12480
+    2300000: Doll
+    3300000: Doll
+    4300000: Doll
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -70,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

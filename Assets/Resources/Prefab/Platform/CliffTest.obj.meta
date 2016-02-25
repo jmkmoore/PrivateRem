@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 923c7999c5f249a4fa483b8f484a3576
-timeCreated: 1452029859
-licenseType: Free
+guid: d9935e268f9d6e346a4d830b5536dfc9
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Group2
-    100002: //RootNode
-    400000: Group2
-    400002: //RootNode
-    2300000: Group2
-    3300000: Group2
-    4300000: Group2
+    100000: //RootNode
+    100002: pCube126_group1
+    400000: //RootNode
+    400002: pCube126_group1
+    2300000: pCube126_group1
+    3300000: pCube126_group1
+    4300000: pCube126_group1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -70,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
