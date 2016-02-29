@@ -12,13 +12,10 @@ public class BossSpiderController : EnemyController {
     #endregion
     
     private EnemyHealth myHealth;
-    public float currentAttackTimer = 0;
     public string currentAttack = "idle";
     private EnemyMovement em;
 
-    public float swipeCooldown;
-    public float biteCooldown;
-    public float leapCooldown;
+    public float waitTime;
 
     private float swipeDuration;
     private float biteDuration;
@@ -40,6 +37,8 @@ public class BossSpiderController : EnemyController {
 
     public float attackDuration = 0;
     public EnemyAttack[] myAttacks;
+
+    public string lastAttack;
     
     #region Event Listeners
 
@@ -85,6 +84,7 @@ public class BossSpiderController : EnemyController {
         _controller.onTriggerExitEvent += onTriggerExitEvent;
 
         currentAttack = "idle";
+        lastAttack = "idle";
 
         myAttacks = gameObject.GetComponentsInChildren<EnemyAttack>();
 
@@ -101,58 +101,60 @@ public class BossSpiderController : EnemyController {
         {
             if (isInRange() && attackDuration == 0)
             {
-                if (canSwipe)
+                if (canSwipe && !lastAttack.Equals("swipe"))
                 {
                     em.stopToAttack(true);
-                    currentAttackTimer = swipeCooldown;
-                    attackDuration = 1.5f;
+                    attackDuration = 1.5f + waitTime;
                     _animator.Play(Animator.StringToHash("Swipe"));
-                    swipeTimer = swipeCooldown;
                     myAttacks[2].myBoxSwitch(true);
                     _velocity.x = 0;
+                    lastAttack = "swipe";
                 }
-                else if (canBite)
+                else if (canBite && !lastAttack.Equals("bite"))
                 {
                     if (Random.Range(0, 10) < 5)
                     {
-                        attackDuration = 3.3f;
-                        currentAttackTimer = biteCooldown;
+                        attackDuration = 3.3f + waitTime;
                         _animator.Play(Animator.StringToHash("BigBite"));
                         myAttacks[0].myBoxSwitch(true);
                         _velocity.x = 0;
+                        lastAttack = "bite";
                     }
                     else
                     {
-                        attackDuration = 2f;
-                        currentAttackTimer = biteCooldown;
+                        attackDuration = 2f + waitTime;
                         _animator.Play(Animator.StringToHash("SmallBite"));
                         myAttacks[1].myBoxSwitch(true);
                         _velocity.x = 0;
+                        lastAttack = "bite";
                     }
                     em.stopToAttack(true);
                 }
                 else if (canLeap)
                 {
-                    currentAttackTimer = leapCooldown;
-                    attackDuration = 3f;
-                    currentAttackTimer = leapCooldown;
+                    attackDuration = 3f + waitTime;
                     _animator.Play(Animator.StringToHash("Leap"));
                     myAttacks[3].myBoxSwitch(true);
                     em.stopToAttack(true);
                     _velocity.x = 0;
+                    lastAttack = "leap";
                 }
             }
             else if (!isInRange() && attackDuration == 0)
             {
-                if (em.left)
+                if (_controller.isGrounded)
                 {
-                    _velocity.x = Mathf.Lerp(_velocity.x, -1 * em.runSpeed, Time.deltaTime);
-                }
-                else
-                {
-                    _velocity.x = Mathf.Lerp(_velocity.x, em.runSpeed, Time.deltaTime);
+                    if (em.left)
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, -1 * em.runSpeed, Time.deltaTime);
+                    }
+                    else
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, em.runSpeed, Time.deltaTime);
+                    }
                 }
             }
+            _velocity.y += em.gravity * Time.deltaTime;
             _controller.move(_velocity * Time.deltaTime);
         }
     }
@@ -181,12 +183,6 @@ public class BossSpiderController : EnemyController {
             em.stopToAttack(false);
             attackDuration = 0;
         }
-
-        if(!currentAttack.Equals("idle") || currentAttackTimer > 0)
-            currentAttackTimer -= Time.deltaTime;
-
-        if(currentAttackTimer < 0)
-            currentAttackTimer = 0;        
 
     }
 
