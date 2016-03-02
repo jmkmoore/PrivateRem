@@ -18,13 +18,15 @@ public class PlayerAttack : MonoBehaviour {
     public GameObject myParticle;
 
     private Vector3 attackKnockback;
+    private PlayerHealth ph;
+
 	// Use this for initialization
 	void Start () {
         if (myParticle != null)
         {
             myParticle.SetActive(false);
         }
-
+        ph = transform.gameObject.GetComponentInParent<PlayerHealth>();
         attackKnockback.x = attackKnockbackX;
         attackKnockback.y = attackKnockbackY * Time.deltaTime;
         myBox = gameObject.GetComponent<BoxCollider2D>();
@@ -67,6 +69,7 @@ public class PlayerAttack : MonoBehaviour {
             eh.adjustCurrentHealth(-attackValue);
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
             enemyController.getKnockedBack(thisKnockback);
+            ph.fillShield(attackValue);
         }
     }
 

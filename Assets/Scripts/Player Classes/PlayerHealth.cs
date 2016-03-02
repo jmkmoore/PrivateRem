@@ -13,10 +13,15 @@ public class PlayerHealth : MonoBehaviour {
     public bool isBlocking = false;
     public float blockTimer = 0f;
     public float parryTimer = 0.25f;
+
+    public double maxShield = 50;
+    public double currentShield;
+    public double shieldRechargeRate;
     
     // Use this for initialization
 	void Start () {
 		myself = gameObject;
+        currentShield = maxShield;
 	}
 	
 	// Update is called once per frame
@@ -39,9 +44,18 @@ public class PlayerHealth : MonoBehaviour {
         {
             currentHealth -= 1;
         }
+
+        if (currentShield < maxShield)
+        {
+            currentShield += shieldRechargeRate;
+            if (currentShield > maxShield)
+                currentShield = maxShield;
+        }
 	}
 
 	public void adjustCurrentHealth(int adj){
+        double totalDamage = Mathf.Abs(adj);
+        double leftOverDamage;
         if (isBlocking)
         {
             if (blockTimer < parryTimer){
@@ -50,20 +64,35 @@ public class PlayerHealth : MonoBehaviour {
             }
             else
             {
-                adj = adj * 1 / 2;
-                currentHealth += adj;
+                totalDamage = totalDamage * 0.5;
+                if (totalDamage > currentShield)
+                {
+                    leftOverDamage = (int)(totalDamage - currentShield);
+                    currentShield = 0;
+                    currentHealth -= (int)leftOverDamage;
+                }
+                else
+                {
+                    currentShield -= totalDamage;
+                }
             }
         }
         else
         {
-            if (adj < 0)
+        if (!invuln)
             {
-                if (!invuln)
+                if (totalDamage > currentShield)
                 {
-                    currentHealth += adj;
-                    invuln = true;
-                    invulnTimer += Time.deltaTime;
+                    leftOverDamage = (int)(totalDamage - currentShield);
+                    currentShield = 0;
+                    currentHealth -= (int)leftOverDamage;
                 }
+                else
+                {
+                    currentShield -= totalDamage;
+                }
+                invuln = true;
+                invulnTimer += Time.deltaTime;
             }
         }
         if (currentHealth < 1)
@@ -85,5 +114,12 @@ public class PlayerHealth : MonoBehaviour {
     public void resetHP()
     {
         currentHealth = maxHealth;
+    }
+
+    public void fillShield(int shieldGain)
+    {
+        currentShield += shieldGain;
+        if (currentShield > maxShield)
+            currentShield = maxShield;
     }
 }
