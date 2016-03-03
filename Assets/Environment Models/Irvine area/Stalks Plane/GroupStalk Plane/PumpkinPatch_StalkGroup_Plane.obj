@@ -1,0 +1,27 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.12.2015 03:41:47
+
+mtllib PumpkinPatch_StalkGroup_Plane.mtl
+
+#
+# object StalkGroupPlane
+#
+
+v  0.000139 -301.398071 -301.398071
+v  0.000040 -301.398071 301.398071
+v  0.000112 301.398071 -301.398071
+v  0.000014 301.398071 301.398071
+# 4 vertices
+
+vt 0.000000 0.000000 0.000000
+vt 1.000000 0.000000 0.000000
+vt 0.000000 1.000000 0.000000
+vt 1.000000 1.000000 0.000000
+# 4 texture coords
+
+g StalkGroupPlane
+usemtl 08___Default
+s 1
+f 3/3 1/1 2/2 4/4 
+# 1 polygons
+

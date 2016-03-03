@@ -1,0 +1,27 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.12.2015 03:43:27
+
+mtllib PumpkinPatch_SingleStalk_Plane1.mtl
+
+#
+# object StalkPlane1
+#
+
+v  0.000031 -267.724976 89.241699
+v  -0.000057 267.724976 89.241699
+v  0.000060 -267.724976 -89.241623
+v  -0.000028 267.724976 -89.241623
+# 4 vertices
+
+vt 1.000000 0.000000 0.000000
+vt 1.000000 1.000000 0.000000
+vt 0.666667 0.000000 0.000000
+vt 0.666667 1.000000 0.000000
+# 4 texture coords
+
+g StalkPlane1
+usemtl 08___Default
+s 1
+f 3/3 1/1 2/2 4/4 
+# 1 polygons
+
