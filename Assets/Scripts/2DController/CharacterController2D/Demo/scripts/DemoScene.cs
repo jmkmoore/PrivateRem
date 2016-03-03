@@ -348,7 +348,7 @@ public class DemoScene : MonoBehaviour
         {
             if (!isDashing && !isDiving)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor);
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * (runSpeed * pm.speed), Time.deltaTime * smoothedMovementFactor);
                 // we can only jump whilst grounded
                 if (!_controller.isGrounded && Input.GetButtonDown("Jump") && jumpCount < 1)
                 {
@@ -376,16 +376,16 @@ public class DemoScene : MonoBehaviour
                 if (_controller.isGrounded)
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, runSpeed * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, (runSpeed * pm.speed) * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost , runSpeed * dashBoost, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost, (runSpeed * pm.speed) * dashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 else
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, runSpeed * airDashBoost * -1, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, (runSpeed * pm.speed) * airDashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * runSpeed * airDashBoost, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * (runSpeed * pm.speed) * airDashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 if (Input.GetButtonDown("Jump"))
                 {

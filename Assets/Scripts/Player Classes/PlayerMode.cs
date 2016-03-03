@@ -17,23 +17,32 @@ public class PlayerMode : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!mode.Equals("normal"))
+        if (timer > 0)
         {
-            timer += Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (timer > buffTime)
+        if (timer < 0)
         {
             speed = 1f;
             mode = "normal";
             timer = 0f;
             resetCount = 0f;
         }
+        TienGUI.getInstance().LightBar = ((float)timer / (float)buffTime);
+
 	}
 
     public void resetTimer()
     {
-        speed += .05f;
-        timer = 0f;
+        if (speed == 1)
+        {
+            speed = 1.1f;
+        }
+        else
+        {
+            speed += .05f;
+        }
+        timer += buffTime;
         mode = "speed";
         resetCount += 1;
     }

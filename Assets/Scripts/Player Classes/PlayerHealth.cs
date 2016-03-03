@@ -99,8 +99,8 @@ public class PlayerHealth : MonoBehaviour {
         if (currentHealth < 1)
             currentHealth = 0;
 
-
-		//TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
+        TienGUI.getInstance().PowerBar = ((float)currentShield / (float)maxShield);
+		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
 		}
 
     public void updateBlocking(bool onOff)
