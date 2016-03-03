@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour {
     public double maxShield = 50;
     public double currentShield;
     public double shieldRechargeRate;
+    public double dashCost;
     
     // Use this for initialization
 	void Start () {
@@ -121,5 +122,19 @@ public class PlayerHealth : MonoBehaviour {
         currentShield += shieldGain;
         if (currentShield > maxShield)
             currentShield = maxShield;
+    }
+
+    public void dashDrain()
+    {
+        currentShield -= (int)dashCost;
+        if (currentShield < 0)
+        {
+            currentShield = 0;
+        }
+    }
+
+    public bool canDash()
+    {
+        return currentShield >= dashCost;
     }
 }

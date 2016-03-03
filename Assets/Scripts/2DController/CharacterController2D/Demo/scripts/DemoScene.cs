@@ -173,34 +173,39 @@ public class DemoScene : MonoBehaviour
             }
             if (Input.GetButtonDown("Dash"))
             {
-                if (!_controller.isGrounded)
+                if (ph.canDash())
                 {
-                    if (airDashCount < 1)
+                    if (!_controller.isGrounded)
                     {
-                        useAirDash = true;
-                        airDashCount++;
-                        isDashing = true;
-                        _animator.Play(Animator.StringToHash("Airdash"));
-                        AkSoundEngine.PostEvent("playDash", gameObject);
+                        if (airDashCount < 1)
+                        {
+                            useAirDash = true;
+                            airDashCount++;
+                            isDashing = true;
+                            _animator.Play(Animator.StringToHash("Airdash"));
+                            AkSoundEngine.PostEvent("playDash", gameObject);
+                            ph.dashDrain();
+                        }
+                        else
+                        {
+                            isDashing = false;
+                        }
                     }
                     else
                     {
-                        isDashing = false;
+                        isDashing = true;
+                        _animator.Play(Animator.StringToHash("ShoulderCharge"));
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        attackCount = 0;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        attack(6);
+                        AkSoundEngine.PostEvent("playDash", gameObject);
+                        ph.dashDrain();
                     }
+                    isBlocking = false;
                 }
-                else
-                {
-                    isDashing = true;
-                    _animator.Play(Animator.StringToHash("ShoulderCharge"));
-                    comboCountdown = 0;
-                    comboCountdown += Time.deltaTime;
-                    attackCount = 0;
-                    comboCountdown = 0;
-                    comboCountdown += Time.deltaTime;
-                    attack(6);
-                    AkSoundEngine.PostEvent("playDash", gameObject);
-                }
-                isBlocking = false;
             }
         }
         #endregion
