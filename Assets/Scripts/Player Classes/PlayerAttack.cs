@@ -75,7 +75,6 @@ public class PlayerAttack : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.transform.name);
         if (other.tag.Equals("Enemy"))
         {
             Attack(other.transform.gameObject);

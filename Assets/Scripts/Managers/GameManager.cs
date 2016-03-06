@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
     public GameObject Tien;
+    public SmoothCamera2D camera;
 
 	public enum GameState {
 		Menu,
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour {
         {
             Tien.transform.position = Tien.GetComponent<RespawnTracker>().myCheckpoint;
             Tien.GetComponent<PlayerHealth>().resetHP();
+            camera.UnlockCamera();
         }
         
 	}

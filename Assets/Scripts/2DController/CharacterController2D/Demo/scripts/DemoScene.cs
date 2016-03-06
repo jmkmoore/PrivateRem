@@ -389,17 +389,18 @@ public class DemoScene : MonoBehaviour
                 }
                 if (Input.GetButtonDown("Jump"))
                 {
-                    if (_controller.isGrounded)
+                    Debug.Log("Dash Jump");
+                    if (_controller.isGrounded || (jumpCount < 2))
                     {
                         jumpCount++;
                         _velocity.y = Mathf.Sqrt(jumpHeight * -gravity) + (-gravity * Time.deltaTime);
+                        _animator.Play(Animator.StringToHash("Airdash"));
                     }
                 }
                 else
                 {
-                    _velocity.y = gravity * Time.deltaTime;
+                    _velocity.y += gravity * Time.deltaTime;
                 }
-
             }
             else if (isDiving)
             {
