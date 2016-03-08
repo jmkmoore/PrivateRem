@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour {
             if (currentShield > maxShield)
                 currentShield = maxShield;
         }
+        TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
         TienGUI.getInstance().PowerBar = ((float)currentShield / (float)maxShield);
 	}
 

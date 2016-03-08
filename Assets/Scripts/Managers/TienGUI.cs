@@ -51,12 +51,12 @@ public class TienGUI : MonoBehaviour {
 		}
 		set{
 			lightBar = value;
-			GUILightBar.fillAmount = value;
+			//GUILightBar.fillAmount = value;
 		}
 	}
 
-	private int orbs;
-	public int Orbs{
+//	private int orbs;
+/**	public int Orbs{
 		get{
 			return orbs;
 		}
@@ -76,7 +76,7 @@ public class TienGUI : MonoBehaviour {
 			}
 		}
 	}
-
+**/
 
 
 
