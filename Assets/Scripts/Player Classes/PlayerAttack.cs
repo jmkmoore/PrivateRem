@@ -20,8 +20,13 @@ public class PlayerAttack : MonoBehaviour {
     private Vector3 attackKnockback;
     private PlayerHealth ph;
 
+    public AudioClip hitSound;
+    public AudioSource hitSource;
+
+
 	// Use this for initialization
 	void Start () {
+        hitSource = GetComponent<AudioSource>();
         if (myParticle != null)
         {
             myParticle.SetActive(false);
@@ -66,6 +71,11 @@ public class PlayerAttack : MonoBehaviour {
             {
                 Instantiate(StrikeParticle, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y), new Quaternion(0, 0, 0, 0));
             }
+            if (hitSound != null)
+            {
+                hitSource.PlayOneShot(hitSound);
+            }
+            hitSource.PlayOneShot(hitSound);
             eh.adjustCurrentHealth(-attackValue);
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
             enemyController.getKnockedBack(thisKnockback);

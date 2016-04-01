@@ -183,7 +183,6 @@ public class DemoScene : MonoBehaviour
                             airDashCount++;
                             isDashing = true;
                             _animator.Play(Animator.StringToHash("Airdash"));
-                            AkSoundEngine.PostEvent("playDash", gameObject);
                             ph.dashDrain();
                         }
                         else
@@ -201,7 +200,6 @@ public class DemoScene : MonoBehaviour
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
                         attack(6);
-                        AkSoundEngine.PostEvent("playDash", gameObject);
                         ph.dashDrain();
                     }
                     isBlocking = false;
@@ -271,7 +269,6 @@ public class DemoScene : MonoBehaviour
                             comboCountdown += Time.deltaTime;
                             attack(0);
                             normalizedHorizontalSpeed = 0;
-                        AkSoundEngine.PostEvent("playJab", gameObject);
                     }
                         else if (attackCount == 1)
                         {
@@ -281,7 +278,6 @@ public class DemoScene : MonoBehaviour
                             comboCountdown += Time.deltaTime;
                             attack(1);
                             normalizedHorizontalSpeed = 0;
-                            AkSoundEngine.PostEvent("playCross", gameObject);
                     }
                         else if (attackCount == 2)
                         {
@@ -291,8 +287,7 @@ public class DemoScene : MonoBehaviour
                             comboCountdown += Time.deltaTime;
                             attack(2);
                             normalizedHorizontalSpeed = 1 * transform.localScale.x;
-                             AkSoundEngine.PostEvent("playKick", gameObject);
-                    }
+                        }
                     }
                 //}
             }
@@ -365,7 +360,6 @@ public class DemoScene : MonoBehaviour
                     if (!isDashing)
                     {
                         _animator.Play(Animator.StringToHash("Jump"));
-                        AkSoundEngine.PostEvent("playJump", gameObject);
                     }
                 }
                 _velocity.y += gravity * Time.deltaTime;
@@ -463,21 +457,6 @@ public class DemoScene : MonoBehaviour
         }
 
     }
-
-    #region Wwise Integration
-
-    void playFootsteps()
-    {
-        AkSoundEngine.PostEvent("playFootsteps", gameObject);
-    }
-
-    void playIdle()
-    {
-        AkSoundEngine.PostEvent("playIdle", gameObject);
-    }
-
-
-    #endregion
 
 
     public bool isLeft()
