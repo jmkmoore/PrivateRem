@@ -41,6 +41,13 @@ public class IrvineController : MonoBehaviour {
     public bool thrownSeed = false;
     public bool spawnChild = false;
 
+    public float fireSpitDeg;
+    public float fireSpitDif;
+
+    private GameObject log;
+    private GameObject mySolidBox;
+
+
     #region Event Listeners
 
     void onControllerCollider(RaycastHit2D hit)
@@ -72,8 +79,6 @@ public class IrvineController : MonoBehaviour {
     #endregion
 
 
-    public GameObject log;
-    public GameObject mySolidBox;
 
 	// Use this for initialization
 	void Start () {
@@ -244,21 +249,21 @@ public class IrvineController : MonoBehaviour {
     {
         spitStage1Attack();
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
-        newSeed.setAngle(-.86f, -.5f);
-        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        newSeed.setAngle(-.7f, -.7f);
-        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        newSeed.setAngle(-.5f, -.86f);
-        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        
+        newSeed.setRoller(false);
+        newSeed.setAngle(fireSpitDeg * Mathf.Deg2Rad);
+        FireSeed floater = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        newSeed.setAngle((fireSpitDeg - fireSpitDif) * Mathf.Deg2Rad);
+       FireSeed floater2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        newSeed.setAngle((fireSpitDeg + fireSpitDif) * Mathf.Deg2Rad);
+        FireSeed floater3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
     }
 
     void throwSeed()
     {
-        Debug.Log("Throwing seed");
-        FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
-        newSeed.setAngle(Random.Range(-1f, 0), Random.Range(-1, 1));
-        FireSeed floater = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        FireSeed throwSeed = (FireSeed)myFireball.GetComponent("FireSeed");
+        throwSeed.setAngle(fireSpitDeg * Mathf.Deg2Rad);
+        throwSeed.setRoller(true);
+        FireSeed roller = (FireSeed)Instantiate(throwSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
     }
 
     void updateTimers()
@@ -266,27 +271,35 @@ public class IrvineController : MonoBehaviour {
         if (slamTimer != 0)
         {
             slamTimer += Time.deltaTime;
+            if (spitTimer != 0)
+                spitTimer += Time.deltaTime;
         }
-        if (spitTimer != 0)
-        {
-            spitTimer += Time.deltaTime;
-        }
+        
         if (spitTimer > spitCooldown)
         {
             spitTimer = 0;
+            if (slamTimer > slamCooldown)
+                slamTimer = 0;
         }
-        if (slamTimer > slamCooldown)
-        {
-            slamTimer = 0;
+
+        if(throwTimer != 0){
+            throwTimer += Time.deltaTime;
+            if (throwTimer > throwCooldown)
+            {
+                throwTimer = 0;
+                thrownSeed = false;
+            }
         }
-        if (childTimer > childCooldown)
-        {
-            spawnChild = false;
-            childTimer = 0;
-        }
+
+        
         if (childTimer != 0)
         {
             childTimer += Time.deltaTime;
+            if (childTimer > childCooldown)
+            {
+                spawnChild = false;
+                childTimer = 0;
+            }
         }
     }
 
