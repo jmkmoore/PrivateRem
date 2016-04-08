@@ -35,6 +35,7 @@ public class IrvineController : MonoBehaviour {
     public bool transitioned = false;
 
     public GameObject myFireball;
+    public GameObject myFireSeed;
     private EnemyMovement em;
 
     public bool fireOne = false;
@@ -242,6 +243,7 @@ public class IrvineController : MonoBehaviour {
     {
         _animator.Play(Animator.StringToHash("IrvineSlam"));
         slamTimer += Time.deltaTime;
+        log.GetComponent<EnemyAttack>().myBoxSwitch(true);
         currentAttack = "slam";
     }
 
@@ -267,7 +269,7 @@ public class IrvineController : MonoBehaviour {
 
     void throwSeed()
     {
-        FireSeed throwSeed = (FireSeed)myFireball.GetComponent("FireSeed");
+        FireSeed throwSeed = (FireSeed)myFireSeed.GetComponent("FireSeed");
         throwSeed.setAngle(fireSpitDeg * Mathf.Deg2Rad);
         throwSeed.setRoller(true);
         FireSeed roller = (FireSeed)Instantiate(throwSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
