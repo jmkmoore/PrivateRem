@@ -106,81 +106,88 @@ public class IrvineController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        if (em.isVisible)
-        {      
-            #region Stage triggering
-            if (currentAttackTimer == 0)
+        if (myHealth.currentHealth <= 0)
+        {
+            _animator.Play(Animator.StringToHash("Death"));
+        }
+        else {
+            if (em.isVisible)
             {
-                if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+                #region Stage triggering
+                if (currentAttackTimer == 0)
                 {
-                    stage = 2;
+                    if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+                    {
+                        stage = 2;
+                    }
+
+                    if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
+                    {
+                        stage = 3;
+                    }
+
+                    if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
+                    {
+                        stage = 4;
+                    }
+
+                    if (myHealth.currentHealth <= 0)
+                    {
+                        stage = 5;
+                    }
                 }
+                #endregion
 
-                if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
+                #region Attacks
+                if (currentAttackTimer != 0)
                 {
-                    stage = 3;
-                }
-
-                if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
-                {
-                    stage = 4;
-                }
-
-                if (myHealth.currentHealth <= 0)
-                {
-                    stage = 5;
-                }
-            }
-            #endregion
-            
-            #region Attacks
-            if (currentAttackTimer != 0)
-            {
-                currentAttackTimer += Time.deltaTime;
-            }
-
-            if (currentAttack.Equals("spit") && currentAttackTimer > 1.2f && !fireOne)
-            {
-                fireSeedsOne();
-                fireOne = true;
-            }
-
-            if (currentAttack.Equals("child") && currentAttackTimer > 1.5f && !spawnChild)
-            {
-                raiseChild();
-            }
-
-            if (currentAttack.Equals("seed") && currentAttackTimer > 2f && !thrownSeed)
-            {
-                throwSeed();
-                thrownSeed = true;
-            }
-
-            if ((currentAttackTimer > 2.5f && currentAttack.Equals("slam")) || (currentAttackTimer > 3f && currentAttack.Equals("spit")) || (currentAttackTimer > 3f && currentAttack.Equals("seed")) || currentAttackTimer == 0 || (currentAttackTimer > 3f && currentAttack.Equals("child")))
-            {
-                if (childTimer == 0)
-                {
-                    currentAttackTimer = 0;
-                    currentAttackTimer += Time.deltaTime;
-                    childAttack();
-                }else if (slamTimer == 0)
-                {
-                    currentAttackTimer = 0;
-                    SlamAttack();
                     currentAttackTimer += Time.deltaTime;
                 }
-                else if (spitTimer == 0)
+
+                if (currentAttack.Equals("spit") && currentAttackTimer > 1.2f && !fireOne)
                 {
-                    currentAttackTimer = 0;
-                    spitStage1Attack();
-                    currentAttackTimer += Time.deltaTime;
-                    fireOne = false;
+                    fireSeedsOne();
+                    fireOne = true;
                 }
-                else if (throwTimer == 0)
+
+                if (currentAttack.Equals("child") && currentAttackTimer > 1.5f && !spawnChild)
                 {
-                    currentAttackTimer = 0;
-                    seedAttack();
-                    currentAttackTimer += Time.deltaTime;
+                    raiseChild();
+                }
+
+                if (currentAttack.Equals("seed") && currentAttackTimer > 2f && !thrownSeed)
+                {
+                    throwSeed();
+                    thrownSeed = true;
+                }
+
+                if ((currentAttackTimer > 2.5f && currentAttack.Equals("slam")) || (currentAttackTimer > 3f && currentAttack.Equals("spit")) || (currentAttackTimer > 3f && currentAttack.Equals("seed")) || currentAttackTimer == 0 || (currentAttackTimer > 3f && currentAttack.Equals("child")))
+                {
+                    if (childTimer == 0)
+                    {
+                        currentAttackTimer = 0;
+                        currentAttackTimer += Time.deltaTime;
+                        childAttack();
+                    }
+                    else if (slamTimer == 0)
+                    {
+                        currentAttackTimer = 0;
+                        SlamAttack();
+                        currentAttackTimer += Time.deltaTime;
+                    }
+                    else if (spitTimer == 0)
+                    {
+                        currentAttackTimer = 0;
+                        spitStage1Attack();
+                        currentAttackTimer += Time.deltaTime;
+                        fireOne = false;
+                    }
+                    else if (throwTimer == 0)
+                    {
+                        currentAttackTimer = 0;
+                        seedAttack();
+                        currentAttackTimer += Time.deltaTime;
+                    }
                 }
             }
             #endregion
