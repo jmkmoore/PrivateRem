@@ -246,7 +246,7 @@ public class EnemyMovement : MonoBehaviour {
                     }
                     if (myTimer > myDeathTimer)
                     {
-                        Destroy(gameObject);
+                        myHealth.explode();
                     }
                 }
                 #endregion

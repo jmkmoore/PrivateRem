@@ -30,21 +30,15 @@ public class EnemyHealth : MonoBehaviour {
 	void FixedUpdate () {
         if (currentHealth <= 0 && disappearOnZero)
         {
-            if (myExplosion != null)
-            {
-                DeathExplosionController explode = (DeathExplosionController)myExplosion.GetComponent<DeathExplosionController>();
-                DeathExplosionController exploder = (DeathExplosionController)Instantiate(explode, transform.position, transform.rotation);
-            }
-            Destroy(gameObject);
-        }else if(currentHealth <= 0 && !disappearOnZero){
+            explode();
+        }
+        else if(currentHealth <= 0 && !disappearOnZero){
             deathTimer += Time.deltaTime;
             if (deathTimer > postDeathLifetime) {
                 if (myExplosion != null)
                 {
-                    DeathExplosionController explode = (DeathExplosionController)myExplosion.GetComponent<DeathExplosionController>();
-                    DeathExplosionController exploder = (DeathExplosionController)Instantiate(explode, transform.position, transform.rotation);
+                    explode();
                 } 
-                Destroy(gameObject);
             }
         }
         if (damageTimer != 0)
@@ -89,5 +83,15 @@ public class EnemyHealth : MonoBehaviour {
     public bool getInvulnState()
     {
         return isInvuln;
+    }
+
+    public void explode()
+    {
+        if (myExplosion != null)
+        {
+            DeathExplosionController explode = (DeathExplosionController)myExplosion.GetComponent<DeathExplosionController>();
+            DeathExplosionController exploder = (DeathExplosionController)Instantiate(explode, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
     }
 }
