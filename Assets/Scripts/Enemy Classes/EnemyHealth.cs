@@ -35,10 +35,10 @@ public class EnemyHealth : MonoBehaviour {
         else if(currentHealth <= 0 && !disappearOnZero){
             deathTimer += Time.deltaTime;
             if (deathTimer > postDeathLifetime) {
-                if (myExplosion != null)
-                {
+   
+             
                     explode();
-                } 
+           
             }
         }
         if (damageTimer != 0)
