@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public float attackKnockbackX = 1000f;
     public float attackKnockbackY = 1000f;
-    public float lifetime, maxDur;
+    public float lifetime, start, maxDur;
     
     public GameObject StrikeParticle;
 
@@ -21,12 +21,15 @@ public class PlayerAttack : MonoBehaviour {
     private PlayerHealth ph;
 
     public AudioClip hitSound;
-    public AudioSource hitSource;
-
+    public AudioClip windupSound;
+    private AudioSource hitSource;
+    public bool useSpeedModifier;
+    private PlayerMode pm;
 
 	// Use this for initialization
 	void Start () {
-        hitSource = GetComponent<AudioSource>();
+        pm = GetComponentInParent<PlayerMode>();
+        hitSource = GetComponentInParent<AudioSource>();
         if (myParticle != null)
         {
             myParticle.SetActive(false);
@@ -40,6 +43,12 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+        if (lifetime > start)
+        {
+            myBox.enabled = true;
+            if (myParticle != null)
+                myParticle.SetActive(true);
+        }
         if (myBox.enabled == true)
         {
             lifetime += Time.deltaTime;
@@ -75,8 +84,15 @@ public class PlayerAttack : MonoBehaviour {
             {
                 hitSource.PlayOneShot(hitSound);
             }
-            hitSource.PlayOneShot(hitSound);
-            eh.adjustCurrentHealth(-attackValue);
+            if (useSpeedModifier)
+            {
+                eh.adjustCurrentHealth(-attackValue * pm.getResetCount());
+                pm.emptyCounter();
+            }
+            else
+            {
+                eh.adjustCurrentHealth(-attackValue);
+            }
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
             enemyController.getKnockedBack(thisKnockback);
             ph.fillShield(attackValue);
@@ -129,9 +145,8 @@ public class PlayerAttack : MonoBehaviour {
 
     public void turnOnAttack()
     {
-        lifetime = 0f;
-        myBox.enabled = true;
-        if (myParticle != null)
-            myParticle.SetActive(true);
+        if (windupSound != null)
+            hitSource.PlayOneShot(windupSound);
+        lifetime = 0f + Time.deltaTime;
     }
 }

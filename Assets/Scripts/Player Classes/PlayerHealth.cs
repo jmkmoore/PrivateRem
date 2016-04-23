@@ -18,10 +18,27 @@ public class PlayerHealth : MonoBehaviour {
     public double currentShield;
     public double shieldRechargeRate;
     public double dashCost;
+
+    public GameObject hitParticle;
+    public GameObject parryParticle;
+    public GameObject blockParticle;
+    private DeathExplosionController block;
+    private DeathExplosionController parry;
+    private DeathExplosionController hit;
+
+    public AudioClip parrySound;
+    public AudioClip blockSound;
+    private AudioSource mySource;
+
+    public GameObject shield;
     
     // Use this for initialization
 	void Start () {
-		myself = gameObject;
+        mySource = GetComponent<AudioSource>();
+        parry = (DeathExplosionController)parryParticle.GetComponent<DeathExplosionController>();
+        hit = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
+        block = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
+        myself = gameObject;
         currentShield = maxShield;
 	}
 	
@@ -37,9 +54,15 @@ public class PlayerHealth : MonoBehaviour {
             invulnTimer = 0f;
         }
         if (isBlocking)
+        {
             blockTimer += Time.deltaTime;
+            shield.SetActive(true);
+        }
         else
+        {
+            shield.SetActive(false);
             blockTimer = 0f;
+        }
 
         if (currentHealth > maxHealth)
         {
@@ -62,6 +85,14 @@ public class PlayerHealth : MonoBehaviour {
         if (isBlocking)
         {
             if (blockTimer < parryTimer){
+                if (parryParticle != null)
+                {
+                    DeathExplosionController parryPart = (DeathExplosionController)Instantiate(parry, transform.position, transform.rotation);
+                }
+                if (parrySound != null)
+                {
+                    mySource.PlayOneShot(parrySound);
+                }
                 currentHealth -= adj;
                 adj = 0;
             }
@@ -70,6 +101,14 @@ public class PlayerHealth : MonoBehaviour {
                 totalDamage = totalDamage * 0.5;
                 if (totalDamage > currentShield)
                 {
+                    if (blockParticle != null)
+                    {
+                        DeathExplosionController blockPart = (DeathExplosionController)Instantiate(block, transform.position, transform.rotation);
+                    }
+                    if (blockSound != null)
+                    {
+                        mySource.PlayOneShot(blockSound);
+                    }
                     leftOverDamage = (int)(totalDamage - currentShield);
                     currentShield = 0;
                     currentHealth -= (int)leftOverDamage;
@@ -82,7 +121,7 @@ public class PlayerHealth : MonoBehaviour {
         }
         else
         {
-        if (!invuln)
+            if (!invuln)
             {
                 if (totalDamage > currentShield)
                 {
@@ -94,6 +133,7 @@ public class PlayerHealth : MonoBehaviour {
                 {
                     currentShield -= totalDamage;
                 }
+                DeathExplosionController hitPart = (DeathExplosionController)Instantiate(hit, transform.position, transform.rotation);
                 invuln = true;
                 invulnTimer += Time.deltaTime;
             }

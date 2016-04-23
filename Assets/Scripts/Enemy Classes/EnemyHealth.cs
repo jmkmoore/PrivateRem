@@ -35,10 +35,7 @@ public class EnemyHealth : MonoBehaviour {
         else if(currentHealth <= 0 && !disappearOnZero){
             deathTimer += Time.deltaTime;
             if (deathTimer > postDeathLifetime) {
-   
-             
-                    explode();
-           
+                explode();
             }
         }
         if (damageTimer != 0)
@@ -73,11 +70,11 @@ public class EnemyHealth : MonoBehaviour {
         }
         if (currentHealth > maxHealth)
 			currentHealth = maxHealth;
-		if(currentHealth < 1)
-			currentHealth = 0;
-		if (currentHealth == 0) {
+        if (currentHealth < 1)
+        {
+            currentHealth = 0;
             pm.resetTimer();
-		}
+        }
 	}
 
     public bool getInvulnState()

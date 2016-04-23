@@ -25,7 +25,6 @@ public class DemoScene : MonoBehaviour
 
     [HideInInspector]
     private float normalizedHorizontalSpeed = 0;
-
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
@@ -37,7 +36,6 @@ public class DemoScene : MonoBehaviour
     private bool isDiving = false;
     private AttackController atkController;
     private PlayerHealth ph;
-    private float shotCountdown = .5f;
     public bool isBlocking = false;
 
     public float ButtonDelay;
@@ -49,11 +47,7 @@ public class DemoScene : MonoBehaviour
     public int jumpCount = 0;
     public int airDashCount = 0;
     public GameObject attackBox;
-    public float shotTime = 0;
     private Vector3 moveDir = Vector3.zero;
-
-    public float doubleJumpDelayTimer = 0f;
-    public float doubleJumpCooldown = 0.1f;
 
     public PlayerMode pm;
     private bool doJump = false;    
@@ -115,7 +109,6 @@ public class DemoScene : MonoBehaviour
         if (_controller.collisionState.becameGroundedThisFrame)
         {
             jumpCount = 0;
-            doubleJumpDelayTimer = 0f;
         }
 
     }
@@ -214,7 +207,6 @@ public class DemoScene : MonoBehaviour
             useAirDash = false;
             airDashCount = 0;
             isDiving = false;
-            doubleJumpDelayTimer = 0f;
         }
 
         
@@ -225,70 +217,74 @@ public class DemoScene : MonoBehaviour
         {
             if (_controller.isGrounded)
             {
-                if (moveDir.y > 0)
+                if (pm.mode.Equals("speed"))
                 {
-                    _animator.Play(Animator.StringToHash("Uppercut"));
-                    attackCount = 1;
+                    _animator.Play(Animator.StringToHash("DashAttack"));
+                    attackCount = 0;
                     comboCountdown = 0;
                     comboCountdown += Time.deltaTime;
-                    attack(5);
-                    normalizedHorizontalSpeed = 0;
+                    ButtonDelay = 0.9f;
+                    attack(7);
+                    normalizedHorizontalSpeed = 1f * pm.getSpeed() * transform.localScale.x;
                 }
-                else if (moveDir.y < 0)
+                else
                 {
-                    _animator.Play(Animator.StringToHash("Sweep"));
-                    attackCount = 1;
-                    comboCountdown = 0;
-                    comboCountdown += Time.deltaTime;
-                    attack(4);
-                    normalizedHorizontalSpeed = 0;
-                }
-                else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
-                {
-                    ph.isBlocking = false;
-                   /** if (normalizedHorizontalSpeed != 0)
+                    if (moveDir.y > 0)
                     {
-                        _animator.Play(Animator.StringToHash("ShoulderCharge"));
+                        _animator.Play(Animator.StringToHash("Uppercut"));
+                        attackCount = 1;
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
-                        attackCount = 0;
-                        comboCountdown = 0;
-                        comboCountdown += Time.deltaTime;
-                        attack(6);
-                        normalizedHorizontalSpeed = .8f * transform.localScale.x;
-                       // attack(1);
+                        ButtonDelay = 0.75f;
+                        attack(5);
+                        normalizedHorizontalSpeed = 0;
                     }
-                    else
+                    else if (moveDir.y < 0)
                     {
-                    **/
-                    if (attackCount == 0 || attackCount == 3)
+                        _animator.Play(Animator.StringToHash("Sweep"));
+                        attackCount = 1;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        ButtonDelay = 1.1f;
+                        attack(4);
+                        normalizedHorizontalSpeed = 0;
+                    }
+                    else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
+                    {
+                        ButtonDelay = 0.4f;
+                        ph.isBlocking = false;
+                        if (attackCount == 0 || attackCount == 3)
                         {
                             _animator.Play(Animator.StringToHash("Jab"));
                             attackCount = 1;
                             comboCountdown = 0;
                             comboCountdown += Time.deltaTime;
+                            ButtonDelay = 0.4f;
                             attack(0);
                             normalizedHorizontalSpeed = 0;
-                    }
+                        }
                         else if (attackCount == 1)
                         {
                             _animator.Play(Animator.StringToHash("Cross"));
                             attackCount = 2;
                             comboCountdown = 0;
                             comboCountdown += Time.deltaTime;
+                            ButtonDelay = 0.4f;
                             attack(1);
                             normalizedHorizontalSpeed = 0;
-                    }
+                        }
                         else if (attackCount == 2)
                         {
                             _animator.Play(Animator.StringToHash("Kick"));
                             attackCount = 0;
                             comboCountdown = 0;
                             comboCountdown += Time.deltaTime;
+                            ButtonDelay = 0.4f;
                             attack(2);
                             normalizedHorizontalSpeed = 1 * transform.localScale.x;
                         }
                     }
+                }
                 //}
             }
             else
@@ -335,28 +331,22 @@ public class DemoScene : MonoBehaviour
         // apply horizontal speed smoothing it
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 
-        if (normalizedHorizontalSpeed != 0 && pm.mode.Equals("speed"))
-        {
-            normalizedHorizontalSpeed = moveDir.x * pm.speed;
-        }
         if (!ph.isBlocking)
         {
             if (!isDashing && !isDiving)
             {
-                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * (runSpeed * pm.speed), Time.deltaTime * smoothedMovementFactor);
+                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * (runSpeed * pm.getSpeed()), Time.deltaTime * smoothedMovementFactor);
                 // we can only jump whilst grounded
                 if (!_controller.isGrounded && Input.GetButtonDown("Jump") && jumpCount < 1)
                 {
                     _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
                     jumpCount++;
                     _animator.Play(Animator.StringToHash("TienAirKick"));
-                    
                 }
                 else if ((_controller.isGrounded) && Input.GetButtonDown("Jump"))
                 {
                     _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
                     _animator.StopPlayback();
-                    doubleJumpDelayTimer += Time.deltaTime;
                     if (!isDashing)
                     {
                         _animator.Play(Animator.StringToHash("Jump"));
@@ -370,20 +360,19 @@ public class DemoScene : MonoBehaviour
                 if (_controller.isGrounded)
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, (runSpeed * pm.speed) * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, (runSpeed * pm.getSpeed()) * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost, (runSpeed * pm.speed) * dashBoost, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * dashBoost, (runSpeed * pm.getSpeed()) * dashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 else
                 {
                     if(left)
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, (runSpeed * pm.speed) * airDashBoost * -1, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost * -1, (runSpeed * pm.getSpeed()) * airDashBoost * -1, Time.deltaTime * smoothedMovementFactor);
                     else
-                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * (runSpeed * pm.speed) * airDashBoost, Time.deltaTime * smoothedMovementFactor);
+                        _velocity.x = Mathf.Lerp(runSpeed * airDashBoost, moveDir.x * (runSpeed * pm.getSpeed()) * airDashBoost, Time.deltaTime * smoothedMovementFactor);
                 }
                 if (Input.GetButtonDown("Jump"))
                 {
-                    Debug.Log("Dash Jump");
                     if (_controller.isGrounded || (jumpCount < 2))
                     {
                         jumpCount++;
@@ -410,19 +399,10 @@ public class DemoScene : MonoBehaviour
     public void attack(int attackName)
     {
         atkController.attack(attackName);
-        //        PlayerAttack attack = (PlayerAttack)attackBox.GetComponent<PlayerAttack>();
-        //      attack.setAttackDamage(attackDamage);
-        //    PlayerAttack attackClone = (PlayerAttack)Instantiate(attack, new Vector3(transform.position.x + (6f * transform.localScale.x), transform.position.y + 5.5f, transform.position.z), transform.rotation);
     }
 
     public void updateTimers()
     {
-
-        if (doubleJumpDelayTimer > 0)
-        {
-            doubleJumpDelayTimer += Time.deltaTime;
-        }
-
         if (isDashing)
         {
             airDashTime += Time.deltaTime;
@@ -433,17 +413,6 @@ public class DemoScene : MonoBehaviour
             isDashing = false;
             airDashTime = 0;
         }
-
-        if (shotTime != 0)
-        {
-            shotTime += Time.deltaTime;
-        }
-
-        if (shotTime > .3f)
-        {
-            shotTime = 0;
-        }
-
 
         if (comboCountdown > comboTime)
         {

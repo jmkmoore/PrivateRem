@@ -11,12 +11,14 @@ public class EnemyAttack : MonoBehaviour {
     public float attackKnockbackY = 1000f;
     private Vector3 attackKnockback;
     public float frames, activeStart, maxDur;
-
     private bool on;
+    public AudioSource mySource;
+    public AudioClip startUpSound;
+    public AudioClip connectedSound;
 
-    
     // Use this for initialization
 	void Start () {
+        mySource = GetComponentInParent<AudioSource>();
         attackKnockback.x = attackKnockbackX;
         attackKnockback.y = attackKnockbackY * Time.deltaTime;
         myBox = gameObject.GetComponent<BoxCollider2D>();
@@ -75,7 +77,10 @@ public class EnemyAttack : MonoBehaviour {
         {
             PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
             ph.adjustCurrentHealth(-attackValue);
-            frames += Time.deltaTime;
+            if (mySource != null && connectedSound != null)
+            {
+                mySource.PlayOneShot(connectedSound);
+            }
         }
     //    Vector3 thisKnockback = attackKnockback;
   //      if (gameObject.GetComponentInParent<EnemyMovement>().left)
@@ -93,6 +98,10 @@ public class EnemyAttack : MonoBehaviour {
 
     public void myBoxSwitch(bool onOrOff)
     {
+        if (mySource != null && startUpSound != null)
+        {
+            mySource.PlayOneShot(startUpSound);
+        }
         frames += Time.deltaTime;
     }
 
