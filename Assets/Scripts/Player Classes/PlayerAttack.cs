@@ -18,8 +18,6 @@ public class PlayerAttack : MonoBehaviour {
     public GameObject myParticle;
 
     private Vector3 attackKnockback;
-    private PlayerHealth ph;
-
     public AudioClip hitSound;
     public AudioClip windupSound;
     private AudioSource hitSource;
@@ -34,7 +32,6 @@ public class PlayerAttack : MonoBehaviour {
         {
             myParticle.SetActive(false);
         }
-        ph = transform.gameObject.GetComponentInParent<PlayerHealth>();
         attackKnockback.x = attackKnockbackX;
         attackKnockback.y = attackKnockbackY * Time.deltaTime;
         myBox = gameObject.GetComponent<BoxCollider2D>();
@@ -87,7 +84,7 @@ public class PlayerAttack : MonoBehaviour {
             if (useSpeedModifier)
             {
                 eh.adjustCurrentHealth(-attackValue * pm.getResetCount());
-                pm.emptyCounter();
+                pm.combatEmptyCounter();
             }
             else
             {
@@ -95,7 +92,6 @@ public class PlayerAttack : MonoBehaviour {
             }
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
             enemyController.getKnockedBack(thisKnockback);
-            ph.fillShield(attackValue);
         }
     }
 

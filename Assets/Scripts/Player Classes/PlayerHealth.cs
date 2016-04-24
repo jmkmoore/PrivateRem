@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 	public int maxHealth = 100;
 	public int currentHealth = 100;
-	private GameObject myself;
 
     public float invulnTime = 1f;
     private float invulnTimer = 0f;
@@ -38,7 +37,6 @@ public class PlayerHealth : MonoBehaviour {
         parry = (DeathExplosionController)parryParticle.GetComponent<DeathExplosionController>();
         hit = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
         block = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
-        myself = gameObject;
         currentShield = maxShield;
 	}
 	
@@ -158,11 +156,9 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth = maxHealth;
     }
 
-    public void fillShield(int shieldGain)
+    public void fillShield()
     {
-        currentShield += shieldGain;
-        if (currentShield > maxShield)
-            currentShield = maxShield;
+        currentShield = maxShield;
     }
 
     public void dashDrain()

@@ -6,20 +6,24 @@ public class PlayerMode : MonoBehaviour {
 	public string mode;
 
     public float buffTime = 5f;
-    public float addTimeAmt = 2f;
     public float maxTimeAmt = 10f;
+    public float addTimeAmt = 2f;
     public float maxSpeedBoost = 1.25f;
     public float speedGrowth = .05f;
-    
-    private float buffTimer = 0f;
-    public float speed = 1f;
-    private int resetCount = 0;
-    private float buffDelay = 1f;
+    public float buffDelay = 1f;
+
+    private float speed = 1f;
+    private PlayerHealth ph;
     private float delayTimer = 0f;
+    private int resetCount = 0;
+    private float buffTimer = 0f;
+
+    public TrailRenderer speedTrail;
 
 	// Use this for initialization
 	void Start () {
-	
+        ph = GetComponent<PlayerHealth>();
+        speedTrail = GetComponentInChildren<TrailRenderer>();
 	}
 
     void FixedUpdate()
@@ -59,24 +63,36 @@ public class PlayerMode : MonoBehaviour {
             mode = "normal";
             buffTimer = 0f;
             resetCount = 0;
+            speedTrail.startWidth = 5;
         }
         TienGUI.getInstance().LightBar = ((float)buffTimer / (float)buffTime);
 	}
 
     public void resetTimer()
     {
+        resetCount += 1;
         if (speed == 1)
         {
-            speed = 1.1f;
+            if (resetCount > 1)
+            {
+                speed = 1.1f + (resetCount * speedGrowth);
+                Mathf.Clamp(speed, 1.1f, maxSpeedBoost);
+            }
+            else
+            {
+                speed = 1.1f;
+            }
         }
         else
         {
-            speed += .05f;
+            speed += speedGrowth;
             Mathf.Clamp(speed, 1.1f, maxSpeedBoost);
         }
         addTime();
         mode = "speed";
-        resetCount += 1;
+        ph.fillShield();
+        speedTrail.enabled = true;
+        speedTrail.startWidth += 1;
     }
 
     public void addTime()
@@ -103,10 +119,18 @@ public class PlayerMode : MonoBehaviour {
         speed = 1;
         buffTimer = 0;
         mode = "normal";
+        speedTrail.enabled = false;
+        speedTrail.startWidth = 5;
     }
 
     public float getSpeed()
     {
         return speed;
+    }
+
+    public void combatEmptyCounter()
+    {
+        mode = "normal";
+        speed = 1;
     }
 }

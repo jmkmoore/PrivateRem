@@ -29,3 +29,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/REMWwise/GeneratedSoundBanks/Windows/English(US).meta
+Assets/REMWwise/Originals/Plugins.meta
+Assets/REMWwise/Originals/Plugins/iZotope Hybrid Reverb.meta
+Assets/REMWwise/Originals/Plugins/iZotope Trash Box Modeler.meta
+Assets/REMWwise/Originals/Voices.meta
+Assets/REMWwise/Originals/Voices/English(US).meta
+Assets/REMWwise/Originals/WavAnalysis.cache.meta

@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public float postDeathLifetime;
     private float deathTimer;
+    private PlayerHealth ph;
 
     public bool disappearOnZero = true;
 

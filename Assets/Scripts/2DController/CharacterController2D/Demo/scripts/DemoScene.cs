@@ -217,7 +217,7 @@ public class DemoScene : MonoBehaviour
         {
             if (_controller.isGrounded)
             {
-                if (pm.mode.Equals("speed"))
+                if (pm.mode.Equals("speed") && Input.GetAxis("Horizontal") != 0)
                 {
                     _animator.Play(Animator.StringToHash("DashAttack"));
                     attackCount = 0;
@@ -290,7 +290,7 @@ public class DemoScene : MonoBehaviour
             else
             {
                 _animator.Play(Animator.StringToHash("AirAttack"));
-                attack(7);
+                attack(6);
             }
         }
 
