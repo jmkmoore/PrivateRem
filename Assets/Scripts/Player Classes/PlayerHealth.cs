@@ -91,11 +91,11 @@ public class PlayerHealth : MonoBehaviour {
                 {
                     mySource.PlayOneShot(parrySound);
                 }
-                currentHealth -= adj;
-                adj = 0;
+                fillShield();
             }
             else
             {
+                shield.SetActive(false);
                 totalDamage = totalDamage * 0.5;
                 if (totalDamage > currentShield)
                 {
@@ -136,11 +136,12 @@ public class PlayerHealth : MonoBehaviour {
                 invulnTimer += Time.deltaTime;
             }
         }
+
         if (currentHealth < 1)
             currentHealth = 0;
 
 		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
-		}
+	}
 
     public void updateBlocking(bool onOff)
     {

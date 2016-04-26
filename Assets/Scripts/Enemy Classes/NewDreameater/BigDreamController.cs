@@ -31,10 +31,6 @@ public class BigDreamController : EnemyController {
 
     public float attackDuration;
 
-
-
-
-
     #region Event Listeners
 
     void onControllerCollider(RaycastHit2D hit)

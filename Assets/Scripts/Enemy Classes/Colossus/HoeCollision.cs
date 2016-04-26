@@ -30,7 +30,6 @@ public class HoeCollision : MonoBehaviour {
         }
         else
         {
-            updateAttackDamage(myController.getCurrentAttackValue());
         }
         if (collisionTimer != 0)
         {

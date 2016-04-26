@@ -4,35 +4,27 @@ using Prime31;
 
 public class ColossusController : EnemyController {
 
-    
-    #region has hoe timer;
-    public float overhandCooldown = 8f;
-    public float pokeCooldown = 3f;
-    public float swingCooldown = 6f;
-
-    public float overhandTimer = 0f;
-    public float pokeTimer = 0f;
-    public float swingTimer = 0f;
-
-    public bool canOverHand = false;
-    public bool canPoke = false;
-    public bool canSwing = false;
-
+    public float slamDuration = 0f;
+    public float shoulderDuration = 0f;
+    public float stompDuration = 0f;
+    public float jumpDuration = 0f;
+    public float jumpSpeed = 15f;
+    public float jumpStrength = 10f;
+    public float attackWaitTime = 0f;
     public float attackCooldown = 0f;
-#endregion
-
-
+    
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
     private EnemyMovement _movement;
     private Vector3 _velocity;
+    private float normalizedHorizontalSpeed = 0;
 
-    public float turnTimer = 0f;
-    public float turnCooldown = 5f;
-
-    public float currentAttackTimer = 0;
-    public string currentAttack = "idle";
+    private EnemyHealth myHealth;
+    public EnemyAttack[] myAttacks;
+    private bool isAttacking = false;
+    public int attackRng = 4;
+    private int previousRng = 4;
 
     // Use this for initialization
 	void Start () {
@@ -44,8 +36,8 @@ public class ColossusController : EnemyController {
         _controller.onControllerCollidedEvent += onControllerCollider;
         _controller.onTriggerEnterEvent += onTriggerEnterEvent;
         _controller.onTriggerExitEvent += onTriggerExitEvent;
-
-        currentAttack = "idle";
+        myAttacks = GetComponentsInChildren<EnemyAttack>();
+        myHealth = GetComponent<EnemyHealth>();
 	}
 
     #region Event Listeners
@@ -75,167 +67,98 @@ public class ColossusController : EnemyController {
 
     public override void updateTimers()
     {
-        if (attackCooldown > 0)
+        if (attackCooldown > 0f)
         {
             attackCooldown -= Time.deltaTime;
-            if (attackCooldown < 0)
-            {
-                attackCooldown = 0;
-            }
         }
-
-        if (currentAttackTimer != 0)
+        if (attackCooldown < 0f)
         {
-            currentAttackTimer += Time.deltaTime;
-            if (currentAttackTimer > 1.1f)
-            {
-                _movement.stopToAttack(false);
-            }
+            attackCooldown = 0f;
         }
-
-        if (overhandTimer != 0)
+        if (attackCooldown < attackWaitTime)
         {
-            overhandTimer += Time.deltaTime;
-            if (overhandTimer > overhandCooldown)
-            {
-                overhandTimer = 0;
-            }
-        }
-
-        if (swingTimer != 0)
-        {
-            swingTimer += Time.deltaTime;
-            if (swingTimer > swingCooldown)
-            {
-                swingTimer = 0;
-            }
-        }
-
-        if (pokeTimer != 0)
-        {
-            pokeTimer += Time.deltaTime;
-            if (pokeTimer > pokeCooldown)
-            {
-                pokeTimer = 0;
-            }
-        }
-
-        if (pokeTimer != 0 && overhandTimer != 0 && swingTimer != 0)
-        {
-            _movement.stopToAttack(false);
+            isAttacking = false;
+            _movement.isAttacking = false;
         }
     }
 
 	// Update is called once per frame
-	void FixedUpdate () {
+    void FixedUpdate()
+    {
         _velocity = _controller.velocity;
         updateTimers();
 
         #region attackLogic
-        if (attackCooldown == 0)
+        if (myHealth.currentHealth > 0)
         {
-            if (isInRange())
+            if (attackCooldown == 0)
             {
-                if (canOverHand && overhandTimer == 0)
+                if (isInRange())
                 {
-                    overheadAttack();
-                    _movement.stopToAttack(true);
-                    attackCooldown = 1.5f;
-                }
-                else if (canSwing && swingTimer == 0)
-                {
-                    swingAttack();
-                    attackCooldown = 2f;
-                    _movement.stopToAttack(true);
-                }
-                else if (canPoke && pokeTimer == 0)
-                {
-                    pokeAttack();
-                    attackCooldown = 1.0f;
-                    _movement.stopToAttack(true);
+                    _velocity.x = 0;
+                    attackRng = Random.Range(0, 3);
+                    if (attackRng == previousRng)
+                        attackRng = Random.Range(0, 3);
+
+                    if (attackRng == 0)
+                    {
+                        _animator.Play(Animator.StringToHash("Slam"));
+                        attackCooldown = slamDuration + attackWaitTime;
+                    }
+                    else if (attackRng == 1)
+                    {
+                        _animator.Play(Animator.StringToHash("StompTransition"));
+                        attackCooldown = stompDuration + attackWaitTime;
+                    }
+                    else if (attackRng == 2)
+                    {
+                        _animator.Play(Animator.StringToHash("ShoulderTransition"));
+                        attackCooldown = shoulderDuration + attackWaitTime;
+                    }
+                    isAttacking = true;
+                    myAttacks[attackRng].myBoxSwitch(true);
+                    _movement.isAttacking = true;
                 }
             }
-            else
+        #endregion
+            if (!isAttacking)
             {
-                _movement.stopToAttack(false);
+                if (_velocity.x != 0f)
+                    _animator.Play(Animator.StringToHash("Walk"));
+                else
+                    _animator.Play(Animator.StringToHash("ColossusIdle"));
             }
-        }    
-        #endregion
-
-        #region movement animations
-       if (_velocity.x != 0)
-        {
-            _animator.Play(Animator.StringToHash("Walk"));
-        }
-        else if(currentAttack.Equals("idle"))
-        {
-            _animator.Play(Animator.StringToHash("ColossusIdle"));
-        }
-        
-        #endregion
-    }
-
-    #region Attack methods
-    void overheadAttack()
-    {
-        _animator.Play(Animator.StringToHash("Overhand"));
-        overhandTimer += Time.deltaTime;
-        currentAttack = "overhand";
-    }
-
-    void swingAttack()
-    {
-        Debug.Log("Called swing");
-        _animator.Play(Animator.StringToHash("ColossusSwing"));
-        swingTimer += Time.deltaTime;
-        currentAttack = "swing";
-    }
-
-    void pokeAttack()
-    {
-        _animator.Play(Animator.StringToHash("Poke"));
-        pokeTimer += Time.deltaTime;
-        currentAttack = "poke";
-    }
-
-    public override void updateCanAttack(string attackName, bool canUse)
-    {
-        switch (attackName){
-        case"overhand":    
-            canOverHand = canUse;
-            break;
-        case "poke":
-            canPoke = canUse;
-            break;
-        case "swing":
-            canSwing = canUse;
-            break;
-        default:
-            break;
-              
+            if (!isInRange() && !isAttacking)
+            {
+                if (_controller.isGrounded)
+                {
+                    if (_movement.left)
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, -1 * _movement.runSpeed, Time.deltaTime);
+                    }
+                    else
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, _movement.runSpeed, Time.deltaTime);
+                    }
+                }
+            }
+            _velocity.y += _movement.gravity * Time.deltaTime;
+            _controller.move(_velocity * Time.deltaTime);        
         }
     }
-    #endregion
+
+    private bool canAttack()
+    {
+        return isInRange() && attackCooldown == 0f;
+    }
 
     public override bool isInRange()
     {
-        return canOverHand || canPoke || canSwing;
+        return _movement.inRange;
     }
 
-    public int getCurrentAttackValue()
+    public override void updateCanAttack(string name, bool yn)
     {
-        switch (currentAttack)
-        {
-            case "swing":
-                return 30;
-            case "overhand":
-                return 20;
-            case "poke":
-                return 10;
-            case "idle":
-                return 0;
-            default:
-                return 0;
-        }
     }
+
 }

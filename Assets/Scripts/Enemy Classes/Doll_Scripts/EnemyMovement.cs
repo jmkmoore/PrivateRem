@@ -25,17 +25,13 @@ public class EnemyMovement : MonoBehaviour {
     public float attackTimer = 0f;
     public float attackDuration = 1f;
 
+    #region Turning chances
     private int turn;
-
-    private Transform previousTransform;
-
-    private GameObject attackChild;
-
     private float turnTime;
     private int turnChance;
-
     private float turnTimer = 0f;
     public float turnCooldown = 2f;
+    #endregion
 
     private Vector3 forcedMovement;
     private EnemyHealth myHealth;
@@ -555,7 +551,16 @@ public class EnemyMovement : MonoBehaviour {
 
     public void beAggressive(bool inSight)
     {
-        Debug.Log("aggression time " + inSight);
         canSeeTien = inSight;
+    }
+
+    public float getRunSpeed()
+    {
+        if (canSeeTien)
+        {
+            return runSpeed * increasedSpeedFactor;
+        }
+        else
+            return runSpeed;
     }
 }
