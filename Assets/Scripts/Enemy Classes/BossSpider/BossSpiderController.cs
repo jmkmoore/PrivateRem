@@ -55,11 +55,7 @@ public class BossSpiderController : EnemyController {
 
     void onTriggerEnterEvent(Collider2D col)
     {
-        //Debug.Log(col.name);
-        //if (col.gameObject.layer == 19)
-        // {
-        //     left = !left;
-        // }
+
     }
 
 

@@ -26,8 +26,12 @@ public class ColossusController : EnemyController {
     public int attackRng = 4;
     private int previousRng = 4;
 
+    private Renderer renderer;
+    private bool isVisible;
+
     // Use this for initialization
 	void Start () {
+        renderer = GetComponentInChildren<Renderer>();
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
         _movement = GetComponent<EnemyMovement>();
@@ -85,65 +89,69 @@ public class ColossusController : EnemyController {
 	// Update is called once per frame
     void FixedUpdate()
     {
-        _velocity = _controller.velocity;
-        updateTimers();
-
-        #region attackLogic
-        if (myHealth.currentHealth > 0)
+        isVisible = renderer.isVisible;
+        if (isVisible)
         {
-            if (attackCooldown == 0)
-            {
-                if (isInRange())
-                {
-                    _velocity.x = 0;
-                    attackRng = Random.Range(0, 3);
-                    if (attackRng == previousRng)
-                        attackRng = Random.Range(0, 3);
+            _velocity = _controller.velocity;
+            updateTimers();
 
-                    if (attackRng == 0)
-                    {
-                        _animator.Play(Animator.StringToHash("Slam"));
-                        attackCooldown = slamDuration + attackWaitTime;
-                    }
-                    else if (attackRng == 1)
-                    {
-                        _animator.Play(Animator.StringToHash("StompTransition"));
-                        attackCooldown = stompDuration + attackWaitTime;
-                    }
-                    else if (attackRng == 2)
-                    {
-                        _animator.Play(Animator.StringToHash("ShoulderTransition"));
-                        attackCooldown = shoulderDuration + attackWaitTime;
-                    }
-                    isAttacking = true;
-                    myAttacks[attackRng].myBoxSwitch(true);
-                    _movement.isAttacking = true;
-                }
-            }
-        #endregion
-            if (!isAttacking)
+            #region attackLogic
+            if (myHealth.currentHealth > 0)
             {
-                if (_velocity.x != 0f)
-                    _animator.Play(Animator.StringToHash("Walk"));
-                else
-                    _animator.Play(Animator.StringToHash("ColossusIdle"));
-            }
-            if (!isInRange() && !isAttacking)
-            {
-                if (_controller.isGrounded)
+                if (attackCooldown == 0)
                 {
-                    if (_movement.left)
+                    if (isInRange())
                     {
-                        _velocity.x = Mathf.Lerp(_velocity.x, -1 * _movement.runSpeed, Time.deltaTime);
-                    }
-                    else
-                    {
-                        _velocity.x = Mathf.Lerp(_velocity.x, _movement.runSpeed, Time.deltaTime);
+                        _velocity.x = 0;
+                        attackRng = Random.Range(0, 3);
+                        if (attackRng == previousRng)
+                            attackRng = Random.Range(0, 3);
+
+                        if (attackRng == 0)
+                        {
+                            _animator.Play(Animator.StringToHash("Slam"));
+                            attackCooldown = slamDuration + attackWaitTime;
+                        }
+                        else if (attackRng == 1)
+                        {
+                            _animator.Play(Animator.StringToHash("StompTransition"));
+                            attackCooldown = stompDuration + attackWaitTime;
+                        }
+                        else if (attackRng == 2)
+                        {
+                            _animator.Play(Animator.StringToHash("ShoulderTransition"));
+                            attackCooldown = shoulderDuration + attackWaitTime;
+                        }
+                        isAttacking = true;
+                        myAttacks[attackRng].myBoxSwitch(true);
+                        _movement.isAttacking = true;
                     }
                 }
+            #endregion
+                if (!isAttacking)
+                {
+                    if (_velocity.x != 0f)
+                        _animator.Play(Animator.StringToHash("Walk"));
+                    else
+                        _animator.Play(Animator.StringToHash("ColossusIdle"));
+                }
+                if (!isInRange() && !isAttacking)
+                {
+                    if (_controller.isGrounded)
+                    {
+                        if (_movement.left)
+                        {
+                            _velocity.x = Mathf.Lerp(_velocity.x, -1 * _movement.runSpeed, Time.deltaTime);
+                        }
+                        else
+                        {
+                            _velocity.x = Mathf.Lerp(_velocity.x, _movement.runSpeed, Time.deltaTime);
+                        }
+                    }
+                }
+                _velocity.y += _movement.gravity * Time.deltaTime;
+                _controller.move(_velocity * Time.deltaTime);
             }
-            _velocity.y += _movement.gravity * Time.deltaTime;
-            _controller.move(_velocity * Time.deltaTime);        
         }
     }
 

@@ -95,6 +95,11 @@ public class EnemyMovement : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
+        if (col.gameObject.layer == 21)
+        {
+            turnAround();
+        }
+
         if (col.name.Equals("Wall"))
         {
             updateDirection();
