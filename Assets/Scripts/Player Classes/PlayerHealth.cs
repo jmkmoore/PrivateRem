@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour {
     private float invulnTimer = 0f;
     public bool invuln = false;
 
+    public float uncontrolTime = 0.5f;
+    public bool controllable = true;
+    private float controlTimer = 0f;
+
     public bool isBlocking = false;
     public float blockTimer = 0f;
     public float parryTimer = 0.25f;
@@ -45,16 +49,33 @@ public class PlayerHealth : MonoBehaviour {
         if (invuln)
         {
             invulnTimer += Time.deltaTime;
+            if (invulnTimer > invulnTime)
+            {
+                invuln = false;
+                invulnTimer = 0f;
+            }
+
         }
-        if (invulnTimer > invulnTime)
+        if(!controllable)
         {
-            invuln = false;
-            invulnTimer = 0f;
+            controlTimer += Time.deltaTime;
+            if (controlTimer > uncontrolTime)
+            {
+                controlTimer = 0f;
+                controllable = true;
+            }
         }
         if (isBlocking)
         {
             blockTimer += Time.deltaTime;
-            shield.SetActive(true);
+            if (blockTimer < parryTimer)
+            {
+                shield.SetActive(true);
+            }
+            else
+            {
+                shield.SetActive(false);
+            }
         }
         else
         {
@@ -131,12 +152,11 @@ public class PlayerHealth : MonoBehaviour {
                 {
                     currentShield -= totalDamage;
                 }
+                controllable = false;
                 DeathExplosionController hitPart = (DeathExplosionController)Instantiate(hit, transform.position, transform.rotation);
                 invuln = true;
-                invulnTimer += Time.deltaTime;
             }
         }
-
         if (currentHealth < 1)
             currentHealth = 0;
 
@@ -175,4 +195,19 @@ public class PlayerHealth : MonoBehaviour {
     {
         return currentShield >= dashCost;
     }
+
+    public bool canControl()
+    {
+        if (invuln)
+        {
+            return invulnTimer > controlTimer;
+        }
+        return controllable;
+    }
+
+    public void enemyCollision()
+    {
+        controllable = false;
+    }
+
 }
