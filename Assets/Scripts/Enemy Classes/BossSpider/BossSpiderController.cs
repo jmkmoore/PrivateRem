@@ -10,7 +10,7 @@ public class BossSpiderController : EnemyController {
     private RaycastHit2D _lastControllerColliderHit;
     private Vector3 _velocity;
     #endregion
-    
+
     private EnemyHealth myHealth;
     public string currentAttack = "idle";
     private EnemyMovement em;
@@ -38,8 +38,11 @@ public class BossSpiderController : EnemyController {
     public float attackDuration = 0;
     public EnemyAttack[] myAttacks;
 
+    private int attackRng = 0;
+    private int prevAttack = 10;
+
     public string lastAttack;
-    
+
     #region Event Listeners
 
     void onControllerCollider(RaycastHit2D hit)
@@ -66,7 +69,7 @@ public class BossSpiderController : EnemyController {
 
     #endregion
 
-	// Use this for initialization
+    // Use this for initialization
     void Start()
     {
         renderer = GetComponentInChildren<Renderer>();
@@ -98,62 +101,57 @@ public class BossSpiderController : EnemyController {
             {
                 if (isInRange() && attackDuration == 0)
                 {
-                    if (canSwipe && !lastAttack.Equals("swipe"))
+                    attackRng = Random.Range(0, 3);
+                    if (attackRng == prevAttack)
                     {
-                        em.stopToAttack(true);
-                        attackDuration = 1.5f + waitTime;
-                        _animator.Play(Animator.StringToHash("Swipe"));
-                        myAttacks[2].myBoxSwitch(true);
-                        _velocity.x = 0;
-                        lastAttack = "swipe";
+                        attackRng = Random.Range(0, 3);
                     }
-                    else if (canBite && !lastAttack.Equals("bite"))
+                    switch (attackRng)
                     {
-                        if (Random.Range(0, 10) < 5)
-                        {
+                        case 0:
                             attackDuration = 3.3f + waitTime;
                             _animator.Play(Animator.StringToHash("BigBite"));
                             myAttacks[0].myBoxSwitch(true);
                             _velocity.x = 0;
                             lastAttack = "bite";
-                        }
-                        else
-                        {
+                            break;
+                        case 1:
                             attackDuration = 2f + waitTime;
                             _animator.Play(Animator.StringToHash("SmallBite"));
                             myAttacks[1].myBoxSwitch(true);
                             _velocity.x = 0;
                             lastAttack = "bite";
-                        }
-                        em.stopToAttack(true);
+                            break;
+                        case 2:
+                            attackDuration = 3f + waitTime;
+                            _animator.Play(Animator.StringToHash("Leap"));
+                            myAttacks[3].myBoxSwitch(true);
+                            em.stopToAttack(true);
+                            _velocity.x = 0;
+                            lastAttack = "leap";
+                            break;
+                        default:
+                            break;
                     }
-                    else if (canLeap)
-                    {
-                        attackDuration = 3f + waitTime;
-                        _animator.Play(Animator.StringToHash("Leap"));
-                        myAttacks[3].myBoxSwitch(true);
-                        em.stopToAttack(true);
-                        _velocity.x = 0;
-                        lastAttack = "leap";
-                    }
+                    em.stopToAttack(true);
                 }
-                else if (!isInRange() && attackDuration == 0)
-                {
-                    if (_controller.isGrounded)
-                    {
-                        if (em.left)
-                        {
-                            _velocity.x = Mathf.Lerp(_velocity.x, -1 * em.runSpeed, Time.deltaTime);
-                        }
-                        else
-                        {
-                            _velocity.x = Mathf.Lerp(_velocity.x, em.runSpeed, Time.deltaTime);
-                        }
-                    }
-                }
-                _velocity.y += em.gravity * Time.deltaTime;
-                _controller.move(_velocity * Time.deltaTime);
             }
+            else if (!isInRange() && attackDuration == 0)
+            {
+                if (_controller.isGrounded)
+                {
+                    if (em.left)
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, -1 * em.runSpeed, Time.deltaTime);
+                    }
+                    else
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, em.runSpeed, Time.deltaTime);
+                    }
+                }
+            }
+            _velocity.y += em.gravity * Time.deltaTime;
+            _controller.move(_velocity * Time.deltaTime);
         }
     }
 

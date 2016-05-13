@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour {
     private Vector3 attackKnockback;
     public float frames, activeStart, maxDur;
     private bool on;
-    public AudioSource mySource;
+    private AudioSource mySource;
     public AudioClip startUpSound;
     public AudioClip connectedSound;
 
