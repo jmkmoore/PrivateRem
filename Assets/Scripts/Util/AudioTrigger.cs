@@ -10,15 +10,18 @@ public class AudioTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        mySource = GetComponent<AudioSource>();
 	}
 	
-    void OnTriggerEnter2d(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name);
         if (other.tag.Equals("Player"))
         {
+            Debug.Log("Triggered");
             if (!played)
             {
+                Debug.Log("played");
                 mySource.PlayOneShot(soundClip);
                 if (!playEachTime)
                 {

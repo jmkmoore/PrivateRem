@@ -128,14 +128,6 @@ public class EnemyMovement : MonoBehaviour {
         {
             if (!myHealth.getInvulnState())
             {
-                if (attackTimer > 0)
-                    attackTimer -= Time.deltaTime;
-
-                if (attackTimer < 0)
-                {
-                    attackTimer = 0;
-                }
-
                 #region GooSpider
                 if (enemyType.Equals("Goo"))
                 {
@@ -305,47 +297,41 @@ public class EnemyMovement : MonoBehaviour {
                 #region Doll
                 if (enemyType.Equals("Doll"))
                 {
-                    if (!inRange && attackTimer < 3f)
-                    {
-                        if (_controller.isGrounded)
-                        {
-                            if (left)
-                            {
-                                normalizedHorizontalSpeed = -1;
-                                if (transform.localScale.x > 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                            }
-                            else
-                            {
-                                normalizedHorizontalSpeed = 1;
-                                if (transform.localScale.x < 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                            }
-                            _animator.Play(Animator.StringToHash("Walk"));
-                            if (canSeeTien)
-                            {
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
-                            }
-                            else
-                            {
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
-
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (attackTimer == 0)
-                        {
-                            attackTimer = attackCooldown;
-                            _animator.StopPlayback();
+                    if(attackTimer == 0f){
+                        if(inRange){
+                            attackTimer = attackCooldown + attackDuration;
                             _animator.Play(Animator.StringToHash("Trip"));
                             _velocity.x = 0;
                             myAttack.myBoxSwitch(true);
                         }
+                        else{
+                            if (_controller.isGrounded){
+                                if (left)
+                                {
+                                    normalizedHorizontalSpeed = -1;
+                                    if (transform.localScale.x > 0f)
+                                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                                }
+                                else
+                                {
+                                    normalizedHorizontalSpeed = 1;
+                                    if (transform.localScale.x < 0f)
+                                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                                }
+                                _animator.Play(Animator.StringToHash("Walk"));
+                                if (canSeeTien)
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                                }
+                                else
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
 
+                                }
+                            }
+                        }
                     }
-                }
+                    }
                 #endregion
 
                 #region Turtle

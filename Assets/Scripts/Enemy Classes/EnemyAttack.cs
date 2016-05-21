@@ -15,6 +15,7 @@ public class EnemyAttack : MonoBehaviour {
     private AudioSource mySource;
     public AudioClip startUpSound;
     public AudioClip connectedSound;
+    private bool hit;
 
     // Use this for initialization
 	void Start () {
@@ -29,6 +30,10 @@ public class EnemyAttack : MonoBehaviour {
         if (frames != 0)
         {
             frames += Time.deltaTime;
+        }
+        if (frames < activeStart)
+        {
+            myBox.enabled = false;
         }
         if(frames > activeStart && frames < maxDur)
         {
@@ -49,7 +54,7 @@ public class EnemyAttack : MonoBehaviour {
             Attack();
         }
     }
-
+    /**
     void OnTriggerStay2D(Collider2D other)
     {
  //       Debug.Log(other.name + other.tag);
@@ -62,6 +67,7 @@ public class EnemyAttack : MonoBehaviour {
             }
         }
     }
+    **/
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -76,8 +82,9 @@ public class EnemyAttack : MonoBehaviour {
         if (target != null)
         {
             PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
-            ph.adjustCurrentHealth(-attackValue);
-            if (mySource != null && connectedSound != null)
+            hit = ph.adjustCurrentHealth(-attackValue);
+            if (hit)
+                if(mySource != null && connectedSound != null)
             {
                 mySource.PlayOneShot(connectedSound);
             }
@@ -98,6 +105,7 @@ public class EnemyAttack : MonoBehaviour {
 
     public void myBoxSwitch(bool onOrOff)
     {
+        frames = 0f;
         if (mySource != null && startUpSound != null)
         {
             mySource.PlayOneShot(startUpSound);

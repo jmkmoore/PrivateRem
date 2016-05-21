@@ -78,7 +78,8 @@ public class DemoScene : MonoBehaviour
     {
         if (col.name.Equals("HitBox"))
         {
-            if (comboCountdown == 0 && !ph.isBlocking)
+//            if (comboCountdown == 0 && !ph.isBlocking)
+            if(!_controller.isGrounded)
                 ph.enemyCollision();
         }
     }
@@ -90,6 +91,7 @@ public class DemoScene : MonoBehaviour
         {
             if (isDashing)
             {
+                Debug.Log("enter triggered");
                 isDashing = false;
                 ph.enemyCollision();
             }
@@ -290,7 +292,7 @@ public class DemoScene : MonoBehaviour
                                 comboCountdown += Time.deltaTime;
                                 ButtonDelay = 0.4f;
                                 attack(2);
-                                normalizedHorizontalSpeed = 1 * transform.localScale.x;
+                                normalizedHorizontalSpeed = .25f * transform.localScale.x;
                             }
                         }
                     }

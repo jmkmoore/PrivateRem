@@ -98,7 +98,7 @@ public class PlayerHealth : MonoBehaviour {
         TienGUI.getInstance().PowerBar = ((float)currentShield / (float)maxShield);
 	}
 
-	public void adjustCurrentHealth(int adj){
+	public bool adjustCurrentHealth(int adj){
         double totalDamage = Mathf.Abs(adj);
         double leftOverDamage;
         if (isBlocking)
@@ -161,6 +161,7 @@ public class PlayerHealth : MonoBehaviour {
             currentHealth = 0;
 
 		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
+        return true;
 	}
 
     public void updateBlocking(bool onOff)

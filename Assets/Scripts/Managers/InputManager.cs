@@ -35,7 +35,6 @@ public class InputManager : MonoBehaviour
 				}
 			//thisRigidbody = player.rigidbody2D;
 			//thisTransform = player.transform;
-			runSpeed = PropertyManager.getInstance ().RunSpeed;
 		}
 
 		public static InputManager getInstance ()

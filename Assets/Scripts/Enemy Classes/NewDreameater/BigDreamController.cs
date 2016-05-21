@@ -21,12 +21,10 @@ public class BigDreamController : EnemyController {
     public EnemyAttack[] myAttacks;
 
     public bool canBite;
-    public bool canFlip;
-
-   public float biteDuration = 1.2f;
+    public float biteDuration = 1.2f;
     public float flipDuration = 1.2f;
-    public float quickAtkDuration;
-    public float screechDuration;
+    public float quickAtkDuration = 1.2f;
+    public float screechDuration = 1.2f;
     public float waitTimer = 1f;
 
     public float attackDuration;
@@ -89,11 +87,51 @@ public class BigDreamController : EnemyController {
             _animator.Play(Animator.StringToHash("Death"));
             myHealth.currentHealth = -1;
         }
+
+        if (isInRange())
+        {
+            if (myHealth.currentHealth > 0)
+            {
+                if (attackDuration == 0)
+                {
+                    attackRng = Random.Range(3, 4);
+                    if (prevAttack == attackRng)
+                    {
+                        attackRng = Random.Range(3, 4);
+                    }
+                    switch (attackRng)
+                    {
+                        case 0:
+                            attackDuration = biteDuration + waitTimer;
+                            _animator.Play(Animator.StringToHash("Bite"));
+                            myAttacks[0].myBoxSwitch(true);
+                            break;
+                        case 1:
+                            attackDuration = flipDuration + waitTimer;
+                            _animator.Play(Animator.StringToHash("Flip"));
+                            myAttacks[1].myBoxSwitch(true);
+                            break;
+                        case 2:
+                            attackDuration = screechDuration + waitTimer;
+                            _animator.Play(Animator.StringToHash("Screech"));
+                            myAttacks[2].myBoxSwitch(true);
+                            break;
+                        case 3:
+                            attackDuration = quickAtkDuration + waitTimer;
+                            _animator.Play(Animator.StringToHash("QuickBite"));
+                            myAttacks[3].myBoxSwitch(true);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
 	}
 
     public override bool isInRange()
     {
-        return canBite || canFlip;
+        return canBite;
     }
 
     public override void updateTimers()
@@ -112,41 +150,6 @@ public class BigDreamController : EnemyController {
 
     public override void updateCanAttack(string attackName, bool canUse)
     {
-        if (myHealth.currentHealth > 0)
-        {
-            if(attackDuration == 0)
-            {
-                attackRng = Random.Range(0, 4);
-                if(prevAttack == attackRng)
-                {
-                    attackRng = Random.Range(0, 4);
-                }
-                switch (attackRng)
-                {
-                    case 0:
-                        attackDuration = biteDuration + waitTimer;
-                        _animator.Play(Animator.StringToHash("Bite"));
-                        myAttacks[0].myBoxSwitch(true);
-                        break;
-                    case 1:
-                        attackDuration = flipDuration + waitTimer;
-                        _animator.Play(Animator.StringToHash("Flip"));
-                        myAttacks[1].myBoxSwitch(true);
-                        break;
-                    case 2:
-                        attackDuration = screechDuration + waitTimer;
-                        _animator.Play(Animator.StringToHash("Screech"));
-                        myAttacks[2].myBoxSwitch(true);
-                        break;
-                    case 3:
-                        attackDuration = quickAtkDuration + waitTimer;
-                        _animator.Play(Animator.StringToHash("QuickBite"));
-                        myAttacks[3].myBoxSwitch(true);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        canBite = canUse;
     }
 }
