@@ -17,8 +17,6 @@ public class VisionController : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("Can See Tien");
-
             transform.parent.GetComponent<EnemyMovement>().beAggressive(true);
         }
     }
@@ -27,7 +25,6 @@ public class VisionController : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
-            Debug.Log("Can't See Tien");
             transform.parent.GetComponent<EnemyMovement>().beAggressive(false);
         }
     }

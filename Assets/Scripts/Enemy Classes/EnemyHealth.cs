@@ -12,7 +12,13 @@ public class EnemyHealth : MonoBehaviour {
     private Animator _animator;
     private bool isInvuln;
 
+    public float postDeathLifetime;
+    private float deathTimer;
+    private PlayerHealth ph;
+
     public bool disappearOnZero = true;
+
+    public GameObject myExplosion;
 
     // Use this for initialization
 	void Start () {
@@ -25,7 +31,13 @@ public class EnemyHealth : MonoBehaviour {
 	void FixedUpdate () {
         if (currentHealth <= 0 && disappearOnZero)
         {
-            Destroy(gameObject);
+            explode();
+        }
+        else if(currentHealth <= 0 && !disappearOnZero){
+            deathTimer += Time.deltaTime;
+            if (deathTimer > postDeathLifetime) {
+                explode();
+            }
         }
         if (damageTimer != 0)
         {
@@ -59,15 +71,25 @@ public class EnemyHealth : MonoBehaviour {
         }
         if (currentHealth > maxHealth)
 			currentHealth = maxHealth;
-		if(currentHealth < 1)
-			currentHealth = 0;
-		if (currentHealth == 0) {
+        if (currentHealth < 1)
+        {
+            currentHealth = 0;
             pm.resetTimer();
-		}
+        }
 	}
 
     public bool getInvulnState()
     {
         return isInvuln;
+    }
+
+    public void explode()
+    {
+        if (myExplosion != null)
+        {
+            DeathExplosionController explode = (DeathExplosionController)myExplosion.GetComponent<DeathExplosionController>();
+            DeathExplosionController exploder = (DeathExplosionController)Instantiate(explode, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
     }
 }

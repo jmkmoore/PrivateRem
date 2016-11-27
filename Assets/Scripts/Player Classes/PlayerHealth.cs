@@ -4,11 +4,14 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 	public int maxHealth = 100;
 	public int currentHealth = 100;
-	private GameObject myself;
 
     public float invulnTime = 1f;
     private float invulnTimer = 0f;
     public bool invuln = false;
+
+    public float uncontrolTime = 0.5f;
+    public bool controllable = true;
+    private float controlTimer = 0f;
 
     public bool isBlocking = false;
     public float blockTimer = 0f;
@@ -18,10 +21,26 @@ public class PlayerHealth : MonoBehaviour {
     public double currentShield;
     public double shieldRechargeRate;
     public double dashCost;
+
+    public GameObject hitParticle;
+    public GameObject parryParticle;
+    public GameObject blockParticle;
+    private DeathExplosionController block;
+    private DeathExplosionController parry;
+    private DeathExplosionController hit;
+
+    public AudioClip parrySound;
+    public AudioClip blockSound;
+    private AudioSource mySource;
+
+    public GameObject shield;
     
     // Use this for initialization
 	void Start () {
-		myself = gameObject;
+        mySource = GetComponent<AudioSource>();
+        parry = (DeathExplosionController)parryParticle.GetComponent<DeathExplosionController>();
+        hit = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
+        block = (DeathExplosionController)hitParticle.GetComponent<DeathExplosionController>();
         currentShield = maxShield;
 	}
 	
@@ -30,16 +49,39 @@ public class PlayerHealth : MonoBehaviour {
         if (invuln)
         {
             invulnTimer += Time.deltaTime;
+            if (invulnTimer > invulnTime)
+            {
+                invuln = false;
+                invulnTimer = 0f;
+            }
+
         }
-        if (invulnTimer > invulnTime)
+        if(!controllable)
         {
-            invuln = false;
-            invulnTimer = 0f;
+            controlTimer += Time.deltaTime;
+            if (controlTimer > uncontrolTime)
+            {
+                controlTimer = 0f;
+                controllable = true;
+            }
         }
         if (isBlocking)
+        {
             blockTimer += Time.deltaTime;
+            if (blockTimer < parryTimer)
+            {
+                shield.SetActive(true);
+            }
+            else
+            {
+                shield.SetActive(false);
+            }
+        }
         else
+        {
+            shield.SetActive(false);
             blockTimer = 0f;
+        }
 
         if (currentHealth > maxHealth)
         {
@@ -56,20 +98,36 @@ public class PlayerHealth : MonoBehaviour {
         TienGUI.getInstance().PowerBar = ((float)currentShield / (float)maxShield);
 	}
 
-	public void adjustCurrentHealth(int adj){
+	public bool adjustCurrentHealth(int adj){
         double totalDamage = Mathf.Abs(adj);
         double leftOverDamage;
         if (isBlocking)
         {
             if (blockTimer < parryTimer){
-                currentHealth -= adj;
-                adj = 0;
+                if (parryParticle != null)
+                {
+                    DeathExplosionController parryPart = (DeathExplosionController)Instantiate(parry, transform.position, transform.rotation);
+                }
+                if (parrySound != null)
+                {
+                    mySource.PlayOneShot(parrySound);
+                }
+                fillShield();
             }
             else
             {
+                shield.SetActive(false);
                 totalDamage = totalDamage * 0.5;
                 if (totalDamage > currentShield)
                 {
+                    if (blockParticle != null)
+                    {
+                        DeathExplosionController blockPart = (DeathExplosionController)Instantiate(block, transform.position, transform.rotation);
+                    }
+                    if (blockSound != null)
+                    {
+                        mySource.PlayOneShot(blockSound);
+                    }
                     leftOverDamage = (int)(totalDamage - currentShield);
                     currentShield = 0;
                     currentHealth -= (int)leftOverDamage;
@@ -82,7 +140,7 @@ public class PlayerHealth : MonoBehaviour {
         }
         else
         {
-        if (!invuln)
+            if (!invuln)
             {
                 if (totalDamage > currentShield)
                 {
@@ -94,15 +152,17 @@ public class PlayerHealth : MonoBehaviour {
                 {
                     currentShield -= totalDamage;
                 }
+                controllable = false;
+                DeathExplosionController hitPart = (DeathExplosionController)Instantiate(hit, transform.position, transform.rotation);
                 invuln = true;
-                invulnTimer += Time.deltaTime;
             }
         }
         if (currentHealth < 1)
             currentHealth = 0;
 
 		TienGUI.getInstance().LifeBar = ((float)currentHealth / (float)maxHealth);
-		}
+        return true;
+	}
 
     public void updateBlocking(bool onOff)
     {
@@ -118,11 +178,9 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth = maxHealth;
     }
 
-    public void fillShield(int shieldGain)
+    public void fillShield()
     {
-        currentShield += shieldGain;
-        if (currentShield > maxShield)
-            currentShield = maxShield;
+        currentShield = maxShield;
     }
 
     public void dashDrain()
@@ -138,4 +196,19 @@ public class PlayerHealth : MonoBehaviour {
     {
         return currentShield >= dashCost;
     }
+
+    public bool canControl()
+    {
+        if (invuln)
+        {
+            return invulnTimer > controlTimer;
+        }
+        return controllable;
+    }
+
+    public void enemyCollision()
+    {
+        controllable = false;
+    }
+
 }

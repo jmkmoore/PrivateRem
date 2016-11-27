@@ -11,12 +11,12 @@ public class EnemyAttackUpdate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        myParent = transform.parent.parent.gameObject;
+        myParent = transform.parent.gameObject;
 	}
 
     void Awake()
     {
-        myParent = myParent = transform.parent.parent.gameObject;
+        myParent = transform.parent.gameObject;
     }
 	
 	// Update is called once per frame

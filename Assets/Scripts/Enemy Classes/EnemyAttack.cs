@@ -11,12 +11,15 @@ public class EnemyAttack : MonoBehaviour {
     public float attackKnockbackY = 1000f;
     private Vector3 attackKnockback;
     public float frames, activeStart, maxDur;
-
     private bool on;
+    private AudioSource mySource;
+    public AudioClip startUpSound;
+    public AudioClip connectedSound;
+    private bool hit;
 
-    
     // Use this for initialization
 	void Start () {
+        mySource = GetComponentInParent<AudioSource>();
         attackKnockback.x = attackKnockbackX;
         attackKnockback.y = attackKnockbackY * Time.deltaTime;
         myBox = gameObject.GetComponent<BoxCollider2D>();
@@ -27,6 +30,10 @@ public class EnemyAttack : MonoBehaviour {
         if (frames != 0)
         {
             frames += Time.deltaTime;
+        }
+        if (frames < activeStart)
+        {
+            myBox.enabled = false;
         }
         if(frames > activeStart && frames < maxDur)
         {
@@ -47,7 +54,7 @@ public class EnemyAttack : MonoBehaviour {
             Attack();
         }
     }
-
+    /**
     void OnTriggerStay2D(Collider2D other)
     {
  //       Debug.Log(other.name + other.tag);
@@ -60,6 +67,7 @@ public class EnemyAttack : MonoBehaviour {
             }
         }
     }
+    **/
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -74,8 +82,12 @@ public class EnemyAttack : MonoBehaviour {
         if (target != null)
         {
             PlayerHealth ph = (PlayerHealth)target.GetComponentInParent<PlayerHealth>();
-            ph.adjustCurrentHealth(-attackValue);
-            frames += Time.deltaTime;
+            hit = ph.adjustCurrentHealth(-attackValue);
+            if (hit)
+                if(mySource != null && connectedSound != null)
+            {
+                mySource.PlayOneShot(connectedSound);
+            }
         }
     //    Vector3 thisKnockback = attackKnockback;
   //      if (gameObject.GetComponentInParent<EnemyMovement>().left)
@@ -93,6 +105,11 @@ public class EnemyAttack : MonoBehaviour {
 
     public void myBoxSwitch(bool onOrOff)
     {
+        frames = 0f;
+        if (mySource != null && startUpSound != null)
+        {
+            mySource.PlayOneShot(startUpSound);
+        }
         frames += Time.deltaTime;
     }
 

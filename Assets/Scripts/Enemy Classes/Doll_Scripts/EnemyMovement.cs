@@ -25,17 +25,13 @@ public class EnemyMovement : MonoBehaviour {
     public float attackTimer = 0f;
     public float attackDuration = 1f;
 
+    #region Turning chances
     private int turn;
-
-    private Transform previousTransform;
-
-    private GameObject attackChild;
-
     private float turnTime;
     private int turnChance;
-
     private float turnTimer = 0f;
     public float turnCooldown = 2f;
+    #endregion
 
     private Vector3 forcedMovement;
     private EnemyHealth myHealth;
@@ -99,6 +95,11 @@ public class EnemyMovement : MonoBehaviour {
 
     void onTriggerEnterEvent(Collider2D col)
     {
+        if (col.gameObject.layer == 21)
+        {
+            turnAround();
+        }
+
         if (col.name.Equals("Wall"))
         {
             updateDirection();
@@ -127,14 +128,6 @@ public class EnemyMovement : MonoBehaviour {
         {
             if (!myHealth.getInvulnState())
             {
-                if (attackTimer > 0)
-                    attackTimer -= Time.deltaTime;
-
-                if (attackTimer < 0)
-                {
-                    attackTimer = 0;
-                }
-
                 #region GooSpider
                 if (enemyType.Equals("Goo"))
                 {
@@ -246,7 +239,7 @@ public class EnemyMovement : MonoBehaviour {
                     }
                     if (myTimer > myDeathTimer)
                     {
-                        Destroy(gameObject);
+                        myHealth.explode();
                     }
                 }
                 #endregion
@@ -304,47 +297,41 @@ public class EnemyMovement : MonoBehaviour {
                 #region Doll
                 if (enemyType.Equals("Doll"))
                 {
-                    if (!inRange && attackTimer < 3f)
-                    {
-                        if (_controller.isGrounded)
-                        {
-                            if (left)
-                            {
-                                normalizedHorizontalSpeed = -1;
-                                if (transform.localScale.x > 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                            }
-                            else
-                            {
-                                normalizedHorizontalSpeed = 1;
-                                if (transform.localScale.x < 0f)
-                                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                            }
-                            _animator.Play(Animator.StringToHash("Walk"));
-                            if (canSeeTien)
-                            {
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
-                            }
-                            else
-                            {
-                                _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
-
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (attackTimer == 0)
-                        {
-                            attackTimer = attackCooldown;
-                            _animator.StopPlayback();
+                    if(attackTimer == 0f){
+                        if(inRange){
+                            attackTimer = attackCooldown + attackDuration;
                             _animator.Play(Animator.StringToHash("Trip"));
                             _velocity.x = 0;
                             myAttack.myBoxSwitch(true);
                         }
+                        else{
+                            if (_controller.isGrounded){
+                                if (left)
+                                {
+                                    normalizedHorizontalSpeed = -1;
+                                    if (transform.localScale.x > 0f)
+                                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                                }
+                                else
+                                {
+                                    normalizedHorizontalSpeed = 1;
+                                    if (transform.localScale.x < 0f)
+                                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                                }
+                                _animator.Play(Animator.StringToHash("Walk"));
+                                if (canSeeTien)
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed * increasedSpeedFactor, Time.deltaTime);
+                                }
+                                else
+                                {
+                                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime);
 
+                                }
+                            }
+                        }
                     }
-                }
+                    }
                 #endregion
 
                 #region Turtle
@@ -555,7 +542,16 @@ public class EnemyMovement : MonoBehaviour {
 
     public void beAggressive(bool inSight)
     {
-        Debug.Log("aggression time " + inSight);
         canSeeTien = inSight;
+    }
+
+    public float getRunSpeed()
+    {
+        if (canSeeTien)
+        {
+            return runSpeed * increasedSpeedFactor;
+        }
+        else
+            return runSpeed;
     }
 }

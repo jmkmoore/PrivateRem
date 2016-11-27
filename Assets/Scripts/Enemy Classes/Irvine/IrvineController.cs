@@ -4,16 +4,14 @@ using Prime31;
 
 public class IrvineController : MonoBehaviour {
     #region Cooldowns
-    public float slamCooldown = 8f;
-    public float spitCooldown = 5f;
-    public float throwCooldown = 6f;
-    public float childCooldown = 10f;
+    public float slamLockout = 2.5f;
+    public float spitLockout = 3f;
+    public float seedLockout = 3f;
+    public float childLockout = 3f;
+    private float attackLockout = 0f;
 
-
-    public float slamTimer = 0f;
-    public float spitTimer = 0f;
-    public float childTimer = 1f;
-    public float throwTimer = 0f;
+    private int attackRng;
+    private int prevAttack = 5;
     #endregion
 
     #region Movement Values
@@ -35,11 +33,26 @@ public class IrvineController : MonoBehaviour {
     public bool transitioned = false;
 
     public GameObject myFireball;
+    public GameObject myFireSeed;
     private EnemyMovement em;
 
-    public bool fireOne = false;
+    private bool fireOne = false;
+    private bool fireTwo = false;
+    private bool fireThree = false;
+
     public bool thrownSeed = false;
     public bool spawnChild = false;
+
+    public float fireSpitDeg;
+    public float fireSpitDif;
+
+    private GameObject log;
+    private GameObject mySolidBox;
+
+    public AudioClip FireSpitSound;
+    public AudioClip FireThrowSound;
+    private AudioSource mySource;
+
 
     #region Event Listeners
 
@@ -72,11 +85,10 @@ public class IrvineController : MonoBehaviour {
     #endregion
 
 
-    public GameObject log;
-    public GameObject mySolidBox;
 
 	// Use this for initialization
 	void Start () {
+        mySource = GetComponent<AudioSource>();
         em = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController2D>();
@@ -92,90 +104,116 @@ public class IrvineController : MonoBehaviour {
         log = GameObject.FindWithTag("Log");
         mySolidBox = GameObject.FindWithTag("Box");
 	}
-
-    void FixedUpdate()
-    {
-        updateTimers();
-    }
 	
 	// Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (em.isVisible)
-        {      
-            #region Stage triggering
-            if (currentAttackTimer == 0)
+        if (myHealth.currentHealth <= 0)
+        {
+            _animator.Play(Animator.StringToHash("Death"));
+        }
+        else {
+            if (em.isVisible)
             {
-                if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+                #region Stage triggering
+                if (currentAttackTimer == 0)
                 {
-                    stage = 2;
+                    if (myHealth.currentHealth < myHealth.maxHealth * (4.0 / 5))
+                    {
+                        stage = 2;
+                    }
+
+                    if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
+                    {
+                        stage = 3;
+                    }
+
+                    if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
+                    {
+                        stage = 4;
+                    }
+
+                    if (myHealth.currentHealth <= 0)
+                    {
+                        stage = 5;
+                    }
                 }
+                #endregion
 
-                if (myHealth.currentHealth < myHealth.maxHealth * (3.0 / 5))
+                #region Attacks
+                if (currentAttackTimer != 0)
                 {
-                    stage = 3;
-                }
-
-                if (myHealth.currentHealth < myHealth.maxHealth * (2.0 / 5))
-                {
-                    stage = 4;
-                }
-
-                if (myHealth.currentHealth <= 0)
-                {
-                    stage = 5;
-                }
-            }
-            #endregion
-            
-            #region Attacks
-            if (currentAttackTimer != 0)
-            {
-                currentAttackTimer += Time.deltaTime;
-            }
-
-            if (currentAttack.Equals("spit") && currentAttackTimer > 1.2f && !fireOne)
-            {
-                fireSeedsOne();
-                fireOne = true;
-            }
-
-            if (currentAttack.Equals("child") && currentAttackTimer > 1.5f && !spawnChild)
-            {
-                raiseChild();
-            }
-
-            if (currentAttack.Equals("seed") && currentAttackTimer > 2f && !thrownSeed)
-            {
-                throwSeed();
-                thrownSeed = true;
-            }
-
-            if ((currentAttackTimer > 2.5f && currentAttack.Equals("slam")) || (currentAttackTimer > 3f && currentAttack.Equals("spit")) || (currentAttackTimer > 3f && currentAttack.Equals("seed")) || currentAttackTimer == 0 || (currentAttackTimer > 3f && currentAttack.Equals("child")))
-            {
-                if (childTimer == 0)
-                {
-                    currentAttackTimer = 0;
-                    currentAttackTimer += Time.deltaTime;
-                    childAttack();
-                }else if (slamTimer == 0)
-                {
-                    currentAttackTimer = 0;
-                    SlamAttack();
                     currentAttackTimer += Time.deltaTime;
                 }
-                else if (spitTimer == 0)
+
+                if (currentAttack.Equals("spit"))
                 {
-                    currentAttackTimer = 0;
-                    spitStage1Attack();
-                    currentAttackTimer += Time.deltaTime;
-                    fireOne = false;
+                    if (currentAttackTimer > 1.2f && !fireOne)
+                    {
+                        fireOne = fireSeeds(false);
+                    }
+                    if (currentAttackTimer > 1.7f && !fireTwo)
+                    {
+                        fireTwo = fireSeeds(true);
+                    }
+
+                    if (currentAttackTimer > 2.3f && !fireThree)
+                    {
+                        fireThree = fireSeeds(true);
+                    }
                 }
-                else if (throwTimer == 0)
+
+                if (currentAttack.Equals("child") && currentAttackTimer > 1.5f && !spawnChild)
                 {
-                    currentAttackTimer = 0;
-                    seedAttack();
-                    currentAttackTimer += Time.deltaTime;
+                    raiseChild();
+                }
+
+                if (currentAttack.Equals("seed") && currentAttackTimer > 2.2f && !thrownSeed)
+                {
+                    throwSeed();
+                }
+
+                if (currentAttackTimer > attackLockout || currentAttackTimer == 0)
+                {
+                    attackRng = Random.Range(0, 4);
+                    if (attackRng == prevAttack)
+                    {
+                        attackRng = Random.Range(0, 4);
+                    }
+
+                    if(attackRng == 0){ //Child Attack
+                        currentAttackTimer = 0;
+                        currentAttackTimer += Time.deltaTime;
+                        attackLockout = childLockout;
+                        childAttack();
+                        spawnChild = false;
+                    }
+                    else if (attackRng == 1) // Slam Attack
+                    {
+                        currentAttackTimer = 0;
+                        SlamAttack();
+                        currentAttackTimer += Time.deltaTime;
+                        attackLockout = slamLockout;
+                    }
+                    else if (attackRng == 2) //Spit Attack
+                    {
+                        currentAttackTimer = 0;
+                        currentAttackTimer += Time.deltaTime;
+                        spitStage1Attack();
+                        fireOne = false;
+                        fireTwo = false;
+                        fireThree = false;
+                        attackLockout = spitLockout;
+                    }
+                    else if (attackRng == 3) //Seed throw
+                    {
+                        currentAttackTimer = 0;
+                        seedAttack();
+                        currentAttackTimer += Time.deltaTime;
+                        attackLockout = seedLockout;
+                        thrownSeed = false;
+                    }
+                    prevAttack = attackRng;
                 }
             }
             #endregion
@@ -215,79 +253,62 @@ public class IrvineController : MonoBehaviour {
     void spitStage1Attack()
     {
         _animator.Play(Animator.StringToHash("FireSpit1"));
-        spitTimer += Time.deltaTime;
         currentAttack = "spit";
     }
 
     void childAttack()
     {
         _animator.Play(Animator.StringToHash("ChildSpawn"));
-        childTimer += Time.deltaTime;
         currentAttack = "child";
     }
 
     void SlamAttack()
     {
         _animator.Play(Animator.StringToHash("IrvineSlam"));
-        slamTimer += Time.deltaTime;
+        log.GetComponent<EnemyAttack>().myBoxSwitch(true);
         currentAttack = "slam";
     }
 
     void seedAttack()
     {
         _animator.Play(Animator.StringToHash("SeedThrow"));
-        throwTimer += Time.deltaTime;
         currentAttack = "seed";
     }
 
-    void fireSeedsOne()
+    bool fireSeeds(bool randomize)
     {
+        float randDeg = 0;
+        if (FireSpitSound != null)
+        {
+            mySource.PlayOneShot(FireSpitSound);
+        }
+        if (randomize) {
+            randDeg = Random.Range(-fireSpitDif/2, fireSpitDif/2);
+        }
+
         spitStage1Attack();
         FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
-        newSeed.setAngle(-.86f, -.5f);
-        FireSeed bullet = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        newSeed.setAngle(-.7f, -.7f);
-        FireSeed bullet2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        newSeed.setAngle(-.5f, -.86f);
-        FireSeed bullet3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 50, transform.position.z), transform.rotation);
-        
+        newSeed.setRoller(false);
+        newSeed.setAngle(fireSpitDeg * Mathf.Deg2Rad);
+        FireSeed floater = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        newSeed.setAngle((fireSpitDeg - fireSpitDif + randDeg) * Mathf.Deg2Rad);
+        FireSeed floater2 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        newSeed.setAngle((fireSpitDeg + fireSpitDif + randDeg) * Mathf.Deg2Rad);
+        FireSeed floater3 = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        return true;
     }
 
     void throwSeed()
     {
-        Debug.Log("Throwing seed");
-        FireSeed newSeed = (FireSeed)myFireball.GetComponent("FireSeed");
-        newSeed.setAngle(Random.Range(-1f, 0), Random.Range(-1, 1));
-        FireSeed floater = (FireSeed)Instantiate(newSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
-    }
-
-    void updateTimers()
-    {
-        if (slamTimer != 0)
+        if (FireThrowSound != null)
         {
-            slamTimer += Time.deltaTime;
+            mySource.PlayOneShot(FireThrowSound);
         }
-        if (spitTimer != 0)
-        {
-            spitTimer += Time.deltaTime;
-        }
-        if (spitTimer > spitCooldown)
-        {
-            spitTimer = 0;
-        }
-        if (slamTimer > slamCooldown)
-        {
-            slamTimer = 0;
-        }
-        if (childTimer > childCooldown)
-        {
-            spawnChild = false;
-            childTimer = 0;
-        }
-        if (childTimer != 0)
-        {
-            childTimer += Time.deltaTime;
-        }
+        FireSeed throwSeed = (FireSeed)myFireSeed.GetComponent("FireSeed");
+        throwSeed.setAngle(fireSpitDeg * Mathf.Deg2Rad);
+        throwSeed.setRoller(true);
+        FireSeed roller = (FireSeed)Instantiate(throwSeed, new Vector3(transform.position.x + (-8f * transform.localScale.x), transform.position.y + 30, transform.position.z), transform.rotation);
+        thrownSeed = true;
     }
 
     void raiseChild()

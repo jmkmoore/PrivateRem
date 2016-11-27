@@ -24,7 +24,6 @@ public class StaffCollision : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        updateAttackDamage(myController.getCurrentAttackValue());
     }
 
     void updateAttackDamage(int newDamage)
