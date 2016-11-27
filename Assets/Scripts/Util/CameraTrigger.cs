@@ -29,14 +29,13 @@ public class CameraTrigger : MonoBehaviour {
 	
 	}
 
-
-	void OnTriggerEnter2D(Collider2D other) {
-		cam.dampTime = dampTime;
-		cam.xOffset = targetXOffset;
-		cam.yOffset = targetYOffset;
-		cam.distance = targetDistance;
+    void OnTriggerEnter2D(Collider2D other) {
         if (other.tag.Equals("Player"))
         {
+            cam.dampTime = dampTime;
+            cam.xOffset = targetXOffset;
+            cam.yOffset = targetYOffset;
+            cam.distance = targetDistance;
             if (lockCamera)
             {
                 cam.LockCamera(lockCoords);

@@ -18,7 +18,6 @@ public class DamageZone : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name + " entered");
         if (other.name.Equals("TienHitBox"))
         {
             other.GetComponentInParent<PlayerHealth>().adjustCurrentHealth(-myTickDamage);
