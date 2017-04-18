@@ -111,6 +111,7 @@ public class DemoScene : MonoBehaviour
     {
         //Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
     }
+    #endregion
 
     void FixedUpdate()
     {
@@ -122,8 +123,6 @@ public class DemoScene : MonoBehaviour
         }
 
     }
-
-    #endregion
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update()
     {
@@ -133,86 +132,48 @@ public class DemoScene : MonoBehaviour
         moveDir.y = Input.GetAxis("Vertical");
         if (ph.canControl())
         {
-            if (!isDashing)
+            if (moveDir.x < 0)
             {
-                if (moveDir.x < 0)
-                {
-                    left = true;
-                }
-                else if (moveDir.x > 0)
-                {
-                    left = false;
-                }
+                left = true;
+            }
+            else if (moveDir.x > 0)
+            {
+                left = false;
             }
 
             #region movement
-            if (isDashing)
+            
+           if (comboCountdown > ButtonDelay || comboCountdown == 0)
             {
-                if (airDashTime > airDashDuration)
+                normalizedHorizontalSpeed = moveDir.x;
+                if (normalizedHorizontalSpeed > 0)
                 {
-                    isDashing = false;
+                    if (transform.localScale.x < 0f)
+                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    left = false;
+                    ph.isBlocking = false;
+                }
+                else if (normalizedHorizontalSpeed < 0)
+                {
+                    if (transform.localScale.x > 0f)
+                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    left = true;
+                    ph.isBlocking = false;
+                }
+                else
+                {
+                    normalizedHorizontalSpeed = 0;
                 }
             }
-            else
+
+            if (Input.GetButtonDown("Dash"))
             {
-                if (comboCountdown > ButtonDelay || comboCountdown == 0)
-                {
-                    normalizedHorizontalSpeed = moveDir.x;
-                    if (normalizedHorizontalSpeed > 0)
-                    {
-                        if (transform.localScale.x < 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                        left = false;
-                        ph.isBlocking = false;
-                    }
-                    else if (normalizedHorizontalSpeed < 0)
-                    {
-                        if (transform.localScale.x > 0f)
-                            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                        left = true;
-                        ph.isBlocking = false;
-                    }
-                    else
-                    {
-                        normalizedHorizontalSpeed = 0;
-                    }
-                }
-                if (Input.GetButtonDown("Dash"))
-                {
-                    if (ph.canDash())
-                    {
-                        if (!_controller.isGrounded)
-                        {
-                            if (airDashCount < 1)
-                            {
-                                useAirDash = true;
-                                airDashCount++;
-                                isDashing = true;
-                                _animator.Play(Animator.StringToHash("Airdash"));
-                                ph.dashDrain();
-                            }
-                            else
-                            {
-                                isDashing = false;
-                            }
-                        }
-                        else
-                        {
-                            isDashing = true;
-                            _animator.Play(Animator.StringToHash("ShoulderCharge"));
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            attackCount = 0;
-                            attack(6);
-                            ph.dashDrain();
-                        }
-                        ph.isBlocking = false;
-                    }
-                }
+                isDashing = true;
+                //Begin accelerating sprint on the ground
             }
             #endregion
 
-            if (_controller.isGrounded && !isDashing)
+            if (_controller.isGrounded)
             {
                 jumpCount = 0;
                 useAirDash = false;
@@ -286,13 +247,13 @@ public class DemoScene : MonoBehaviour
                             }
                             else if (attackCount == 2)
                             {
-                                _animator.Play(Animator.StringToHash("Kick"));
+                                _animator.Play(Animator.StringToHash("RisingKick"));
                                 attackCount = 0;
                                 comboCountdown = 0;
                                 comboCountdown += Time.deltaTime;
-                                ButtonDelay = 0.4f;
+                                ButtonDelay = 1f;
                                 attack(2);
-                                normalizedHorizontalSpeed = .25f * transform.localScale.x;
+                                normalizedHorizontalSpeed = 0;
                             }
                         }
                     }
@@ -376,10 +337,6 @@ public class DemoScene : MonoBehaviour
                     isDiving = false;
                     if (_controller.isGrounded)
                     {
-                        if (left)
-                            _velocity.x = Mathf.Lerp(runSpeed * dashBoost * -1, (runSpeed * pm.getSpeed()) * dashBoost * -1, Time.deltaTime * smoothedMovementFactor);
-                        else
-                            _velocity.x = Mathf.Lerp(runSpeed * dashBoost, (runSpeed * pm.getSpeed()) * dashBoost, Time.deltaTime * smoothedMovementFactor);
                     }
                     else
                     {

@@ -40,7 +40,7 @@ public class DefaultPlayer : Player
 						//		Physics.IgnoreLayerCollision (9, 8, true);
 
 						//	ApplyInputs ();
-						SetAnimationParameters ();
+//						SetAnimationParameters ();
 
 				
 		}
