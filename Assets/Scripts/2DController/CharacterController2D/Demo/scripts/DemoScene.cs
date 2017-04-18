@@ -141,9 +141,8 @@ public class DemoScene : MonoBehaviour
                 left = false;
             }
 
-            #region movement
-            
-           if (comboCountdown > ButtonDelay || comboCountdown == 0)
+            #region movement   
+            if (comboCountdown > ButtonDelay || comboCountdown == 0)
             {
                 normalizedHorizontalSpeed = moveDir.x;
                 if (normalizedHorizontalSpeed > 0)
@@ -166,11 +165,7 @@ public class DemoScene : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("Dash"))
-            {
-                isDashing = true;
-                //Begin accelerating sprint on the ground
-            }
+           isDashing = Input.GetButtonDown("Dash");
             #endregion
 
             if (_controller.isGrounded)
@@ -294,13 +289,20 @@ public class DemoScene : MonoBehaviour
             #endregion
 
             #region Movement Animation
-            if (_controller.isGrounded && normalizedHorizontalSpeed != 0 && !ph.isBlocking && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay))
+            if (_controller.isGrounded && !ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay))
             {
-                _animator.Play(Animator.StringToHash("Run"));
-            }
-            if (_controller.isGrounded && normalizedHorizontalSpeed == 0 && !ph.isBlocking && !isDashing && (comboCountdown == 0 || comboCountdown > ButtonDelay) && !ph.isBlocking)
-            {
-                _animator.Play(Animator.StringToHash("Idle"));
+                if (isDashing)
+                {
+                    _animator.Play(Animator.StringToHash("Sprint"));
+                }
+                else if (normalizedHorizontalSpeed != 0)
+                {
+                    _animator.Play(Animator.StringToHash("Run"));
+                }
+                else if (normalizedHorizontalSpeed == 0)
+                {
+                    _animator.Play(Animator.StringToHash("Idle"));
+                }
             }
             #endregion
 
