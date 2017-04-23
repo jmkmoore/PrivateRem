@@ -3,31 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class AttackController : MonoBehaviour {
-    public PlayerAttack[] attacks;
-
+    private Dictionary<string, PlayerAttack> myAttackBoxes;
     private BoxCollider2D myActiveBox;
-
+    
 	// Use this for initialization
 	void Start () {
-        attacks = GetComponentsInChildren<PlayerAttack>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    public void turnOnBox(int boxNum)
-    {
-        attacks[boxNum].turnOnAttack();
+        myAttackBoxes = new Dictionary<string, PlayerAttack>();
+        PlayerAttack[] attacks = GetComponentsInChildren<PlayerAttack>();
+        foreach (PlayerAttack attack in attacks)
+        {
+            myAttackBoxes.Add(attack.name, attack);
+        }
     }
 
     private void turnOffBox()
     {
     }
 
-    public void attack(int attackNum)
+    public void attack(string attackName)
     {
-        turnOnBox(attackNum);
+        PlayerAttack attack = null;
+        if (myAttackBoxes.TryGetValue(attackName, out attack))
+        {
+            attack.turnOnAttack();
+        }
+
     }
 }

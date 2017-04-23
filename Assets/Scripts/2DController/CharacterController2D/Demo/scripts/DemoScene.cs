@@ -7,6 +7,7 @@ public class DemoScene : MonoBehaviour
     // movement config
     public float gravity = -25f;
     public float runSpeed = 8f;
+    private float baseMaxSpeed;
     public float groundDamping = 20f; // how fast do we change direction? higher means faster
     public float inAirDamping = 5f;
     public float jumpHeight = 3f;
@@ -59,6 +60,7 @@ public class DemoScene : MonoBehaviour
         pm = gameObject.GetComponent<PlayerMode>();
         atkController = gameObject.GetComponent<AttackController>();
         ph = gameObject.GetComponent<PlayerHealth>();
+        baseMaxSpeed = runSpeed;
     }
 
 
@@ -165,7 +167,7 @@ public class DemoScene : MonoBehaviour
                 }
             }
 
-           isDashing = Input.GetButtonDown("Dash");
+          // isDashing = Input.GetButtonDown("Dash");
             #endregion
 
             if (_controller.isGrounded)
@@ -182,103 +184,17 @@ public class DemoScene : MonoBehaviour
 
             if (Input.GetButtonDown("Attack"))
             {
-                if (_controller.isGrounded)
-                {
-                    if (pm.mode.Equals("speed") && Input.GetAxis("Horizontal") != 0)
-                    {
-                        _animator.Play(Animator.StringToHash("DashAttack"));
-                        attackCount = 0;
-                        comboCountdown = 0;
-                        comboCountdown += Time.deltaTime;
-                        ButtonDelay = 0.9f;
-                        attack(7);
-                        normalizedHorizontalSpeed = 1f * pm.getSpeed() * transform.localScale.x;
-                    }
-                    else
-                    {
-                        if (moveDir.y > 0)
-                        {
-                            _animator.Play(Animator.StringToHash("Uppercut"));
-                            attackCount = 1;
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            ButtonDelay = 0.75f;
-                            attack(5);
-                            normalizedHorizontalSpeed = 0;
-                        }
-                        else if (moveDir.y < 0)
-                        {
-                            _animator.Play(Animator.StringToHash("Sweep"));
-                            attackCount = 1;
-                            comboCountdown = 0;
-                            comboCountdown += Time.deltaTime;
-                            ButtonDelay = 1.1f;
-                            attack(4);
-                            normalizedHorizontalSpeed = 0;
-                        }
-                        else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
-                        {
-                            ButtonDelay = 0.4f;
-                            ph.isBlocking = false;
-                            if (attackCount == 0 || attackCount == 3)
-                            {
-                                _animator.Play(Animator.StringToHash("Jab"));
-                                attackCount = 1;
-                                comboCountdown = 0;
-                                comboCountdown += Time.deltaTime;
-                                ButtonDelay = 0.4f;
-                                attack(0);
-                                normalizedHorizontalSpeed = 0;
-                            }
-                            else if (attackCount == 1)
-                            {
-                                _animator.Play(Animator.StringToHash("Cross"));
-                                attackCount = 2;
-                                comboCountdown = 0;
-                                comboCountdown += Time.deltaTime;
-                                ButtonDelay = 0.4f;
-                                attack(1);
-                                normalizedHorizontalSpeed = 0;
-                            }
-                            else if (attackCount == 2)
-                            {
-                                _animator.Play(Animator.StringToHash("RisingKick"));
-                                attackCount = 0;
-                                comboCountdown = 0;
-                                comboCountdown += Time.deltaTime;
-                                ButtonDelay = 1f;
-                                attack(2);
-                                normalizedHorizontalSpeed = 0;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    _animator.Play(Animator.StringToHash("AirAttack"));
-                    attack(6);
-                    comboCountdown = 0;
-                    comboCountdown += Time.deltaTime;
-                }
+                attack();
             }
 
             #region Block
             if (Input.GetButton("DiveBlock"))
             {
-                if (!_controller.isGrounded)
-                {
-                    isDiving = true;
-                    isDashing = false;
-                }
-                else
-                {
-                    if (!ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay))
-                    {
-                        ButtonDelay = 0.8f;
-                        comboCountdown += Time.deltaTime;
-                        _animator.Play(Animator.StringToHash("Block"));
-                        ph.isBlocking = true;
-                    }
+                if (!ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay)){
+                    ButtonDelay = 0.8f;
+                    comboCountdown += Time.deltaTime;
+                    _animator.Play(Animator.StringToHash("Block"));
+                    ph.isBlocking = true;
                 }
             }
             else
@@ -291,13 +207,16 @@ public class DemoScene : MonoBehaviour
             #region Movement Animation
             if (_controller.isGrounded && !ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay))
             {
-                if (isDashing)
+                if (normalizedHorizontalSpeed != 0)
                 {
-                    _animator.Play(Animator.StringToHash("Sprint"));
-                }
-                else if (normalizedHorizontalSpeed != 0)
-                {
-                    _animator.Play(Animator.StringToHash("Run"));
+                    if (Mathf.Abs((int)_velocity.x) <= runSpeed)
+                    {
+                        _animator.Play(Animator.StringToHash("Run"));
+                    }
+                    else
+                    {
+                        _animator.Play(Animator.StringToHash("Sprint"));
+                    }
                 }
                 else if (normalizedHorizontalSpeed == 0)
                 {
@@ -386,9 +305,86 @@ public class DemoScene : MonoBehaviour
         }
     }
 
-    public void attack(int attackName)
+    void attack()
     {
-        atkController.attack(attackName);
+        if (_controller.isGrounded)
+        {
+            if (pm.mode.Equals("speed") && Input.GetAxis("Horizontal") != 0)
+            {
+                _animator.Play(Animator.StringToHash("DashAttack"));
+                attackCount = 0;
+                comboCountdown = 0;
+                comboCountdown += Time.deltaTime;
+                ButtonDelay = 0.9f;
+                atkController.attack("SpeedAttack");
+                normalizedHorizontalSpeed = 1f * pm.getSpeed() * transform.localScale.x;
+            }
+            else
+            {
+                if (moveDir.y > 0)
+                {
+                    _animator.Play(Animator.StringToHash("Uppercut"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    ButtonDelay = 0.75f;
+                    atkController.attack("Uppercut");
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (moveDir.y < 0)
+                {
+                    _animator.Play(Animator.StringToHash("Sweep"));
+                    attackCount = 1;
+                    comboCountdown = 0;
+                    comboCountdown += Time.deltaTime;
+                    ButtonDelay = 1.1f;
+                    atkController.attack("Sweep");
+                    normalizedHorizontalSpeed = 0;
+                }
+                else if (comboCountdown == 0 || comboCountdown > ButtonDelay)
+                {
+                    ButtonDelay = 0.4f;
+                    ph.isBlocking = false;
+                    if (attackCount == 0 || attackCount == 3)
+                    {
+                        _animator.Play(Animator.StringToHash("Jab"));
+                        attackCount = 1;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        ButtonDelay = 0.4f;
+                        atkController.attack("Jab");
+                        normalizedHorizontalSpeed = 0;
+                    }
+                    else if (attackCount == 1)
+                    {
+                        _animator.Play(Animator.StringToHash("Cross"));
+                        attackCount = 2;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        ButtonDelay = 0.4f;
+                        atkController.attack("Cross");
+                        normalizedHorizontalSpeed = 0;
+                    }
+                    else if (attackCount == 2)
+                    {
+                        _animator.Play(Animator.StringToHash("RisingKick"));
+                        attackCount = 0;
+                        comboCountdown = 0;
+                        comboCountdown += Time.deltaTime;
+                        ButtonDelay = 1f;
+                        atkController.attack("HighKick");
+                        normalizedHorizontalSpeed = 0;
+                    }
+                }
+            }
+        }
+        else
+        {
+            _animator.Play(Animator.StringToHash("AirAttack"));
+            atkController.attack("AirSpin");
+            comboCountdown = 0;
+            comboCountdown += Time.deltaTime;
+        }
     }
 
     public void updateTimers()
