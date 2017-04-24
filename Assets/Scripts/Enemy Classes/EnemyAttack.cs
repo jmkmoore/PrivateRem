@@ -15,7 +15,10 @@ public class EnemyAttack : MonoBehaviour {
     private AudioSource mySource;
     public AudioClip startUpSound;
     public AudioClip connectedSound;
+    
     private bool hit;
+    public bool interruptable;
+    public int currentInterrupt, interruptLimit;
 
     // Use this for initialization
 	void Start () {
@@ -26,16 +29,18 @@ public class EnemyAttack : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+        if (interruptable && currentInterrupt >= interruptLimit)
+        {
+            resetInterruptDamage();
+            myBox.enabled = false;
+            frames = 0;
+        }
         if (frames != 0)
         {
             frames += Time.deltaTime;
         }
-        if (frames < activeStart)
-        {
-            myBox.enabled = false;
-        }
-        if(frames > activeStart && frames < maxDur)
+        if (frames > activeStart)
         {
             myBox.enabled = true;
         }
@@ -45,6 +50,10 @@ public class EnemyAttack : MonoBehaviour {
             frames = 0;
         }
 	}
+
+    void Update(){
+
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -89,18 +98,6 @@ public class EnemyAttack : MonoBehaviour {
                 mySource.PlayOneShot(connectedSound);
             }
         }
-    //    Vector3 thisKnockback = attackKnockback;
-  //      if (gameObject.GetComponentInParent<EnemyMovement>().left)
-    //    {
-     //       thisKnockback.x = attackKnockback.x * -1f;
-      //  }
-       // else
-       // {
-       //     thisKnockback.x = Mathf.Abs(attackKnockback.x);
-        //}
-        //    enemyController = target.transform.parent.GetComponent<CharacterController2D>();
-          //  enemyController.move(thisKnockback);
-
     }
 
     public void myBoxSwitch(bool onOrOff)
@@ -123,5 +120,15 @@ public class EnemyAttack : MonoBehaviour {
         attackValue = damage;
         frames = 0;
         frames += Time.deltaTime;
+    }
+
+    public void addInterruptDamage(int damage)
+    {
+        currentInterrupt += Mathf.Abs(damage);
+    }
+
+    public void resetInterruptDamage()
+    {
+        currentInterrupt = 0;
     }
 }

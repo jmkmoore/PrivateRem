@@ -246,16 +246,14 @@ public class DemoScene : MonoBehaviour
                     {
                         _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
                         _animator.StopPlayback();
-                        if (!isDashing)
-                        {
-                            _animator.Play(Animator.StringToHash("Jump"));
-                        }
+                        _animator.Play(Animator.StringToHash("Jump"));
                     }
                     _velocity.y += gravity * Time.deltaTime;
                 }
+                #region old dash
+                /**
                 else if (isDashing)
                 {
-                    isDiving = false;
                     if (_controller.isGrounded)
                     {
                     }
@@ -280,13 +278,17 @@ public class DemoScene : MonoBehaviour
                         _velocity.y += gravity * Time.deltaTime;
                     }
                 }
-                else if (isDiving)
+                **/
+                #endregion
+                #region dive
+                /**else if (isDiving)
                 {
                     isDashing = false;
                     airDashTime = 0f;
                     _velocity.y = gravity * 50f * Time.deltaTime;
                     _velocity.x = 0;
-                }
+                }**/
+                #endregion
                 _controller.move(_velocity * Time.deltaTime);
             }
         }
@@ -412,7 +414,6 @@ public class DemoScene : MonoBehaviour
         }
 
     }
-
 
     public bool isLeft()
     {

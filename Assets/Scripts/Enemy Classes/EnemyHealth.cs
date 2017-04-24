@@ -17,15 +17,16 @@ public class EnemyHealth : MonoBehaviour {
     private PlayerHealth ph;
 
     public bool disappearOnZero = true;
-
     public GameObject myExplosion;
+    private EnemyAttack myAttackStatus;
 
     // Use this for initialization
 	void Start () {
 		myTransform = transform;
         player = GameObject.FindGameObjectsWithTag("Player");
         pm = findPlayerMode(player);
-	}
+        myAttackStatus = gameObject.GetComponentInChildren<EnemyAttack>();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -68,6 +69,7 @@ public class EnemyHealth : MonoBehaviour {
             currentHealth += adj;
             damageTimer += Time.deltaTime;
             isInvuln = true;
+            myAttackStatus.addInterruptDamage(adj);
         }
         if (currentHealth > maxHealth)
 			currentHealth = maxHealth;
