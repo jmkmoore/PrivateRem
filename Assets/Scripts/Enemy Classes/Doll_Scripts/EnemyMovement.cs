@@ -58,9 +58,12 @@ public class EnemyMovement : MonoBehaviour {
     private float knockbackTimer;
     public float knockbackDuration;
 
-    public bool canSeeTien;
+    private bool canSeeTien;
     public float increasedSpeedFactor;
     public float idleTimer;
+
+    public bool suffersKnockback;
+    private bool blownAway;
 
     void Awake()
     {
@@ -419,9 +422,9 @@ public class EnemyMovement : MonoBehaviour {
             #endregion
 
 
-            if (!isBoss)
+            if (suffersKnockback)
             {
-                if (knockbackTimer != 0)
+                if (blownAway)
                 {
                     if (_velocity.y <= 0)
                     {
@@ -431,12 +434,12 @@ public class EnemyMovement : MonoBehaviour {
                     {
                         _velocity.y += forcedMovement.y * knockbackMultiplier * Time.deltaTime;
                     }
-                    _velocity.x = forcedMovement.x * knockbackMultiplier;
+                    _velocity.x = forcedMovement.x * knockbackMultiplier * Time.deltaTime;
                 }
             }
-            if (myHealth.getInvulnState() && knockbackTimer == 0)
+            if(myHealth.getInvulnState() && knockbackTimer == 0)
             {
-                if (!isBoss)
+                if (suffersKnockback)
                 {
                     if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
                     {
@@ -476,14 +479,14 @@ public class EnemyMovement : MonoBehaviour {
         left = spawnLeft;
     }
 
-    public void getKnockedBack(Vector3 receivedMovement)
+    public void getKnockedBack(bool blowAway, Vector3 receivedMovement)
     {
+        blownAway = blowAway;
         forcedMovement = receivedMovement;
     }
 
     public void stopToAttack(bool attacking)
     {
-        Debug.Log("stop to attack called with " + attacking);
         this.isAttacking = attacking;
     }
 
@@ -496,6 +499,7 @@ public class EnemyMovement : MonoBehaviour {
         if (knockbackTimer > knockbackDuration)
         {
             knockbackTimer = 0;
+            blownAway = false;
         }
 
         if(idleDuration != 0){

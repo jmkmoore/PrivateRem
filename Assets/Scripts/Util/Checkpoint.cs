@@ -23,7 +23,6 @@ public class Checkpoint : MonoBehaviour {
     {
         if (other.name.Equals("TienHitBox"))
         {
-            Debug.Log("checkpoint reached");
             other.GetComponentInParent<RespawnTracker>().setCheckpoint(myPosition);
         }
     }

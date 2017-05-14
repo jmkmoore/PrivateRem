@@ -99,6 +99,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public bool adjustCurrentHealth(int adj){
+        Debug.Log("taking " + adj + " damage");
         double totalDamage = Mathf.Abs(adj);
         double leftOverDamage;
         if (isBlocking)

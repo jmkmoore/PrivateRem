@@ -63,7 +63,6 @@ public class EnemyHealth : MonoBehaviour {
     }
 	
 	public void adjustCurrentHealth(int adj){
-        Debug.Log("Taking " + adj + " damage");
         if (damageTimer == 0)
         {
             currentHealth += adj;

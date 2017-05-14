@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour {
                 eh.adjustCurrentHealth(-attackValue);
             }
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
-            enemyController.getKnockedBack(thisKnockback);
+            enemyController.getKnockedBack(false, thisKnockback);
         }
     }
 

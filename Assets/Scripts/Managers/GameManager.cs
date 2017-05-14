@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour {
        if (Tien.GetComponent<PlayerHealth>().currentHealth <= 0)
         {
             Tien.transform.position = Tien.GetComponent<RespawnTracker>().myCheckpoint;
+            Tien.GetComponent<DemoScene>().resetVelocity();
             Tien.GetComponent<PlayerHealth>().resetHP();
             Tien.GetComponent<PlayerHealth>().fillShield();
             camera.UnlockCamera();

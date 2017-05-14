@@ -27,7 +27,7 @@ public class DemoScene : MonoBehaviour
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
-    private Vector3 _velocity;
+    public Vector3 _velocity;
 
     public Vector3 hurtKnockback;    
 
@@ -167,7 +167,6 @@ public class DemoScene : MonoBehaviour
                 }
             }
 
-          // isDashing = Input.GetButtonDown("Dash");
             #endregion
 
             if (_controller.isGrounded)
@@ -175,7 +174,6 @@ public class DemoScene : MonoBehaviour
                 jumpCount = 0;
                 useAirDash = false;
                 airDashCount = 0;
-                isDiving = false;
             }
 
 
@@ -185,6 +183,12 @@ public class DemoScene : MonoBehaviour
             if (Input.GetButtonDown("Attack"))
             {
                 attack();
+            }
+
+            if (Input.GetButtonDown("Dash") && airDashCount == 0)
+            {
+                isDashing = true;
+                airDashCount += 1;
             }
 
             #region Block
@@ -205,17 +209,23 @@ public class DemoScene : MonoBehaviour
             #endregion
 
             #region Movement Animation
-            if (_controller.isGrounded && !ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay))
+            if (isDashing && airDashTime == 0)
+            {
+                _animator.Play(Animator.StringToHash("Airdash"));
+            }else if (_controller.isGrounded && !ph.isBlocking && (comboCountdown == 0 || comboCountdown > ButtonDelay))
             {
                 if (normalizedHorizontalSpeed != 0)
                 {
-                    if (Mathf.Abs((int)_velocity.x) <= runSpeed)
+                    if (!isDashing)
                     {
-                        _animator.Play(Animator.StringToHash("Run"));
-                    }
-                    else
-                    {
-                        _animator.Play(Animator.StringToHash("Sprint"));
+                        if (Mathf.Abs((int)_velocity.x) <= runSpeed)
+                        {
+                            _animator.Play(Animator.StringToHash("Run"));
+                        }
+                        else
+                        {
+                            _animator.Play(Animator.StringToHash("Sprint"));
+                        }
                     }
                 }
                 else if (normalizedHorizontalSpeed == 0)
@@ -223,6 +233,12 @@ public class DemoScene : MonoBehaviour
                     _animator.Play(Animator.StringToHash("Idle"));
                 }
             }
+            else if (_velocity.y < 0 && !_controller.isGrounded && comboCountdown == 0)
+            {
+                _animator.Play(Animator.StringToHash("TienFall"));
+            }
+
+            
             #endregion
 
 
@@ -232,10 +248,26 @@ public class DemoScene : MonoBehaviour
 
             if (!ph.isBlocking)
             {
-                if (!isDashing && !isDiving)
+                if (isDashing)
                 {
-                    _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * (runSpeed * pm.getSpeed()), Time.deltaTime * smoothedMovementFactor);
-                    // we can only jump whilst grounded
+                    if (left)
+                    {
+                        moveDir.x = -1;
+                    }
+                    else
+                    {
+                        moveDir.x = 1;
+                    }
+                    _velocity.x = Mathf.Lerp((baseMaxSpeed * pm.maxSpeedBoost) * moveDir.x, (baseMaxSpeed * pm.maxSpeedBoost) * moveDir.x, Time.deltaTime);
+                    _velocity.y = 0;
+                }
+                else
+                {
+                    //Only affect grounded move speed if we're currently slower than Max and on the ground
+                    if (_controller.isGrounded || Mathf.Abs(_velocity.x) < baseMaxSpeed)
+                    {
+                        _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * (runSpeed * pm.getSpeed()), Time.deltaTime * smoothedMovementFactor);
+                    }// we can only jump whilst grounded
                     if (!_controller.isGrounded && Input.GetButtonDown("Jump") && jumpCount < 1)
                     {
                         _velocity.y = Mathf.Sqrt(doubleJumpHeight * jumpHeight * -gravity);
@@ -250,6 +282,7 @@ public class DemoScene : MonoBehaviour
                     }
                     _velocity.y += gravity * Time.deltaTime;
                 }
+            }
                 #region old dash
                 /**
                 else if (isDashing)
@@ -290,7 +323,7 @@ public class DemoScene : MonoBehaviour
                 }**/
                 #endregion
                 _controller.move(_velocity * Time.deltaTime);
-            }
+            
         }
         else
         {
@@ -373,7 +406,7 @@ public class DemoScene : MonoBehaviour
                         attackCount = 0;
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
-                        ButtonDelay = 1f;
+                        ButtonDelay = 0.7f;
                         atkController.attack("HighKick");
                         normalizedHorizontalSpeed = 0;
                     }
@@ -418,6 +451,12 @@ public class DemoScene : MonoBehaviour
     public bool isLeft()
     {
         return left;
+    }
+
+    public void resetVelocity()
+    {
+        _velocity.x = 0;
+        _velocity.y = 0;
     }
 
 }

@@ -4,28 +4,31 @@ using Prime31;
 
 public class EnemyAttack : MonoBehaviour {
     public GameObject target;
-    private CharacterController2D enemyController;
-    private BoxCollider2D myBox;
     public int attackValue = 10;
-    public float attackKnockbackX = 1000f;
-    public float attackKnockbackY = 1000f;
-    private Vector3 attackKnockback;
+    public float attackKnockbackX = 50f;
+    public float attackKnockbackY = 50f;
     public float frames, activeStart, maxDur;
-    private bool on;
-    private AudioSource mySource;
     public AudioClip startUpSound;
     public AudioClip connectedSound;
-    
-    private bool hit;
     public bool interruptable;
     public int currentInterrupt, interruptLimit;
+
+    private bool hit;
+    private CharacterController2D myController;
+    private BoxCollider2D myBox;
+    private AudioSource mySource;
+    private bool on;
+    private Vector3 attackKnockback;
+    private EnemyMovement myMovement;
 
     // Use this for initialization
 	void Start () {
         mySource = GetComponentInParent<AudioSource>();
         attackKnockback.x = attackKnockbackX;
-        attackKnockback.y = attackKnockbackY * Time.deltaTime;
+        attackKnockback.y = attackKnockbackY;
         myBox = gameObject.GetComponent<BoxCollider2D>();
+        myController = GetComponentInParent<CharacterController2D>();
+        myMovement = GetComponentInParent<EnemyMovement>();
 	}
 	
 	// Update is called once per frame
@@ -63,20 +66,6 @@ public class EnemyAttack : MonoBehaviour {
             Attack();
         }
     }
-    /**
-    void OnTriggerStay2D(Collider2D other)
-    {
- //       Debug.Log(other.name + other.tag);
-
-        if (other.tag.Equals("Player"))
-        {
-            if (frames > activeStart && frames < maxDur)
-            {
-                Attack();
-            }
-        }
-    }
-    **/
 
     void OnTriggerExit2D(Collider2D other)
     {
