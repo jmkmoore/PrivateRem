@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour {
     public float turnCooldown = 2f;
     #endregion
 
-    private Vector3 forcedMovement;
+    public Vector3 forcedMovement;
     private EnemyHealth myHealth;
     private EnemyAttack myAttack;
 
@@ -55,15 +55,15 @@ public class EnemyMovement : MonoBehaviour {
     public float idleTime = 0.5f;
 
     public float knockbackMultiplier;
-    private float knockbackTimer;
-    public float knockbackDuration;
 
     private bool canSeeTien;
     public float increasedSpeedFactor;
     public float idleTimer;
 
     public bool suffersKnockback;
-    private bool blownAway;
+    public bool vulnerable;
+    public float vulnerableTimer;
+    private float currentVulnTimer;
 
     void Awake()
     {
@@ -301,7 +301,7 @@ public class EnemyMovement : MonoBehaviour {
                 if (enemyType.Equals("Doll"))
                 {
                     if(attackTimer == 0f){
-                        if(inRange){
+                        if(_controller.isGrounded && inRange){
                             attackTimer = attackCooldown + attackDuration;
                             _animator.Play(Animator.StringToHash("Trip"));
                             _velocity.x = 0;
@@ -394,7 +394,6 @@ public class EnemyMovement : MonoBehaviour {
                     }
                 }
                 #endregion
-
             }
 
             #region BossMovement
@@ -422,11 +421,9 @@ public class EnemyMovement : MonoBehaviour {
             #endregion
 
 
-            if (suffersKnockback)
+            if (suffersKnockback && vulnerable)
             {
-                if (blownAway)
-                {
-                    if (_velocity.y <= 0)
+                    if (_controller.isGrounded || _velocity.y <= 0)
                     {
                         _velocity.y = forcedMovement.y;
                     }
@@ -434,32 +431,17 @@ public class EnemyMovement : MonoBehaviour {
                     {
                         _velocity.y += forcedMovement.y * knockbackMultiplier * Time.deltaTime;
                     }
-                    _velocity.x = forcedMovement.x * knockbackMultiplier * Time.deltaTime;
-                }
+                _velocity.x = forcedMovement.x * knockbackMultiplier * Time.deltaTime;
             }
-            if(myHealth.getInvulnState() && knockbackTimer == 0)
+            if (currentVulnTimer != 0)
             {
-                if (suffersKnockback)
-                {
-                    if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
-                    {
-                        _animator.Play(Animator.StringToHash("HitReaction"));
-                    }
-                    knockbackTimer += Time.deltaTime;
-                }
+                _velocity.y += (gravity/2) * Time.deltaTime;
             }
             else
             {
-                if (knockbackTimer == 0)
-                {
-                    _velocity.y += gravity * Time.deltaTime;
-                }
+                _velocity.y += gravity * Time.deltaTime;
             }
-            if (!isBoss)
-            {
-                if(attackTimer == 0)
-                    _controller.move(_velocity * Time.deltaTime);
-            }
+            _controller.move(_velocity * Time.deltaTime);
         }
     }
 
@@ -479,9 +461,8 @@ public class EnemyMovement : MonoBehaviour {
         left = spawnLeft;
     }
 
-    public void getKnockedBack(bool blowAway, Vector3 receivedMovement)
+    public void getKnockedBack(Vector3 receivedMovement)
     {
-        blownAway = blowAway;
         forcedMovement = receivedMovement;
     }
 
@@ -492,14 +473,14 @@ public class EnemyMovement : MonoBehaviour {
 
     void updateTimers()
     {
-        if (knockbackTimer != 0)
+        if (vulnerable)
         {
-            knockbackTimer += Time.deltaTime;
-        }
-        if (knockbackTimer > knockbackDuration)
-        {
-            knockbackTimer = 0;
-            blownAway = false;
+            currentVulnTimer += Time.deltaTime;
+            if (currentVulnTimer > vulnerableTimer)
+            {
+                vulnerable = false;
+                currentVulnTimer = 0;
+            }
         }
 
         if(idleDuration != 0){
@@ -557,5 +538,23 @@ public class EnemyMovement : MonoBehaviour {
         }
         else
             return runSpeed;
+    }
+
+    public void setVulnerable(bool isVulnerable)
+    {
+        Debug.Log("blah");
+        if (isVulnerable)
+        {
+            if (suffersKnockback)
+            {
+                if (_animator.HasState(0, Animator.StringToHash("HitReaction")))
+                {
+                    _animator.Play(Animator.StringToHash("HitReaction"));
+                }
+            }
+            currentVulnTimer = 0;
+            currentVulnTimer += Time.deltaTime;
+        }
+        vulnerable = isVulnerable;
     }
 }

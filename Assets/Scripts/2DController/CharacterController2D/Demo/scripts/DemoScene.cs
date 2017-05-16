@@ -27,7 +27,7 @@ public class DemoScene : MonoBehaviour
     private CharacterController2D _controller;
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
-    public Vector3 _velocity;
+    private Vector3 _velocity;
 
     public Vector3 hurtKnockback;    
 
@@ -406,7 +406,7 @@ public class DemoScene : MonoBehaviour
                         attackCount = 0;
                         comboCountdown = 0;
                         comboCountdown += Time.deltaTime;
-                        ButtonDelay = 0.7f;
+                        ButtonDelay = 0.6f;
                         atkController.attack("HighKick");
                         normalizedHorizontalSpeed = 0;
                     }

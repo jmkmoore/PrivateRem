@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour {
             myParticle.SetActive(false);
         }
         attackKnockback.x = attackKnockbackX;
-        attackKnockback.y = attackKnockbackY * Time.deltaTime;
+        attackKnockback.y = attackKnockbackY;
         myBox = gameObject.GetComponent<BoxCollider2D>();
 	}
 	
@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour {
                 eh.adjustCurrentHealth(-attackValue);
             }
             enemyController = target.transform.parent.GetComponent<EnemyMovement>();
-            enemyController.getKnockedBack(false, thisKnockback);
+            enemyController.getKnockedBack(thisKnockback);
         }
     }
 

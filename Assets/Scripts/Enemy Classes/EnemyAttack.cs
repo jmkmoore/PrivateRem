@@ -36,6 +36,7 @@ public class EnemyAttack : MonoBehaviour {
         if (interruptable && currentInterrupt >= interruptLimit)
         {
             resetInterruptDamage();
+            myMovement.setVulnerable(true);
             myBox.enabled = false;
             frames = 0;
         }
